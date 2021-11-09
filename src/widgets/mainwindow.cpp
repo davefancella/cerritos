@@ -24,8 +24,31 @@
 
 #include "stdio.h"
 
+#include "SDL.h"
+
 #include "cerritos.h"
 #include "mainwindow.h"
+
+void cMainWindow::setTitle(unicodestring title) {
+    this->Title = title;
+    
+    SDL_SetWindowTitle(this->window, title.data() );
+}
+
+void cMainWindow::setPosition(int posx, int posy) {
+    this->posx = posx;
+    this->posy = posy;
+    
+    SDL_SetWindowPosition(this->window, posx, posy);
+}
+
+void cMainWindow::setSize(int width, int height) {
+    this->width = width;
+    this->height = height;
+    
+    SDL_SetWindowSize(this->window, width, height);
+}
+
 
 cMainWindow::cMainWindow(CER_WindowFlags winFlags) 
             : Title("Cerritos Window"), width(800), height(600), 

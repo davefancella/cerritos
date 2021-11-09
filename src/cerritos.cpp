@@ -27,17 +27,30 @@
 #include "SDL.h"
 
 #include "cerritos.h"
+#include "application.h"
+#include "mainwindow.h"
 
 /** Initialize cerritos
  */
-int cInit() {
+void cInit() {
     if(SDL_Init(SDL_INIT_VIDEO|SDL_INIT_AUDIO)==-1) {
         printf("SDL_Init: %s\n", SDL_GetError());
-        return -1;
+    }
+};
+
+cApplication* cInit(CER_WindowFlags winFlags) {
+    if(SDL_Init(SDL_INIT_VIDEO|SDL_INIT_AUDIO)==-1) {
+        printf("SDL_Init: %s\n", SDL_GetError());
+        return NULL;
     }
     
-    return 1;
-};
+    cApplication* theApp = new cApplication();
+    cMainWindow* mainWindow = new cMainWindow(winFlags);
+    
+    theApp->setMainWindow(mainWindow);
+    
+    return theApp;
+}
 
 /** Close cerritos
  */

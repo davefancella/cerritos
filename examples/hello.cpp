@@ -30,18 +30,19 @@
 // Include the cerritos header file.  This brings in pretty much everything.
 #include "cerritos.h"
 
+#include "application.h"
 #include "mainwindow.h"
 
 int main( int argc, char* args[] ) {
     printf("Initializing Cerritos.\n");
     
-    cInit();
+    cApplication* theApp = cInit(CER_Shown);
     
-    cMainWindow* theWindow = new cMainWindow("Hello, World!", 
-                800, 600, (CER_WindowFlags) 
-                flags(CER_Shown, CER_Resizable) );
+    cMainWindow* theWindow;
+    theWindow = theApp->getMainWindow();
+    theWindow->setTitle("Hello, World!");
     
-    theWindow->Update();
+    theApp->Update();
     SDL_Delay(2000);
     
     delete theWindow;

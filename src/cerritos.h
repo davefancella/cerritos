@@ -24,14 +24,13 @@
 
 #include "SDL.h"
 
-/* This file is the base header file you need to include to use davenetgame.
+/* This file is the base header file you need to include to use cerritos.
  */
 
 #ifndef CERRITOS_H
 #define CERRITOS_H
 
-int cInit();
-void cClose();
+class cApplication;
 
 /** Window flags
  */
@@ -63,6 +62,12 @@ typedef enum {
 // variable combining all flags together.
 unsigned int flags(int num, ...);
 
+// Basic library initialization
+void cInit();
+void cClose();
+// Initialize the library and get an application object with a an already
+// setup mainwindow
+cApplication* cInit(CER_WindowFlags winFlags=CER_Shown);
 
 #endif
 

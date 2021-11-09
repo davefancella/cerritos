@@ -55,6 +55,10 @@ public:
     cMainWindow(unicodestring title, int width, int height, int posx, int posy, CER_WindowFlags winFlags=CER_Shown);
     virtual ~cMainWindow();
     
+    void setTitle(unicodestring title);
+    void setPosition(int posx, int posy);
+    void setSize(int width, int height);
+    
     /// Call to update the window
     virtual void Update();
 
