@@ -11,6 +11,7 @@ include_directories(${SDL2_INCLUDE_DIRS})
 add_library(cerritos SHARED
     src/cerritos.cpp
     src/core/object.cpp
+    src/core/application.cpp
     src/widgets/mainwindow.cpp
 )
 

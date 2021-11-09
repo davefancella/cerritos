@@ -22,4 +22,8 @@
  * 
  */
 
+#ifndef HEADER__H
+
+#endif // HEADER__H
+
 

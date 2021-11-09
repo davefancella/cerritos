@@ -24,5 +24,8 @@
 
 #include "object.h"
 
+cObject::cObject() {
+    
+};
 
 

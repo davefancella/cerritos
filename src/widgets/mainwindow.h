@@ -24,23 +24,47 @@
 
 #include "SDL.h"
 
-#include "core/object.h"
+#include "cerritos.h"
+
+#include "object.h"
+#include "string.h"
 
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
 class cMainWindow : public cObject {
 public:
+    // The title of the window
+    unicodestring Title;
+    
+    // Size of window
+    int width;
+    int height;
+    
+    // Window position
+    int posx;
+    int posy;
+    
+    // Window flags
+    CER_WindowFlags windowFlags;
+    
+    // Constructors
+    cMainWindow(CER_WindowFlags winFlags=CER_Shown);
+    cMainWindow(unicodestring title, CER_WindowFlags winFlags=CER_Shown);
+    cMainWindow(unicodestring title, int width, int height, CER_WindowFlags winFlags=CER_Shown);
+    cMainWindow(unicodestring title, int width, int height, int posx, int posy, CER_WindowFlags winFlags=CER_Shown);
+    virtual ~cMainWindow();
+    
+    /// Call to update the window
+    virtual void Update();
+
+private:
     //The window we'll be rendering to
     SDL_Window* window = NULL;
     
     //The surface contained by the window
     SDL_Surface* screenSurface = NULL;
     
-    cMainWindow();
-    
-    /// Call to update the window
-    virtual void Update();
 };
 
 #endif

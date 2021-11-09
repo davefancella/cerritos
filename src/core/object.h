@@ -33,7 +33,11 @@
 /** The base class for all cerritos objects
  */
 class cObject {
+public:
+    cObject();
     
+    // Call to update an object in a game loop.  Not all objects need this.
+    virtual void Update() { };
 };
 
 #endif

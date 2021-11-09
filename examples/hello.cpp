@@ -37,10 +37,14 @@ int main( int argc, char* args[] ) {
     
     cInit();
     
-    cMainWindow* theWindow = new cMainWindow();
+    cMainWindow* theWindow = new cMainWindow("Hello, World!", 
+                800, 600, (CER_WindowFlags) 
+                flags(CER_Shown, CER_Resizable) );
     
     theWindow->Update();
     SDL_Delay(2000);
+    
+    delete theWindow;
     
     cClose();
 }

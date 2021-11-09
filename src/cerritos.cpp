@@ -22,6 +22,8 @@
  * 
  */
 
+#include <cstdarg>
+
 #include "SDL.h"
 
 #include "cerritos.h"
@@ -43,4 +45,22 @@ void cClose() {
     SDL_Quit();
 };
 
+unsigned int flags(int num, ...) {
+    va_list args;
+    unsigned int returnFlags = 0;
+    int i;
+
+    /* initialize valist for num number of arguments */
+    va_start(args, num);
+
+    /* access all the arguments assigned to valist */
+    for (i = 0; i < num; i++) {
+        returnFlags = returnFlags | va_arg(args, int);
+    }
+        
+    /* clean memory reserved for valist */
+    va_end(args);
+
+    return returnFlags;
+};
 
