@@ -22,33 +22,20 @@
  * 
  */
 
-// This is a basic hello, world app for cerritos.  It breaks the convention
-// of being the most basic code needed by opting for providing the code that
-// is both correct and basic.  A simpler app is possible, but not suggested.
-
-#include "stdio.h"
-#include "SDL.h"
-
-// Include the cerritos header file.  This brings in pretty much everything.
-#include "cerritos.h"
-
 #include "application.h"
-#include "mainwindow.h"
 
-int main( int argc, char* args[] ) {
-    printf("Initializing Cerritos.\n");
-    
-    cApplication* theApp = cInit(CER_Shown);
-    
-    cMainWindow* theWindow;
-    theWindow = theApp->getMainWindow();
-    theWindow->setTitle("Hello, World!");
-    
-    theApp->Update();
-    SDL_Delay(2000);
-    
-    delete theWindow;
-    
-    cClose();
+void cApplication::setMainWindow(cMainWindow* window) {
+    this->mainwindow = window;
 }
+
+cMainWindow* cApplication::getMainWindow() {
+    return this->mainwindow;
+}
+
+void cApplication::Update() {
+    if(this->mainwindow != NULL) {
+        this->mainwindow->Update();
+    }
+}
+
 

@@ -22,33 +22,38 @@
  * 
  */
 
-// This is a basic hello, world app for cerritos.  It breaks the convention
-// of being the most basic code needed by opting for providing the code that
-// is both correct and basic.  A simpler app is possible, but not suggested.
+/** A simple string implementation, sorta.  Right now, it's just some
+ * typedefs and defines that hopefully provide reasonable cross-platform
+ * strings from the C++ standard library
+ */
 
-#include "stdio.h"
-#include "SDL.h"
+#ifndef CSTRING__H
+#define CSTRING__H
 
-// Include the cerritos header file.  This brings in pretty much everything.
-#include "cerritos.h"
+#include <string>
 
-#include "application.h"
-#include "mainwindow.h"
-
-int main( int argc, char* args[] ) {
-    printf("Initializing Cerritos.\n");
-    
-    cApplication* theApp = cInit(CER_Shown);
-    
-    cMainWindow* theWindow;
-    theWindow = theApp->getMainWindow();
-    theWindow->setTitle("Hello, World!");
-    
-    theApp->Update();
-    SDL_Delay(2000);
-    
-    delete theWindow;
-    
-    cClose();
+#ifdef _WIN32
+typedef std::wstring unicodestring;
+#define UNI(text) L ## text
+/*
+std::string _formatForConsole(const unicodestring &str)
+{
+    std::string result;
+    //Call WideCharToMultiByte to do the conversion
+    return result;
 }
+*/
+#else
+typedef std::string unicodestring;
+#define UNI(text) text
+/*
+std::string _formatForConsole(const unicodestring &str)
+{
+    return str;
+}
+*/
+#endif
+
+#endif // CSTRING__H
+
 
