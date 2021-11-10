@@ -1,0 +1,17 @@
+How to build cerritos
+
+1.  Install dependencies
+cmake libsdl2 doxygen graphviz
+
+2.  Create build directory
+mkdir build
+cd build
+
+3.  Run cmake
+cmake ../
+
+4.  Build!
+make
+
+TODO: Make this document a lot more detailed.
+
