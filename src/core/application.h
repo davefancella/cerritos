@@ -30,15 +30,43 @@
 
 class cApplication : public cObject {
 public:
+    cApplication();
     
     // Set the main window for the object.  If it's not set, it won't be
     // updated.
     void setMainWindow(cMainWindow* window);
     cMainWindow* getMainWindow();
     
+    // Get the current timestep.
+    const TimeStep getTimestep();
+    
+    // Call this at the beginning of your main loop.  This updates the
+    // timestep and collects all new events in the event queue.
+    void BeginUpdate();
+    
+    // This is the method provided for subclasses to do their own internal
+    // updating.
     virtual void Update();
 
+    // Updates the view, which is typically all graphics, used for animating
+    // stuff that needs to be animated.
+    void UpdateView();
+    
+    // Call at the end of the main loop to finish all pending updates.
+    void EndUpdate();
+    
+    // Call this to simply update everything at once.
+    void UpdateAll();
+    
     cMainWindow* mainwindow = NULL;
+    
+private:
+    TimeStep currentTimestep;
+
+    // The first timestep ever in the app
+    unsigned int firstTimestep;
+    // The most recent timestep called
+    unsigned int lastTimestep;
 };
 
 #endif // APPLICATION__H

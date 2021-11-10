@@ -40,5 +40,14 @@ public:
     virtual void Update() { };
 };
 
+// Timesteps are such an integral part of everything that happens in a game
+// that the timestep class is included here.
+class TimeStep {
+public:   
+    unsigned int fromBeginning;
+    unsigned int fromLast;
+};
+
+
 #endif
 

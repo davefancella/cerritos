@@ -22,7 +22,18 @@
  * 
  */
 
+#include "SDL.h"
+
 #include "application.h"
+
+cApplication::cApplication() {
+    unsigned int newTimestep = SDL_GetTicks();
+
+    this->firstTimestep = newTimestep;
+    
+    this->currentTimestep.fromBeginning = 0;
+    this->currentTimestep.fromLast = 0;
+}
 
 void cApplication::setMainWindow(cMainWindow* window) {
     this->mainwindow = window;
@@ -32,10 +43,37 @@ cMainWindow* cApplication::getMainWindow() {
     return this->mainwindow;
 }
 
+const TimeStep cApplication::getTimestep() {
+    return this->currentTimestep;
+}
+
+void cApplication::BeginUpdate() {
+    unsigned int newTimestep;
+    
+    newTimestep = SDL_GetTicks();
+    
+    this->currentTimestep.fromBeginning = newTimestep - this->firstTimestep;
+    this->currentTimestep.fromLast = newTimestep - this->lastTimestep;
+    
+    this->lastTimestep = newTimestep;
+}
+
 void cApplication::Update() {
+}
+
+void cApplication::UpdateView() {
     if(this->mainwindow != NULL) {
         this->mainwindow->Update();
     }
 }
 
+void cApplication::UpdateAll() {
+    this->BeginUpdate();
+    this->Update();
+    this->UpdateView();
+    this->EndUpdate();
+}
 
+void cApplication::EndUpdate() {
+    
+}
