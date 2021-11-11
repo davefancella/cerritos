@@ -1,3 +1,7 @@
+if(${CMAKE_SOURCE_DIR} STREQUAL ${CMAKE_BINARY_DIR})
+message(FATAL_ERROR “In-source build detected!”)
+endif()
+
 cmake_minimum_required(VERSION 3.10)
 
 # set the project name
