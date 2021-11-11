@@ -22,9 +22,18 @@
  * 
  */
 
-#ifndef HEADER__H
-#define HEADER__H
+// This is the file where all the translations from backend to cerritos
+// should occur.
 
-#endif // HEADER__H
+#ifndef BACKEND__H
+#define BACKEND__H
+
+// These are the functions a backend must implement
+unsigned int GetTicks();
+void Delay(unsigned int ms);
+
+#include "sdl_backend.h"
+
+#endif // BACKEND__H
 
 

@@ -27,6 +27,10 @@
 /* This file is the base header file you need to include to use cerritos.
  */
 
+#include "backend.h"
+
+#include "event.h"
+
 #ifndef CERRITOS_H
 #define CERRITOS_H
 

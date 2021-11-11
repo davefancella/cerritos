@@ -22,9 +22,20 @@
  * 
  */
 
-#ifndef HEADER__H
-#define HEADER__H
+#include "event.h"
 
-#endif // HEADER__H
+#ifndef MOUSEOVEREVENT__H
+#define MOUSEOVEREVENT__H
+
+class cMouseOverEvent : public cEvent {
+public:
+    cMouseOverEvent(unsigned int posx, unsigned int posy) 
+            : posx(posx), posy(posy) { this->type=CER_MouseOverEvent; };
+    
+    unsigned int posx;
+    unsigned int posy;
+};
+
+#endif // MOUSEOVEREVENT__H
 
 

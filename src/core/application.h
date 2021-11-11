@@ -23,10 +23,11 @@
  */
 
 #include "object.h"
-
+#include "event.h"
 #include "mainwindow.h"
 
 #ifndef APPLICATION__H
+#define APPLICATION__H
 
 class cApplication : public cObject {
 public:
@@ -36,6 +37,11 @@ public:
     // updated.
     void setMainWindow(cMainWindow* window);
     cMainWindow* getMainWindow();
+    
+    bool hasEvent();
+    
+    // Polls the event manager for a single event
+    cEvent* PollEvent();
     
     // Get the current timestep.
     const TimeStep getTimestep();
@@ -58,9 +64,13 @@ public:
     // Call this to simply update everything at once.
     void UpdateAll();
     
+    bool keepRunning;
+    
     cMainWindow* mainwindow = NULL;
     
 private:
+    cEventManager* eventManager;
+    
     TimeStep currentTimestep;
 
     // The first timestep ever in the app

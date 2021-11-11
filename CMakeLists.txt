@@ -3,21 +3,28 @@ cmake_minimum_required(VERSION 3.10)
 # set the project name
 project(cerritos VERSION 0.1.0)
 
+set(CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake" ${CMAKE_MODULE_PATH})
+
 find_package(SDL2 REQUIRED)
 include_directories(${SDL2_INCLUDE_DIRS})
 
 # add the library
 add_library(cerritos SHARED
     src/cerritos.cpp
+    src/backend/sdl_backend.cpp
     src/core/object.cpp
     src/core/application.cpp
+    src/core/event.cpp
+    src/core/events/quitevent.cpp
     src/widgets/mainwindow.cpp
 )
 
 target_include_directories(cerritos PUBLIC
     ${SDL2_LIBRARIES}
     src
+    src/backend
     src/core
+    src/core/events
     src/widgets
 )
 
@@ -35,7 +42,7 @@ if (DOXYGEN_FOUND)
 
     # request to configure the file
     configure_file(${DOXYGEN_IN} ${DOXYGEN_OUT} @ONLY)
-    message("Doxygen build started")
+    message("Configuring documentation")
 
     # note the option ALL which allows to build the docs together with the application
     add_custom_target( doc_doxygen ALL

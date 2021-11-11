@@ -22,9 +22,17 @@
  * 
  */
 
-#ifndef HEADER__H
-#define HEADER__H
+#include "event.h"
 
-#endif // HEADER__H
+#ifndef KEYUPEVENT__H
+#define KEYUPEVENT__H
+
+// \todo: full implement this class
+class cKeyupEvent : public cEvent {
+public:
+    cKeyupEvent() { type=CER_KeyupEvent; };
+};
+
+#endif // KEYUPEVENT__H
 
 

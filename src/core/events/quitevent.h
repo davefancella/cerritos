@@ -22,8 +22,15 @@
  * 
  */
 
-#ifndef HEADER__H
-#define HEADER__H
+#include "event.h"
+
+#ifndef QUITEVENT__H
+#define QUITEVENT__H
+
+class cQuitEvent : public cEvent {
+public:
+    cQuitEvent() { type=CER_QuitEvent; };
+};
 
 #endif // HEADER__H
 

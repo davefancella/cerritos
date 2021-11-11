@@ -22,8 +22,51 @@
  * 
  */
 
-#ifndef HEADER__H
-#define HEADER__H
+#include <queue>
+
+#ifndef EVENT__H
+#define EVENT__H
+
+typedef enum {
+    CER_QuitEvent,
+    CER_MouseOverEvent,
+    // Keyboard events
+    CER_KeydownEvent,
+    CER_KeyupEvent,
+    CER_TexteditingEvent,
+    CER_TextinputEvent,
+    CER_KeymapChangedEvent,
+    // Mobile events for Android, iOS and WinRT
+    CER_APP_TerminatingEvent,
+    CER_APP_LowmemoryEvent,
+    CER_APP_WillEnterBackgroundEvent,
+    CER_APP_DidEnterBackgroundEvent,
+    CER_APP_WillEnterForegroundEvent,
+    CER_APP_DidEnterForegroundEvent,
+} CER_EventType;
+
+// The base class for events.
+class cEvent {
+public:
+    unsigned int type;
+    
+};
+
+// The class that manages the event queue
+class cEventManager {
+public:
+    void addEvent(cEvent* event);
+    bool hasEvent();
+    cEvent* popEvent();
+private:
+    std::queue<cEvent*> eventQueue;
+};
+
+// Now include all the specific event headers
+#include "quitevent.h"
+#include "mouseoverevent.h"
+#include "keydownevent.h"
+#include "keyupevent.h"
 
 #endif // HEADER__H
 

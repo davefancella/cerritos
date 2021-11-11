@@ -22,9 +22,12 @@
  * 
  */
 
-#ifndef HEADER__H
-#define HEADER__H
+#ifndef SDL_BACKEND__H
+#define SDL_BACKEND__H
 
-#endif // HEADER__H
+unsigned int GetTicks();
+void Delay(unsigned int ms);
+
+#endif // SDL_BACKEND__H
 
 

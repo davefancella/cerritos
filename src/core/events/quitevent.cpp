@@ -22,9 +22,8 @@
  * 
  */
 
-#ifndef HEADER__H
-#define HEADER__H
+#include "quitevent.h"
 
-#endif // HEADER__H
+
 
 

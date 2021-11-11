@@ -22,9 +22,26 @@
  * 
  */
 
-#ifndef HEADER__H
-#define HEADER__H
+#include "event.h"
 
-#endif // HEADER__H
+void cEventManager::addEvent(cEvent* event) {
+    this->eventQueue.push(event);
+}
+
+bool cEventManager::hasEvent() { 
+    if(!this->eventQueue.empty() ) 
+        return true; 
+    return false; 
+}
+
+cEvent* cEventManager::popEvent() {
+    cEvent* returnEvent=NULL;
+    
+    if(this->hasEvent() ) {
+        returnEvent = this->eventQueue.front();
+        this->eventQueue.pop(); 
+    }
+    return returnEvent; 
+}
 
 
