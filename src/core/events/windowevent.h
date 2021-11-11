@@ -32,6 +32,12 @@ public:
     cWindowEvent() { 
         evtype=CER_WindowEvent; 
     };
+    
+    cWindowEvent(unsigned int timestamp) { 
+        evtype = CER_WindowEvent;
+        evtimestamp = timestamp;
+    };
+    unsigned int evtimestamp;
 };
 
 #endif // WINDOWEVENT__H

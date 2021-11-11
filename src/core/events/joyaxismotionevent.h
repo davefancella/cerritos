@@ -32,6 +32,12 @@ public:
     cJoyAxisMotionEvent() { 
         evtype=CER_JoyAxisMotionEvent; 
     };
+    
+    cJoyAxisMotionEvent(unsigned int timestamp) { 
+        evtype = CER_JoyAxisMotionEvent;
+        evtimestamp = timestamp;
+    };
+    unsigned int evtimestamp;
 };
 
 #endif // JOYAXISMOTIONEVENT__H

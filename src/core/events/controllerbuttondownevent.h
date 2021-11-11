@@ -32,6 +32,12 @@ public:
     cControllerButtondownEvent() { 
         evtype=CER_ControllerButtondownEvent; 
     };
+    
+    cControllerButtondownEvent(unsigned int timestamp) { 
+        evtype = CER_ControllerButtondownEvent;
+        evtimestamp = timestamp;
+    };
+    unsigned int evtimestamp;
 };
 
 #endif // CONTROLLERBUTTONDOWNEVENT__H

@@ -32,6 +32,12 @@ public:
     cJoyBallMotionEvent() { 
         evtype=CER_JoyBallMotionEvent; 
     };
+    
+    cJoyBallMotionEvent(unsigned int timestamp) { 
+        evtype = CER_JoyBallMotionEvent;
+        evtimestamp = timestamp;
+    };
+    unsigned int evtimestamp;
 };
 
 #endif // JOYBALLMOTIONEVENT__H

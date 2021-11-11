@@ -32,6 +32,12 @@ public:
     cMultiGestureEvent() { 
         evtype=CER_MultiGestureEvent; 
     };
+    
+    cMultiGestureEvent(unsigned int timestamp) { 
+        evtype = CER_MultiGestureEvent;
+        evtimestamp = timestamp;
+    };
+    unsigned int evtimestamp;
 };
 
 #endif // MULTIGESTUREEVENT__H

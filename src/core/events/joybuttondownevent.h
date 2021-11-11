@@ -32,6 +32,12 @@ public:
     cJoyButtondownEvent() { 
         evtype=CER_JoyButtondownEvent; 
     };
+    
+    cJoyButtondownEvent(unsigned int timestamp) { 
+        evtype = CER_JoyButtondownEvent;
+        evtimestamp = timestamp;
+    };
+    unsigned int evtimestamp;
 };
 
 #endif // JOYBUTTONDOWNEVENT__H

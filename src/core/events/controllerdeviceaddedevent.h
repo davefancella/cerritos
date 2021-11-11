@@ -32,6 +32,12 @@ public:
     cControllerDeviceAddedEvent() { 
         evtype=CER_ControllerDeviceAddedEvent; 
     };
+    
+    cControllerDeviceAddedEvent(unsigned int timestamp) { 
+        evtype = CER_ControllerDeviceAddedEvent;
+        evtimestamp = timestamp;
+    };
+    unsigned int evtimestamp;
 };
 
 #endif // CONTROLLERDEVICEADDEDEVENT__H

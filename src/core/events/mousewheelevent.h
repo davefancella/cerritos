@@ -32,6 +32,12 @@ public:
     cMouseWheelEvent() { 
         evtype=CER_MouseWheelEvent; 
     };
+    
+    cMouseWheelEvent(unsigned int timestamp) { 
+        evtype = CER_MouseWheelEvent;
+        evtimestamp = timestamp;
+    };
+    unsigned int evtimestamp;
 };
 
 #endif // MOUSEWHEELEVENT__H

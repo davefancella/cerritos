@@ -1,68 +1,90 @@
-SDL_QUIT
-SDL_WINDOWEVENT
- 
-SDL_SYSWMEVENT
- 
-SDL_KEYDOWN
- 
-SDL_KEYUP
- 
-SDL_TEXTEDITING
- 
-SDL_TEXTINPUT
- 
+# This file contains a description of SDL event types that's used
+# to generate cerritos event classes as well as the case statements
+# used in the sdl backend to translate from SDl->cerritos events
+#
+# Format is simple:
+# SDL_EVENT_TYPE: <member for event type in sdl event union>
+#     <cerritos membername>(type, constructor argument): <sdl member name>
+#
+# The cerritos event class will be generated with a default constructor
+# and an overloaded constructor that takes all the SDL event data and
+# initializes the cerritos event
+SDL_QUIT: quit
+    evtimestamp(unsigned int, timestamp) : timestamp
+SDL_WINDOWEVENT: window
+    evtimestamp(unsigned int, timestamp) : timestamp
+SDL_SYSWMEVENT: syswm
+    evtimestamp(unsigned int, timestamp) : timestamp
+SDL_KEYDOWN: key
+    evtimestamp(unsigned int, timestamp) : timestamp
+SDL_KEYUP: key
+    evtimestamp(unsigned int, timestamp) : timestamp
+SDL_TEXTEDITING: edit
+    evtimestamp(unsigned int, timestamp) : timestamp
+SDL_TEXTINPUT: text
+    evtimestamp(unsigned int, timestamp) : timestamp
 SDL_KEYMAPCHANGED
- 
-SDL_MOUSEBUTTONDOWN
+SDL_MOUSEBUTTONDOWN: button
+    evtimestamp(unsigned int, timestamp) : timestamp
 SDL_MOUSEMOTION : motion
     evtimestamp(unsigned int, timestamp) : timestamp
     windowId(unsigned int, winId) : windowID
     posx(unsigned int, pos_x) : x
     posy(unsigned int, pos_y) : y
-SDL_MOUSEBUTTONUP
-SDL_MOUSEWHEEL
-SDL_JOYAXISMOTION
-SDL_JOYBALLMOTION
-SDL_JOYHATMOTION
-SDL_JOYBUTTONDOWN
-SDL_JOYBUTTONUP
-SDL_JOYDEVICEADDED
-SDL_JOYDEVICEREMOVED
-SDL_CONTROLLERAXISMOTION
-SDL_CONTROLLERBUTTONDOWN
-SDL_CONTROLLERBUTTONUP
-SDL_CONTROLLERDEVICEADDED
-SDL_CONTROLLERDEVICEREMOVED
- 
-SDL_CONTROLLERDEVICEREMAPPED
- 
-SDL_FINGERDOWN
- 
-SDL_FINGERUP
- 
-SDL_FINGERMOTION
- 
-SDL_DOLLARGESTURE
- 
-SDL_DOLLARRECORD
- 
-SDL_MULTIGESTURE
- 
+SDL_MOUSEBUTTONUP: button
+    evtimestamp(unsigned int, timestamp) : timestamp
+SDL_MOUSEWHEEL: wheel
+    evtimestamp(unsigned int, timestamp) : timestamp
+SDL_JOYAXISMOTION: jaxis
+    evtimestamp(unsigned int, timestamp) : timestamp
+SDL_JOYBALLMOTION: jball
+    evtimestamp(unsigned int, timestamp) : timestamp
+SDL_JOYHATMOTION: jhat
+    evtimestamp(unsigned int, timestamp) : timestamp
+SDL_JOYBUTTONDOWN: jbutton
+    evtimestamp(unsigned int, timestamp) : timestamp
+SDL_JOYBUTTONUP: jbutton
+    evtimestamp(unsigned int, timestamp) : timestamp
+SDL_JOYDEVICEADDED: jdevice
+    evtimestamp(unsigned int, timestamp) : timestamp
+SDL_JOYDEVICEREMOVED: jdevice
+    evtimestamp(unsigned int, timestamp) : timestamp
+SDL_CONTROLLERAXISMOTION: caxis
+    evtimestamp(unsigned int, timestamp) : timestamp
+SDL_CONTROLLERBUTTONDOWN: cbutton
+    evtimestamp(unsigned int, timestamp) : timestamp
+SDL_CONTROLLERBUTTONUP: cbutton
+    evtimestamp(unsigned int, timestamp) : timestamp
+SDL_CONTROLLERDEVICEADDED: cdevice
+    evtimestamp(unsigned int, timestamp) : timestamp
+SDL_CONTROLLERDEVICEREMOVED: cdevice
+    evtimestamp(unsigned int, timestamp) : timestamp
+SDL_CONTROLLERDEVICEREMAPPED: cdevice
+    evtimestamp(unsigned int, timestamp) : timestamp
+SDL_FINGERDOWN: tfinger
+    evtimestamp(unsigned int, timestamp) : timestamp
+SDL_FINGERUP: tfinger
+    evtimestamp(unsigned int, timestamp) : timestamp
+SDL_FINGERMOTION: tfinger
+    evtimestamp(unsigned int, timestamp) : timestamp
+SDL_DOLLARGESTURE: dgesture
+    evtimestamp(unsigned int, timestamp) : timestamp
+SDL_DOLLARRECORD: dgesture
+    evtimestamp(unsigned int, timestamp) : timestamp
+SDL_MULTIGESTURE: mgesture
+    evtimestamp(unsigned int, timestamp) : timestamp
 SDL_CLIPBOARDUPDATE
- 
-SDL_DROPFILE
- 
-SDL_DROPTEXT
- 
-SDL_DROPBEGIN
- 
-SDL_DROPCOMPLETE
- 
-SDL_AUDIODEVICEADDED
- 
-SDL_AUDIODEVICEREMOVED
- 
+SDL_DROPFILE: drop
+    evtimestamp(unsigned int, timestamp) : timestamp
+SDL_DROPTEXT: drop
+    evtimestamp(unsigned int, timestamp) : timestamp
+SDL_DROPBEGIN: drop
+    evtimestamp(unsigned int, timestamp) : timestamp
+SDL_DROPCOMPLETE: drop
+    evtimestamp(unsigned int, timestamp) : timestamp
+SDL_AUDIODEVICEADDED: adevice
+    evtimestamp(unsigned int, timestamp) : timestamp
+SDL_AUDIODEVICEREMOVED: adevice
+    evtimestamp(unsigned int, timestamp) : timestamp
 SDL_RENDER_TARGETS_RESET
- 
 SDL_RENDER_DEVICE_RESET
- 

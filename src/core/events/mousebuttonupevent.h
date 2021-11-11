@@ -32,6 +32,12 @@ public:
     cMouseButtonupEvent() { 
         evtype=CER_MouseButtonupEvent; 
     };
+    
+    cMouseButtonupEvent(unsigned int timestamp) { 
+        evtype = CER_MouseButtonupEvent;
+        evtimestamp = timestamp;
+    };
+    unsigned int evtimestamp;
 };
 
 #endif // MOUSEBUTTONUPEVENT__H

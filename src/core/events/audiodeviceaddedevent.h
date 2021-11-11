@@ -32,6 +32,12 @@ public:
     cAudioDeviceAddedEvent() { 
         evtype=CER_AudioDeviceAddedEvent; 
     };
+    
+    cAudioDeviceAddedEvent(unsigned int timestamp) { 
+        evtype = CER_AudioDeviceAddedEvent;
+        evtimestamp = timestamp;
+    };
+    unsigned int evtimestamp;
 };
 
 #endif // AUDIODEVICEADDEDEVENT__H

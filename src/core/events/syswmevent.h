@@ -32,6 +32,12 @@ public:
     cSyswmEvent() { 
         evtype=CER_SyswmEvent; 
     };
+    
+    cSyswmEvent(unsigned int timestamp) { 
+        evtype = CER_SyswmEvent;
+        evtimestamp = timestamp;
+    };
+    unsigned int evtimestamp;
 };
 
 #endif // SYSWMEVENT__H

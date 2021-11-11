@@ -32,6 +32,12 @@ public:
     cControllerDeviceRemappedEvent() { 
         evtype=CER_ControllerDeviceRemappedEvent; 
     };
+    
+    cControllerDeviceRemappedEvent(unsigned int timestamp) { 
+        evtype = CER_ControllerDeviceRemappedEvent;
+        evtimestamp = timestamp;
+    };
+    unsigned int evtimestamp;
 };
 
 #endif // CONTROLLERDEVICEREMAPPEDEVENT__H

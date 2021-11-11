@@ -32,6 +32,12 @@ public:
     cJoyDeviceRemovedEvent() { 
         evtype=CER_JoyDeviceRemovedEvent; 
     };
+    
+    cJoyDeviceRemovedEvent(unsigned int timestamp) { 
+        evtype = CER_JoyDeviceRemovedEvent;
+        evtimestamp = timestamp;
+    };
+    unsigned int evtimestamp;
 };
 
 #endif // JOYDEVICEREMOVEDEVENT__H

@@ -32,6 +32,12 @@ public:
     cKeyupEvent() { 
         evtype=CER_KeyupEvent; 
     };
+    
+    cKeyupEvent(unsigned int timestamp) { 
+        evtype = CER_KeyupEvent;
+        evtimestamp = timestamp;
+    };
+    unsigned int evtimestamp;
 };
 
 #endif // KEYUPEVENT__H

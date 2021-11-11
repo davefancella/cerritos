@@ -32,6 +32,12 @@ public:
     cControllerAxisMotionEvent() { 
         evtype=CER_ControllerAxisMotionEvent; 
     };
+    
+    cControllerAxisMotionEvent(unsigned int timestamp) { 
+        evtype = CER_ControllerAxisMotionEvent;
+        evtimestamp = timestamp;
+    };
+    unsigned int evtimestamp;
 };
 
 #endif // CONTROLLERAXISMOTIONEVENT__H

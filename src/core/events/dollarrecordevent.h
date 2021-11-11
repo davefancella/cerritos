@@ -32,6 +32,12 @@ public:
     cDollarRecordEvent() { 
         evtype=CER_DollarRecordEvent; 
     };
+    
+    cDollarRecordEvent(unsigned int timestamp) { 
+        evtype = CER_DollarRecordEvent;
+        evtimestamp = timestamp;
+    };
+    unsigned int evtimestamp;
 };
 
 #endif // DOLLARRECORDEVENT__H

@@ -32,6 +32,12 @@ public:
     cDollarGestureEvent() { 
         evtype=CER_DollarGestureEvent; 
     };
+    
+    cDollarGestureEvent(unsigned int timestamp) { 
+        evtype = CER_DollarGestureEvent;
+        evtimestamp = timestamp;
+    };
+    unsigned int evtimestamp;
 };
 
 #endif // DOLLARGESTUREEVENT__H

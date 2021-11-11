@@ -32,6 +32,12 @@ public:
     cFingerMotionEvent() { 
         evtype=CER_FingerMotionEvent; 
     };
+    
+    cFingerMotionEvent(unsigned int timestamp) { 
+        evtype = CER_FingerMotionEvent;
+        evtimestamp = timestamp;
+    };
+    unsigned int evtimestamp;
 };
 
 #endif // FINGERMOTIONEVENT__H

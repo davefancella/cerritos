@@ -63,31 +63,47 @@ void PollHardwareEvents(cEventManager* eventManager) {
         newEvent = NULL;
         switch (event.type) {
             case SDL_QUIT:
-                newEvent = new cQuitEvent;
+                newEvent = new cQuitEvent(
+                    event.quit.timestamp
+                );
                 break;
             case SDL_WINDOWEVENT:
-                newEvent = new cWindowEvent;
+                newEvent = new cWindowEvent(
+                    event.window.timestamp
+                );
                 break;
             case SDL_SYSWMEVENT:
-                newEvent = new cSyswmEvent;
+                newEvent = new cSyswmEvent(
+                    event.syswm.timestamp
+                );
                 break;
             case SDL_KEYDOWN:
-                newEvent = new cKeydownEvent;
+                newEvent = new cKeydownEvent(
+                    event.key.timestamp
+                );
                 break;
             case SDL_KEYUP:
-                newEvent = new cKeyupEvent;
+                newEvent = new cKeyupEvent(
+                    event.key.timestamp
+                );
                 break;
             case SDL_TEXTEDITING:
-                newEvent = new cTextEditingEvent;
+                newEvent = new cTextEditingEvent(
+                    event.edit.timestamp
+                );
                 break;
             case SDL_TEXTINPUT:
-                newEvent = new cTextInputEvent;
+                newEvent = new cTextInputEvent(
+                    event.text.timestamp
+                );
                 break;
             case SDL_KEYMAPCHANGED:
                 newEvent = new cKeymapchangedEvent;
                 break;
             case SDL_MOUSEBUTTONDOWN:
-                newEvent = new cMouseButtondownEvent;
+                newEvent = new cMouseButtondownEvent(
+                    event.button.timestamp
+                );
                 break;
             case SDL_MOUSEMOTION:
                 newEvent = new cMouseMotionEvent(
@@ -95,88 +111,142 @@ void PollHardwareEvents(cEventManager* eventManager) {
                 );
                 break;
             case SDL_MOUSEBUTTONUP:
-                newEvent = new cMouseButtonupEvent;
+                newEvent = new cMouseButtonupEvent(
+                    event.button.timestamp
+                );
                 break;
             case SDL_MOUSEWHEEL:
-                newEvent = new cMouseWheelEvent;
+                newEvent = new cMouseWheelEvent(
+                    event.wheel.timestamp
+                );
                 break;
             case SDL_JOYAXISMOTION:
-                newEvent = new cJoyAxisMotionEvent;
+                newEvent = new cJoyAxisMotionEvent(
+                    event.jaxis.timestamp
+                );
                 break;
             case SDL_JOYBALLMOTION:
-                newEvent = new cJoyBallMotionEvent;
+                newEvent = new cJoyBallMotionEvent(
+                    event.jball.timestamp
+                );
                 break;
             case SDL_JOYHATMOTION:
-                newEvent = new cJoyHatMotionEvent;
+                newEvent = new cJoyHatMotionEvent(
+                    event.jhat.timestamp
+                );
                 break;
             case SDL_JOYBUTTONDOWN:
-                newEvent = new cJoyButtondownEvent;
+                newEvent = new cJoyButtondownEvent(
+                    event.jbutton.timestamp
+                );
                 break;
             case SDL_JOYBUTTONUP:
-                newEvent = new cJoyButtonupEvent;
+                newEvent = new cJoyButtonupEvent(
+                    event.jbutton.timestamp
+                );
                 break;
             case SDL_JOYDEVICEADDED:
-                newEvent = new cJoyDeviceAddedEvent;
+                newEvent = new cJoyDeviceAddedEvent(
+                    event.jdevice.timestamp
+                );
                 break;
             case SDL_JOYDEVICEREMOVED:
-                newEvent = new cJoyDeviceRemovedEvent;
+                newEvent = new cJoyDeviceRemovedEvent(
+                    event.jdevice.timestamp
+                );
                 break;
             case SDL_CONTROLLERAXISMOTION:
-                newEvent = new cControllerAxisMotionEvent;
+                newEvent = new cControllerAxisMotionEvent(
+                    event.caxis.timestamp
+                );
                 break;
             case SDL_CONTROLLERBUTTONDOWN:
-                newEvent = new cControllerButtondownEvent;
+                newEvent = new cControllerButtondownEvent(
+                    event.cbutton.timestamp
+                );
                 break;
             case SDL_CONTROLLERBUTTONUP:
-                newEvent = new cControllerButtonupEvent;
+                newEvent = new cControllerButtonupEvent(
+                    event.cbutton.timestamp
+                );
                 break;
             case SDL_CONTROLLERDEVICEADDED:
-                newEvent = new cControllerDeviceAddedEvent;
+                newEvent = new cControllerDeviceAddedEvent(
+                    event.cdevice.timestamp
+                );
                 break;
             case SDL_CONTROLLERDEVICEREMOVED:
-                newEvent = new cControllerDeviceRemovedEvent;
+                newEvent = new cControllerDeviceRemovedEvent(
+                    event.cdevice.timestamp
+                );
                 break;
             case SDL_CONTROLLERDEVICEREMAPPED:
-                newEvent = new cControllerDeviceRemappedEvent;
+                newEvent = new cControllerDeviceRemappedEvent(
+                    event.cdevice.timestamp
+                );
                 break;
             case SDL_FINGERDOWN:
-                newEvent = new cFingerdownEvent;
+                newEvent = new cFingerdownEvent(
+                    event.tfinger.timestamp
+                );
                 break;
             case SDL_FINGERUP:
-                newEvent = new cFingerupEvent;
+                newEvent = new cFingerupEvent(
+                    event.tfinger.timestamp
+                );
                 break;
             case SDL_FINGERMOTION:
-                newEvent = new cFingerMotionEvent;
+                newEvent = new cFingerMotionEvent(
+                    event.tfinger.timestamp
+                );
                 break;
             case SDL_DOLLARGESTURE:
-                newEvent = new cDollarGestureEvent;
+                newEvent = new cDollarGestureEvent(
+                    event.dgesture.timestamp
+                );
                 break;
             case SDL_DOLLARRECORD:
-                newEvent = new cDollarRecordEvent;
+                newEvent = new cDollarRecordEvent(
+                    event.dgesture.timestamp
+                );
                 break;
             case SDL_MULTIGESTURE:
-                newEvent = new cMultiGestureEvent;
+                newEvent = new cMultiGestureEvent(
+                    event.mgesture.timestamp
+                );
                 break;
             case SDL_CLIPBOARDUPDATE:
                 newEvent = new cClipboardUpdateEvent;
                 break;
             case SDL_DROPFILE:
-                newEvent = new cDropFileEvent;
+                newEvent = new cDropFileEvent(
+                    event.drop.timestamp
+                );
                 break;
             case SDL_DROPTEXT:
-                newEvent = new cDropTextEvent;
+                newEvent = new cDropTextEvent(
+                    event.drop.timestamp
+                );
                 break;
             case SDL_DROPBEGIN:
-                newEvent = new cDropBeginEvent;
+                newEvent = new cDropBeginEvent(
+                    event.drop.timestamp
+                );
                 break;
             case SDL_DROPCOMPLETE:
-                newEvent = new cDropCompleteEvent;
+                newEvent = new cDropCompleteEvent(
+                    event.drop.timestamp
+                );
                 break;
             case SDL_AUDIODEVICEADDED:
-                newEvent = new cAudioDeviceAddedEvent;
+                newEvent = new cAudioDeviceAddedEvent(
+                    event.adevice.timestamp
+                );
                 break;
             case SDL_AUDIODEVICEREMOVED:
-                newEvent = new cAudioDeviceRemovedEvent;
+                newEvent = new cAudioDeviceRemovedEvent(
+                    event.adevice.timestamp
+                );
                 break;
             case SDL_RENDER_TARGETS_RESET:
                 newEvent = new cRenderTargetsResetEvent;

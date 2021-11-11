@@ -7,7 +7,7 @@ printHeaders = False
 saveHeaders = True
 
 printSwitch = False
-saveSwitch = False
+saveSwitch = True
 
 printIncludes = False
 saveIncludes = False

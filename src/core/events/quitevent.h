@@ -32,6 +32,12 @@ public:
     cQuitEvent() { 
         evtype=CER_QuitEvent; 
     };
+    
+    cQuitEvent(unsigned int timestamp) { 
+        evtype = CER_QuitEvent;
+        evtimestamp = timestamp;
+    };
+    unsigned int evtimestamp;
 };
 
 #endif // QUITEVENT__H

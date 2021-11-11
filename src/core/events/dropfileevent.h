@@ -32,6 +32,12 @@ public:
     cDropFileEvent() { 
         evtype=CER_DropFileEvent; 
     };
+    
+    cDropFileEvent(unsigned int timestamp) { 
+        evtype = CER_DropFileEvent;
+        evtimestamp = timestamp;
+    };
+    unsigned int evtimestamp;
 };
 
 #endif // DROPFILEEVENT__H

@@ -32,6 +32,12 @@ public:
     cTextEditingEvent() { 
         evtype=CER_TextEditingEvent; 
     };
+    
+    cTextEditingEvent(unsigned int timestamp) { 
+        evtype = CER_TextEditingEvent;
+        evtimestamp = timestamp;
+    };
+    unsigned int evtimestamp;
 };
 
 #endif // TEXTEDITINGEVENT__H

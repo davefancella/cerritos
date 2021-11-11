@@ -32,6 +32,12 @@ public:
     cAudioDeviceRemovedEvent() { 
         evtype=CER_AudioDeviceRemovedEvent; 
     };
+    
+    cAudioDeviceRemovedEvent(unsigned int timestamp) { 
+        evtype = CER_AudioDeviceRemovedEvent;
+        evtimestamp = timestamp;
+    };
+    unsigned int evtimestamp;
 };
 
 #endif // AUDIODEVICEREMOVEDEVENT__H

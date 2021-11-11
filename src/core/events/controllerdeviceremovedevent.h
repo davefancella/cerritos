@@ -32,6 +32,12 @@ public:
     cControllerDeviceRemovedEvent() { 
         evtype=CER_ControllerDeviceRemovedEvent; 
     };
+    
+    cControllerDeviceRemovedEvent(unsigned int timestamp) { 
+        evtype = CER_ControllerDeviceRemovedEvent;
+        evtimestamp = timestamp;
+    };
+    unsigned int evtimestamp;
 };
 
 #endif // CONTROLLERDEVICEREMOVEDEVENT__H

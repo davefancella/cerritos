@@ -32,6 +32,12 @@ public:
     cDropTextEvent() { 
         evtype=CER_DropTextEvent; 
     };
+    
+    cDropTextEvent(unsigned int timestamp) { 
+        evtype = CER_DropTextEvent;
+        evtimestamp = timestamp;
+    };
+    unsigned int evtimestamp;
 };
 
 #endif // DROPTEXTEVENT__H

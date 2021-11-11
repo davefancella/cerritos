@@ -32,6 +32,12 @@ public:
     cFingerupEvent() { 
         evtype=CER_FingerupEvent; 
     };
+    
+    cFingerupEvent(unsigned int timestamp) { 
+        evtype = CER_FingerupEvent;
+        evtimestamp = timestamp;
+    };
+    unsigned int evtimestamp;
 };
 
 #endif // FINGERUPEVENT__H

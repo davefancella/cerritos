@@ -32,6 +32,12 @@ public:
     cDropBeginEvent() { 
         evtype=CER_DropBeginEvent; 
     };
+    
+    cDropBeginEvent(unsigned int timestamp) { 
+        evtype = CER_DropBeginEvent;
+        evtimestamp = timestamp;
+    };
+    unsigned int evtimestamp;
 };
 
 #endif // DROPBEGINEVENT__H
