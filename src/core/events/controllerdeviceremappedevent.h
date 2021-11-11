@@ -27,13 +27,12 @@
 #ifndef CONTROLLERDEVICEREMAPPEDEVENT__H
 #define CONTROLLERDEVICEREMAPPEDEVENT__H
 
-// \todo: full implement this class
 class cControllerDeviceRemappedEvent : public cEvent {
 public:
-    cControllerDeviceRemappedEvent() { evtype=CER_ControllerDeviceRemappedEvent; };
+    cControllerDeviceRemappedEvent() { 
+        evtype=CER_ControllerDeviceRemappedEvent; 
+    };
 };
 
 #endif // CONTROLLERDEVICEREMAPPEDEVENT__H
-
-
 

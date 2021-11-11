@@ -27,13 +27,12 @@
 #ifndef CONTROLLERDEVICEADDEDEVENT__H
 #define CONTROLLERDEVICEADDEDEVENT__H
 
-// \todo: full implement this class
 class cControllerDeviceAddedEvent : public cEvent {
 public:
-    cControllerDeviceAddedEvent() { evtype=CER_ControllerDeviceAddedEvent; };
+    cControllerDeviceAddedEvent() { 
+        evtype=CER_ControllerDeviceAddedEvent; 
+    };
 };
 
 #endif // CONTROLLERDEVICEADDEDEVENT__H
-
-
 

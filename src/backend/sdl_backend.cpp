@@ -62,8 +62,8 @@ void PollHardwareEvents(cEventManager* eventManager) {
     while (SDL_PollEvent(&event)) {
         newEvent = NULL;
         switch (event.type) {
-            case SDL_MOUSEMOTION:
-                newEvent = new cMouseOverEvent(event.motion.x, event.motion.y);
+            case SDL_QUIT:
+                newEvent = new cQuitEvent;
                 break;
             case SDL_WINDOWEVENT:
                 newEvent = new cWindowEvent;
@@ -88,6 +88,11 @@ void PollHardwareEvents(cEventManager* eventManager) {
                 break;
             case SDL_MOUSEBUTTONDOWN:
                 newEvent = new cMouseButtondownEvent;
+                break;
+            case SDL_MOUSEMOTION:
+                newEvent = new cMouseMotionEvent(
+                    event.motion.timestamp, event.motion.windowID, event.motion.x, event.motion.y
+                );
                 break;
             case SDL_MOUSEBUTTONUP:
                 newEvent = new cMouseButtonupEvent;

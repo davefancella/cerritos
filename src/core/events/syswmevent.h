@@ -27,13 +27,12 @@
 #ifndef SYSWMEVENT__H
 #define SYSWMEVENT__H
 
-// \todo: full implement this class
 class cSyswmEvent : public cEvent {
 public:
-    cSyswmEvent() { evtype=CER_SyswmEvent; };
+    cSyswmEvent() { 
+        evtype=CER_SyswmEvent; 
+    };
 };
 
 #endif // SYSWMEVENT__H
-
-
 

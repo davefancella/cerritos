@@ -27,13 +27,12 @@
 #ifndef MULTIGESTUREEVENT__H
 #define MULTIGESTUREEVENT__H
 
-// \todo: full implement this class
 class cMultiGestureEvent : public cEvent {
 public:
-    cMultiGestureEvent() { evtype=CER_MultiGestureEvent; };
+    cMultiGestureEvent() { 
+        evtype=CER_MultiGestureEvent; 
+    };
 };
 
 #endif // MULTIGESTUREEVENT__H
-
-
 

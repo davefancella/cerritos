@@ -27,13 +27,12 @@
 #ifndef WINDOWEVENT__H
 #define WINDOWEVENT__H
 
-// \todo: full implement this class
 class cWindowEvent : public cEvent {
 public:
-    cWindowEvent() { evtype=CER_WindowEvent; };
+    cWindowEvent() { 
+        evtype=CER_WindowEvent; 
+    };
 };
 
 #endif // WINDOWEVENT__H
-
-
 

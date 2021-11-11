@@ -27,13 +27,12 @@
 #ifndef RENDERTARGETSRESETEVENT__H
 #define RENDERTARGETSRESETEVENT__H
 
-// \todo: full implement this class
 class cRenderTargetsResetEvent : public cEvent {
 public:
-    cRenderTargetsResetEvent() { evtype=CER_RenderTargetsResetEvent; };
+    cRenderTargetsResetEvent() { 
+        evtype=CER_RenderTargetsResetEvent; 
+    };
 };
 
 #endif // RENDERTARGETSRESETEVENT__H
-
-
 

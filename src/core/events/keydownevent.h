@@ -27,13 +27,12 @@
 #ifndef KEYDOWNEVENT__H
 #define KEYDOWNEVENT__H
 
-// \todo: full implement this class
 class cKeydownEvent : public cEvent {
 public:
-    cKeydownEvent() { evtype=CER_KeydownEvent; };
+    cKeydownEvent() { 
+        evtype=CER_KeydownEvent; 
+    };
 };
 
 #endif // KEYDOWNEVENT__H
-
-
 

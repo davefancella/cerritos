@@ -27,13 +27,12 @@
 #ifndef CLIPBOARDUPDATEEVENT__H
 #define CLIPBOARDUPDATEEVENT__H
 
-// \todo: full implement this class
 class cClipboardUpdateEvent : public cEvent {
 public:
-    cClipboardUpdateEvent() { evtype=CER_ClipboardUpdateEvent; };
+    cClipboardUpdateEvent() { 
+        evtype=CER_ClipboardUpdateEvent; 
+    };
 };
 
 #endif // CLIPBOARDUPDATEEVENT__H
-
-
 

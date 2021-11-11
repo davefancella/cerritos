@@ -27,13 +27,12 @@
 #ifndef DROPCOMPLETEEVENT__H
 #define DROPCOMPLETEEVENT__H
 
-// \todo: full implement this class
 class cDropCompleteEvent : public cEvent {
 public:
-    cDropCompleteEvent() { evtype=CER_DropCompleteEvent; };
+    cDropCompleteEvent() { 
+        evtype=CER_DropCompleteEvent; 
+    };
 };
 
 #endif // DROPCOMPLETEEVENT__H
-
-
 

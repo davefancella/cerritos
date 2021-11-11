@@ -27,13 +27,12 @@
 #ifndef JOYBUTTONUPEVENT__H
 #define JOYBUTTONUPEVENT__H
 
-// \todo: full implement this class
 class cJoyButtonupEvent : public cEvent {
 public:
-    cJoyButtonupEvent() { evtype=CER_JoyButtonupEvent; };
+    cJoyButtonupEvent() { 
+        evtype=CER_JoyButtonupEvent; 
+    };
 };
 
 #endif // JOYBUTTONUPEVENT__H
-
-
 

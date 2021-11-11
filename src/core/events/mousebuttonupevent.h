@@ -27,13 +27,12 @@
 #ifndef MOUSEBUTTONUPEVENT__H
 #define MOUSEBUTTONUPEVENT__H
 
-// \todo: full implement this class
 class cMouseButtonupEvent : public cEvent {
 public:
-    cMouseButtonupEvent() { evtype=CER_MouseButtonupEvent; };
+    cMouseButtonupEvent() { 
+        evtype=CER_MouseButtonupEvent; 
+    };
 };
 
 #endif // MOUSEBUTTONUPEVENT__H
-
-
 

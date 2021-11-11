@@ -27,13 +27,12 @@
 #ifndef MOUSEWHEELEVENT__H
 #define MOUSEWHEELEVENT__H
 
-// \todo: full implement this class
 class cMouseWheelEvent : public cEvent {
 public:
-    cMouseWheelEvent() { evtype=CER_MouseWheelEvent; };
+    cMouseWheelEvent() { 
+        evtype=CER_MouseWheelEvent; 
+    };
 };
 
 #endif // MOUSEWHEELEVENT__H
-
-
 

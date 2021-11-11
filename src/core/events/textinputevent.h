@@ -27,13 +27,12 @@
 #ifndef TEXTINPUTEVENT__H
 #define TEXTINPUTEVENT__H
 
-// \todo: full implement this class
 class cTextInputEvent : public cEvent {
 public:
-    cTextInputEvent() { evtype=CER_TextInputEvent; };
+    cTextInputEvent() { 
+        evtype=CER_TextInputEvent; 
+    };
 };
 
 #endif // TEXTINPUTEVENT__H
-
-
 

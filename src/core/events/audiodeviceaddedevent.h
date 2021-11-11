@@ -27,13 +27,12 @@
 #ifndef AUDIODEVICEADDEDEVENT__H
 #define AUDIODEVICEADDEDEVENT__H
 
-// \todo: full implement this class
 class cAudioDeviceAddedEvent : public cEvent {
 public:
-    cAudioDeviceAddedEvent() { evtype=CER_AudioDeviceAddedEvent; };
+    cAudioDeviceAddedEvent() { 
+        evtype=CER_AudioDeviceAddedEvent; 
+    };
 };
 
 #endif // AUDIODEVICEADDEDEVENT__H
-
-
 

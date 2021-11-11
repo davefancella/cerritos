@@ -27,13 +27,12 @@
 #ifndef RENDERDEVICERESETEVENT__H
 #define RENDERDEVICERESETEVENT__H
 
-// \todo: full implement this class
 class cRenderDeviceResetEvent : public cEvent {
 public:
-    cRenderDeviceResetEvent() { evtype=CER_RenderDeviceResetEvent; };
+    cRenderDeviceResetEvent() { 
+        evtype=CER_RenderDeviceResetEvent; 
+    };
 };
 
 #endif // RENDERDEVICERESETEVENT__H
-
-
 

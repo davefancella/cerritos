@@ -27,13 +27,12 @@
 #ifndef JOYHATMOTIONEVENT__H
 #define JOYHATMOTIONEVENT__H
 
-// \todo: full implement this class
 class cJoyHatMotionEvent : public cEvent {
 public:
-    cJoyHatMotionEvent() { evtype=CER_JoyHatMotionEvent; };
+    cJoyHatMotionEvent() { 
+        evtype=CER_JoyHatMotionEvent; 
+    };
 };
 
 #endif // JOYHATMOTIONEVENT__H
-
-
 

@@ -27,13 +27,24 @@
 #ifndef MOUSEMOTIONEVENT__H
 #define MOUSEMOTIONEVENT__H
 
-// \todo: full implement this class
 class cMouseMotionEvent : public cEvent {
 public:
-    cMouseMotionEvent() { evtype=CER_MouseMotionEvent; };
+    cMouseMotionEvent() { 
+        evtype=CER_MouseMotionEvent; 
+    };
+    
+    cMouseMotionEvent(unsigned int timestamp, unsigned int winId, unsigned int pos_x, unsigned int pos_y) { 
+        evtype = CER_MouseMotionEvent;
+        evtimestamp = timestamp;
+        windowId = winId;
+        posx = pos_x;
+        posy = pos_y;
+    };
+    unsigned int evtimestamp;
+    unsigned int windowId;
+    unsigned int posx;
+    unsigned int posy;
 };
 
 #endif // MOUSEMOTIONEVENT__H
-
-
 

@@ -27,13 +27,12 @@
 #ifndef CONTROLLERAXISMOTIONEVENT__H
 #define CONTROLLERAXISMOTIONEVENT__H
 
-// \todo: full implement this class
 class cControllerAxisMotionEvent : public cEvent {
 public:
-    cControllerAxisMotionEvent() { evtype=CER_ControllerAxisMotionEvent; };
+    cControllerAxisMotionEvent() { 
+        evtype=CER_ControllerAxisMotionEvent; 
+    };
 };
 
 #endif // CONTROLLERAXISMOTIONEVENT__H
-
-
 

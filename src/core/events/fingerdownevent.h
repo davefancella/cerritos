@@ -27,13 +27,12 @@
 #ifndef FINGERDOWNEVENT__H
 #define FINGERDOWNEVENT__H
 
-// \todo: full implement this class
 class cFingerdownEvent : public cEvent {
 public:
-    cFingerdownEvent() { evtype=CER_FingerdownEvent; };
+    cFingerdownEvent() { 
+        evtype=CER_FingerdownEvent; 
+    };
 };
 
 #endif // FINGERDOWNEVENT__H
-
-
 

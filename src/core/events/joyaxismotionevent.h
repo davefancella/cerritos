@@ -27,13 +27,12 @@
 #ifndef JOYAXISMOTIONEVENT__H
 #define JOYAXISMOTIONEVENT__H
 
-// \todo: full implement this class
 class cJoyAxisMotionEvent : public cEvent {
 public:
-    cJoyAxisMotionEvent() { evtype=CER_JoyAxisMotionEvent; };
+    cJoyAxisMotionEvent() { 
+        evtype=CER_JoyAxisMotionEvent; 
+    };
 };
 
 #endif // JOYAXISMOTIONEVENT__H
-
-
 

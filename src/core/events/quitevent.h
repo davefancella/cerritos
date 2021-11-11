@@ -29,9 +29,10 @@
 
 class cQuitEvent : public cEvent {
 public:
-    cQuitEvent() { evtype=CER_QuitEvent; };
+    cQuitEvent() { 
+        evtype=CER_QuitEvent; 
+    };
 };
 
-#endif // HEADER__H
-
+#endif // QUITEVENT__H
 

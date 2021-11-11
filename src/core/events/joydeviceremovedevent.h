@@ -27,13 +27,12 @@
 #ifndef JOYDEVICEREMOVEDEVENT__H
 #define JOYDEVICEREMOVEDEVENT__H
 
-// \todo: full implement this class
 class cJoyDeviceRemovedEvent : public cEvent {
 public:
-    cJoyDeviceRemovedEvent() { evtype=CER_JoyDeviceRemovedEvent; };
+    cJoyDeviceRemovedEvent() { 
+        evtype=CER_JoyDeviceRemovedEvent; 
+    };
 };
 
 #endif // JOYDEVICEREMOVEDEVENT__H
-
-
 

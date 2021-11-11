@@ -27,13 +27,12 @@
 #ifndef CONTROLLERBUTTONUPEVENT__H
 #define CONTROLLERBUTTONUPEVENT__H
 
-// \todo: full implement this class
 class cControllerButtonupEvent : public cEvent {
 public:
-    cControllerButtonupEvent() { evtype=CER_ControllerButtonupEvent; };
+    cControllerButtonupEvent() { 
+        evtype=CER_ControllerButtonupEvent; 
+    };
 };
 
 #endif // CONTROLLERBUTTONUPEVENT__H
-
-
 

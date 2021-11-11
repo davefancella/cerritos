@@ -27,13 +27,12 @@
 #ifndef KEYMAPCHANGEDEVENT__H
 #define KEYMAPCHANGEDEVENT__H
 
-// \todo: full implement this class
 class cKeymapchangedEvent : public cEvent {
 public:
-    cKeymapchangedEvent() { evtype=CER_KeymapchangedEvent; };
+    cKeymapchangedEvent() { 
+        evtype=CER_KeymapchangedEvent; 
+    };
 };
 
 #endif // KEYMAPCHANGEDEVENT__H
-
-
 

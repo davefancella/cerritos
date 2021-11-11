@@ -27,13 +27,12 @@
 #ifndef TEXTEDITINGEVENT__H
 #define TEXTEDITINGEVENT__H
 
-// \todo: full implement this class
 class cTextEditingEvent : public cEvent {
 public:
-    cTextEditingEvent() { evtype=CER_TextEditingEvent; };
+    cTextEditingEvent() { 
+        evtype=CER_TextEditingEvent; 
+    };
 };
 
 #endif // TEXTEDITINGEVENT__H
-
-
 

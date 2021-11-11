@@ -27,13 +27,12 @@
 #ifndef DROPFILEEVENT__H
 #define DROPFILEEVENT__H
 
-// \todo: full implement this class
 class cDropFileEvent : public cEvent {
 public:
-    cDropFileEvent() { evtype=CER_DropFileEvent; };
+    cDropFileEvent() { 
+        evtype=CER_DropFileEvent; 
+    };
 };
 
 #endif // DROPFILEEVENT__H
-
-
 

@@ -27,13 +27,12 @@
 #ifndef DOLLARRECORDEVENT__H
 #define DOLLARRECORDEVENT__H
 
-// \todo: full implement this class
 class cDollarRecordEvent : public cEvent {
 public:
-    cDollarRecordEvent() { evtype=CER_DollarRecordEvent; };
+    cDollarRecordEvent() { 
+        evtype=CER_DollarRecordEvent; 
+    };
 };
 
 #endif // DOLLARRECORDEVENT__H
-
-
 
