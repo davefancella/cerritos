@@ -89,6 +89,39 @@ void PollHardwareEvents(cEventManager* eventManager) {
             case SDL_APP_DIDENTERFOREGROUND:
                 std::cout << "Received mobile event, not currently handled.\n";
                 break;
+            case SDL_WINDOWEVENT:
+            case SDL_SYSWMEVENT:
+            case SDL_MOUSEBUTTONDOWN:
+            case SDL_MOUSEBUTTONUP:
+            case SDL_MOUSEWHEEL:
+            case SDL_JOYAXISMOTION:
+            case SDL_JOYBALLMOTION:
+            case SDL_JOYHATMOTION:
+            case SDL_JOYBUTTONDOWN:
+            case SDL_JOYBUTTONUP:
+            case SDL_JOYDEVICEADDED:
+            case SDL_JOYDEVICEREMOVED:
+            case SDL_CONTROLLERAXISMOTION:
+            case SDL_CONTROLLERBUTTONDOWN:
+            case SDL_CONTROLLERBUTTONUP:
+            case SDL_CONTROLLERDEVICEADDED:
+            case SDL_CONTROLLERDEVICEREMOVED:
+            case SDL_CONTROLLERDEVICEREMAPPED:
+            case SDL_FINGERDOWN:
+            case SDL_FINGERUP:
+            case SDL_FINGERMOTION:
+            case SDL_DOLLARGESTURE:
+            case SDL_DOLLARRECORD:
+            case SDL_MULTIGESTURE:
+            case SDL_CLIPBOARDUPDATE:
+            case SDL_DROPFILE:
+            case SDL_DROPTEXT:
+            case SDL_DROPBEGIN:
+            case SDL_DROPCOMPLETE:
+            case SDL_AUDIODEVICEADDED:
+            case SDL_AUDIODEVICEREMOVED:
+            case SDL_RENDER_TARGETS_RESET:
+            case SDL_RENDER_DEVICE_RESET:
             default:
                 // std::cout << "Unhandled Event!" << std::endl;
                 break;

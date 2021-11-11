@@ -234,9 +234,6 @@ capStrings = [
     "Added", "Removed", "Begin", "Text", "Complete", "Update",
 ]
 
-aFile = open("includes", "w")
-aFile.close()
-
 for a in theString.split():
     a = a.strip()
     
@@ -246,6 +243,12 @@ for a in theString.split():
         maxLength = len(a[3:])
     
     if a.startswith("SDL"):
+        print("            case " + a + ":")
+        
+    
+sys.exit()
+
+'''
         theValues = a.split("_")
         #print(theValues)
         
@@ -291,3 +294,5 @@ for a in theString.split():
         aFile.close()
         
         #sys.exit()
+'''
+
