@@ -30,7 +30,7 @@
 // \todo: full implement this class
 class cKeydownEvent : public cEvent {
 public:
-    cKeydownEvent() { type=CER_KeydownEvent; };
+    cKeydownEvent() { evtype=CER_KeydownEvent; };
 };
 
 #endif // KEYDOWNEVENT__H

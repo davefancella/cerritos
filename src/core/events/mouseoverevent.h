@@ -30,7 +30,7 @@
 class cMouseOverEvent : public cEvent {
 public:
     cMouseOverEvent(unsigned int posx, unsigned int posy) 
-            : posx(posx), posy(posy) { this->type=CER_MouseOverEvent; };
+            : posx(posx), posy(posy) { this->evtype=CER_MouseOverEvent; };
     
     unsigned int posx;
     unsigned int posy;

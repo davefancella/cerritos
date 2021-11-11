@@ -52,12 +52,6 @@ int main( int argc, char* args[] ) {
         // hello world app.
         theApp->UpdateAll();
         
-        // poll events in the application object
-        while(theApp->hasEvent() ) {
-            cEvent* anEvent = NULL;
-            anEvent = theApp->PollEvent();
-        } 
-        
         Delay(50);
     }
     

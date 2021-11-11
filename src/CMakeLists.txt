@@ -10,7 +10,6 @@ add_library(cerritos SHARED
     core/object.cpp
     core/application.cpp
     core/event.cpp
-    core/events/quitevent.cpp
     widgets/mainwindow.cpp
 )
 

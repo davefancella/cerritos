@@ -29,7 +29,7 @@
 
 class cQuitEvent : public cEvent {
 public:
-    cQuitEvent() { type=CER_QuitEvent; };
+    cQuitEvent() { evtype=CER_QuitEvent; };
 };
 
 #endif // HEADER__H

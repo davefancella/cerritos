@@ -90,7 +90,7 @@ void cApplication::ProcessEvents() {
         cEvent* anEvent = NULL;
         anEvent = this->PollEvent();
         
-        switch(anEvent->type) {
+        switch(anEvent->type() ) {
             case CER_QuitEvent:
                 this->keepRunning = false;
             default:
