@@ -24,16 +24,16 @@
 
 #include "event.h"
 
-#ifndef KEYDOWNEVENT__H
-#define KEYDOWNEVENT__H
+#ifndef MOUSEMOTIONEVENT__H
+#define MOUSEMOTIONEVENT__H
 
 // \todo: full implement this class
-class cKeydownEvent : public cEvent {
+class cMouseMotionEvent : public cEvent {
 public:
-    cKeydownEvent() { evtype=CER_KeydownEvent; };
+    cMouseMotionEvent() { evtype=CER_MouseMotionEvent; };
 };
 
-#endif // KEYDOWNEVENT__H
+#endif // MOUSEMOTIONEVENT__H
 
 
 

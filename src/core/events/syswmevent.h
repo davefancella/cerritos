@@ -24,16 +24,16 @@
 
 #include "event.h"
 
-#ifndef KEYDOWNEVENT__H
-#define KEYDOWNEVENT__H
+#ifndef SYSWMEVENT__H
+#define SYSWMEVENT__H
 
 // \todo: full implement this class
-class cKeydownEvent : public cEvent {
+class cSyswmEvent : public cEvent {
 public:
-    cKeydownEvent() { evtype=CER_KeydownEvent; };
+    cSyswmEvent() { evtype=CER_SyswmEvent; };
 };
 
-#endif // KEYDOWNEVENT__H
+#endif // SYSWMEVENT__H
 
 
 

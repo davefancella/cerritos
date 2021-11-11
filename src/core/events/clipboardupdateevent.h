@@ -24,16 +24,16 @@
 
 #include "event.h"
 
-#ifndef KEYDOWNEVENT__H
-#define KEYDOWNEVENT__H
+#ifndef CLIPBOARDUPDATEEVENT__H
+#define CLIPBOARDUPDATEEVENT__H
 
 // \todo: full implement this class
-class cKeydownEvent : public cEvent {
+class cClipboardUpdateEvent : public cEvent {
 public:
-    cKeydownEvent() { evtype=CER_KeydownEvent; };
+    cClipboardUpdateEvent() { evtype=CER_ClipboardUpdateEvent; };
 };
 
-#endif // KEYDOWNEVENT__H
+#endif // CLIPBOARDUPDATEEVENT__H
 
 
 

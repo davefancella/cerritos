@@ -24,16 +24,16 @@
 
 #include "event.h"
 
-#ifndef KEYDOWNEVENT__H
-#define KEYDOWNEVENT__H
+#ifndef CONTROLLERAXISMOTIONEVENT__H
+#define CONTROLLERAXISMOTIONEVENT__H
 
 // \todo: full implement this class
-class cKeydownEvent : public cEvent {
+class cControllerAxisMotionEvent : public cEvent {
 public:
-    cKeydownEvent() { evtype=CER_KeydownEvent; };
+    cControllerAxisMotionEvent() { evtype=CER_ControllerAxisMotionEvent; };
 };
 
-#endif // KEYDOWNEVENT__H
+#endif // CONTROLLERAXISMOTIONEVENT__H
 
 
 

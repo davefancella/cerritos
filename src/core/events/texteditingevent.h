@@ -24,16 +24,16 @@
 
 #include "event.h"
 
-#ifndef KEYDOWNEVENT__H
-#define KEYDOWNEVENT__H
+#ifndef TEXTEDITINGEVENT__H
+#define TEXTEDITINGEVENT__H
 
 // \todo: full implement this class
-class cKeydownEvent : public cEvent {
+class cTextEditingEvent : public cEvent {
 public:
-    cKeydownEvent() { evtype=CER_KeydownEvent; };
+    cTextEditingEvent() { evtype=CER_TextEditingEvent; };
 };
 
-#endif // KEYDOWNEVENT__H
+#endif // TEXTEDITINGEVENT__H
 
 
 

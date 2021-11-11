@@ -6,890 +6,236 @@
 # Modify as needed when translating SDL enums to Cerritos enums
 
 theString = '''
-SDLK_0
-SDLK_1
-SDLK_2
-SDLK_3
-SDLK_4
-SDLK_5
-SDLK_6
-SDLK_7
-SDLK_8
-SDLK_9
-SDLK_a
-SDLK_AC_BACK
-SDLK_AC_BOOKMARKS
-SDLK_AC_FORWARD
-SDLK_AC_HOME
-SDLK_AC_REFRESH
-SDLK_AC_SEARCH
-SDLK_AC_STOP
-SDLK_AGAIN
-SDLK_ALTERASE
-SDLK_QUOTE
-SDLK_APPLICATION
-SDLK_AUDIOMUTE
-SDLK_AUDIONEXT
-SDLK_AUDIOPLAY
-SDLK_AUDIOPREV
-SDLK_AUDIOSTOP
-SDLK_b
-SDLK_BACKSLASH
-SDLK_BACKSPACE
-SDLK_BRIGHTNESSDOWN
-SDLK_BRIGHTNESSUP
-SDLK_c
-SDLK_CALCULATOR
-SDLK_CANCEL
-SDLK_CAPSLOCK
-SDLK_CLEAR
-SDLK_CLEARAGAIN
-SDLK_COMMA
-SDLK_COMPUTER
-SDLK_COPY
-SDLK_CRSEL
-SDLK_CURRENCYSUBUNIT
-SDLK_CURRENCYUNIT
-SDLK_CUT
-SDLK_d
-SDLK_DECIMALSEPARATOR
-SDLK_DELETE
-SDLK_DISPLAYSWITCH
-SDLK_DOWN
-SDLK_e
-SDLK_EJECT
-SDLK_END
-SDLK_EQUALS
-SDLK_ESCAPE
-SDLK_EXECUTE
-SDLK_EXSEL
-SDLK_f
-SDLK_F1
-SDLK_F10
-SDLK_F11
-SDLK_F12
-SDLK_F13
-SDLK_F14
-SDLK_F15
-SDLK_F16
-SDLK_F17
-SDLK_F18
-SDLK_F19
-SDLK_F2
-SDLK_F20
-SDLK_F21
-SDLK_F22
-SDLK_F23
-SDLK_F24
-SDLK_F3
-SDLK_F4
-SDLK_F5
-SDLK_F6
-SDLK_F7
-SDLK_F8
-SDLK_F9
-SDLK_FIND
-SDLK_g
-SDLK_BACKQUOTE
-SDLK_h
-SDLK_HELP
-SDLK_HOME
-SDLK_i
-SDLK_INSERT
-SDLK_j
-SDLK_k
-SDLK_KBDILLUMDOWN
-SDLK_KBDILLUMTOGGLE
-SDLK_KBDILLUMUP
-SDLK_KP_0
-SDLK_KP_00
-SDLK_KP_000
-SDLK_KP_1
-SDLK_KP_2
-SDLK_KP_3
-SDLK_KP_4
-SDLK_KP_5
-SDLK_KP_6
-SDLK_KP_7
-SDLK_KP_8
-SDLK_KP_9
-SDLK_KP_A
-SDLK_KP_AMPERSAND
-SDLK_KP_AT
-SDLK_KP_B
-SDLK_KP_BACKSPACE
-SDLK_KP_BINARY
-SDLK_KP_C
-SDLK_KP_CLEAR
-SDLK_KP_CLEARENTRY
-SDLK_KP_COLON
-SDLK_KP_COMMA
-SDLK_KP_D
-SDLK_KP_DBLAMPERSAND
-SDLK_KP_DECIMAL
-SDLK_KP_DIVIDE
-SDLK_KP_E
-SDLK_KP_ENTER
-SDLK_KP_EQUALS
-SDLK_KP_EQUALSAS400
-SDLK_KP_EXCLAM
-SDLK_KP_F
-SDLK_KP_GREATER
-SDLK_KP_HASH
-SDLK_KP_HEXADECIMAL
-SDLK_KP_LEFTBRACE
-SDLK_KP_LEFTPAREN
-SDLK_KP_LESS
 
-"Keypad MemAdd" (the Mem Add key (numeric keypad))
+SDL_WINDOWEVENT
 
-SDL_SCANCODE_KP_MEMADD
+window state change
 
-SDLK_KP_MEMADD
+SDL_SYSWMEVENT
 
-"Keypad MemClear" (the Mem Clear key (numeric keypad))
+system specific event
 
-SDL_SCANCODE_KP_MEMCLEAR
+<bgcolor="#EDEDED">Keyboard events
 
-SDLK_KP_MEMCLEAR
+SDL_KEYDOWN
 
-"Keypad MemDivide" (the Mem Divide key (numeric keypad))
+key pressed
 
-SDL_SCANCODE_KP_MEMDIVIDE
+SDL_KEYUP
 
-SDLK_KP_MEMDIVIDE
+key released
 
-"Keypad MemMultiply" (the Mem Multiply key (numeric keypad))
+SDL_TEXTEDITING
 
-SDL_SCANCODE_KP_MEMMULTIPLY
+keyboard text editing (composition)
 
-SDLK_KP_MEMMULTIPLY
+SDL_TEXTINPUT
 
-"Keypad MemRecall" (the Mem Recall key (numeric keypad))
+keyboard text input
 
-SDL_SCANCODE_KP_MEMRECALL
+SDL_KEYMAPCHANGED
 
-SDLK_KP_MEMRECALL
+keymap changed due to a system event such as an input language or keyboard layout change (>=  .0.4)
 
-"Keypad MemStore" (the Mem Store key (numeric keypad))
+<bgcolor="#EDEDED">Mouse events
 
-SDL_SCANCODE_KP_MEMSTORE
+SDL_MOUSEMOTION
 
-SDLK_KP_MEMSTORE
+mouse moved
 
-"Keypad MemSubtract" (the MemSubtract key (numeric keypad))
+SDL_MOUSEBUTTONDOWN
 
-SDL_SCANCODE_KP_MEMSUBTRACT
+mouse button pressed
 
-SDLK_KP_MEMSUBTRACT
+SDL_MOUSEBUTTONUP
 
-"Keypad -" (the 0-key (numeric keypad))
+mouse button released
 
-SDL_SCANCODE_KP_MINUS
+SDL_MOUSEWHEEL
 
-SDLK_KP_MINUS
+mouse wheel motion
 
-"Keypad *" (the * key (numeric keypad))
+<bgcolor="#EDEDED">Joystick events
 
-SDL_SCANCODE_KP_MULTIPLY
+SDL_JOYAXISMOTION
 
-SDLK_KP_MULTIPLY
+joystick axis motion
 
-"Keypad Octal" (the Octal key (numeric keypad))
+SDL_JOYBALLMOTION
 
-SDL_SCANCODE_KP_OCTAL
+joystick trackball motion
 
-SDLK_KP_OCTAL
+SDL_JOYHATMOTION
 
-"Keypad %" (the Percent key (numeric keypad))
+joystick hat position change
 
-SDL_SCANCODE_KP_PERCENT
+SDL_JOYBUTTONDOWN
 
-SDLK_KP_PERCENT
+joystick button pressed
 
-"Keypad ." (the . key (numeric keypad))
+SDL_JOYBUTTONUP
 
-SDL_SCANCODE_KP_PERIOD
+joystick button released
 
-SDLK_KP_PERIOD
+SDL_JOYDEVICEADDED
 
-"Keypad +" (the + key (numeric keypad))
+joystick connected
 
-SDL_SCANCODE_KP_PLUS
+SDL_JOYDEVICEREMOVED
 
-SDLK_KP_PLUS
+joystick disconnected
 
-"Keypad +/-" (the +/- key (numeric keypad))
+<bgcolor="#EDEDED">Controller events
 
-SDL_SCANCODE_KP_PLUSMINUS
+SDL_CONTROLLERAXISMOTION
 
-SDLK_KP_PLUSMINUS
+controller axis motion
 
-"Keypad ^" (the Power key (numeric keypad))
+SDL_CONTROLLERBUTTONDOWN
 
-SDL_SCANCODE_KP_POWER
+controller button pressed
 
-SDLK_KP_POWER
+SDL_CONTROLLERBUTTONUP
 
-"Keypad }" (the Right Brace key (numeric keypad))
+controller button released
 
-SDL_SCANCODE_KP_RIGHTBRACE
+SDL_CONTROLLERDEVICEADDED
 
-SDLK_KP_RIGHTBRACE
+controller connected
 
-"Keypad )" (the Right Parenthesis key (numeric keypad))
+SDL_CONTROLLERDEVICEREMOVED
 
-SDL_SCANCODE_KP_RIGHTPAREN
+controller disconnected
 
-SDLK_KP_RIGHTPAREN
+SDL_CONTROLLERDEVICEREMAPPED
 
-"Keypad Space" (the Space key (numeric keypad))
+controller mapping updated
 
-SDL_SCANCODE_KP_SPACE
+<bgcolor="#EDEDED">Touch events
 
-SDLK_KP_SPACE
+SDL_FINGERDOWN
 
-"Keypad Tab" (the Tab key (numeric keypad))
+user has touched input device
 
-SDL_SCANCODE_KP_TAB
+SDL_FINGERUP
 
-SDLK_KP_TAB
+user stopped touching input device
 
-"Keypad |" (the | key (numeric keypad))
+SDL_FINGERMOTION
 
-SDL_SCANCODE_KP_VERTICALBAR
+user is dragging finger on input device
 
-SDLK_KP_VERTICALBAR
+<bgcolor="#EDEDED">Gesture events
 
-"Keypad XOR" (the XOR key (numeric keypad))
+SDL_DOLLARGESTURE
 
-SDL_SCANCODE_KP_XOR
+SDL_DOLLARRECORD
 
-SDLK_KP_XOR
+SDL_MULTIGESTURE
 
-"L"
+<bgcolor="#EDEDED">Clipboard events
 
-SDL_SCANCODE_L
+SDL_CLIPBOARDUPDATE
 
-SDLK_l
+the clipboard changed
 
-"Left Alt"
+<bgcolor="#EDEDED">Drag and drop events
 
-SDL_SCANCODE_LALT
+SDL_DROPFILE
 
-SDLK_LALT
+the system requests a file open
 
-"Left Ctrl"
+SDL_DROPTEXT
 
-SDL_SCANCODE_LCTRL
+text/plain drag-and-drop event
 
-SDLK_LCTRL
+SDL_DROPBEGIN
 
-"Left" (the Left arrow key (navigation keypad))
+a new set of drops is beginning (>=  .0.5)
 
-SDL_SCANCODE_LEFT
+SDL_DROPCOMPLETE
 
-SDLK_LEFT
+current set of drops is now complete (>=  .0.5)
 
-"["
+<bgcolor="#EDEDED">Audio hotplug events
 
-SDL_SCANCODE_LEFTBRACKET
+SDL_AUDIODEVICEADDED
 
-SDLK_LEFTBRACKET
+a new audio device is available (>=  .0.4)
 
-"Left GUI" (windows, command (apple), meta)
+SDL_AUDIODEVICEREMOVED
 
-SDL_SCANCODE_LGUI
+an audio device has been removed (>=  .0.4)
 
-SDLK_LGUI
+<bgcolor="#EDEDED">Render events
 
-"Left Shift"
+SDL_RENDER_TARGETS_RESET
 
-SDL_SCANCODE_LSHIFT
+the render targets have been reset and their contents need to be updated (>=  .0.2)
 
-SDLK_LSHIFT
+SDL_RENDER_DEVICE_RESET
 
-"M"
+the device has been reset and all textures need to be recreated (>=  .0.4)
 
-SDL_SCANCODE_M
 
-SDLK_m
+only for bounding internal arrays'''
 
-"Mail" (the Mail/eMail key)
+outputHeader = '''/*
+ * Cerritos
+ * Copyright 2021 by Dave Fancella, Anthony Fancella
+ * 
+ * Permission is hereby granted, free of charge, to any person obtaining a 
+ * copy of this software and associated documentation files (the "Software"), 
+ * to deal in the Software without restriction, including without limitation 
+ * the rights to use, copy, modify, merge, publish, distribute, sublicense, 
+ * and/or sell copies of the Software, and to permit persons to whom the 
+ * Software is furnished to do so, subject to the following conditions:
+ * 
+ * The above copyright notice and this permission notice shall be included 
+ * in all copies or substantial portions of the Software.
+ * 
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS 
+ * OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING 
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+ * IN THE SOFTWARE.
+ * 
+ */
 
-SDL_SCANCODE_MAIL
+#include "event.h"
 
-SDLK_MAIL
+#ifndef $HEADERNAMECAPS__H
+#define $HEADERNAMECAPS__H
 
-"MediaSelect" (the Media Select key)
+// \\todo: full implement this class
+class $classname : public cEvent {
+public:
+    $classname() { evtype=$eventtype; };
+};
 
-SDL_SCANCODE_MEDIASELECT
+#endif // $HEADERNAMECAPS__H
 
-SDLK_MEDIASELECT
 
-"Menu"
-
-SDL_SCANCODE_MENU
-
-SDLK_MENU
-
-"-"
-
-SDL_SCANCODE_MINUS
-
-SDLK_MINUS
-
-"ModeSwitch"
-
-SDL_SCANCODE_MODE
-
-SDLK_MODE
-
-"Mute"
-
-SDL_SCANCODE_MUTE
-
-SDLK_MUTE
-
-"N"
-
-SDL_SCANCODE_N
-
-SDLK_n
-
-"Numlock" (the Num Lock key (PC) / the Clear key (Mac))
-
-SDL_SCANCODE_NUMLOCKCLEAR
-
-SDLK_NUMLOCKCLEAR
-
-"O"
-
-SDL_SCANCODE_O
-
-SDLK_o
-
-"Oper"
-
-SDL_SCANCODE_OPER
-
-SDLK_OPER
-
-"Out"
-
-SDL_SCANCODE_OUT
-
-SDLK_OUT
-
-"P"
-
-SDL_SCANCODE_P
-
-SDLK_p
-
-"PageDown"
-
-SDL_SCANCODE_PAGEDOWN
-
-SDLK_PAGEDOWN
-
-"PageUp"
-
-SDL_SCANCODE_PAGEUP
-
-SDLK_PAGEUP
-
-"Paste"
-
-SDL_SCANCODE_PASTE
-
-SDLK_PASTE
-
-"Pause" (the Pause / Break key)
-
-SDL_SCANCODE_PAUSE
-
-SDLK_PAUSE
-
-"."
-
-SDL_SCANCODE_PERIOD
-
-SDLK_PERIOD
-
-"Power" (The USB document says this is a status flag, not a physical key - but some Mac keyboards do have a power key.)
-
-SDL_SCANCODE_POWER
-
-SDLK_POWER
-
-"PrintScreen"
-
-SDL_SCANCODE_PRINTSCREEN
-
-SDLK_PRINTSCREEN
-
-"Prior"
-
-SDL_SCANCODE_PRIOR
-
-SDLK_PRIOR
-
-"Q"
-
-SDL_SCANCODE_Q
-
-SDLK_q
-
-"R"
-
-SDL_SCANCODE_R
-
-SDLK_r
-
-"Right Alt" (alt gr, option)
-
-SDL_SCANCODE_RALT
-
-SDLK_RALT
-
-"Right Ctrl"
-
-SDL_SCANCODE_RCTRL
-
-SDLK_RCTRL
-
-"Return" (the Enter key (main keyboard))
-
-SDL_SCANCODE_RETURN
-
-SDLK_RETURN
-
-"Return"
-
-SDL_SCANCODE_RETURN2
-
-SDLK_RETURN2
-
-"Right GUI" (windows, command (apple), meta)
-
-SDL_SCANCODE_RGUI
-
-SDLK_RGUI
-
-"Right" (the Right arrow key (navigation keypad))
-
-SDL_SCANCODE_RIGHT
-
-SDLK_RIGHT
-
-"]"
-
-SDL_SCANCODE_RIGHTBRACKET
-
-SDLK_RIGHTBRACKET
-
-"Right Shift"
-
-SDL_SCANCODE_RSHIFT
-
-SDLK_RSHIFT
-
-"S"
-
-SDL_SCANCODE_S
-
-SDLK_s
-
-"ScrollLock"
-
-SDL_SCANCODE_SCROLLLOCK
-
-SDLK_SCROLLLOCK
-
-"Select"
-
-SDL_SCANCODE_SELECT
-
-SDLK_SELECT
-
-";"
-
-SDL_SCANCODE_SEMICOLON
-
-SDLK_SEMICOLON
-
-"Separator"
-
-SDL_SCANCODE_SEPARATOR
-
-SDLK_SEPARATOR
-
-"/"
-
-SDL_SCANCODE_SLASH
-
-SDLK_SLASH
-
-"Sleep" (the Sleep key)
-
-SDL_SCANCODE_SLEEP
-
-SDLK_SLEEP
-
-"Space" (the Space Bar key(s))
-
-SDL_SCANCODE_SPACE
-
-SDLK_SPACE
-
-"Stop"
-
-SDL_SCANCODE_STOP
-
-SDLK_STOP
-
-"SysReq" (the SysReq key)
-
-SDL_SCANCODE_SYSREQ
-
-SDLK_SYSREQ
-
-"T"
-
-SDL_SCANCODE_T
-
-SDLK_t
-
-"Tab" (the Tab key)
-
-SDL_SCANCODE_TAB
-
-SDLK_TAB
-
-"ThousandsSeparator" (the Thousands Separator key)
-
-SDL_SCANCODE_THOUSANDSSEPARATOR
-
-SDLK_THOUSANDSSEPARATOR
-
-"U"
-
-SDL_SCANCODE_U
-
-SDLK_u
-
-"Undo"
-
-SDL_SCANCODE_UNDO
-
-SDLK_UNDO
-
-"" (no name, empty string)
-
-SDL_SCANCODE_UNKNOWN
-
-SDLK_UNKNOWN
-
-"Up" (the Up arrow key (navigation keypad))
-
-SDL_SCANCODE_UP
-
-SDLK_UP
-
-"V"
-
-SDL_SCANCODE_V
-
-SDLK_v
-
-"VolumeDown"
-
-SDL_SCANCODE_VOLUMEDOWN
-
-SDLK_VOLUMEDOWN
-
-"VolumeUp"
-
-SDL_SCANCODE_VOLUMEUP
-
-SDLK_VOLUMEUP
-
-"W"
-
-SDL_SCANCODE_W
-
-SDLK_w
-
-"WWW" (the WWW/World Wide Web key)
-
-SDL_SCANCODE_WWW
-
-SDLK_WWW
-
-"X"
-
-SDL_SCANCODE_X
-
-SDLK_x
-
-"Y"
-
-SDL_SCANCODE_Y
-
-SDLK_y
-
-"Z"
-
-SDL_SCANCODE_Z
-
-SDLK_z
-
-These physical keys do not have corresponding virtual key values
-
-"" (no name, empty string; used on Asian keyboards, see footnotes in USB doc)
-
-SDL_SCANCODE_INTERNATIONAL1
-
-(none)
-
-"" (no name, empty string)
-
-SDL_SCANCODE_INTERNATIONAL2
-
-(none)
-
-"" (no name, empty string; Yen)
-
-SDL_SCANCODE_INTERNATIONAL3
-
-(none)
-
-"" (no name, empty string)
-
-SDL_SCANCODE_INTERNATIONAL4
-
-(none)
-
-"" (no name, empty string)
-
-SDL_SCANCODE_INTERNATIONAL5
-
-(none)
-
-"" (no name, empty string)
-
-SDL_SCANCODE_INTERNATIONAL6
-
-(none)
-
-"" (no name, empty string)
-
-SDL_SCANCODE_INTERNATIONAL7
-
-(none)
-
-"" (no name, empty string)
-
-SDL_SCANCODE_INTERNATIONAL8
-
-(none)
-
-"" (no name, empty string)
-
-SDL_SCANCODE_INTERNATIONAL9
-
-(none)
-
-"" (no name, empty string; Hangul/English toggle)
-
-SDL_SCANCODE_LANG1
-
-(none)
-
-"" (no name, empty string; Hanja conversion)
-
-SDL_SCANCODE_LANG2
-
-(none)
-
-"" (no name, empty string; Katakana)
-
-SDL_SCANCODE_LANG3
-
-(none)
-
-"" (no name, empty string; Hiragana)
-
-SDL_SCANCODE_LANG4
-
-(none)
-
-"" (no name, empty string; Zenkaku/Hankaku)
-
-SDL_SCANCODE_LANG5
-
-(none)
-
-"" (no name, empty string; reserved)
-
-SDL_SCANCODE_LANG6
-
-(none)
-
-"" (no name, empty string; reserved)
-
-SDL_SCANCODE_LANG7
-
-(none)
-
-"" (no name, empty string; reserved)
-
-SDL_SCANCODE_LANG8
-
-(none)
-
-"" (no name, empty string; reserved)
-
-SDL_SCANCODE_LANG9
-
-(none)
-
-"" (no name, empty string)
-
-SDL_SCANCODE_LOCKINGCAPSLOCK
-
-(none)
-
-"" (no name, empty string)
-
-SDL_SCANCODE_LOCKINGNUMLOCK
-
-(none)
-
-"" (no name, empty string)
-
-SDL_SCANCODE_LOCKINGSCROLLLOCK
-
-(none)
-
-"" (no name, empty string; This is the additional key that ISO keyboards have over ANSI ones, located between left shift and Y. Produces GRAVE ACCENT and TILDE in a US or UK Mac layout, REVERSE SOLIDUS (backslash) and VERTICAL LINE in a US or UK Windows layout, and LESS-THAN SIGN and GREATER-THAN SIGN in a Swiss German, German, or French layout.)
-
-SDL_SCANCODE_NONUSBACKSLASH
-
-(none)
-
-"#" (ISO USB keyboards actually use this code instead of 49 for the same key, but all OSes I've seen treat the two codes identically. So, as an implementor, unless your keyboard generates both of those codes and your OS treats them differently, you should generate SDL_SCANCODE_BACKSLASH instead of this code. As a user, you should not rely on this code because SDL will never generate it with most (all?) keyboards.)
-
-SDL_SCANCODE_NONUSHASH
-
-(none)
-
-These virtual key values do not have corresponding physical keys
-
-"&"
-
-(none)
-
-SDLK_AMPERSAND
-
-"*"
-
-(none)
-
-SDLK_ASTERISK
-
-"@"
-
-(none)
-
-SDLK_AT
-
-"^"
-
-(none)
-
-SDLK_CARET
-
-":"
-
-(none)
-
-SDLK_COLON
-
-"$"
-
-(none)
-
-SDLK_DOLLAR
-
-"!"
-
-(none)
-
-SDLK_EXCLAIM
-
-">"
-
-(none)
-
-SDLK_GREATER
-
-"#"
-
-(none)
-
-SDLK_HASH
-
-"("
-
-(none)
-
-SDLK_LEFTPAREN
-
-"<"
-
-(none)
-
-SDLK_LESS
-
-"%"
-
-(none)
-
-SDLK_PERCENT
-
-"+"
-
-(none)
-
-SDLK_PLUS
-
-"?"
-
-(none)
-
-SDLK_QUESTION
-
-"""
-
-(none)
-
-SDLK_QUOTEDBL
-
-")"
-
-(none)
-
-SDLK_RIGHTPAREN
-
-"_"
-
-(none)
-
-SDLK_UNDERSCORE
 '''
+
+import sys
+
 maxLength = 0
+
+eventDir = "../src/core/events/"
+
+capStrings = [
+    "Device",
+    "Audio",
+    "Motion", "Input", "Editing", "File", "Remapped", "Wheel",
+    "Gesture", "Record", "Axis", "Ball", "Hat", "Button",
+    "Added", "Removed", "Begin", "Text", "Complete", "Update",
+]
+
+aFile = open("includes", "w")
+aFile.close()
 
 for a in theString.split():
     a = a.strip()
@@ -899,8 +245,49 @@ for a in theString.split():
     if len(a[3:]) > maxLength:
         maxLength = len(a[3:])
     
-    if a.startswith("SDLK"):
-        cerName = a[3:]
-        # f'    {cerName:30} = {a}'
+    if a.startswith("SDL"):
+        theValues = a.split("_")
+        #print(theValues)
+        
+        cerName = "CER_"
+        headerName = ""
+        className = "c"
+        
+        for b in theValues:
+            if b == "SDL": continue
+            if b.lower() == "EVENT": continue
+            
+            b = b.replace("EVENT", "")
+            
+            cerName = cerName + b.capitalize()
+            className += b.capitalize()
+            headerName += b.lower()
+        
+        headerNameCaps = headerName.upper() + "EVENT"
+        headerName += "event.h"
+        cerName = cerName + "Event"
+        className += "Event"
+        
+        for c in capStrings:
+            cerName = cerName.replace(c.lower(), c)
+            className = className.replace(c.lower(), c)
+
         print(f'    {cerName},')
-#print(maxLength)
+        
+        header = outputHeader.replace("$HEADERNAMECAPS", headerNameCaps)
+        header = header.replace("$eventtype", cerName)
+        header = header.replace("$classname", className)
+        
+        #print(header)
+        aFile = open("includes", "a")
+        
+        aFile.write("#include \"" + headerName + "\"\n")
+        aFile.close()
+        
+        aFile = open(eventDir + headerName, "w")
+        
+        for line in header.split("\n"):
+            aFile.write(line + "\n")
+        aFile.close()
+        
+        #sys.exit()

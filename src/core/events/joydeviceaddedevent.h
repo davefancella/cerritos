@@ -24,16 +24,16 @@
 
 #include "event.h"
 
-#ifndef KEYDOWNEVENT__H
-#define KEYDOWNEVENT__H
+#ifndef JOYDEVICEADDEDEVENT__H
+#define JOYDEVICEADDEDEVENT__H
 
 // \todo: full implement this class
-class cKeydownEvent : public cEvent {
+class cJoyDeviceAddedEvent : public cEvent {
 public:
-    cKeydownEvent() { evtype=CER_KeydownEvent; };
+    cJoyDeviceAddedEvent() { evtype=CER_JoyDeviceAddedEvent; };
 };
 
-#endif // KEYDOWNEVENT__H
+#endif // JOYDEVICEADDEDEVENT__H
 
 
 

@@ -24,16 +24,16 @@
 
 #include "event.h"
 
-#ifndef KEYDOWNEVENT__H
-#define KEYDOWNEVENT__H
+#ifndef DROPBEGINEVENT__H
+#define DROPBEGINEVENT__H
 
 // \todo: full implement this class
-class cKeydownEvent : public cEvent {
+class cDropBeginEvent : public cEvent {
 public:
-    cKeydownEvent() { evtype=CER_KeydownEvent; };
+    cDropBeginEvent() { evtype=CER_DropBeginEvent; };
 };
 
-#endif // KEYDOWNEVENT__H
+#endif // DROPBEGINEVENT__H
 
 
 

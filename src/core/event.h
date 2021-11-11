@@ -43,6 +43,43 @@ typedef enum {
     CER_APP_DidEnterBackgroundEvent,
     CER_APP_WillEnterForegroundEvent,
     CER_APP_DidEnterForegroundEvent,
+    CER_WindowEvent,
+    CER_SyswmEvent,
+    CER_TextEditingEvent,
+    CER_TextInputEvent,
+    CER_KeymapchangedEvent,
+    CER_MouseMotionEvent,
+    CER_MouseButtondownEvent,
+    CER_MouseButtonupEvent,
+    CER_MouseWheelEvent,
+    CER_JoyAxisMotionEvent,
+    CER_JoyBallMotionEvent,
+    CER_JoyHatMotionEvent,
+    CER_JoyButtondownEvent,
+    CER_JoyButtonupEvent,
+    CER_JoyDeviceAddedEvent,
+    CER_JoyDeviceRemovedEvent,
+    CER_ControllerAxisMotionEvent,
+    CER_ControllerButtondownEvent,
+    CER_ControllerButtonupEvent,
+    CER_ControllerDeviceAddedEvent,
+    CER_ControllerDeviceRemovedEvent,
+    CER_ControllerDeviceRemappedEvent,
+    CER_FingerdownEvent,
+    CER_FingerupEvent,
+    CER_FingerMotionEvent,
+    CER_DollarGestureEvent,
+    CER_DollarRecordEvent,
+    CER_MultiGestureEvent,
+    CER_ClipboardUpdateEvent,
+    CER_DropFileEvent,
+    CER_DropTextEvent,
+    CER_DropBeginEvent,
+    CER_DropCompleteEvent,
+    CER_AudioDeviceAddedEvent,
+    CER_AudioDeviceRemovedEvent,
+    CER_RenderTargetsResetEvent,
+    CER_RenderDeviceResetEvent,
 } CER_EventType;
 
 // The base class for events.
@@ -74,6 +111,45 @@ private:
 #include "mouseoverevent.h"
 #include "keydownevent.h"
 #include "keyupevent.h"
+#include "windowevent.h"
+#include "syswmevent.h"
+#include "keydownevent.h"
+#include "keyupevent.h"
+#include "texteditingevent.h"
+#include "textinputevent.h"
+#include "keymapchangedevent.h"
+#include "mousemotionevent.h"
+#include "mousebuttondownevent.h"
+#include "mousebuttonupevent.h"
+#include "mousewheelevent.h"
+#include "joyaxismotionevent.h"
+#include "joyballmotionevent.h"
+#include "joyhatmotionevent.h"
+#include "joybuttondownevent.h"
+#include "joybuttonupevent.h"
+#include "joydeviceaddedevent.h"
+#include "joydeviceremovedevent.h"
+#include "controlleraxismotionevent.h"
+#include "controllerbuttondownevent.h"
+#include "controllerbuttonupevent.h"
+#include "controllerdeviceaddedevent.h"
+#include "controllerdeviceremovedevent.h"
+#include "controllerdeviceremappedevent.h"
+#include "fingerdownevent.h"
+#include "fingerupevent.h"
+#include "fingermotionevent.h"
+#include "dollargestureevent.h"
+#include "dollarrecordevent.h"
+#include "multigestureevent.h"
+#include "clipboardupdateevent.h"
+#include "dropfileevent.h"
+#include "droptextevent.h"
+#include "dropbeginevent.h"
+#include "dropcompleteevent.h"
+#include "audiodeviceaddedevent.h"
+#include "audiodeviceremovedevent.h"
+#include "rendertargetsresetevent.h"
+#include "renderdeviceresetevent.h"
 
 #endif // HEADER__H
 

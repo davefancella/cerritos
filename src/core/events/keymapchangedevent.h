@@ -24,16 +24,16 @@
 
 #include "event.h"
 
-#ifndef KEYDOWNEVENT__H
-#define KEYDOWNEVENT__H
+#ifndef KEYMAPCHANGEDEVENT__H
+#define KEYMAPCHANGEDEVENT__H
 
 // \todo: full implement this class
-class cKeydownEvent : public cEvent {
+class cKeymapchangedEvent : public cEvent {
 public:
-    cKeydownEvent() { evtype=CER_KeydownEvent; };
+    cKeymapchangedEvent() { evtype=CER_KeymapchangedEvent; };
 };
 
-#endif // KEYDOWNEVENT__H
+#endif // KEYMAPCHANGEDEVENT__H
 
 
 

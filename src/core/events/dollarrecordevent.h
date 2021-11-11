@@ -24,16 +24,16 @@
 
 #include "event.h"
 
-#ifndef KEYDOWNEVENT__H
-#define KEYDOWNEVENT__H
+#ifndef DOLLARRECORDEVENT__H
+#define DOLLARRECORDEVENT__H
 
 // \todo: full implement this class
-class cKeydownEvent : public cEvent {
+class cDollarRecordEvent : public cEvent {
 public:
-    cKeydownEvent() { evtype=CER_KeydownEvent; };
+    cDollarRecordEvent() { evtype=CER_DollarRecordEvent; };
 };
 
-#endif // KEYDOWNEVENT__H
+#endif // DOLLARRECORDEVENT__H
 
 
 

@@ -24,16 +24,16 @@
 
 #include "event.h"
 
-#ifndef KEYDOWNEVENT__H
-#define KEYDOWNEVENT__H
+#ifndef RENDERDEVICERESETEVENT__H
+#define RENDERDEVICERESETEVENT__H
 
 // \todo: full implement this class
-class cKeydownEvent : public cEvent {
+class cRenderDeviceResetEvent : public cEvent {
 public:
-    cKeydownEvent() { evtype=CER_KeydownEvent; };
+    cRenderDeviceResetEvent() { evtype=CER_RenderDeviceResetEvent; };
 };
 
-#endif // KEYDOWNEVENT__H
+#endif // RENDERDEVICERESETEVENT__H
 
 
 

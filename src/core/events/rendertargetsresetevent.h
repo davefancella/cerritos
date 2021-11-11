@@ -24,16 +24,16 @@
 
 #include "event.h"
 
-#ifndef KEYDOWNEVENT__H
-#define KEYDOWNEVENT__H
+#ifndef RENDERTARGETSRESETEVENT__H
+#define RENDERTARGETSRESETEVENT__H
 
 // \todo: full implement this class
-class cKeydownEvent : public cEvent {
+class cRenderTargetsResetEvent : public cEvent {
 public:
-    cKeydownEvent() { evtype=CER_KeydownEvent; };
+    cRenderTargetsResetEvent() { evtype=CER_RenderTargetsResetEvent; };
 };
 
-#endif // KEYDOWNEVENT__H
+#endif // RENDERTARGETSRESETEVENT__H
 
 
 
