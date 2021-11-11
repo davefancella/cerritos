@@ -101,8 +101,11 @@ void cApplication::ProcessEvents() {
 }
 
 // Process one event.  Default implementation does nothing.
+// If you subclass this and you want event processing to still
+// propogate throughout the gui, you'll need to call 
+// cApplication::ProcessOneEventI, which is what's used internally
 void cApplication::ProcessOneEvent(cEvent* evt) {
-    
+    this->ProcessOneEventI(evt);
 }
 
 void cApplication::Update() {
@@ -125,3 +128,16 @@ void cApplication::UpdateAll() {
 void cApplication::EndUpdate() {
     
 }
+
+// Process one event internally.
+void cApplication::ProcessOneEventI(cEvent* evt) {
+    switch(evt->type() ) {
+        case CER_MouseMotionEvent:
+            if(this->mainwindow != NULL)
+                this->mainwindow->onMouseOver(static_cast<cMouseMotionEvent*>(evt) );
+            break;
+        default:
+            break;
+    }
+}
+

@@ -73,6 +73,9 @@ public:
     bool keepRunning;
     
     cMainWindow* mainwindow = NULL;
+
+protected:
+    void ProcessOneEventI(cEvent* evt);
     
 private:
     cEventManager* eventManager;

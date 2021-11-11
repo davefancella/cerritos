@@ -29,6 +29,10 @@
 #include "cerritos.h"
 #include "mainwindow.h"
 
+void cMainWindow::onMouseOver(cMouseMotionEvent* evt) {
+
+}
+
 void cMainWindow::setTitle(unicodestring title) {
     this->Title = title;
     

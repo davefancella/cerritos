@@ -29,10 +29,10 @@
 
 #include "cerritos.h"
 
-#include "object.h"
+#include "widget.h"
 #include "string.h"
 
-class cMainWindow : public cObject {
+class cMainWindow : public cWidget {
 public:
     // The title of the window
     unicodestring Title;
@@ -63,6 +63,7 @@ public:
     /// Call to update the window
     virtual void Update();
 
+    void onMouseOver(cMouseMotionEvent* evt);
 private:
     //The window we'll be rendering to
     SDL_Window* window = NULL;
