@@ -154,7 +154,7 @@ void cMainWindow::Update() {
     
     //Update the surface
     if(SDL_UpdateWindowSurface( this->window ) != 0) {
-        printf(SDL_GetError() );
+        std::cout << "cMainWindow: " << SDL_GetError() << std::endl;
     }
 }
 

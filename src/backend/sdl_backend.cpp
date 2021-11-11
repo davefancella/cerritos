@@ -90,7 +90,7 @@ void PollHardwareEvents(cEventManager* eventManager) {
                 std::cout << "Received mobile event, not currently handled.\n";
                 break;
             default:
-                // printf("Unhandled Event!\n");
+                // std::cout << "Unhandled Event!" << std::endl;
                 break;
         }
         if(newEvent != NULL)
