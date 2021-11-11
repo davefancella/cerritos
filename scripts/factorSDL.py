@@ -37,11 +37,6 @@ SDL_KEYMAPCHANGED
 
 keymap changed due to a system event such as an input language or keyboard layout change (>=  .0.4)
 
-<bgcolor="#EDEDED">Mouse events
-
-SDL_MOUSEMOTION
-
-mouse moved
 
 SDL_MOUSEBUTTONDOWN
 
@@ -220,6 +215,10 @@ public:
 
 '''
 
+caseText = '''            case $sdlevent:
+                newEvent = new $classname;
+                break;'''
+
 import sys
 
 maxLength = 0
@@ -243,12 +242,8 @@ for a in theString.split():
         maxLength = len(a[3:])
     
     if a.startswith("SDL"):
-        print("            case " + a + ":")
+        sdlEvent = a.strip()
         
-    
-sys.exit()
-
-'''
         theValues = a.split("_")
         #print(theValues)
         
@@ -275,24 +270,30 @@ sys.exit()
             cerName = cerName.replace(c.lower(), c)
             className = className.replace(c.lower(), c)
 
-        print(f'    {cerName},')
+        # print the new cerritos enum name for this event
+        #print(f'    {cerName},')
         
         header = outputHeader.replace("$HEADERNAMECAPS", headerNameCaps)
         header = header.replace("$eventtype", cerName)
         header = header.replace("$classname", className)
         
+        # print or write the include statement needed
         #print(header)
-        aFile = open("includes", "a")
         
-        aFile.write("#include \"" + headerName + "\"\n")
-        aFile.close()
+        #aFile = open("includes", "a")
+        #aFile.write("#include \"" + headerName + "\"\n")
+        #aFile.close()
         
-        aFile = open(eventDir + headerName, "w")
+        # Write the header (.h) file
+        #aFile = open(eventDir + headerName, "w")
         
-        for line in header.split("\n"):
-            aFile.write(line + "\n")
-        aFile.close()
+        #for line in header.split("\n"):
+        #    aFile.write(line + "\n")
+        #aFile.close()
         
-        #sys.exit()
-'''
+        casestatement = caseText.replace("$classname", className)
+        casestatement = casestatement.replace("$eventtype", cerName)
+        casestatement = casestatement.replace("$sdlevent", sdlEvent)
 
+        # print the code for the case statement for this event
+        print(casestatement)
