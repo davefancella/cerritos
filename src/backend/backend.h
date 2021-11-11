@@ -28,9 +28,33 @@
 #ifndef BACKEND__H
 #define BACKEND__H
 
+class cEventManager;
+
 // These are the functions a backend must implement
+
+// Clock
 unsigned int GetTicks();
+
+// Just delay code execution, equivalent to sleep()
 void Delay(unsigned int ms);
+
+// Initialize the backend
+int backendInit(unsigned int flags);
+void backendClose();
+
+// Poll backend for hardware events and put them in the event manager
+void PollHardwareEvents(cEventManager* eventManager);
+
+// These are the enums that a backend must provide
+
+/*
+typedef enum {
+    CER_Fullscreen, CER_FullDesktop, CER_OpenGl, CER_Vulkan, CER_Shown, CER_Hidden,
+    CER_Borderless, CER_Resizable, CER_Minimized, CER_Maximized, CER_GrabInput, CER_FocusInput,
+    CER_FocusMouse, CER_Foreign, CER_HighDpi, CER_CaptureMouse, CER_AlwaysOnTop,
+    CER_NoTaskbar, CER_Utility, CER_Tooltip, CER_PopupMenu,
+} CER_WindowFlags;
+*/
 
 #include "sdl_backend.h"
 

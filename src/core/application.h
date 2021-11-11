@@ -22,12 +22,12 @@
  * 
  */
 
+#ifndef APPLICATION__H
+#define APPLICATION__H
+
 #include "object.h"
 #include "event.h"
 #include "mainwindow.h"
-
-#ifndef APPLICATION__H
-#define APPLICATION__H
 
 class cApplication : public cObject {
 public:
@@ -49,6 +49,12 @@ public:
     // Call this at the beginning of your main loop.  This updates the
     // timestep and collects all new events in the event queue.
     void BeginUpdate();
+    
+    // Call this to process events.  It will delete the events as it goes.
+    void ProcessEvents();
+    
+    // This method will be called to process each event.
+    virtual void ProcessOneEvent(cEvent* evt);
     
     // This is the method provided for subclasses to do their own internal
     // updating.

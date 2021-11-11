@@ -22,9 +22,9 @@
  * 
  */
 
-#include "stdio.h"
+#include <iostream>
 
-#include "SDL.h"
+#include "backend.h"
 
 #include "cerritos.h"
 #include "mainwindow.h"
@@ -59,7 +59,8 @@ cMainWindow::cMainWindow(CER_WindowFlags winFlags)
             this->width, this->height, CER_Shown );
 
     if( this->window == NULL ) {
-        printf( "Window could not be created! SDL_Error: %s\n", SDL_GetError() );
+        std::cout << "Window could not be created! SDL_Error: " <<
+            SDL_GetError() << std::endl;
     } else {
         //Get window surface
         this->screenSurface = SDL_GetWindowSurface( this->window );
@@ -81,7 +82,8 @@ cMainWindow::cMainWindow(unicodestring title, CER_WindowFlags winFlags)
             this->width, this->height, SDL_WINDOW_SHOWN );
 
     if( this->window == NULL ) {
-        printf( "Window could not be created! SDL_Error: %s\n", SDL_GetError() );
+        std::cout << "Window could not be created! SDL_Error: " <<
+            SDL_GetError() << std::endl;
     } else {
         //Get window surface
         this->screenSurface = SDL_GetWindowSurface( this->window );
@@ -103,7 +105,8 @@ cMainWindow::cMainWindow(unicodestring title, int width, int height, CER_WindowF
             this->width, this->height, SDL_WINDOW_SHOWN );
 
     if( this->window == NULL ) {
-        printf( "Window could not be created! SDL_Error: %s\n", SDL_GetError() );
+        std::cout << "Window could not be created! SDL_Error: " <<
+            SDL_GetError() << std::endl;
     } else {
         //Get window surface
         this->screenSurface = SDL_GetWindowSurface( this->window );
@@ -125,7 +128,8 @@ cMainWindow::cMainWindow(unicodestring title, int width, int height, int posx, i
             this->width, this->height, SDL_WINDOW_SHOWN );
 
     if( this->window == NULL ) {
-        printf( "Window could not be created! SDL_Error: %s\n", SDL_GetError() );
+        std::cout << "Window could not be created! SDL_Error: " <<
+            SDL_GetError() << std::endl;
     } else {
         //Get window surface
         this->screenSurface = SDL_GetWindowSurface( this->window );
@@ -153,4 +157,5 @@ void cMainWindow::Update() {
         printf(SDL_GetError() );
     }
 }
+
 

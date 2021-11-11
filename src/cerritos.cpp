@@ -23,26 +23,31 @@
  */
 
 #include <cstdarg>
-
-#include "SDL.h"
+#include <iostream>
 
 #include "cerritos.h"
 #include "application.h"
 #include "mainwindow.h"
 
+void PrintCerritosVersion() {
+    std::cout << "Cerritos Version " 
+              << CERRITOS_VERSION_MAJOR << "."
+              << CERRITOS_VERSION_MINOR << "."
+              << CERRITOS_VERSION_PATCH << "."
+              << std::endl;
+}
+
 /** Initialize cerritos
  */
 void cInit() {
-    if(SDL_Init(SDL_INIT_VIDEO|SDL_INIT_AUDIO)==-1) {
-        printf("SDL_Init: %s\n", SDL_GetError());
-    }
+    PrintCerritosVersion();
+    backendInit(SDL_INIT_VIDEO|SDL_INIT_AUDIO);
 };
 
 cApplication* cInit(CER_WindowFlags winFlags) {
-    if(SDL_Init(SDL_INIT_VIDEO|SDL_INIT_AUDIO)==-1) {
-        printf("SDL_Init: %s\n", SDL_GetError());
+    PrintCerritosVersion();
+    if(backendInit(SDL_INIT_VIDEO|SDL_INIT_AUDIO) == -1)
         return NULL;
-    }
     
     cApplication* theApp = new cApplication();
     cMainWindow* mainWindow = new cMainWindow(winFlags);
@@ -55,7 +60,7 @@ cApplication* cInit(CER_WindowFlags winFlags) {
 /** Close cerritos
  */
 void cClose() {
-    SDL_Quit();
+    backendClose();
 };
 
 unsigned int flags(int num, ...) {

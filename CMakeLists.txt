@@ -5,30 +5,10 @@ project(cerritos VERSION 0.1.0)
 
 set(CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake" ${CMAKE_MODULE_PATH})
 
-find_package(SDL2 REQUIRED)
-include_directories(${SDL2_INCLUDE_DIRS})
+include(sdl)
 
-# add the library
-add_library(cerritos SHARED
-    src/cerritos.cpp
-    src/backend/sdl_backend.cpp
-    src/core/object.cpp
-    src/core/application.cpp
-    src/core/event.cpp
-    src/core/events/quitevent.cpp
-    src/widgets/mainwindow.cpp
-)
-
-target_include_directories(cerritos PUBLIC
-    ${SDL2_LIBRARIES}
-    src
-    src/backend
-    src/core
-    src/core/events
-    src/widgets
-)
-
-target_link_libraries(cerritos ${SDL2_LIBRARIES})
+# The actual cerritos sources
+add_subdirectory(src)
 
 # Build documentation
 option(BUILD_DOC "Build documentation" ON)
@@ -54,18 +34,4 @@ else (DOXYGEN_FOUND)
   message("Doxygen need to be installed to generate the doxygen documentation")
 endif (DOXYGEN_FOUND)
 
-# Generate examples
-add_executable(hello
-    examples/hello.cpp
-)
-
-target_include_directories(hello PUBLIC
-    ${SDL2_LIBRARIES}
-    src
-    src/core
-    src/widgets
-)
-
-target_link_libraries(hello 
-    cerritos
-)
+add_subdirectory(examples)

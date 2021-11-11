@@ -24,10 +24,6 @@
 
 #include <iostream>
 
-// The following include should be removed when conditional backend 
-// usage is complete.
-#include "SDL.h"
-
 #include "backend.h"
 
 #include "application.h"
@@ -82,49 +78,31 @@ void cApplication::BeginUpdate() {
     this->currentTimestep.fromLast = newTimestep - this->lastTimestep;
     
     this->lastTimestep = newTimestep;
+
+    // Get system-specific events from the backend
+    PollHardwareEvents(this->eventManager);
     
-    // Get SDL events
-    SDL_Event event;
-    cEvent* newEvent = NULL;
-    
-    while (SDL_PollEvent(&event)) {
-        newEvent = NULL;
-        switch (event.type) {
-            case SDL_MOUSEMOTION:
-                newEvent = new cMouseOverEvent(event.motion.x, event.motion.y);
-                break;
-            case SDL_QUIT:
+}
+
+void cApplication::ProcessEvents() {
+    // This is the main event processing loop
+    while(this->hasEvent() ) {
+        cEvent* anEvent = NULL;
+        anEvent = this->PollEvent();
+        
+        switch(anEvent->type) {
+            case CER_QuitEvent:
                 this->keepRunning = false;
-                newEvent = new cQuitEvent;
-                break;
-            // Keyboard events
-            case SDL_KEYDOWN:
-                newEvent = new cKeydownEvent;
-                break;
-            case SDL_KEYUP:
-                newEvent = new cKeyupEvent;
-                break;
-            case SDL_TEXTEDITING:
-            case SDL_TEXTINPUT:
-            case SDL_KEYMAPCHANGED:
-                std::cout << "Received a keyboard event that's not currently handled.\n";
-                break;
-            // Mobile events, currently not handled
-            case SDL_APP_TERMINATING:
-            case SDL_APP_LOWMEMORY:
-            case SDL_APP_WILLENTERBACKGROUND:
-            case SDL_APP_DIDENTERBACKGROUND:
-            case SDL_APP_WILLENTERFOREGROUND:
-            case SDL_APP_DIDENTERFOREGROUND:
-                std::cout << "Received mobile event, not currently handled.\n";
-                break;
             default:
-                // printf("Unhandled Event!\n");
+                this->ProcessOneEvent(anEvent);
                 break;
         }
-        if(newEvent != NULL)
-            this->eventManager->addEvent( (cEvent*) newEvent);
-    }
+    } 
+}
+
+// Process one event.  Default implementation does nothing.
+void cApplication::ProcessOneEvent(cEvent* evt) {
+    
 }
 
 void cApplication::Update() {
@@ -138,6 +116,7 @@ void cApplication::UpdateView() {
 
 void cApplication::UpdateAll() {
     this->BeginUpdate();
+    this->ProcessEvents();
     this->Update();
     this->UpdateView();
     this->EndUpdate();

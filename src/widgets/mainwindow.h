@@ -22,15 +22,15 @@
  * 
  */
 
-#include "SDL.h"
+#ifndef MAINWINDOW_H
+#define MAINWINDOW_H
+
+#include "backend.h"
 
 #include "cerritos.h"
 
 #include "object.h"
 #include "string.h"
-
-#ifndef MAINWINDOW_H
-#define MAINWINDOW_H
 
 class cMainWindow : public cObject {
 public:
