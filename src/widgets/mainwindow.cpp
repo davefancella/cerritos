@@ -49,6 +49,30 @@ void cMainWindow::setSize(int width, int height) {
     SDL_SetWindowSize(this->window, width, height);
 }
 
+/*
+cMainWindow::cMainWindow() 
+        : Title("Cerritos Window"), width(800), height(600), 
+                posx(SDL_WINDOWPOS_CENTERED), posy(SDL_WINDOWPOS_CENTERED)
+                {
+    this->window = SDL_CreateWindow( this->Title.data(), 
+            this->posx, this->posy,
+            this->width, this->height, CER_Shown );
+
+    if( this->window == NULL ) {
+        std::cout << "Window could not be created! SDL_Error: " <<
+            SDL_GetError() << std::endl;
+    } else {
+        //Get window surface
+        this->screenSurface = SDL_GetWindowSurface( this->window );
+
+        //Fill the surface black
+        SDL_FillRect( this->screenSurface, NULL, 
+                      SDL_MapRGB( this->screenSurface->format, 
+                                  0x00, 0x00, 0x00 ) );
+        
+    }
+}
+*/
 
 cMainWindow::cMainWindow(CER_WindowFlags winFlags) 
             : Title("Cerritos Window"), width(800), height(600), 
@@ -56,8 +80,10 @@ cMainWindow::cMainWindow(CER_WindowFlags winFlags)
                 windowFlags(winFlags) {
     this->window = SDL_CreateWindow( this->Title.data(), 
             this->posx, this->posy,
-            this->width, this->height, CER_Shown );
+            this->width, this->height, this->windowFlags );
 
+    std::cout << "Created SDL window" << std::endl;
+    
     if( this->window == NULL ) {
         std::cout << "Window could not be created! SDL_Error: " <<
             SDL_GetError() << std::endl;

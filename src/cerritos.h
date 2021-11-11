@@ -45,7 +45,7 @@ void cInit();
 void cClose();
 // Initialize the library and get an application object with a an already
 // setup mainwindow
-cApplication* cInit(CER_WindowFlags winFlags=CER_Shown);
+cApplication* cInitApp(CER_WindowFlags winFlags=CER_Shown);
 
 void PrintCerritosVersion();
 

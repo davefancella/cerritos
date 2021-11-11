@@ -22,9 +22,8 @@
  * 
  */
 
-// This is a basic hello, world app for cerritos.  It breaks the convention
-// of being the most basic code needed by opting for providing the code that
-// is both correct and basic.  A simpler app is possible, but not suggested.
+// This is an adaptation of the hello.cpp example that shows how to
+// handle events using the Application object.
 
 #include <iostream>
 
@@ -34,14 +33,37 @@
 #include "application.h"
 #include "mainwindow.h"
 
+#include "event.h"
+
+class etApplication : public cApplication {
+public:
+    etApplication() : cApplication::cApplication() { };
+    
+    void ProcessOneEvent(cEvent* evt) {
+        if(evt->type() == CER_MouseMotionEvent) {
+            std::cout << "Mouse Motion: x(" 
+            << static_cast<cMouseMotionEvent*>( evt )->posx
+            << ") y("
+            << static_cast<cMouseMotionEvent*>( evt )->posy
+            << ")"
+            << std::endl;
+        }
+    }
+};
+
 int main( int argc, char* args[] ) {
     // This is a handy way to initialize cerritos and get a default
     // application object.  Typically, more complex games need more than
     // a default application object.
-    cApplication* theApp = cInitApp(CER_Shown);
+    cApplication* theApp;
     cMainWindow* theWindow;
-    // There's also a default mainwindow available.
-    theWindow = theApp->getMainWindow();
+
+    cInit();
+    
+    theApp = new etApplication();
+    theWindow = new cMainWindow();
+    
+    theApp->setMainWindow(theWindow);
     theWindow->setTitle("Hello, World!");
 
     // This is your game loop.

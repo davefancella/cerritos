@@ -29,7 +29,6 @@
 
 typedef enum {
     CER_QuitEvent,
-    CER_MouseOverEvent,
     // Keyboard events
     CER_KeydownEvent,
     CER_KeyupEvent,
@@ -108,7 +107,6 @@ private:
 
 // Now include all the specific event headers
 #include "quitevent.h"
-#include "mouseoverevent.h"
 #include "keydownevent.h"
 #include "keyupevent.h"
 #include "windowevent.h"

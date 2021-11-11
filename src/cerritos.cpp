@@ -44,7 +44,8 @@ void cInit() {
     backendInit(SDL_INIT_VIDEO|SDL_INIT_AUDIO);
 };
 
-cApplication* cInit(CER_WindowFlags winFlags) {
+/// Initializes and creates a default application object
+cApplication* cInitApp(CER_WindowFlags winFlags) {
     PrintCerritosVersion();
     if(backendInit(SDL_INIT_VIDEO|SDL_INIT_AUDIO) == -1)
         return NULL;

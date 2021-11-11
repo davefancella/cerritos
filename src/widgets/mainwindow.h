@@ -49,6 +49,7 @@ public:
     CER_WindowFlags windowFlags;
     
     // Constructors
+    //cMainWindow();
     cMainWindow(CER_WindowFlags winFlags=CER_Shown);
     cMainWindow(unicodestring title, CER_WindowFlags winFlags=CER_Shown);
     cMainWindow(unicodestring title, int width, int height, CER_WindowFlags winFlags=CER_Shown);
