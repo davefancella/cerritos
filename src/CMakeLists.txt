@@ -7,6 +7,7 @@ project(cerritos VERSION 0.1.0)
 add_library(cerritos SHARED
     cerritos.cpp
     backend/sdl_backend.cpp
+    backend/sdl_poll_hardware_events.cpp
     core/object.cpp
     core/application.cpp
     core/event.cpp

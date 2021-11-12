@@ -3,6 +3,8 @@
 # This script generates cerritos event header files and support code
 # from SDL event types.
 
+import os, sys
+
 printHeaders = False
 saveHeaders = True
 
@@ -10,15 +12,18 @@ printSwitch = False
 saveSwitch = True
 
 printIncludes = False
-saveIncludes = False
+saveIncludes = True
 
-eventDir = "../src/core/events/"
-#eventDir = "./"
+srcDir = "../src/"
+eventDir = "core/events/"
 
 def main():
     global printHeaders, saveHeaders, printSwitch, saveSwitch, printIncludes, saveIncludes
     global eventDir
-    import sys
+
+    caseFile = os.path.join(srcDir, "backend", "sdl_poll_hardware_events.cpp")
+    eventDir = os.path.join(srcDir, eventDir)
+    includeFile = os.path.join(eventDir, "hardwareevents.h")
 
     maxLength = 0
 
@@ -79,8 +84,15 @@ def main():
     evList.append(newEvent)
     
     if(saveSwitch):
-        aFile = open("casestatement", "w")
+        aFile = open(caseFile, "w")
+        aFile.write(beginSDLPoller)
         aFile.close()
+        
+    if(saveIncludes):
+        aFile = open(includeFile, "w")
+        aFile.write(beginHardwareIncludes)
+        aFile.close()
+        
     
     for a in evList:
         sdlEvent = a['SDL']
@@ -179,7 +191,7 @@ def main():
         if(printIncludes): print(includeString)
         
         if(saveIncludes):
-            aFile = open("includes", "a")
+            aFile = open(includeFile, "a")
             aFile.write(includeString + "\n")
             aFile.close()
         
@@ -197,12 +209,21 @@ def main():
             print(casestatement)
 
         if(saveSwitch):
-            aFile = open("casestatement", "a")
+            aFile = open(caseFile, "a")
             
             for line in casestatement.split("\n"):
                 aFile.write(line + "\n")
             aFile.close()
-                
+    if(saveSwitch):
+        aFile = open(caseFile, "a")
+        aFile.write(endSDLPoller)
+        aFile.close()
+    if(saveIncludes):
+        aFile = open(includeFile, "a")
+        aFile.write(endHardwareIncludes)
+        aFile.close()
+    
+            
 
 outputHeader = '''/*
  * Cerritos
@@ -257,6 +278,92 @@ caseText = '''            case $sdlevent:
 caseMemberText = '''            case $sdlevent:
                 newEvent = new $classname($args);
                 break;'''
+
+beginSDLPoller = '''/*
+ * Cerritos
+ * Copyright 2021 by Dave Fancella, Anthony Fancella
+ * 
+ * Permission is hereby granted, free of charge, to any person obtaining a 
+ * copy of this software and associated documentation files (the "Software"), 
+ * to deal in the Software without restriction, including without limitation 
+ * the rights to use, copy, modify, merge, publish, distribute, sublicense, 
+ * and/or sell copies of the Software, and to permit persons to whom the 
+ * Software is furnished to do so, subject to the following conditions:
+ * 
+ * The above copyright notice and this permission notice shall be included 
+ * in all copies or substantial portions of the Software.
+ * 
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS 
+ * OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING 
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+ * IN THE SOFTWARE.
+ * 
+ */
+ 
+#include <iostream>
+
+#include "SDL.h"
+
+#include "sdl_backend.h"
+
+#include "event.h"
+
+// This file is periodically generated.  Do not edit it directly.
+ 
+void PollHardwareEvents(cEventManager* eventManager) {
+    // Get SDL events
+    SDL_Event event;
+    cEvent* newEvent = NULL;
+    
+    while (SDL_PollEvent(&event)) {
+        newEvent = NULL;
+        switch (event.type) {
+'''
+
+endSDLPoller = '''            default:
+                // std::cout << "Unhandled Event!" << std::endl;
+                break;
+        }
+        if(newEvent != NULL)
+            eventManager->addEvent( (cEvent*) newEvent);
+    }
+}
+
+'''
+
+beginHardwareIncludes = '''/*
+ * Cerritos
+ * Copyright 2021 by Dave Fancella, Anthony Fancella
+ * 
+ * Permission is hereby granted, free of charge, to any person obtaining a 
+ * copy of this software and associated documentation files (the "Software"), 
+ * to deal in the Software without restriction, including without limitation 
+ * the rights to use, copy, modify, merge, publish, distribute, sublicense, 
+ * and/or sell copies of the Software, and to permit persons to whom the 
+ * Software is furnished to do so, subject to the following conditions:
+ * 
+ * The above copyright notice and this permission notice shall be included 
+ * in all copies or substantial portions of the Software.
+ * 
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS 
+ * OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING 
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+ * IN THE SOFTWARE.
+ * 
+ */
+ 
+// This file is periodically generated.  Do not edit it directly.
+'''
+
+endHardwareIncludes = '''
+
+'''
 
 main()
 
