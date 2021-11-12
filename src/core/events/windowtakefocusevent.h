@@ -22,46 +22,23 @@
  * 
  */
 
-#include <queue>
+#include "event.h"
 
-#include "backend.h"
+#ifndef WINDOWTAKEFOCUSEVENT__H
+#define WINDOWTAKEFOCUSEVENT__H
 
-#ifndef EVENT__H
-#define EVENT__H
-
-typedef enum {
-    // hardwareenum is generated and comes from the backend.
-    // It contains CER_* event types for hardware events.
-    HARDWAREENUM
-} CER_EventType;
-
-// The base class for events.
-class cEvent {
+class cWindowTakeFocusEvent : public cEvent {
 public:
-    CER_EventType type() { return this->evtype; };
+    cWindowTakeFocusEvent() { 
+        evtype=CER_WindowTakeFocusEvent; 
+    };
     
-    unsigned int timestamp() { return this->evtimestamp; };
-    unsigned int windowId() { return this->evwindowId; };
-    
-protected:
-    CER_EventType evtype;
+    cWindowTakeFocusEvent(unsigned int timestamp) { 
+        evtype = CER_WindowTakeFocusEvent;
+        evtimestamp = timestamp;
+    };
     unsigned int evtimestamp;
-    unsigned int evwindowId;
 };
 
-// The class that manages the event queue
-class cEventManager {
-public:
-    void addEvent(cEvent* event);
-    bool hasEvent();
-    cEvent* popEvent();
-private:
-    std::queue<cEvent*> eventQueue;
-};
-
-// Now include all the specific event headers
-#include "hardwareevents.h"
-
-#endif // HEADER__H
-
+#endif // WINDOWTAKEFOCUSEVENT__H
 

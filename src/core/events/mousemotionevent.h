@@ -33,17 +33,21 @@ public:
         evtype=CER_MouseMotionEvent; 
     };
     
-    cMouseMotionEvent(unsigned int timestamp, unsigned int winId, unsigned int pos_x, unsigned int pos_y) { 
+    cMouseMotionEvent(unsigned int timestamp, unsigned int winId, unsigned int pos_x, unsigned int pos_y, unsigned int rel_x, unsigned int rel_y) { 
         evtype = CER_MouseMotionEvent;
         evtimestamp = timestamp;
         windowId = winId;
         posx = pos_x;
         posy = pos_y;
+        relx = rel_x;
+        rely = rel_y;
     };
     unsigned int evtimestamp;
     unsigned int windowId;
     unsigned int posx;
     unsigned int posy;
+    unsigned int relx;
+    unsigned int rely;
 };
 
 #endif // MOUSEMOTIONEVENT__H

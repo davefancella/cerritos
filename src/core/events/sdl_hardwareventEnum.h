@@ -26,8 +26,22 @@
 
 #define HARDWAREENUM \
 CER_QuitEvent, \
-CER_WindowEvent, \
-CER_SyswmEvent, \
+CER_WindowShownEvent, \
+CER_WindowHiddenEvent, \
+CER_WindowExposedEvent, \
+CER_WindowMovedEvent, \
+CER_WindowResizedEvent, \
+CER_WindowSizeChangedEvent, \
+CER_WindowMinimizedEvent, \
+CER_WindowMaximizedEvent, \
+CER_WindowRestoredEvent, \
+CER_WindowEnterEvent, \
+CER_WindowLeaveEvent, \
+CER_WindowFocusGainedEvent, \
+CER_WindowFocusLostEvent, \
+CER_WindowCloseEvent, \
+CER_WindowTakeFocusEvent, \
+CER_WindowHitTestEvent, \
 CER_KeydownEvent, \
 CER_KeyupEvent, \
 CER_TextEditingEvent, \

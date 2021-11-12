@@ -22,46 +22,27 @@
  * 
  */
 
-#include <queue>
+#include "event.h"
 
-#include "backend.h"
+#ifndef WINDOWRESIZEDEVENT__H
+#define WINDOWRESIZEDEVENT__H
 
-#ifndef EVENT__H
-#define EVENT__H
-
-typedef enum {
-    // hardwareenum is generated and comes from the backend.
-    // It contains CER_* event types for hardware events.
-    HARDWAREENUM
-} CER_EventType;
-
-// The base class for events.
-class cEvent {
+class cWindowResizedEvent : public cEvent {
 public:
-    CER_EventType type() { return this->evtype; };
+    cWindowResizedEvent() { 
+        evtype=CER_WindowResizedEvent; 
+    };
     
-    unsigned int timestamp() { return this->evtimestamp; };
-    unsigned int windowId() { return this->evwindowId; };
-    
-protected:
-    CER_EventType evtype;
+    cWindowResizedEvent(unsigned int timestamp, unsigned int new_width, unsigned int new_height) { 
+        evtype = CER_WindowResizedEvent;
+        evtimestamp = timestamp;
+        width = new_width;
+        height = new_height;
+    };
     unsigned int evtimestamp;
-    unsigned int evwindowId;
+    unsigned int width;
+    unsigned int height;
 };
 
-// The class that manages the event queue
-class cEventManager {
-public:
-    void addEvent(cEvent* event);
-    bool hasEvent();
-    cEvent* popEvent();
-private:
-    std::queue<cEvent*> eventQueue;
-};
-
-// Now include all the specific event headers
-#include "hardwareevents.h"
-
-#endif // HEADER__H
-
+#endif // WINDOWRESIZEDEVENT__H
 

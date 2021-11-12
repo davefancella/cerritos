@@ -1,7 +1,16 @@
 #!/usr/bin/env python3
 
 # This script generates cerritos event header files and support code
-# from SDL event types.
+# from SDL event types.  Since cerritos considers all of these things
+# "hardware events", it's all backend code and glue code that gets
+# generated.  If you write a new backend, you'll need a separate script
+# to do the generations there, or do it by hand.  It's your time.  You
+# do you.
+
+# This script could be made more robust.  But it only has to run
+# in a posix environment.  The files generated are added to the source
+# repository, because they only need to be re-generated when SDL
+# gets an update that includes any new or reshuffled hardware events.
 
 import os, sys
 

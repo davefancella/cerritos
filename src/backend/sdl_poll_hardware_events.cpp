@@ -45,14 +45,84 @@ void PollHardwareEvents(cEventManager* eventManager) {
                     event.quit.timestamp
                 );
                 break;
-            case SDL_WINDOWEVENT:
-                newEvent = new cWindowEvent(
+            case SDL_WINDOWEVENT_SHOWN:
+                newEvent = new cWindowShownEvent(
                     event.window.timestamp
                 );
                 break;
-            case SDL_SYSWMEVENT:
-                newEvent = new cSyswmEvent(
-                    event.syswm.timestamp
+            case SDL_WINDOWEVENT_HIDDEN:
+                newEvent = new cWindowHiddenEvent(
+                    event.window.timestamp
+                );
+                break;
+            case SDL_WINDOWEVENT_EXPOSED:
+                newEvent = new cWindowExposedEvent(
+                    event.window.timestamp
+                );
+                break;
+            case SDL_WINDOWEVENT_MOVED:
+                newEvent = new cWindowMovedEvent(
+                    event.window.timestamp, event.window.data1, event.window.data2
+                );
+                break;
+            case SDL_WINDOWEVENT_RESIZED:
+                newEvent = new cWindowResizedEvent(
+                    event.window.timestamp, event.window.data1, event.window.data2
+                );
+                break;
+            case SDL_WINDOWEVENT_SIZE_CHANGED:
+                newEvent = new cWindowSizeChangedEvent(
+                    event.window.timestamp, event.window.data1, event.window.data2
+                );
+                break;
+            case SDL_WINDOWEVENT_MINIMIZED:
+                newEvent = new cWindowMinimizedEvent(
+                    event.window.timestamp
+                );
+                break;
+            case SDL_WINDOWEVENT_MAXIMIZED:
+                newEvent = new cWindowMaximizedEvent(
+                    event.window.timestamp
+                );
+                break;
+            case SDL_WINDOWEVENT_RESTORED:
+                newEvent = new cWindowRestoredEvent(
+                    event.window.timestamp
+                );
+                break;
+            case SDL_WINDOWEVENT_ENTER:
+                newEvent = new cWindowEnterEvent(
+                    event.window.timestamp
+                );
+                break;
+            case SDL_WINDOWEVENT_LEAVE:
+                newEvent = new cWindowLeaveEvent(
+                    event.window.timestamp
+                );
+                break;
+            case SDL_WINDOWEVENT_FOCUS_GAINED:
+                newEvent = new cWindowFocusGainedEvent(
+                    event.window.timestamp
+                );
+                break;
+            case SDL_WINDOWEVENT_FOCUS_LOST:
+                newEvent = new cWindowFocusLostEvent(
+                    event.window.timestamp
+                );
+                break;
+            case SDL_WINDOWEVENT_CLOSE:
+                newEvent = new cWindowCloseEvent(
+                    event.window.timestamp
+                );
+                break;
+            case SDL_WINDOWEVENT_TAKE_FOCUS:
+                newEvent = new cWindowTakeFocusEvent(
+                    event.window.timestamp
+                );
+                break;
+            case SDL_WINDOWEVENT_HIT_TEST:
+                newEvent = new cWindowHitTestEvent(
+                    event.window.timestamp
                 );
                 break;
             case SDL_KEYDOWN:
@@ -85,7 +155,7 @@ void PollHardwareEvents(cEventManager* eventManager) {
                 break;
             case SDL_MOUSEMOTION:
                 newEvent = new cMouseMotionEvent(
-                    event.motion.timestamp, event.motion.windowID, event.motion.x, event.motion.y
+                    event.motion.timestamp, event.motion.windowID, event.motion.x, event.motion.y, event.motion.xrel, event.motion.yrel
                 );
                 break;
             case SDL_MOUSEBUTTONUP:

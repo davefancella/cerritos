@@ -9,12 +9,52 @@
 # The cerritos event class will be generated with a default constructor
 # and an overloaded constructor that takes all the SDL event data and
 # initializes the cerritos event
+
+# An event generated whenever there's a quit reason
 SDL_QUIT: quit
     evtimestamp(unsigned int, timestamp) : timestamp
-SDL_WINDOWEVENT: window
+
+# All window events
+SDL_WINDOWEVENT_SHOWN: window
     evtimestamp(unsigned int, timestamp) : timestamp
-SDL_SYSWMEVENT: syswm
+SDL_WINDOWEVENT_HIDDEN: window
     evtimestamp(unsigned int, timestamp) : timestamp
+SDL_WINDOWEVENT_EXPOSED: window
+    evtimestamp(unsigned int, timestamp) : timestamp
+SDL_WINDOWEVENT_MOVED: window
+    evtimestamp(unsigned int, timestamp) : timestamp
+    posx(unsigned int, pos_x) : data1
+    posy(unsigned int, pos_y) : data2
+SDL_WINDOWEVENT_RESIZED: window
+    evtimestamp(unsigned int, timestamp) : timestamp
+    width(unsigned int, new_width) : data1
+    height(unsigned int, new_height) : data2
+SDL_WINDOWEVENT_SIZE_CHANGED: window
+    evtimestamp(unsigned int, timestamp) : timestamp
+    width(unsigned int, new_width) : data1
+    height(unsigned int, new_height) : data2
+SDL_WINDOWEVENT_MINIMIZED: window
+    evtimestamp(unsigned int, timestamp) : timestamp
+SDL_WINDOWEVENT_MAXIMIZED: window
+    evtimestamp(unsigned int, timestamp) : timestamp
+SDL_WINDOWEVENT_RESTORED: window
+    evtimestamp(unsigned int, timestamp) : timestamp
+SDL_WINDOWEVENT_ENTER: window
+    evtimestamp(unsigned int, timestamp) : timestamp
+SDL_WINDOWEVENT_LEAVE: window
+    evtimestamp(unsigned int, timestamp) : timestamp
+SDL_WINDOWEVENT_FOCUS_GAINED: window
+    evtimestamp(unsigned int, timestamp) : timestamp
+SDL_WINDOWEVENT_FOCUS_LOST: window
+    evtimestamp(unsigned int, timestamp) : timestamp
+SDL_WINDOWEVENT_CLOSE: window
+    evtimestamp(unsigned int, timestamp) : timestamp
+SDL_WINDOWEVENT_TAKE_FOCUS: window
+    evtimestamp(unsigned int, timestamp) : timestamp
+SDL_WINDOWEVENT_HIT_TEST: window
+    evtimestamp(unsigned int, timestamp) : timestamp
+
+# Keyboard events
 SDL_KEYDOWN: key
     evtimestamp(unsigned int, timestamp) : timestamp
 SDL_KEYUP: key
@@ -24,6 +64,8 @@ SDL_TEXTEDITING: edit
 SDL_TEXTINPUT: text
     evtimestamp(unsigned int, timestamp) : timestamp
 SDL_KEYMAPCHANGED
+
+# Mouse events
 SDL_MOUSEBUTTONDOWN: button
     evtimestamp(unsigned int, timestamp) : timestamp
 SDL_MOUSEMOTION : motion
@@ -31,10 +73,14 @@ SDL_MOUSEMOTION : motion
     windowId(unsigned int, winId) : windowID
     posx(unsigned int, pos_x) : x
     posy(unsigned int, pos_y) : y
+    relx(unsigned int, rel_x) : xrel
+    rely(unsigned int, rel_y) : yrel
 SDL_MOUSEBUTTONUP: button
     evtimestamp(unsigned int, timestamp) : timestamp
 SDL_MOUSEWHEEL: wheel
     evtimestamp(unsigned int, timestamp) : timestamp
+
+# Joystick/controller events
 SDL_JOYAXISMOTION: jaxis
     evtimestamp(unsigned int, timestamp) : timestamp
 SDL_JOYBALLMOTION: jball
@@ -61,6 +107,8 @@ SDL_CONTROLLERDEVICEREMOVED: cdevice
     evtimestamp(unsigned int, timestamp) : timestamp
 SDL_CONTROLLERDEVICEREMAPPED: cdevice
     evtimestamp(unsigned int, timestamp) : timestamp
+
+# Touch events
 SDL_FINGERDOWN: tfinger
     evtimestamp(unsigned int, timestamp) : timestamp
 SDL_FINGERUP: tfinger
@@ -73,7 +121,10 @@ SDL_DOLLARRECORD: dgesture
     evtimestamp(unsigned int, timestamp) : timestamp
 SDL_MULTIGESTURE: mgesture
     evtimestamp(unsigned int, timestamp) : timestamp
+
 SDL_CLIPBOARDUPDATE
+
+# Drag and drop support events
 SDL_DROPFILE: drop
     evtimestamp(unsigned int, timestamp) : timestamp
 SDL_DROPTEXT: drop
@@ -82,6 +133,8 @@ SDL_DROPBEGIN: drop
     evtimestamp(unsigned int, timestamp) : timestamp
 SDL_DROPCOMPLETE: drop
     evtimestamp(unsigned int, timestamp) : timestamp
+
+    
 SDL_AUDIODEVICEADDED: adevice
     evtimestamp(unsigned int, timestamp) : timestamp
 SDL_AUDIODEVICEREMOVED: adevice

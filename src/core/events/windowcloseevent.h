@@ -22,46 +22,23 @@
  * 
  */
 
-#include <queue>
+#include "event.h"
 
-#include "backend.h"
+#ifndef WINDOWCLOSEEVENT__H
+#define WINDOWCLOSEEVENT__H
 
-#ifndef EVENT__H
-#define EVENT__H
-
-typedef enum {
-    // hardwareenum is generated and comes from the backend.
-    // It contains CER_* event types for hardware events.
-    HARDWAREENUM
-} CER_EventType;
-
-// The base class for events.
-class cEvent {
+class cWindowCloseEvent : public cEvent {
 public:
-    CER_EventType type() { return this->evtype; };
+    cWindowCloseEvent() { 
+        evtype=CER_WindowCloseEvent; 
+    };
     
-    unsigned int timestamp() { return this->evtimestamp; };
-    unsigned int windowId() { return this->evwindowId; };
-    
-protected:
-    CER_EventType evtype;
+    cWindowCloseEvent(unsigned int timestamp) { 
+        evtype = CER_WindowCloseEvent;
+        evtimestamp = timestamp;
+    };
     unsigned int evtimestamp;
-    unsigned int evwindowId;
 };
 
-// The class that manages the event queue
-class cEventManager {
-public:
-    void addEvent(cEvent* event);
-    bool hasEvent();
-    cEvent* popEvent();
-private:
-    std::queue<cEvent*> eventQueue;
-};
-
-// Now include all the specific event headers
-#include "hardwareevents.h"
-
-#endif // HEADER__H
-
+#endif // WINDOWCLOSEEVENT__H
 
