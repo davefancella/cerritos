@@ -277,6 +277,8 @@ outputHeader = '''/*
 
 #include "event.h"
 
+// This file is periodically generated.  Do not edit it directly.
+
 #ifndef $HEADERNAMECAPS__H
 #define $HEADERNAMECAPS__H
 
@@ -415,7 +417,7 @@ beginHardwareEnums = '''/*
  * 
  */
 
-// This file is generated.  Do not edit it directly
+// This file is periodically generated.  Do not edit it directly.
 
 #define HARDWAREENUM \\
 '''
