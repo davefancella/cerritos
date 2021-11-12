@@ -24,6 +24,8 @@
 
 #include "event.h"
 
+// This file is periodically generated.  Do not edit it directly.
+
 #ifndef WINDOWLEAVEEVENT__H
 #define WINDOWLEAVEEVENT__H
 

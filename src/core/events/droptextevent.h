@@ -24,6 +24,8 @@
 
 #include "event.h"
 
+// This file is periodically generated.  Do not edit it directly.
+
 #ifndef DROPTEXTEVENT__H
 #define DROPTEXTEVENT__H
 

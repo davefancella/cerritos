@@ -24,6 +24,8 @@
 
 #include "event.h"
 
+// This file is periodically generated.  Do not edit it directly.
+
 #ifndef CONTROLLERBUTTONUPEVENT__H
 #define CONTROLLERBUTTONUPEVENT__H
 

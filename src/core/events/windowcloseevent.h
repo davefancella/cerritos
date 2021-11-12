@@ -24,6 +24,8 @@
 
 #include "event.h"
 
+// This file is periodically generated.  Do not edit it directly.
+
 #ifndef WINDOWCLOSEEVENT__H
 #define WINDOWCLOSEEVENT__H
 

@@ -24,6 +24,8 @@
 
 #include "event.h"
 
+// This file is periodically generated.  Do not edit it directly.
+
 #ifndef TEXTINPUTEVENT__H
 #define TEXTINPUTEVENT__H
 

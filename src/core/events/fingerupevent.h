@@ -24,6 +24,8 @@
 
 #include "event.h"
 
+// This file is periodically generated.  Do not edit it directly.
+
 #ifndef FINGERUPEVENT__H
 #define FINGERUPEVENT__H
 

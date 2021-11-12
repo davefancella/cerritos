@@ -22,7 +22,7 @@
  * 
  */
 
-// This file is generated.  Do not edit it directly
+// This file is periodically generated.  Do not edit it directly.
 
 #define HARDWAREENUM \
 CER_QuitEvent, \

@@ -24,6 +24,8 @@
 
 #include "event.h"
 
+// This file is periodically generated.  Do not edit it directly.
+
 #ifndef WINDOWSIZECHANGEDEVENT__H
 #define WINDOWSIZECHANGEDEVENT__H
 
