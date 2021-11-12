@@ -22,44 +22,48 @@
  * 
  */
 
-#include <queue>
+// This file is generated.  Do not edit it directly
 
-#include "backend.h"
-
-#ifndef EVENT__H
-#define EVENT__H
-
-typedef enum {
-    HARDWAREENUM
-} CER_EventType;
-
-// The base class for events.
-class cEvent {
-public:
-    CER_EventType type() { return this->evtype; };
-    
-    unsigned int timestamp() { return this->evtimestamp; };
-    unsigned int windowId() { return this->evwindowId; };
-    
-protected:
-    CER_EventType evtype;
-    unsigned int evtimestamp;
-    unsigned int evwindowId;
-};
-
-// The class that manages the event queue
-class cEventManager {
-public:
-    void addEvent(cEvent* event);
-    bool hasEvent();
-    cEvent* popEvent();
-private:
-    std::queue<cEvent*> eventQueue;
-};
-
-// Now include all the specific event headers
-#include "hardwareevents.h"
-
-#endif // HEADER__H
+#define HARDWAREENUM \
+CER_QuitEvent, \
+CER_WindowEvent, \
+CER_SyswmEvent, \
+CER_KeydownEvent, \
+CER_KeyupEvent, \
+CER_TextEditingEvent, \
+CER_TextInputEvent, \
+CER_KeymapchangedEvent, \
+CER_MouseButtondownEvent, \
+CER_MouseMotionEvent, \
+CER_MouseButtonupEvent, \
+CER_MouseWheelEvent, \
+CER_JoyAxisMotionEvent, \
+CER_JoyBallMotionEvent, \
+CER_JoyHatMotionEvent, \
+CER_JoyButtondownEvent, \
+CER_JoyButtonupEvent, \
+CER_JoyDeviceAddedEvent, \
+CER_JoyDeviceRemovedEvent, \
+CER_ControllerAxisMotionEvent, \
+CER_ControllerButtondownEvent, \
+CER_ControllerButtonupEvent, \
+CER_ControllerDeviceAddedEvent, \
+CER_ControllerDeviceRemovedEvent, \
+CER_ControllerDeviceRemappedEvent, \
+CER_FingerdownEvent, \
+CER_FingerupEvent, \
+CER_FingerMotionEvent, \
+CER_DollarGestureEvent, \
+CER_DollarRecordEvent, \
+CER_MultiGestureEvent, \
+CER_ClipboardUpdateEvent, \
+CER_DropFileEvent, \
+CER_DropTextEvent, \
+CER_DropBeginEvent, \
+CER_DropCompleteEvent, \
+CER_AudioDeviceAddedEvent, \
+CER_AudioDeviceRemovedEvent, \
+CER_RenderTargetsResetEvent, \
+CER_RenderDeviceResetEvent, \
 
 

@@ -14,6 +14,8 @@ saveSwitch = True
 printIncludes = False
 saveIncludes = True
 
+saveEnums = True
+
 srcDir = "../src/"
 eventDir = "core/events/"
 
@@ -24,6 +26,8 @@ def main():
     caseFile = os.path.join(srcDir, "backend", "sdl_poll_hardware_events.cpp")
     eventDir = os.path.join(srcDir, eventDir)
     includeFile = os.path.join(eventDir, "hardwareevents.h")
+    hardwareEnumFile = os.path.join(eventDir, "sdl_hardwareventEnum.h")
+    #hardwareEnumFile = os.path.join("./", "sdl_hardwareventEnum.h")
 
     maxLength = 0
 
@@ -92,7 +96,11 @@ def main():
         aFile = open(includeFile, "w")
         aFile.write(beginHardwareIncludes)
         aFile.close()
-        
+    
+    if(saveEnums):
+        aFile = open(hardwareEnumFile, "w")
+        aFile.write(beginHardwareEnums)
+        aFile.close()
     
     for a in evList:
         sdlEvent = a['SDL']
@@ -203,6 +211,11 @@ def main():
             aFile = open(eventDir + headerName, "w")
             aFile.write(headerText)
             aFile.close()
+            
+        if(saveEnums):
+            aFile = open(hardwareEnumFile, "a")
+            aFile.write(cerName + ", \\\n")
+            aFile.close()
         
         # print the code for the case statement for this event
         if(printSwitch):
@@ -221,6 +234,10 @@ def main():
     if(saveIncludes):
         aFile = open(includeFile, "a")
         aFile.write(endHardwareIncludes)
+        aFile.close()
+    if(saveEnums):
+        aFile = open(hardwareEnumFile, "a")
+        aFile.write(endHardwareEnums)
         aFile.close()
     
             
@@ -362,6 +379,39 @@ beginHardwareIncludes = '''/*
 '''
 
 endHardwareIncludes = '''
+
+'''
+
+beginHardwareEnums = '''/*
+ * Cerritos
+ * Copyright 2021 by Dave Fancella, Anthony Fancella
+ * 
+ * Permission is hereby granted, free of charge, to any person obtaining a 
+ * copy of this software and associated documentation files (the "Software"), 
+ * to deal in the Software without restriction, including without limitation 
+ * the rights to use, copy, modify, merge, publish, distribute, sublicense, 
+ * and/or sell copies of the Software, and to permit persons to whom the 
+ * Software is furnished to do so, subject to the following conditions:
+ * 
+ * The above copyright notice and this permission notice shall be included 
+ * in all copies or substantial portions of the Software.
+ * 
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS 
+ * OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING 
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+ * IN THE SOFTWARE.
+ * 
+ */
+
+// This file is generated.  Do not edit it directly
+
+#define HARDWAREENUM \\
+'''
+
+endHardwareEnums = '''
 
 '''
 

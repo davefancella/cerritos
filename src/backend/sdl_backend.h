@@ -299,6 +299,8 @@ int backendInit(unsigned int flags);
 void backendClose();
 void PollHardwareEvents(cEventManager* eventManager);
 
+#include "sdl_hardwareventEnum.h"
+
 #endif // SDL_BACKEND__H
 
 
