@@ -33,13 +33,15 @@ public:
         evtype=CER_WindowMovedEvent; 
     };
     
-    cWindowMovedEvent(unsigned int timestamp, unsigned int pos_x, unsigned int pos_y) { 
+    cWindowMovedEvent(unsigned int timestamp, unsigned int winId, unsigned int pos_x, unsigned int pos_y) { 
         evtype = CER_WindowMovedEvent;
         evtimestamp = timestamp;
+        windowId = winId;
         posx = pos_x;
         posy = pos_y;
     };
     unsigned int evtimestamp;
+    unsigned int windowId;
     unsigned int posx;
     unsigned int posy;
 };

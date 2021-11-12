@@ -33,11 +33,13 @@ public:
         evtype=CER_TextEditingEvent; 
     };
     
-    cTextEditingEvent(unsigned int timestamp) { 
+    cTextEditingEvent(unsigned int timestamp, unsigned int winId) { 
         evtype = CER_TextEditingEvent;
         evtimestamp = timestamp;
+        windowId = winId;
     };
     unsigned int evtimestamp;
+    unsigned int windowId;
 };
 
 #endif // TEXTEDITINGEVENT__H

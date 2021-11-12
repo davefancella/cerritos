@@ -33,11 +33,13 @@ public:
         evtype=CER_TextInputEvent; 
     };
     
-    cTextInputEvent(unsigned int timestamp) { 
+    cTextInputEvent(unsigned int timestamp, unsigned int winId) { 
         evtype = CER_TextInputEvent;
         evtimestamp = timestamp;
+        windowId = winId;
     };
     unsigned int evtimestamp;
+    unsigned int windowId;
 };
 
 #endif // TEXTINPUTEVENT__H

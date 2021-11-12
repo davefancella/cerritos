@@ -47,102 +47,102 @@ void PollHardwareEvents(cEventManager* eventManager) {
                 break;
             case SDL_WINDOWEVENT_SHOWN:
                 newEvent = new cWindowShownEvent(
-                    event.window.timestamp
+                    event.window.timestamp, event.window.windowID
                 );
                 break;
             case SDL_WINDOWEVENT_HIDDEN:
                 newEvent = new cWindowHiddenEvent(
-                    event.window.timestamp
+                    event.window.timestamp, event.window.windowID
                 );
                 break;
             case SDL_WINDOWEVENT_EXPOSED:
                 newEvent = new cWindowExposedEvent(
-                    event.window.timestamp
+                    event.window.timestamp, event.window.windowID
                 );
                 break;
             case SDL_WINDOWEVENT_MOVED:
                 newEvent = new cWindowMovedEvent(
-                    event.window.timestamp, event.window.data1, event.window.data2
+                    event.window.timestamp, event.window.windowID, event.window.data1, event.window.data2
                 );
                 break;
             case SDL_WINDOWEVENT_RESIZED:
                 newEvent = new cWindowResizedEvent(
-                    event.window.timestamp, event.window.data1, event.window.data2
+                    event.window.timestamp, event.window.windowID, event.window.data1, event.window.data2
                 );
                 break;
             case SDL_WINDOWEVENT_SIZE_CHANGED:
                 newEvent = new cWindowSizeChangedEvent(
-                    event.window.timestamp, event.window.data1, event.window.data2
+                    event.window.timestamp, event.window.windowID, event.window.data1, event.window.data2
                 );
                 break;
             case SDL_WINDOWEVENT_MINIMIZED:
                 newEvent = new cWindowMinimizedEvent(
-                    event.window.timestamp
+                    event.window.timestamp, event.window.windowID
                 );
                 break;
             case SDL_WINDOWEVENT_MAXIMIZED:
                 newEvent = new cWindowMaximizedEvent(
-                    event.window.timestamp
+                    event.window.timestamp, event.window.windowID
                 );
                 break;
             case SDL_WINDOWEVENT_RESTORED:
                 newEvent = new cWindowRestoredEvent(
-                    event.window.timestamp
+                    event.window.timestamp, event.window.windowID
                 );
                 break;
             case SDL_WINDOWEVENT_ENTER:
                 newEvent = new cWindowEnterEvent(
-                    event.window.timestamp
+                    event.window.timestamp, event.window.windowID
                 );
                 break;
             case SDL_WINDOWEVENT_LEAVE:
                 newEvent = new cWindowLeaveEvent(
-                    event.window.timestamp
+                    event.window.timestamp, event.window.windowID
                 );
                 break;
             case SDL_WINDOWEVENT_FOCUS_GAINED:
                 newEvent = new cWindowFocusGainedEvent(
-                    event.window.timestamp
+                    event.window.timestamp, event.window.windowID
                 );
                 break;
             case SDL_WINDOWEVENT_FOCUS_LOST:
                 newEvent = new cWindowFocusLostEvent(
-                    event.window.timestamp
+                    event.window.timestamp, event.window.windowID
                 );
                 break;
             case SDL_WINDOWEVENT_CLOSE:
                 newEvent = new cWindowCloseEvent(
-                    event.window.timestamp
+                    event.window.timestamp, event.window.windowID
                 );
                 break;
             case SDL_WINDOWEVENT_TAKE_FOCUS:
                 newEvent = new cWindowTakeFocusEvent(
-                    event.window.timestamp
+                    event.window.timestamp, event.window.windowID
                 );
                 break;
             case SDL_WINDOWEVENT_HIT_TEST:
                 newEvent = new cWindowHitTestEvent(
-                    event.window.timestamp
+                    event.window.timestamp, event.window.windowID
                 );
                 break;
             case SDL_KEYDOWN:
                 newEvent = new cKeydownEvent(
-                    event.key.timestamp
+                    event.key.timestamp, event.key.windowID, event.key.keysym.sym, event.key.keysym.scancode
                 );
                 break;
             case SDL_KEYUP:
                 newEvent = new cKeyupEvent(
-                    event.key.timestamp
+                    event.key.timestamp, event.key.windowID, event.key.keysym.sym, event.key.keysym.scancode
                 );
                 break;
             case SDL_TEXTEDITING:
                 newEvent = new cTextEditingEvent(
-                    event.edit.timestamp
+                    event.edit.timestamp, event.edit.windowID
                 );
                 break;
             case SDL_TEXTINPUT:
                 newEvent = new cTextInputEvent(
-                    event.text.timestamp
+                    event.text.timestamp, event.text.windowID
                 );
                 break;
             case SDL_KEYMAPCHANGED:

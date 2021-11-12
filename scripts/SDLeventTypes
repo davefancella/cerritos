@@ -17,52 +17,76 @@ SDL_QUIT: quit
 # All window events
 SDL_WINDOWEVENT_SHOWN: window
     evtimestamp(unsigned int, timestamp) : timestamp
+    windowId(unsigned int, winId) : windowID
 SDL_WINDOWEVENT_HIDDEN: window
     evtimestamp(unsigned int, timestamp) : timestamp
+    windowId(unsigned int, winId) : windowID
 SDL_WINDOWEVENT_EXPOSED: window
     evtimestamp(unsigned int, timestamp) : timestamp
+    windowId(unsigned int, winId) : windowID
 SDL_WINDOWEVENT_MOVED: window
     evtimestamp(unsigned int, timestamp) : timestamp
+    windowId(unsigned int, winId) : windowID
     posx(unsigned int, pos_x) : data1
     posy(unsigned int, pos_y) : data2
 SDL_WINDOWEVENT_RESIZED: window
     evtimestamp(unsigned int, timestamp) : timestamp
+    windowId(unsigned int, winId) : windowID
     width(unsigned int, new_width) : data1
     height(unsigned int, new_height) : data2
 SDL_WINDOWEVENT_SIZE_CHANGED: window
     evtimestamp(unsigned int, timestamp) : timestamp
+    windowId(unsigned int, winId) : windowID
     width(unsigned int, new_width) : data1
     height(unsigned int, new_height) : data2
 SDL_WINDOWEVENT_MINIMIZED: window
     evtimestamp(unsigned int, timestamp) : timestamp
+    windowId(unsigned int, winId) : windowID
 SDL_WINDOWEVENT_MAXIMIZED: window
     evtimestamp(unsigned int, timestamp) : timestamp
+    windowId(unsigned int, winId) : windowID
 SDL_WINDOWEVENT_RESTORED: window
     evtimestamp(unsigned int, timestamp) : timestamp
+    windowId(unsigned int, winId) : windowID
 SDL_WINDOWEVENT_ENTER: window
     evtimestamp(unsigned int, timestamp) : timestamp
+    windowId(unsigned int, winId) : windowID
 SDL_WINDOWEVENT_LEAVE: window
     evtimestamp(unsigned int, timestamp) : timestamp
+    windowId(unsigned int, winId) : windowID
 SDL_WINDOWEVENT_FOCUS_GAINED: window
     evtimestamp(unsigned int, timestamp) : timestamp
+    windowId(unsigned int, winId) : windowID
 SDL_WINDOWEVENT_FOCUS_LOST: window
     evtimestamp(unsigned int, timestamp) : timestamp
+    windowId(unsigned int, winId) : windowID
 SDL_WINDOWEVENT_CLOSE: window
     evtimestamp(unsigned int, timestamp) : timestamp
+    windowId(unsigned int, winId) : windowID
 SDL_WINDOWEVENT_TAKE_FOCUS: window
     evtimestamp(unsigned int, timestamp) : timestamp
+    windowId(unsigned int, winId) : windowID
 SDL_WINDOWEVENT_HIT_TEST: window
     evtimestamp(unsigned int, timestamp) : timestamp
+    windowId(unsigned int, winId) : windowID
 
 # Keyboard events
 SDL_KEYDOWN: key
     evtimestamp(unsigned int, timestamp) : timestamp
+    windowId(unsigned int, winId) : windowID
+    mKey(unsigned int, key) : keysym.sym
+    scancode(unsigned int, scode) : keysym.scancode
 SDL_KEYUP: key
     evtimestamp(unsigned int, timestamp) : timestamp
+    windowId(unsigned int, winId) : windowID
+    mKey(unsigned int, key) : keysym.sym
+    scancode(unsigned int, scode) : keysym.scancode
 SDL_TEXTEDITING: edit
     evtimestamp(unsigned int, timestamp) : timestamp
+    windowId(unsigned int, winId) : windowID
 SDL_TEXTINPUT: text
     evtimestamp(unsigned int, timestamp) : timestamp
+    windowId(unsigned int, winId) : windowID
 SDL_KEYMAPCHANGED
 
 # Mouse events

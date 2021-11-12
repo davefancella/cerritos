@@ -33,11 +33,13 @@ public:
         evtype=CER_WindowLeaveEvent; 
     };
     
-    cWindowLeaveEvent(unsigned int timestamp) { 
+    cWindowLeaveEvent(unsigned int timestamp, unsigned int winId) { 
         evtype = CER_WindowLeaveEvent;
         evtimestamp = timestamp;
+        windowId = winId;
     };
     unsigned int evtimestamp;
+    unsigned int windowId;
 };
 
 #endif // WINDOWLEAVEEVENT__H

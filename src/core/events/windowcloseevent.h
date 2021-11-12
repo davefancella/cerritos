@@ -33,11 +33,13 @@ public:
         evtype=CER_WindowCloseEvent; 
     };
     
-    cWindowCloseEvent(unsigned int timestamp) { 
+    cWindowCloseEvent(unsigned int timestamp, unsigned int winId) { 
         evtype = CER_WindowCloseEvent;
         evtimestamp = timestamp;
+        windowId = winId;
     };
     unsigned int evtimestamp;
+    unsigned int windowId;
 };
 
 #endif // WINDOWCLOSEEVENT__H

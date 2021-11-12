@@ -33,11 +33,13 @@ public:
         evtype=CER_WindowMaximizedEvent; 
     };
     
-    cWindowMaximizedEvent(unsigned int timestamp) { 
+    cWindowMaximizedEvent(unsigned int timestamp, unsigned int winId) { 
         evtype = CER_WindowMaximizedEvent;
         evtimestamp = timestamp;
+        windowId = winId;
     };
     unsigned int evtimestamp;
+    unsigned int windowId;
 };
 
 #endif // WINDOWMAXIMIZEDEVENT__H

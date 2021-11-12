@@ -33,11 +33,13 @@ public:
         evtype=CER_WindowHiddenEvent; 
     };
     
-    cWindowHiddenEvent(unsigned int timestamp) { 
+    cWindowHiddenEvent(unsigned int timestamp, unsigned int winId) { 
         evtype = CER_WindowHiddenEvent;
         evtimestamp = timestamp;
+        windowId = winId;
     };
     unsigned int evtimestamp;
+    unsigned int windowId;
 };
 
 #endif // WINDOWHIDDENEVENT__H

@@ -33,11 +33,13 @@ public:
         evtype=CER_WindowExposedEvent; 
     };
     
-    cWindowExposedEvent(unsigned int timestamp) { 
+    cWindowExposedEvent(unsigned int timestamp, unsigned int winId) { 
         evtype = CER_WindowExposedEvent;
         evtimestamp = timestamp;
+        windowId = winId;
     };
     unsigned int evtimestamp;
+    unsigned int windowId;
 };
 
 #endif // WINDOWEXPOSEDEVENT__H

@@ -33,11 +33,13 @@ public:
         evtype=CER_WindowHitTestEvent; 
     };
     
-    cWindowHitTestEvent(unsigned int timestamp) { 
+    cWindowHitTestEvent(unsigned int timestamp, unsigned int winId) { 
         evtype = CER_WindowHitTestEvent;
         evtimestamp = timestamp;
+        windowId = winId;
     };
     unsigned int evtimestamp;
+    unsigned int windowId;
 };
 
 #endif // WINDOWHITTESTEVENT__H

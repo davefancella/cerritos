@@ -33,11 +33,17 @@ public:
         evtype=CER_KeyupEvent; 
     };
     
-    cKeyupEvent(unsigned int timestamp) { 
+    cKeyupEvent(unsigned int timestamp, unsigned int winId, unsigned int key, unsigned int scode) { 
         evtype = CER_KeyupEvent;
         evtimestamp = timestamp;
+        windowId = winId;
+        mKey = key;
+        scancode = scode;
     };
     unsigned int evtimestamp;
+    unsigned int windowId;
+    unsigned int mKey;
+    unsigned int scancode;
 };
 
 #endif // KEYUPEVENT__H

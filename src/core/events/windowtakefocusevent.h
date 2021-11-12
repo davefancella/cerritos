@@ -33,11 +33,13 @@ public:
         evtype=CER_WindowTakeFocusEvent; 
     };
     
-    cWindowTakeFocusEvent(unsigned int timestamp) { 
+    cWindowTakeFocusEvent(unsigned int timestamp, unsigned int winId) { 
         evtype = CER_WindowTakeFocusEvent;
         evtimestamp = timestamp;
+        windowId = winId;
     };
     unsigned int evtimestamp;
+    unsigned int windowId;
 };
 
 #endif // WINDOWTAKEFOCUSEVENT__H

@@ -33,11 +33,13 @@ public:
         evtype=CER_WindowRestoredEvent; 
     };
     
-    cWindowRestoredEvent(unsigned int timestamp) { 
+    cWindowRestoredEvent(unsigned int timestamp, unsigned int winId) { 
         evtype = CER_WindowRestoredEvent;
         evtimestamp = timestamp;
+        windowId = winId;
     };
     unsigned int evtimestamp;
+    unsigned int windowId;
 };
 
 #endif // WINDOWRESTOREDEVENT__H

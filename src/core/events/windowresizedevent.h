@@ -33,13 +33,15 @@ public:
         evtype=CER_WindowResizedEvent; 
     };
     
-    cWindowResizedEvent(unsigned int timestamp, unsigned int new_width, unsigned int new_height) { 
+    cWindowResizedEvent(unsigned int timestamp, unsigned int winId, unsigned int new_width, unsigned int new_height) { 
         evtype = CER_WindowResizedEvent;
         evtimestamp = timestamp;
+        windowId = winId;
         width = new_width;
         height = new_height;
     };
     unsigned int evtimestamp;
+    unsigned int windowId;
     unsigned int width;
     unsigned int height;
 };

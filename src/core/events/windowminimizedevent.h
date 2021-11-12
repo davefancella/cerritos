@@ -33,11 +33,13 @@ public:
         evtype=CER_WindowMinimizedEvent; 
     };
     
-    cWindowMinimizedEvent(unsigned int timestamp) { 
+    cWindowMinimizedEvent(unsigned int timestamp, unsigned int winId) { 
         evtype = CER_WindowMinimizedEvent;
         evtimestamp = timestamp;
+        windowId = winId;
     };
     unsigned int evtimestamp;
+    unsigned int windowId;
 };
 
 #endif // WINDOWMINIMIZEDEVENT__H
