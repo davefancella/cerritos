@@ -15,20 +15,20 @@
 import os, sys
 
 printHeaders = False
-saveHeaders = False
+saveHeaders = True
 
 printSwitch = False
-saveSwitch = False
+saveSwitch = True
 
 printIncludes = False
-saveIncludes = False
+saveIncludes = True
 
-saveEnums = False
+saveEnums = True
 saveEventClass = True
 saveEventProcessor = True
 
 srcDir = "../src/"
-eventDir = "core/events/"
+eventDir = "core/events/hardware"
 eventDir = os.path.join(srcDir, eventDir)
 
 def main():
@@ -241,7 +241,7 @@ def main():
             print(headerText)
         
         if(saveHeaders):
-            aFile = open(eventDir + headerName, "w")
+            aFile = open(os.path.join(eventDir,headerName), "w")
             aFile.write(headerText)
             aFile.close()
             

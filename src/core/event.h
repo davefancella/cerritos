@@ -40,13 +40,11 @@ class cEvent {
 public:
     CER_EventType type() { return this->evtype; };
     
-    unsigned int timestamp() { return this->evtimestamp; };
-    unsigned int windowId() { return this->evwindowId; };
+    bool isActive() { return this->active; };
     
 protected:
     CER_EventType evtype;
-    unsigned int evtimestamp;
-    unsigned int evwindowId;
+    bool active = true;
 };
 
 // The class that manages the event queue

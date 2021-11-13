@@ -21,6 +21,7 @@ target_include_directories(cerritos PUBLIC
     backend
     core
     core/events
+    core/events/hardware
     widgets
 )
 

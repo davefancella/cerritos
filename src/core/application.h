@@ -29,7 +29,7 @@
 #include "event.h"
 #include "mainwindow.h"
 
-class cApplication : public cObject {
+class cApplication : public cObject, public cHardwareEventReceiver {
 public:
     cApplication();
     
