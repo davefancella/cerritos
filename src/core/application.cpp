@@ -29,6 +29,10 @@
 #include "application.h"
 #include "event.h"
 
+// This is a generated file that contains the macro for processing
+// hardware events.
+#include "hardwareeventprocessor.h"
+
 cApplication::cApplication() {
     // Start by setting up the timestep
     unsigned int newTimestep = GetTicks();
@@ -132,10 +136,7 @@ void cApplication::EndUpdate() {
 // Process one event internally.
 void cApplication::ProcessOneEventI(cEvent* evt) {
     switch(evt->type() ) {
-        case CER_MouseMotionEvent:
-            if(this->mainwindow != NULL)
-                this->mainwindow->onMouseOver(static_cast<cMouseMotionEvent*>(evt) );
-            break;
+        PROCESSHARDWAREEVENTS
         default:
             break;
     }

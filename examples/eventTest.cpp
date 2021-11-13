@@ -35,19 +35,12 @@
 
 #include "event.h"
 
-class etApplication : public cApplication {
+class etMainWindow : public cMainWindow {
 public:
-    etApplication() : cApplication::cApplication() { };
-    
-    void ProcessOneEvent(cEvent* evt) {
-        if(evt->type() == CER_MouseMotionEvent) {
-            std::cout << "Mouse Motion: x(" 
-            << static_cast<cMouseMotionEvent*>( evt )->posx
-            << ") y("
-            << static_cast<cMouseMotionEvent*>( evt )->posy
-            << ")"
-            << std::endl;
-        }
+    void onMouseMotion(cMouseMotionEvent* evt) {
+        std::cout << "Mouse Motion: "
+        << "x(" << evt->posx << ") y(" << evt->posy << ")"
+        << std::endl;
     }
 };
 
@@ -60,8 +53,8 @@ int main( int argc, char* args[] ) {
 
     cInit();
     
-    theApp = new etApplication();
-    theWindow = new cMainWindow();
+    theApp = new cApplication();
+    theWindow = new etMainWindow();
     
     theApp->setMainWindow(theWindow);
     theWindow->setTitle("Hello, World!");

@@ -29,7 +29,9 @@
 
 #include "event.h"
 
-class cWidget : public cObject {
+#include "hardwareeventreceiver.h"
+
+class cWidget : public cObject, public cHardwareEventReceiver {
     
 // Following are event handlers for widgets.
 public:

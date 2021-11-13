@@ -15,28 +15,32 @@
 import os, sys
 
 printHeaders = False
-saveHeaders = True
+saveHeaders = False
 
 printSwitch = False
-saveSwitch = True
+saveSwitch = False
 
 printIncludes = False
-saveIncludes = True
+saveIncludes = False
 
-saveEnums = True
+saveEnums = False
+saveEventClass = True
+saveEventProcessor = True
 
 srcDir = "../src/"
 eventDir = "core/events/"
+eventDir = os.path.join(srcDir, eventDir)
 
 def main():
     global printHeaders, saveHeaders, printSwitch, saveSwitch, printIncludes, saveIncludes
     global eventDir
 
     caseFile = os.path.join(srcDir, "backend", "sdl_poll_hardware_events.cpp")
-    eventDir = os.path.join(srcDir, eventDir)
     includeFile = os.path.join(eventDir, "hardwareevents.h")
     hardwareEnumFile = os.path.join(eventDir, "sdl_hardwareventEnum.h")
     #hardwareEnumFile = os.path.join("./", "sdl_hardwareventEnum.h")
+    eventClassFile = os.path.join(eventDir, "hardwareeventreceiver.h")
+    eventProcessorFile = os.path.join(eventDir, "hardwareeventprocessor.h")
 
     maxLength = 0
 
@@ -110,7 +114,17 @@ def main():
         aFile = open(hardwareEnumFile, "w")
         aFile.write(beginHardwareEnums)
         aFile.close()
+        
+    if(saveEventClass):
+        aFile = open(eventClassFile, "w")
+        aFile.write(beginEventHandlerClass)
+        aFile.close()
     
+    if(saveEventProcessor):
+        aFile = open(eventProcessorFile, "w")
+        aFile.write(beginEventProcessor)
+        aFile.close()
+
     for a in evList:
         sdlEvent = a['SDL']
 
@@ -122,6 +136,7 @@ def main():
         cerName = "CER_"
         headerName = ""
         className = "c"
+        eventHandlerName = "on"
         
         for b in theValues:
             if b == "SDL": continue
@@ -129,9 +144,10 @@ def main():
             
             b = b.replace("EVENT", "")
             
-            cerName = cerName + b.capitalize()
+            cerName += b.capitalize()
             className += b.capitalize()
             headerName += b.lower()
+            eventHandlerName += b.capitalize()
         
         headerNameCaps = headerName.upper() + "EVENT"
         headerName += "event.h"
@@ -141,6 +157,7 @@ def main():
         for c in capStrings:
             cerName = cerName.replace(c.lower(), c)
             className = className.replace(c.lower(), c)
+            eventHandlerName = eventHandlerName.replace(c.lower(), c)
 
         # print the new cerritos enum name for this event
         #print(f'    {cerName},')
@@ -205,6 +222,13 @@ def main():
         # print or write the include statement needed
         includeString = '#include "' + headerName + '"'
         
+        functionString = eventHandlerFunction.replace("$funcname", eventHandlerName)
+        functionString = functionString.replace("$eventtype", className)
+        
+        eventProcessorString = eventProcessor.replace("$eventtype", cerName)
+        eventProcessorString = eventProcessorString.replace("$eventhandler", eventHandlerName)
+        eventProcessorString = eventProcessorString.replace("$eventclass", className)
+        
         if(printIncludes): print(includeString)
         
         if(saveIncludes):
@@ -236,6 +260,17 @@ def main():
             for line in casestatement.split("\n"):
                 aFile.write(line + "\n")
             aFile.close()
+            
+        if(saveEventClass):
+            aFile = open(eventClassFile, "a")
+            aFile.write(functionString + "\n\n")
+            aFile.close()
+            
+        if(saveEventProcessor):
+            aFile = open(eventProcessorFile, "a")
+            aFile.write(eventProcessorString + "\n")
+            aFile.close()
+            
     if(saveSwitch):
         aFile = open(caseFile, "a")
         aFile.write(endSDLPoller)
@@ -247,6 +282,14 @@ def main():
     if(saveEnums):
         aFile = open(hardwareEnumFile, "a")
         aFile.write(endHardwareEnums)
+        aFile.close()
+    if(saveEventClass):
+        aFile = open(eventClassFile, "a")
+        aFile.write(endEventHandlerClass)
+        aFile.close()
+    if(saveEventProcessor):
+        aFile = open(eventProcessorFile, "a")
+        aFile.write(endEventProcessor)
         aFile.close()
     
             
@@ -423,6 +466,84 @@ beginHardwareEnums = '''/*
 '''
 
 endHardwareEnums = '''
+
+'''
+
+beginEventHandlerClass = '''/*
+ * Cerritos
+ * Copyright 2021 by Dave Fancella, Anthony Fancella
+ * 
+ * Permission is hereby granted, free of charge, to any person obtaining a 
+ * copy of this software and associated documentation files (the "Software"), 
+ * to deal in the Software without restriction, including without limitation 
+ * the rights to use, copy, modify, merge, publish, distribute, sublicense, 
+ * and/or sell copies of the Software, and to permit persons to whom the 
+ * Software is furnished to do so, subject to the following conditions:
+ * 
+ * The above copyright notice and this permission notice shall be included 
+ * in all copies or substantial portions of the Software.
+ * 
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS 
+ * OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING 
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+ * IN THE SOFTWARE.
+ * 
+ */
+
+#include "event.h"
+
+// This file is periodically generated.  Do not edit it directly.
+
+class cHardwareEventReceiver {
+public:
+    cHardwareEventReceiver() { };
+    
+'''
+
+eventHandlerFunction = '    virtual void $funcname($eventtype* event) { };'
+
+endEventHandlerClass = '''};
+
+'''
+
+beginEventProcessor = '''/*
+ * Cerritos
+ * Copyright 2021 by Dave Fancella, Anthony Fancella
+ * 
+ * Permission is hereby granted, free of charge, to any person obtaining a 
+ * copy of this software and associated documentation files (the "Software"), 
+ * to deal in the Software without restriction, including without limitation 
+ * the rights to use, copy, modify, merge, publish, distribute, sublicense, 
+ * and/or sell copies of the Software, and to permit persons to whom the 
+ * Software is furnished to do so, subject to the following conditions:
+ * 
+ * The above copyright notice and this permission notice shall be included 
+ * in all copies or substantial portions of the Software.
+ * 
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS 
+ * OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING 
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+ * IN THE SOFTWARE.
+ * 
+ */
+
+// This file is periodically generated.  Do not edit it directly.
+
+#define PROCESSHARDWAREEVENTS \\
+'''
+
+eventProcessor = '''        case $eventtype: \\
+            if(this->mainwindow != NULL) \\
+                this->mainwindow->$eventhandler(static_cast<$eventclass*>(evt) ); \\
+            break; \\'''
+
+endEventProcessor = '''
 
 '''
 
