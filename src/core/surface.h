@@ -22,38 +22,18 @@
  * 
  */
 
+#ifndef SURFACE__H
+#define SURFACE__H
 
-/* This file is the base header file you need to include to use davenetgame.
- */
+#include "backend.h"
 
-#ifndef CERRITOSCORE_H
-#define CERRITOSCORE_H
-
-#include "list.h"
-
-/** The base class for all cerritos objects
- */
-class cObject {
+class cSurface {
 public:
-    cObject();
-    cObject(cObject* parent) : mParent(parent) { }
     
-    // Call to update an object in a game loop.  Not all objects need this.
-    virtual void Update() { };
-    
-protected:
-    cObject* mParent;
-    cList<cObject*> mChildren;
+private:
+    cSurfaceS* mSurface;
 };
 
-// Timesteps are such an integral part of everything that happens in a game
-// that the timestep class is included here.
-class TimeStep {
-public:   
-    unsigned int fromBeginning;
-    unsigned int fromLast;
-};
+#endif // SURFACE__H
 
-
-#endif
 

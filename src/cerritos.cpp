@@ -41,13 +41,13 @@ void PrintCerritosVersion() {
  */
 void cInit() {
     PrintCerritosVersion();
-    backendInit(SDL_INIT_VIDEO|SDL_INIT_AUDIO);
+    backendInit();
 };
 
 /// Initializes and creates a default application object
 cApplication* cInitApp(CER_WindowFlags winFlags) {
     PrintCerritosVersion();
-    if(backendInit(SDL_INIT_VIDEO|SDL_INIT_AUDIO) == -1)
+    if(backendInit() == -1)
         return NULL;
     
     cApplication* theApp = new cApplication();

@@ -24,16 +24,25 @@
 
 #include "widget.h"
 
+void cWidget::process_event(cEvent* event) {
+    for (auto i = mChildren.begin(); i != mChildren.end(); ++i) {
+        static_cast<cWidget*>(*i)->process_event(event);
+    }
+    if(event->isActive() ) {
+        cBaseEventReceiver::process_event(event);
+    }
+}
+
 /***********************************************************
  * Event Handlers
  * *********************************************************/
 
 // Mouse events
-void cWidget::onMouseOver(cMouseMotionEvent* event) { }
-void cWidget::onMouseButtonDown(cMouseButtondownEvent* event) { }
-void cWidget::onMouseButtonUp(cMouseButtonupEvent* event) { }
+//void cWidget::onMouseOver(cMouseMotionEvent* event) { }
+//void cWidget::onMouseButtonDown(cMouseButtondownEvent* event) { }
+//void cWidget::onMouseButtonUp(cMouseButtonupEvent* event) { }
 
 // Keyboard events
-void cWidget::onKeydown(cKeydownEvent* event) { }
-void cWidget::onKeyup(cKeyupEvent* event) { }
+//void cWidget::onKeydown(cKeydownEvent* event) { }
+//void cWidget::onKeyup(cKeyupEvent* event) { }
 

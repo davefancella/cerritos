@@ -38,10 +38,10 @@ void Delay(unsigned int ms) {
     SDL_Delay(ms);
 }
 
-int backendInit(unsigned int flags) {
+int backendInit() {
     int successCode;
     
-    successCode = SDL_Init(flags);
+    successCode = SDL_Init(SDL_INIT_VIDEO|SDL_INIT_AUDIO);
     if(successCode == -1) {
         std::cout << "SDL_Init: " << SDL_GetError();
         return -1;
@@ -54,4 +54,40 @@ void backendClose() {
     SDL_Quit();
 }
 
+int BlitSurface(cSurfaceS* src, const cRect* srcrect,
+                    cSurfaceS* dst, cRect* dstrect) {
+    return SDL_BlitSurface(src, srcrect, dst, dstrect);
+}
+
+cSurfaceS* ConvertSurface(cSurfaceS * src, const cPixelFormat * fmt, unsigned int flags) {
+    return static_cast<cSurfaceS*>(SDL_ConvertSurface(
+        src, fmt, flags) );
+}
+
+/*
+SDL_CreateRGBSurface
+SDL_CreateRGBSurfaceFrom
+SDL_FillRect
+SDL_FillRects
+SDL_FreeSurface
+SDL_GetClipRect
+SDL_GetColorKey
+SDL_GetSurfaceAlphaMod
+SDL_GetSurfaceBlendMode
+SDL_GetSurfaceColorMod
+SDL_LoadBMP_RW
+SDL_LockSurface
+SDL_LowerBlit
+SDL_MUSTLOCK
+SDL_SaveBMP_RW
+SDL_SetClipRect
+SDL_SetColorKey
+SDL_SetSurfaceAlphaMod
+SDL_SetSurfaceBlendMode
+SDL_SetSurfaceColorMod
+SDL_SetSurfacePalette
+SDL_SetSurfaceRLE
+SDL_SoftStretch
+SDL_UnlockSurface
+*/
 

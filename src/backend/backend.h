@@ -39,11 +39,47 @@ unsigned int GetTicks();
 void Delay(unsigned int ms);
 
 // Initialize the backend
-int backendInit(unsigned int flags);
+int backendInit();
 void backendClose();
 
 // Poll backend for hardware events and put them in the event manager
 void PollHardwareEvents(cEventManager* eventManager);
+
+// All the stuff needed to work with surfaces
+
+// This is a forward declaration.  Typically, you'll define this in
+// your backend.  Currently, these are just placeholders for SDL stuff.
+struct cSurfaceS;
+struct cRect;
+struct cPixelFormat;
+
+int BlitSurface(cSurfaceS* src, const cRect* srcrect,
+                    cSurfaceS* dst, cRect* dstrect);
+cSurfaceS* ConvertSurface(cSurfaceS * src, const cPixelFormat * fmt, unsigned int flags);
+int CreateRGBSurface();
+int CreateRGBSurfaceFrom();
+int FillRect();
+int FillRects();
+int FreeSurface();
+int GetClipRect();
+int GetColorKey();
+int GetSurfaceAlphaMod();
+int GetSurfaceBlendMode();
+int GetSurfaceColorMod();
+int LoadBMP_RW();
+int LockSurface();
+int LowerBlit();
+int MUSTLOCK();
+int SaveBMP_RW();
+int SetClipRect();
+int SetColorKey();
+int SetSurfaceAlphaMod();
+int SetSurfaceBlendMode();
+int SetSurfaceColorMod();
+int SetSurfacePalette();
+int SetSurfaceRLE();
+int SoftStretch();
+int UnlockSurface();
 
 // These are the enums that a backend must provide
 

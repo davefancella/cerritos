@@ -135,10 +135,13 @@ void cApplication::EndUpdate() {
 
 // Process one event internally.
 void cApplication::ProcessOneEventI(cEvent* evt) {
-    switch(evt->type() ) {
-        PROCESSHARDWAREEVENTS
-        default:
-            break;
+    // First delegate the event to the gui
+    if(this->mainwindow != NULL) {
+        this->mainwindow->process_event(evt);
     }
+    
+    // If it's still an active event, handle it here
+    if(evt->isActive() )
+        this->process_event(evt);
 }
 

@@ -27,9 +27,11 @@
 
 #include "object.h"
 #include "event.h"
+#include "eventreceiver.h"
 #include "mainwindow.h"
 
-class cApplication : public cObject, public cHardwareEventReceiver {
+class cApplication : public cObject,
+                     public cBaseEventReceiver {
 public:
     cApplication();
     

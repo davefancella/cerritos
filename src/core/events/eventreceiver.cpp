@@ -22,38 +22,18 @@
  * 
  */
 
+#include "eventreceiver.h"
 
-/* This file is the base header file you need to include to use davenetgame.
- */
+#include "hardwareeventprocessor.h"
 
-#ifndef CERRITOSCORE_H
-#define CERRITOSCORE_H
+void cBaseEventReceiver::process_event(cEvent* event) {
+    if(event->isActive() ) {
+        switch(event->type() ) {
+            PROCESSHARDWAREEVENTS
+            default:
+                break;
+        }
+    }
+}
 
-#include "list.h"
-
-/** The base class for all cerritos objects
- */
-class cObject {
-public:
-    cObject();
-    cObject(cObject* parent) : mParent(parent) { }
-    
-    // Call to update an object in a game loop.  Not all objects need this.
-    virtual void Update() { };
-    
-protected:
-    cObject* mParent;
-    cList<cObject*> mChildren;
-};
-
-// Timesteps are such an integral part of everything that happens in a game
-// that the timestep class is included here.
-class TimeStep {
-public:   
-    unsigned int fromBeginning;
-    unsigned int fromLast;
-};
-
-
-#endif
 

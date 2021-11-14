@@ -22,6 +22,9 @@
  * 
  */
 
+#ifndef HARDWAREEVENTRECEIVER__H
+#define HARDWAREEVENTRECEIVER__H
+
 #include "event.h"
 
 // This file is periodically generated.  Do not edit it directly.
@@ -139,4 +142,7 @@ public:
     virtual void onRenderDeviceReset(cRenderDeviceResetEvent* event) { };
 
 };
+
+#endif // HARDWAREEVENTRECEIVER__H
+
 

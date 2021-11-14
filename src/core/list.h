@@ -22,38 +22,14 @@
  * 
  */
 
+#ifndef LIST__H
+#define LIST__H
 
-/* This file is the base header file you need to include to use davenetgame.
- */
+#include <vector>
 
-#ifndef CERRITOSCORE_H
-#define CERRITOSCORE_H
+template<typename T>
+using cList = std::vector<T>;
 
-#include "list.h"
+#endif // LIST__H
 
-/** The base class for all cerritos objects
- */
-class cObject {
-public:
-    cObject();
-    cObject(cObject* parent) : mParent(parent) { }
-    
-    // Call to update an object in a game loop.  Not all objects need this.
-    virtual void Update() { };
-    
-protected:
-    cObject* mParent;
-    cList<cObject*> mChildren;
-};
-
-// Timesteps are such an integral part of everything that happens in a game
-// that the timestep class is included here.
-class TimeStep {
-public:   
-    unsigned int fromBeginning;
-    unsigned int fromLast;
-};
-
-
-#endif
 

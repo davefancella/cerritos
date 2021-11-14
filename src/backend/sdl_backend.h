@@ -29,6 +29,10 @@
 
 #include "backend.h"
 
+struct cSurfaceS : SDL_Surface { };
+struct cRect : SDL_Rect { };
+struct cPixelFormat : SDL_PixelFormat { };
+
 /** Window flags
  */
 typedef enum {
@@ -295,7 +299,7 @@ typedef enum {
 
 unsigned int GetTicks();
 void Delay(unsigned int ms);
-int backendInit(unsigned int flags);
+int backendInit();
 void backendClose();
 void PollHardwareEvents(cEventManager* eventManager);
 

@@ -29,20 +29,18 @@
 
 #include "event.h"
 
+#include "eventreceiver.h"
 #include "hardwareeventreceiver.h"
 
-class cWidget : public cObject, public cHardwareEventReceiver {
-    
+class cWidget : public cObject, 
+                public cBaseEventReceiver {
+public:
+    cWidget(cWidget* parent=NULL) { mParent = dynamic_cast<cObject*>(parent); };
+
+    virtual void process_event(cEvent* event);
 // Following are event handlers for widgets.
 public:
-    // Mouse events
-    virtual void onMouseOver(cMouseMotionEvent* event);
-    virtual void onMouseButtonDown(cMouseButtondownEvent* event);
-    virtual void onMouseButtonUp(cMouseButtonupEvent* event);
-
-    // Keyboard events
-    virtual void onKeydown(cKeydownEvent* event);
-    virtual void onKeyup(cKeyupEvent* event);
+    // virtual void onNameofeventCamelCase(cNameofeventCamelCaseEvent* event);
 };
 
 #endif // WIDGET__H

@@ -26,220 +26,166 @@
 
 #define PROCESSHARDWAREEVENTS \
         case CER_QuitEvent: \
-            if(this->mainwindow != NULL) \
-                this->mainwindow->onQuit(static_cast<cQuitEvent*>(evt) ); \
+            this->onQuit(static_cast<cQuitEvent*>(event) ); \
             break; \
         case CER_WindowShownEvent: \
-            if(this->mainwindow != NULL) \
-                this->mainwindow->onWindowShown(static_cast<cWindowShownEvent*>(evt) ); \
+            this->onWindowShown(static_cast<cWindowShownEvent*>(event) ); \
             break; \
         case CER_WindowHiddenEvent: \
-            if(this->mainwindow != NULL) \
-                this->mainwindow->onWindowHidden(static_cast<cWindowHiddenEvent*>(evt) ); \
+            this->onWindowHidden(static_cast<cWindowHiddenEvent*>(event) ); \
             break; \
         case CER_WindowExposedEvent: \
-            if(this->mainwindow != NULL) \
-                this->mainwindow->onWindowExposed(static_cast<cWindowExposedEvent*>(evt) ); \
+            this->onWindowExposed(static_cast<cWindowExposedEvent*>(event) ); \
             break; \
         case CER_WindowMovedEvent: \
-            if(this->mainwindow != NULL) \
-                this->mainwindow->onWindowMoved(static_cast<cWindowMovedEvent*>(evt) ); \
+            this->onWindowMoved(static_cast<cWindowMovedEvent*>(event) ); \
             break; \
         case CER_WindowResizedEvent: \
-            if(this->mainwindow != NULL) \
-                this->mainwindow->onWindowResized(static_cast<cWindowResizedEvent*>(evt) ); \
+            this->onWindowResized(static_cast<cWindowResizedEvent*>(event) ); \
             break; \
         case CER_WindowSizeChangedEvent: \
-            if(this->mainwindow != NULL) \
-                this->mainwindow->onWindowSizeChanged(static_cast<cWindowSizeChangedEvent*>(evt) ); \
+            this->onWindowSizeChanged(static_cast<cWindowSizeChangedEvent*>(event) ); \
             break; \
         case CER_WindowMinimizedEvent: \
-            if(this->mainwindow != NULL) \
-                this->mainwindow->onWindowMinimized(static_cast<cWindowMinimizedEvent*>(evt) ); \
+            this->onWindowMinimized(static_cast<cWindowMinimizedEvent*>(event) ); \
             break; \
         case CER_WindowMaximizedEvent: \
-            if(this->mainwindow != NULL) \
-                this->mainwindow->onWindowMaximized(static_cast<cWindowMaximizedEvent*>(evt) ); \
+            this->onWindowMaximized(static_cast<cWindowMaximizedEvent*>(event) ); \
             break; \
         case CER_WindowRestoredEvent: \
-            if(this->mainwindow != NULL) \
-                this->mainwindow->onWindowRestored(static_cast<cWindowRestoredEvent*>(evt) ); \
+            this->onWindowRestored(static_cast<cWindowRestoredEvent*>(event) ); \
             break; \
         case CER_WindowEnterEvent: \
-            if(this->mainwindow != NULL) \
-                this->mainwindow->onWindowEnter(static_cast<cWindowEnterEvent*>(evt) ); \
+            this->onWindowEnter(static_cast<cWindowEnterEvent*>(event) ); \
             break; \
         case CER_WindowLeaveEvent: \
-            if(this->mainwindow != NULL) \
-                this->mainwindow->onWindowLeave(static_cast<cWindowLeaveEvent*>(evt) ); \
+            this->onWindowLeave(static_cast<cWindowLeaveEvent*>(event) ); \
             break; \
         case CER_WindowFocusGainedEvent: \
-            if(this->mainwindow != NULL) \
-                this->mainwindow->onWindowFocusGained(static_cast<cWindowFocusGainedEvent*>(evt) ); \
+            this->onWindowFocusGained(static_cast<cWindowFocusGainedEvent*>(event) ); \
             break; \
         case CER_WindowFocusLostEvent: \
-            if(this->mainwindow != NULL) \
-                this->mainwindow->onWindowFocusLost(static_cast<cWindowFocusLostEvent*>(evt) ); \
+            this->onWindowFocusLost(static_cast<cWindowFocusLostEvent*>(event) ); \
             break; \
         case CER_WindowCloseEvent: \
-            if(this->mainwindow != NULL) \
-                this->mainwindow->onWindowClose(static_cast<cWindowCloseEvent*>(evt) ); \
+            this->onWindowClose(static_cast<cWindowCloseEvent*>(event) ); \
             break; \
         case CER_WindowTakeFocusEvent: \
-            if(this->mainwindow != NULL) \
-                this->mainwindow->onWindowTakeFocus(static_cast<cWindowTakeFocusEvent*>(evt) ); \
+            this->onWindowTakeFocus(static_cast<cWindowTakeFocusEvent*>(event) ); \
             break; \
         case CER_WindowHitTestEvent: \
-            if(this->mainwindow != NULL) \
-                this->mainwindow->onWindowHitTest(static_cast<cWindowHitTestEvent*>(evt) ); \
+            this->onWindowHitTest(static_cast<cWindowHitTestEvent*>(event) ); \
             break; \
         case CER_KeydownEvent: \
-            if(this->mainwindow != NULL) \
-                this->mainwindow->onKeydown(static_cast<cKeydownEvent*>(evt) ); \
+            this->onKeydown(static_cast<cKeydownEvent*>(event) ); \
             break; \
         case CER_KeyupEvent: \
-            if(this->mainwindow != NULL) \
-                this->mainwindow->onKeyup(static_cast<cKeyupEvent*>(evt) ); \
+            this->onKeyup(static_cast<cKeyupEvent*>(event) ); \
             break; \
         case CER_TextEditingEvent: \
-            if(this->mainwindow != NULL) \
-                this->mainwindow->onTextEditing(static_cast<cTextEditingEvent*>(evt) ); \
+            this->onTextEditing(static_cast<cTextEditingEvent*>(event) ); \
             break; \
         case CER_TextInputEvent: \
-            if(this->mainwindow != NULL) \
-                this->mainwindow->onTextInput(static_cast<cTextInputEvent*>(evt) ); \
+            this->onTextInput(static_cast<cTextInputEvent*>(event) ); \
             break; \
         case CER_KeymapchangedEvent: \
-            if(this->mainwindow != NULL) \
-                this->mainwindow->onKeymapchanged(static_cast<cKeymapchangedEvent*>(evt) ); \
+            this->onKeymapchanged(static_cast<cKeymapchangedEvent*>(event) ); \
             break; \
         case CER_MouseButtondownEvent: \
-            if(this->mainwindow != NULL) \
-                this->mainwindow->onMouseButtondown(static_cast<cMouseButtondownEvent*>(evt) ); \
+            this->onMouseButtondown(static_cast<cMouseButtondownEvent*>(event) ); \
             break; \
         case CER_MouseMotionEvent: \
-            if(this->mainwindow != NULL) \
-                this->mainwindow->onMouseMotion(static_cast<cMouseMotionEvent*>(evt) ); \
+            this->onMouseMotion(static_cast<cMouseMotionEvent*>(event) ); \
             break; \
         case CER_MouseButtonupEvent: \
-            if(this->mainwindow != NULL) \
-                this->mainwindow->onMouseButtonup(static_cast<cMouseButtonupEvent*>(evt) ); \
+            this->onMouseButtonup(static_cast<cMouseButtonupEvent*>(event) ); \
             break; \
         case CER_MouseWheelEvent: \
-            if(this->mainwindow != NULL) \
-                this->mainwindow->onMouseWheel(static_cast<cMouseWheelEvent*>(evt) ); \
+            this->onMouseWheel(static_cast<cMouseWheelEvent*>(event) ); \
             break; \
         case CER_JoyAxisMotionEvent: \
-            if(this->mainwindow != NULL) \
-                this->mainwindow->onJoyAxisMotion(static_cast<cJoyAxisMotionEvent*>(evt) ); \
+            this->onJoyAxisMotion(static_cast<cJoyAxisMotionEvent*>(event) ); \
             break; \
         case CER_JoyBallMotionEvent: \
-            if(this->mainwindow != NULL) \
-                this->mainwindow->onJoyBallMotion(static_cast<cJoyBallMotionEvent*>(evt) ); \
+            this->onJoyBallMotion(static_cast<cJoyBallMotionEvent*>(event) ); \
             break; \
         case CER_JoyHatMotionEvent: \
-            if(this->mainwindow != NULL) \
-                this->mainwindow->onJoyHatMotion(static_cast<cJoyHatMotionEvent*>(evt) ); \
+            this->onJoyHatMotion(static_cast<cJoyHatMotionEvent*>(event) ); \
             break; \
         case CER_JoyButtondownEvent: \
-            if(this->mainwindow != NULL) \
-                this->mainwindow->onJoyButtondown(static_cast<cJoyButtondownEvent*>(evt) ); \
+            this->onJoyButtondown(static_cast<cJoyButtondownEvent*>(event) ); \
             break; \
         case CER_JoyButtonupEvent: \
-            if(this->mainwindow != NULL) \
-                this->mainwindow->onJoyButtonup(static_cast<cJoyButtonupEvent*>(evt) ); \
+            this->onJoyButtonup(static_cast<cJoyButtonupEvent*>(event) ); \
             break; \
         case CER_JoyDeviceAddedEvent: \
-            if(this->mainwindow != NULL) \
-                this->mainwindow->onJoyDeviceAdded(static_cast<cJoyDeviceAddedEvent*>(evt) ); \
+            this->onJoyDeviceAdded(static_cast<cJoyDeviceAddedEvent*>(event) ); \
             break; \
         case CER_JoyDeviceRemovedEvent: \
-            if(this->mainwindow != NULL) \
-                this->mainwindow->onJoyDeviceRemoved(static_cast<cJoyDeviceRemovedEvent*>(evt) ); \
+            this->onJoyDeviceRemoved(static_cast<cJoyDeviceRemovedEvent*>(event) ); \
             break; \
         case CER_ControllerAxisMotionEvent: \
-            if(this->mainwindow != NULL) \
-                this->mainwindow->onControllerAxisMotion(static_cast<cControllerAxisMotionEvent*>(evt) ); \
+            this->onControllerAxisMotion(static_cast<cControllerAxisMotionEvent*>(event) ); \
             break; \
         case CER_ControllerButtondownEvent: \
-            if(this->mainwindow != NULL) \
-                this->mainwindow->onControllerButtondown(static_cast<cControllerButtondownEvent*>(evt) ); \
+            this->onControllerButtondown(static_cast<cControllerButtondownEvent*>(event) ); \
             break; \
         case CER_ControllerButtonupEvent: \
-            if(this->mainwindow != NULL) \
-                this->mainwindow->onControllerButtonup(static_cast<cControllerButtonupEvent*>(evt) ); \
+            this->onControllerButtonup(static_cast<cControllerButtonupEvent*>(event) ); \
             break; \
         case CER_ControllerDeviceAddedEvent: \
-            if(this->mainwindow != NULL) \
-                this->mainwindow->onControllerDeviceAdded(static_cast<cControllerDeviceAddedEvent*>(evt) ); \
+            this->onControllerDeviceAdded(static_cast<cControllerDeviceAddedEvent*>(event) ); \
             break; \
         case CER_ControllerDeviceRemovedEvent: \
-            if(this->mainwindow != NULL) \
-                this->mainwindow->onControllerDeviceRemoved(static_cast<cControllerDeviceRemovedEvent*>(evt) ); \
+            this->onControllerDeviceRemoved(static_cast<cControllerDeviceRemovedEvent*>(event) ); \
             break; \
         case CER_ControllerDeviceRemappedEvent: \
-            if(this->mainwindow != NULL) \
-                this->mainwindow->onControllerDeviceRemapped(static_cast<cControllerDeviceRemappedEvent*>(evt) ); \
+            this->onControllerDeviceRemapped(static_cast<cControllerDeviceRemappedEvent*>(event) ); \
             break; \
         case CER_FingerdownEvent: \
-            if(this->mainwindow != NULL) \
-                this->mainwindow->onFingerdown(static_cast<cFingerdownEvent*>(evt) ); \
+            this->onFingerdown(static_cast<cFingerdownEvent*>(event) ); \
             break; \
         case CER_FingerupEvent: \
-            if(this->mainwindow != NULL) \
-                this->mainwindow->onFingerup(static_cast<cFingerupEvent*>(evt) ); \
+            this->onFingerup(static_cast<cFingerupEvent*>(event) ); \
             break; \
         case CER_FingerMotionEvent: \
-            if(this->mainwindow != NULL) \
-                this->mainwindow->onFingerMotion(static_cast<cFingerMotionEvent*>(evt) ); \
+            this->onFingerMotion(static_cast<cFingerMotionEvent*>(event) ); \
             break; \
         case CER_DollarGestureEvent: \
-            if(this->mainwindow != NULL) \
-                this->mainwindow->onDollarGesture(static_cast<cDollarGestureEvent*>(evt) ); \
+            this->onDollarGesture(static_cast<cDollarGestureEvent*>(event) ); \
             break; \
         case CER_DollarRecordEvent: \
-            if(this->mainwindow != NULL) \
-                this->mainwindow->onDollarRecord(static_cast<cDollarRecordEvent*>(evt) ); \
+            this->onDollarRecord(static_cast<cDollarRecordEvent*>(event) ); \
             break; \
         case CER_MultiGestureEvent: \
-            if(this->mainwindow != NULL) \
-                this->mainwindow->onMultiGesture(static_cast<cMultiGestureEvent*>(evt) ); \
+            this->onMultiGesture(static_cast<cMultiGestureEvent*>(event) ); \
             break; \
         case CER_ClipboardUpdateEvent: \
-            if(this->mainwindow != NULL) \
-                this->mainwindow->onClipboardUpdate(static_cast<cClipboardUpdateEvent*>(evt) ); \
+            this->onClipboardUpdate(static_cast<cClipboardUpdateEvent*>(event) ); \
             break; \
         case CER_DropFileEvent: \
-            if(this->mainwindow != NULL) \
-                this->mainwindow->onDropFile(static_cast<cDropFileEvent*>(evt) ); \
+            this->onDropFile(static_cast<cDropFileEvent*>(event) ); \
             break; \
         case CER_DropTextEvent: \
-            if(this->mainwindow != NULL) \
-                this->mainwindow->onDropText(static_cast<cDropTextEvent*>(evt) ); \
+            this->onDropText(static_cast<cDropTextEvent*>(event) ); \
             break; \
         case CER_DropBeginEvent: \
-            if(this->mainwindow != NULL) \
-                this->mainwindow->onDropBegin(static_cast<cDropBeginEvent*>(evt) ); \
+            this->onDropBegin(static_cast<cDropBeginEvent*>(event) ); \
             break; \
         case CER_DropCompleteEvent: \
-            if(this->mainwindow != NULL) \
-                this->mainwindow->onDropComplete(static_cast<cDropCompleteEvent*>(evt) ); \
+            this->onDropComplete(static_cast<cDropCompleteEvent*>(event) ); \
             break; \
         case CER_AudioDeviceAddedEvent: \
-            if(this->mainwindow != NULL) \
-                this->mainwindow->onAudioDeviceAdded(static_cast<cAudioDeviceAddedEvent*>(evt) ); \
+            this->onAudioDeviceAdded(static_cast<cAudioDeviceAddedEvent*>(event) ); \
             break; \
         case CER_AudioDeviceRemovedEvent: \
-            if(this->mainwindow != NULL) \
-                this->mainwindow->onAudioDeviceRemoved(static_cast<cAudioDeviceRemovedEvent*>(evt) ); \
+            this->onAudioDeviceRemoved(static_cast<cAudioDeviceRemovedEvent*>(event) ); \
             break; \
         case CER_RenderTargetsResetEvent: \
-            if(this->mainwindow != NULL) \
-                this->mainwindow->onRenderTargetsReset(static_cast<cRenderTargetsResetEvent*>(evt) ); \
+            this->onRenderTargetsReset(static_cast<cRenderTargetsResetEvent*>(event) ); \
             break; \
         case CER_RenderDeviceResetEvent: \
-            if(this->mainwindow != NULL) \
-                this->mainwindow->onRenderDeviceReset(static_cast<cRenderDeviceResetEvent*>(evt) ); \
+            this->onRenderDeviceReset(static_cast<cRenderDeviceResetEvent*>(event) ); \
             break; \
 
 

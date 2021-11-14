@@ -493,6 +493,9 @@ beginEventHandlerClass = '''/*
  * 
  */
 
+#ifndef HARDWAREEVENTRECEIVER__H
+#define HARDWAREEVENTRECEIVER__H
+
 #include "event.h"
 
 // This file is periodically generated.  Do not edit it directly.
@@ -506,6 +509,9 @@ public:
 eventHandlerFunction = '    virtual void $funcname($eventtype* event) { };'
 
 endEventHandlerClass = '''};
+
+#endif // HARDWAREEVENTRECEIVER__H
+
 
 '''
 
@@ -539,8 +545,7 @@ beginEventProcessor = '''/*
 '''
 
 eventProcessor = '''        case $eventtype: \\
-            if(this->mainwindow != NULL) \\
-                this->mainwindow->$eventhandler(static_cast<$eventclass*>(evt) ); \\
+            this->$eventhandler(static_cast<$eventclass*>(event) ); \\
             break; \\'''
 
 endEventProcessor = '''
