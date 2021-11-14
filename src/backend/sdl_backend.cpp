@@ -30,6 +30,10 @@
 
 #include "event.h"
 
+const char* GetError() {
+    return SDL_GetError();
+}
+
 unsigned int GetTicks() {
     return SDL_GetTicks();
 }
@@ -54,6 +58,22 @@ void backendClose() {
     SDL_Quit();
 }
 
+cWindow* CreateWindow(unicodestring title,
+                    int x, int y, int w,
+                    int h, Uint32 flags) {
+    return static_cast<cWindow*>(SDL_CreateWindow(title.data(),
+        x, y, w, h, flags) );
+}
+
+cSurfaceS* GetWindowSurface(cWindow* window) {
+    return static_cast<cSurfaceS*>(SDL_GetWindowSurface(
+        window) );
+}
+
+void DestroyWindow(cWindow* window) {
+    SDL_DestroyWindow(window);
+}
+
 int BlitSurface(cSurfaceS* src, const cRect* srcrect,
                     cSurfaceS* dst, cRect* dstrect) {
     return SDL_BlitSurface(src, srcrect, dst, dstrect);
@@ -62,6 +82,15 @@ int BlitSurface(cSurfaceS* src, const cRect* srcrect,
 cSurfaceS* ConvertSurface(cSurfaceS * src, const cPixelFormat * fmt, unsigned int flags) {
     return static_cast<cSurfaceS*>(SDL_ConvertSurface(
         src, fmt, flags) );
+}
+
+int FillRect(cSurfaceS* dst, const cRect* rect, unsigned int color) {
+    return SDL_FillRect(dst, rect, color);
+}
+
+unsigned int MapRGB(cPixelFormat* format,
+                  uint8_t r, uint8_t g, uint8_t b) {
+    return SDL_MapRGB(format, r, g, b);
 }
 
 /*

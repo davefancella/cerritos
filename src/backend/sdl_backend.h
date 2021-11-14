@@ -32,6 +32,7 @@
 struct cSurfaceS : SDL_Surface { };
 struct cRect : SDL_Rect { };
 struct cPixelFormat : SDL_PixelFormat { };
+//typedef cWindow SDL_Window;
 
 /** Window flags
  */
@@ -57,6 +58,8 @@ typedef enum {
     CER_Utility = SDL_WINDOW_UTILITY,
     CER_Tooltip = SDL_WINDOW_TOOLTIP,
     CER_PopupMenu = SDL_WINDOW_POPUP_MENU,
+    CER_WindowPos_Centered = SDL_WINDOWPOS_CENTERED,
+    CER_WindowPos_Undefined = SDL_WINDOWPOS_UNDEFINED,
 } CER_WindowFlags;
 
 typedef enum {

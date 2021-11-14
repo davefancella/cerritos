@@ -56,18 +56,18 @@ void cMainWindow::setSize(int width, int height) {
 /*
 cMainWindow::cMainWindow() 
         : Title("Cerritos Window"), width(800), height(600), 
-                posx(SDL_WINDOWPOS_CENTERED), posy(SDL_WINDOWPOS_CENTERED)
+                posx(CER_WindowPos_Centered), posy(CER_WindowPos_Centered),
                 {
     this->window = SDL_CreateWindow( this->Title.data(), 
             this->posx, this->posy,
             this->width, this->height, CER_Shown );
 
     if( this->window == NULL ) {
-        std::cout << "Window could not be created! SDL_Error: " <<
-            SDL_GetError() << std::endl;
+        std::cout << "Window could not be created! Backend: " <<
+            GetError() << std::endl;
     } else {
         //Get window surface
-        this->screenSurface = SDL_GetWindowSurface( this->window );
+        this->screenSurface = GetWindowSurface( this->window );
 
         //Fill the surface black
         SDL_FillRect( this->screenSurface, NULL, 
@@ -80,20 +80,18 @@ cMainWindow::cMainWindow()
 
 cMainWindow::cMainWindow(CER_WindowFlags winFlags) 
             : Title("Cerritos Window"), width(800), height(600), 
-                posx(SDL_WINDOWPOS_CENTERED), posy(SDL_WINDOWPOS_CENTERED),
+                posx(CER_WindowPos_Centered), posy(CER_WindowPos_Centered),
                 windowFlags(winFlags) {
-    this->window = SDL_CreateWindow( this->Title.data(), 
+    this->window = CreateWindow( this->Title, 
             this->posx, this->posy,
             this->width, this->height, this->windowFlags );
-
-    std::cout << "Created SDL window" << std::endl;
     
     if( this->window == NULL ) {
-        std::cout << "Window could not be created! SDL_Error: " <<
-            SDL_GetError() << std::endl;
+        std::cout << "Window could not be created! Backend: " <<
+            GetError() << std::endl;
     } else {
         //Get window surface
-        this->screenSurface = SDL_GetWindowSurface( this->window );
+        this->screenSurface = GetWindowSurface( this->window );
 
         //Fill the surface black
         SDL_FillRect( this->screenSurface, NULL, 
@@ -105,18 +103,18 @@ cMainWindow::cMainWindow(CER_WindowFlags winFlags)
 
 cMainWindow::cMainWindow(unicodestring title, CER_WindowFlags winFlags) 
             : Title(title), width(800), height(600), 
-                posx(SDL_WINDOWPOS_CENTERED), posy(SDL_WINDOWPOS_CENTERED),
+                posx(CER_WindowPos_Centered), posy(CER_WindowPos_Centered),
                 windowFlags(winFlags) {
-    this->window = SDL_CreateWindow( this->Title.data(), 
+    this->window = CreateWindow( this->Title, 
             this->posx, this->posy,
             this->width, this->height, SDL_WINDOW_SHOWN );
 
     if( this->window == NULL ) {
-        std::cout << "Window could not be created! SDL_Error: " <<
-            SDL_GetError() << std::endl;
+        std::cout << "Window could not be created! Backend: " <<
+            GetError() << std::endl;
     } else {
         //Get window surface
-        this->screenSurface = SDL_GetWindowSurface( this->window );
+        this->screenSurface = GetWindowSurface( this->window );
 
         //Fill the surface black
         SDL_FillRect( this->screenSurface, NULL, 
@@ -128,18 +126,18 @@ cMainWindow::cMainWindow(unicodestring title, CER_WindowFlags winFlags)
 
 cMainWindow::cMainWindow(unicodestring title, int width, int height, CER_WindowFlags winFlags) 
             : Title(title), width(width), height(height), 
-                posx(SDL_WINDOWPOS_CENTERED), posy(SDL_WINDOWPOS_CENTERED),
+                posx(CER_WindowPos_Centered), posy(CER_WindowPos_Centered),
                 windowFlags(winFlags) {
-    this->window = SDL_CreateWindow( this->Title.data(), 
+    this->window = CreateWindow( this->Title, 
             this->posx, this->posy,
             this->width, this->height, SDL_WINDOW_SHOWN );
 
     if( this->window == NULL ) {
-        std::cout << "Window could not be created! SDL_Error: " <<
-            SDL_GetError() << std::endl;
+        std::cout << "Window could not be created! Backend: " <<
+            GetError() << std::endl;
     } else {
         //Get window surface
-        this->screenSurface = SDL_GetWindowSurface( this->window );
+        this->screenSurface = GetWindowSurface( this->window );
 
         //Fill the surface black
         SDL_FillRect( this->screenSurface, NULL, 
@@ -153,16 +151,16 @@ cMainWindow::cMainWindow(unicodestring title, int width, int height, int posx, i
             : Title(title), width(width), height(height), 
                 posx(posx), posy(posy),
                 windowFlags(winFlags) {
-    this->window = SDL_CreateWindow( this->Title.data(), 
+    this->window = CreateWindow( this->Title, 
             this->posx, this->posy,
             this->width, this->height, SDL_WINDOW_SHOWN );
 
     if( this->window == NULL ) {
-        std::cout << "Window could not be created! SDL_Error: " <<
-            SDL_GetError() << std::endl;
+        std::cout << "Window could not be created! Backend: " <<
+            GetError() << std::endl;
     } else {
         //Get window surface
-        this->screenSurface = SDL_GetWindowSurface( this->window );
+        this->screenSurface = GetWindowSurface( this->window );
 
         //Fill the surface black
         SDL_FillRect( this->screenSurface, NULL, 
@@ -173,7 +171,7 @@ cMainWindow::cMainWindow(unicodestring title, int width, int height, int posx, i
 }
 
 cMainWindow::~cMainWindow() {
-    SDL_DestroyWindow(this->window);
+    DestroyWindow(this->window);
 }
 
 void cMainWindow::Update() {
@@ -184,7 +182,7 @@ void cMainWindow::Update() {
     
     //Update the surface
     if(SDL_UpdateWindowSurface( this->window ) != 0) {
-        std::cout << "cMainWindow: " << SDL_GetError() << std::endl;
+        std::cout << "cMainWindow: " << GetError() << std::endl;
     }
 }
 

@@ -28,6 +28,16 @@
 #ifndef BACKEND__H
 #define BACKEND__H
 
+#include <stdint.h>
+
+#include "string.h"
+
+// Temporary fix.  Todo: Write a lengthier acceptable fix.
+#ifndef cWindow
+#define cWindow SDL_Window
+struct SDL_Window;
+#endif
+
 class cEventManager;
 
 // These are the functions a backend must implement
@@ -52,13 +62,28 @@ void PollHardwareEvents(cEventManager* eventManager);
 struct cSurfaceS;
 struct cRect;
 struct cPixelFormat;
+//struct cWindow;
 
-int BlitSurface(cSurfaceS* src, const cRect* srcrect,
+const char* GetError();
+
+cWindow* CreateWindow(unicodestring title,
+                    int x, int y, int w,
+                    int h, unsigned int flags);
+cSurfaceS* GetWindowSurface(cWindow* window);
+
+void DestroyWindow(cWindow* window);
+
+inline int BlitSurface(cSurfaceS* src, const cRect* srcrect,
                     cSurfaceS* dst, cRect* dstrect);
-cSurfaceS* ConvertSurface(cSurfaceS * src, const cPixelFormat * fmt, unsigned int flags);
-int CreateRGBSurface();
+inline cSurfaceS* ConvertSurface(cSurfaceS * src, const cPixelFormat * fmt, unsigned int flags);
+
+int FillRect(cSurfaceS* dst, const cRect* rect, unsigned int color);
+
+unsigned int MapRGB(cPixelFormat* format,
+                  uint8_t r, uint8_t g, uint8_t b);
+
+inline cSurfaceS* CreateRGBSurface();
 int CreateRGBSurfaceFrom();
-int FillRect();
 int FillRects();
 int FreeSurface();
 int GetClipRect();
@@ -89,6 +114,7 @@ typedef enum {
     CER_Borderless, CER_Resizable, CER_Minimized, CER_Maximized, CER_GrabInput, CER_FocusInput,
     CER_FocusMouse, CER_Foreign, CER_HighDpi, CER_CaptureMouse, CER_AlwaysOnTop,
     CER_NoTaskbar, CER_Utility, CER_Tooltip, CER_PopupMenu,
+    CER_WindowPos_Centered, CER_WindowPos_Undefined
 } CER_WindowFlags;
 */
 

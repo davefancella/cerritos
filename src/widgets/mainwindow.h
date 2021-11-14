@@ -66,7 +66,7 @@ public:
     void onMouseOver(cMouseMotionEvent* evt);
 private:
     //The window we'll be rendering to
-    SDL_Window* window = NULL;
+    cWindow* window = NULL;
     
     //The surface contained by the window
     SDL_Surface* screenSurface = NULL;
