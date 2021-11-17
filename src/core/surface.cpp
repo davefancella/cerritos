@@ -36,7 +36,17 @@ cSurface::~cSurface() {
 }
 
 void cSurface::Blit_To(cSurface* dest, cRect* rect) {
-    
+#ifdef USING_SDL
+    SDL_Rect aRect = { rect->x, rect->y, rect->w, rect->h };
+    SDL_BlitSurface(this->mSurface, NULL, dest->getSDLSurface(), &aRect);
+#endif
+}
+
+void cSurface::Blit_From(cSurface* source, cRect* rect) {
+#ifdef USING_SDL
+    SDL_Rect aRect = { rect->x, rect->y, rect->w, rect->h };
+    SDL_BlitSurface(source->getSDLSurface(), NULL, this->mSurface, &aRect);
+#endif
 }
 
 void cSurface::Fill(uint8_t red, uint8_t green, uint8_t blue) { 
