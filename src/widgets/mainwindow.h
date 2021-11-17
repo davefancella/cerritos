@@ -25,6 +25,8 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+class cSurface;
+
 #include "backend.h"
 
 #include "cerritos.h"
@@ -60,17 +62,21 @@ public:
     void setPosition(int posx, int posy);
     void setSize(int width, int height);
     
+    void Move();
     /// Call to update the window
     virtual void Update();
-
+    
     void onMouseOver(cMouseMotionEvent* evt);
 private:
+    /// Call to actually render the window.  cMainWindow::Update()
+    /// should call this.
+    void Render();
+
     //The window we'll be rendering to
     cWindow* window = NULL;
     
     //The surface contained by the window
-    SDL_Surface* screenSurface = NULL;
-    
+    cSurface* screenSurface = NULL;
 };
 
 #endif

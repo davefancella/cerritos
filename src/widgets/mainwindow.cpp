@@ -28,6 +28,7 @@
 
 #include "cerritos.h"
 #include "mainwindow.h"
+#include "surface.h"
 
 void cMainWindow::onMouseOver(cMouseMotionEvent* evt) {
 
@@ -43,40 +44,22 @@ void cMainWindow::setPosition(int posx, int posy) {
     this->posx = posx;
     this->posy = posy;
     
-    SDL_SetWindowPosition(this->window, posx, posy);
+    this->Move();
 }
 
 void cMainWindow::setSize(int width, int height) {
     this->width = width;
     this->height = height;
     
-    SDL_SetWindowSize(this->window, width, height);
+    this->Move();
 }
 
-/*
-cMainWindow::cMainWindow() 
-        : Title("Cerritos Window"), width(800), height(600), 
-                posx(CER_WindowPos_Centered), posy(CER_WindowPos_Centered),
-                {
-    this->window = SDL_CreateWindow( this->Title.data(), 
-            this->posx, this->posy,
-            this->width, this->height, CER_Shown );
-
-    if( this->window == NULL ) {
-        std::cout << "Window could not be created! Backend: " <<
-            GetError() << std::endl;
-    } else {
-        //Get window surface
-        this->screenSurface = GetWindowSurface( this->window );
-
-        //Fill the surface black
-        SDL_FillRect( this->screenSurface, NULL, 
-                      SDL_MapRGB( this->screenSurface->format, 
-                                  0x00, 0x00, 0x00 ) );
-        
-    }
+void cMainWindow::Move() {
+#ifdef USING_SDL
+    SDL_SetWindowPosition(this->window, this->posx, this->posy);
+    SDL_SetWindowSize(this->window, this->width, this->height);
+#endif
 }
-*/
 
 cMainWindow::cMainWindow(CER_WindowFlags winFlags) 
             : Title("Cerritos Window"), width(800), height(600), 
@@ -91,13 +74,7 @@ cMainWindow::cMainWindow(CER_WindowFlags winFlags)
             GetError() << std::endl;
     } else {
         //Get window surface
-        this->screenSurface = GetWindowSurface( this->window );
-
-        //Fill the surface black
-        SDL_FillRect( this->screenSurface, NULL, 
-                      SDL_MapRGB( this->screenSurface->format, 
-                                  0x00, 0x00, 0x00 ) );
-        
+        this->screenSurface = new cSurface(this->window);
     }
 }
 
@@ -114,13 +91,7 @@ cMainWindow::cMainWindow(unicodestring title, CER_WindowFlags winFlags)
             GetError() << std::endl;
     } else {
         //Get window surface
-        this->screenSurface = GetWindowSurface( this->window );
-
-        //Fill the surface black
-        SDL_FillRect( this->screenSurface, NULL, 
-                      SDL_MapRGB( this->screenSurface->format, 
-                                  0x00, 0x00, 0x00 ) );
-        
+        this->screenSurface = new cSurface(this->window);
     }
 }
 
@@ -137,13 +108,7 @@ cMainWindow::cMainWindow(unicodestring title, int width, int height, CER_WindowF
             GetError() << std::endl;
     } else {
         //Get window surface
-        this->screenSurface = GetWindowSurface( this->window );
-
-        //Fill the surface black
-        SDL_FillRect( this->screenSurface, NULL, 
-                      SDL_MapRGB( this->screenSurface->format, 
-                                  0x00, 0x00, 0x00 ) );
-        
+        this->screenSurface = new cSurface(this->window);
     }
 }
 
@@ -160,13 +125,7 @@ cMainWindow::cMainWindow(unicodestring title, int width, int height, int posx, i
             GetError() << std::endl;
     } else {
         //Get window surface
-        this->screenSurface = GetWindowSurface( this->window );
-
-        //Fill the surface black
-        SDL_FillRect( this->screenSurface, NULL, 
-                      SDL_MapRGB( this->screenSurface->format, 
-                                  0x00, 0x00, 0x00 ) );
-        
+        this->screenSurface = new cSurface(this->window);
     }
 }
 
@@ -176,14 +135,17 @@ cMainWindow::~cMainWindow() {
 
 void cMainWindow::Update() {
     //Fill the surface black
-    SDL_FillRect( this->screenSurface, NULL, 
-                    SDL_MapRGB( this->screenSurface->format, 
-                                0, 0, 0 ) );
-    
+    this->screenSurface->Fill(0, 0, 0);
+    this->Render();
+}
+
+void cMainWindow::Render() {
+#ifdef USING_SDL
     //Update the surface
     if(SDL_UpdateWindowSurface( this->window ) != 0) {
         std::cout << "cMainWindow: " << GetError() << std::endl;
     }
+#endif
 }
 
 

@@ -30,7 +30,6 @@
 #include "backend.h"
 
 struct cSurfaceS : SDL_Surface { };
-struct cRect : SDL_Rect { };
 struct cPixelFormat : SDL_PixelFormat { };
 //typedef cWindow SDL_Window;
 

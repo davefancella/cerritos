@@ -18,6 +18,11 @@ add_subdirectory(src)
 
 # Build documentation
 option(BUILD_DOC "Build documentation" ON)
+option(USE_SDL "Use SDL" ON)
+
+if(USE_SDL)
+    target_compile_definitions(cerritos PUBLIC USING_SDL)
+endif(USE_SDL)
 
 # check if Doxygen is installed
 find_package(Doxygen)

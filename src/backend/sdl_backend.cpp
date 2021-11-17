@@ -25,6 +25,7 @@
 #include <iostream>
 
 #include "SDL.h"
+#include "SDL_ttf.h"
 
 #include "sdl_backend.h"
 
@@ -74,19 +75,21 @@ void DestroyWindow(cWindow* window) {
     SDL_DestroyWindow(window);
 }
 
+/*
 int BlitSurface(cSurfaceS* src, const cRect* srcrect,
                     cSurfaceS* dst, cRect* dstrect) {
     return SDL_BlitSurface(src, srcrect, dst, dstrect);
-}
+}*/
 
 cSurfaceS* ConvertSurface(cSurfaceS * src, const cPixelFormat * fmt, unsigned int flags) {
     return static_cast<cSurfaceS*>(SDL_ConvertSurface(
         src, fmt, flags) );
 }
 
+/*
 int FillRect(cSurfaceS* dst, const cRect* rect, unsigned int color) {
     return SDL_FillRect(dst, rect, color);
-}
+}*/
 
 unsigned int MapRGB(cPixelFormat* format,
                   uint8_t r, uint8_t g, uint8_t b) {

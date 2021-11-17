@@ -25,13 +25,42 @@
 #ifndef SURFACE__H
 #define SURFACE__H
 
-#include "backend.h"
+#include <cstdint>
+
+// SDL Forward declarations
+#ifdef USING_SDL
+struct SDL_Surface;
+struct SDL_Window;
+#endif
+
+class cRect;
+struct cPixelFormat;
 
 class cSurface {
 public:
+    cSurface() { };
+    ~cSurface();
+
+    /// Copies this surface to another surface.
+    void Blit_To(cSurface* dest, cRect* rect);
+    
+    /// Use this to fill the entire surface with one color
+    void Fill(uint8_t red, uint8_t green, uint8_t blue);
+    
+    /// Use this to fill the surface or an area of the surface with
+    /// a color.
+    void FillRect(const cRect* rect, uint8_t red, uint8_t green, uint8_t blue);
+#ifdef USING_SDL
+    // Constructor to be used for the mainwindow
+    cSurface(SDL_Window* window);
+    SDL_Surface* getSDLSurface();
+#endif
     
 private:
-    cSurfaceS* mSurface;
+    cPixelFormat* mPixelFormat;
+#ifdef USING_SDL
+    SDL_Surface* mSurface;
+#endif
 };
 
 #endif // SURFACE__H

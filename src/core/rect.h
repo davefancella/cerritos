@@ -22,52 +22,20 @@
  * 
  */
 
-#include "surface.h"
-#include "rect.h"
+#ifndef RECT__H
+#define RECT__H
 
-#ifdef USING_SDL
-#include "sdl_backend.h"
-#endif
-
-cSurface::~cSurface() {
-#ifdef USING_SDL
-    SDL_FreeSurface(this->mSurface);
-#endif
-}
-
-void cSurface::Blit_To(cSurface* dest, cRect* rect) {
+class cRect {
+public:
+    cRect() : x(0), y(0), w(0), h(0) { };
+    cRect(int x, int y, int w, int h) : x(x), y(y), w(w), h(h) { };
     
-}
+    int x;
+    int y;
+    int w;
+    int h;
+};
 
-void cSurface::Fill(uint8_t red, uint8_t green, uint8_t blue) { 
-    this->FillRect(NULL, red, green, blue); 
-}
-
-void cSurface::FillRect(const cRect* rect, uint8_t red, uint8_t green, uint8_t blue) {
-#ifdef USING_SDL
-    if(rect != NULL) {
-        SDL_Rect aRect = { rect->x, rect->y, rect->w, rect->h };
-        SDL_FillRect( this->mSurface, &aRect, 
-                        SDL_MapRGB( this->mSurface->format, 
-                                    red, green, blue ) );
-    } else {
-        SDL_FillRect( this->mSurface, NULL, 
-                        SDL_MapRGB( this->mSurface->format, 
-                                    red, green, blue ) );
-    }
-#endif
-}
-
-#ifdef USING_SDL
-// Constructor to be used for the mainwindow
-cSurface::cSurface(SDL_Window* window) {
-    this->mSurface = SDL_GetWindowSurface(
-        window);
-}
-
-SDL_Surface* cSurface::getSDLSurface() {
-    return this->mSurface;
-}
-#endif
+#endif // RECT__H
 
 
