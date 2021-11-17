@@ -44,7 +44,7 @@ public:
     /// Copies this surface to another surface.
     void Blit_To(cSurface* dest, cRect* rect);
     /// Copies another surface to this surface.
-    void Blit_From(cSurface* dest, cRect* rect);
+    void Blit_From(cSurface* source, cRect* rect);
     
     /// Use this to fill the entire surface with one color
     void Fill(uint8_t red, uint8_t green, uint8_t blue);
