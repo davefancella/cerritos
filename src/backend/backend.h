@@ -32,12 +32,7 @@
 
 #include "string.h"
 
-// Temporary fix.  Todo: Write a lengthier acceptable fix.
-#ifndef cWindow
-#define cWindow SDL_Window
-struct SDL_Window;
-#endif
-
+class cWindow;
 class cEventManager;
 
 // These are the functions a backend must implement
@@ -65,19 +60,6 @@ struct cPixelFormat;
 //struct cWindow;
 
 const char* GetError();
-
-cWindow* CreateWindow(unicodestring title,
-                    int x, int y, int w,
-                    int h, unsigned int flags);
-cSurfaceS* GetWindowSurface(cWindow* window);
-
-void DestroyWindow(cWindow* window);
-
-inline int BlitSurface(cSurfaceS* src, const cRect* srcrect,
-                    cSurfaceS* dst, cRect* dstrect);
-inline cSurfaceS* ConvertSurface(cSurfaceS * src, const cPixelFormat * fmt, unsigned int flags);
-
-int FillRect(cSurfaceS* dst, const cRect* rect, unsigned int color);
 
 unsigned int MapRGB(cPixelFormat* format,
                   uint8_t r, uint8_t g, uint8_t b);

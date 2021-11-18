@@ -22,20 +22,16 @@
  * 
  */
 
-#ifndef MAINWINDOW_H
-#define MAINWINDOW_H
+#ifndef WINDOW__H
+#define WINDOW__H
 
-class cSurface;
+/** This class contains os-specific window information.
+ */
 
-#include "backend.h"
-
-#include "cerritos.h"
-
-#include "widget.h"
-#include "string.h"
-
-class cMainWindow : public cWidget {
+class cWindow {
 public:
+    cWindow(unicodestring title, int posx, int posy, int width, int height, CER_WindowFlags winFlags=CER_Shown);
+
     // The title of the window
     unicodestring Title;
     
@@ -50,34 +46,25 @@ public:
     // Window flags
     CER_WindowFlags windowFlags;
     
-    // Constructors
-    //cMainWindow();
-    cMainWindow(CER_WindowFlags winFlags=CER_Shown);
-    cMainWindow(unicodestring title, CER_WindowFlags winFlags=CER_Shown);
-    cMainWindow(unicodestring title, int width, int height, CER_WindowFlags winFlags=CER_Shown);
-    cMainWindow(unicodestring title, int width, int height, int posx, int posy, CER_WindowFlags winFlags=CER_Shown);
-    virtual ~cMainWindow();
+    bool isValid() { return this->mIsValid; };
     
-    void setTitle(unicodestring title);
-    void setPosition(int posx, int posy);
-    void setSize(int width, int height);
+#ifdef USING_SDL
+    SDL_Window* getSDLWindow() { return this->mWindow; };
+    SDL_Renderer* getSDLRenderer() { return this->mRenderer; };
+#endif
     
-    void Move();
-    /// Call to update the window
-    virtual void Update();
-    
-    void onMouseOver(cMouseMotionEvent* evt);
 private:
-    /// Call to actually render the window.  cMainWindow::Update()
-    /// should call this.
-    void Render();
-
-    //The window we'll be rendering to
-    cWindow* window = NULL;
+    // Forbid use of default constructor
+    cWindow();
+    
+    bool mIsValid;
+    
+#ifdef USING_SDL
+    SDL_Window* mWindow;
+    SDL_Renderer* mRenderer;
+#endif
 };
 
-#endif
-
-
+#endif // WINDOW__H
 
 

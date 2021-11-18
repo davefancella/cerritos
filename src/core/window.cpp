@@ -25,70 +25,30 @@
 #include <iostream>
 
 #include "SDL.h"
-#include "SDL_ttf.h"
 
-#include "sdl_backend.h"
+#include "backend.h"
+#include "window.h"
 
-#include "event.h"
-
-const char* GetError() {
-    return SDL_GetError();
-}
-
-unsigned int GetTicks() {
-    return SDL_GetTicks();
-}
-
-void Delay(unsigned int ms) {
-    SDL_Delay(ms);
-}
-
-int backendInit() {
-    int successCode;
+cWindow::cWindow(unicodestring title, int posx, int posy, int width, int height, CER_WindowFlags winFlags)
+            : Title(title), width(width), height(height), 
+                posx(posx), posy(posy),
+                windowFlags(winFlags) {
+    this->mWindow = SDL_CreateWindow( this->Title.data(), 
+            this->posx, this->posy,
+            this->width, this->height, this->windowFlags);
     
-    successCode = SDL_Init(SDL_INIT_VIDEO|SDL_INIT_AUDIO);
-    if(successCode == -1) {
-        std::cout << "SDL_Init: " << SDL_GetError();
-        return -1;
+    // Check for an error first
+    if( this->mWindow == NULL ) {
+        this->mIsValid = false;
+        std::cout << "Window could not be created! Backend: " <<
+            GetError() << std::endl;
+    } else {
+#ifdef USING_SDL
+        // This is when the window is created successfully
+        this->mRenderer = SDL_CreateRenderer(this->mWindow, -1, SDL_RENDERER_ACCELERATED);
+        SDL_SetRenderDrawColor(this->mRenderer, 0,0,0,255);
+#endif
     }
-
-    return successCode;
 }
 
-void backendClose() {
-    SDL_Quit();
-}
-
-
-unsigned int MapRGB(cPixelFormat* format,
-                  uint8_t r, uint8_t g, uint8_t b) {
-    return SDL_MapRGB(format, r, g, b);
-}
-
-/*
-SDL_CreateRGBSurface
-SDL_CreateRGBSurfaceFrom
-SDL_FillRect
-SDL_FillRects
-SDL_FreeSurface
-SDL_GetClipRect
-SDL_GetColorKey
-SDL_GetSurfaceAlphaMod
-SDL_GetSurfaceBlendMode
-SDL_GetSurfaceColorMod
-SDL_LoadBMP_RW
-SDL_LockSurface
-SDL_LowerBlit
-SDL_MUSTLOCK
-SDL_SaveBMP_RW
-SDL_SetClipRect
-SDL_SetColorKey
-SDL_SetSurfaceAlphaMod
-SDL_SetSurfaceBlendMode
-SDL_SetSurfaceColorMod
-SDL_SetSurfacePalette
-SDL_SetSurfaceRLE
-SDL_SoftStretch
-SDL_UnlockSurface
-*/
 

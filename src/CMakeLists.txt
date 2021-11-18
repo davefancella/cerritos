@@ -13,6 +13,7 @@ add_library(cerritos SHARED
     core/event.cpp
     core/events/eventreceiver.cpp
     core/surface.cpp
+    core/window.cpp
     widgets/widget.cpp
     widgets/mainwindow.cpp
 )

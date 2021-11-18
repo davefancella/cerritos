@@ -33,12 +33,14 @@ struct SDL_Surface;
 struct SDL_Window;
 #endif
 
+class cWindow;
 class cRect;
 struct cPixelFormat;
 
 class cSurface {
 public:
     cSurface() { };
+    cSurface(cWindow* window) : mWindow(window) { };
     ~cSurface();
 
     /// Copies this surface to another surface.
@@ -59,6 +61,7 @@ public:
 #endif
     
 private:
+    cWindow* mWindow;
     cPixelFormat* mPixelFormat;
 #ifdef USING_SDL
     SDL_Surface* mSurface;
