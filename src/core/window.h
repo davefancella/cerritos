@@ -25,6 +25,12 @@
 #ifndef WINDOW__H
 #define WINDOW__H
 
+#include "string.h"
+#include "backend.h"
+
+struct SDL_Window;
+struct SDL_Renderer;
+
 /** This class contains os-specific window information.
  */
 

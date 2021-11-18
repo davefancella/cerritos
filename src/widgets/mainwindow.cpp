@@ -110,9 +110,11 @@ void cMainWindow::Update() {
 void cMainWindow::Render() {
 #ifdef USING_SDL
     SDL_RenderClear(this->window->getSDLRenderer() );
+#endif
     for (auto i = mChildren.begin(); i != mChildren.end(); ++i) {
-        static_cast<cWidget*>(*i)->Render_To(this->window->getSDLRenderer() );
+        static_cast<cWidget*>(*i)->Render_To(this->window);
     }
+#ifdef USING_SDL
     SDL_RenderPresent(this->window->getSDLRenderer() );
 #endif
 }

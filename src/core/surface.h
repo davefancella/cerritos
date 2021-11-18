@@ -29,8 +29,7 @@
 
 // SDL Forward declarations
 #ifdef USING_SDL
-struct SDL_Surface;
-struct SDL_Window;
+struct SDL_Texture;
 #endif
 
 class cWindow;
@@ -39,32 +38,26 @@ struct cPixelFormat;
 
 class cSurface {
 public:
-    cSurface() { };
-    cSurface(cWindow* window) : mWindow(window) { };
+    cSurface(cWindow* window);
     ~cSurface();
 
     /// Copies this surface to another surface.
-    void Blit_To(cSurface* dest, cRect* rect);
-    /// Copies another surface to this surface.
-    void Blit_From(cSurface* source, cRect* rect);
+    void Blit_To(cRect* dest);
     
     /// Use this to fill the entire surface with one color
-    void Fill(uint8_t red, uint8_t green, uint8_t blue);
+    void Fill(uint8_t red, uint8_t green, uint8_t blue, uint8_t alpha=255);
     
     /// Use this to fill the surface or an area of the surface with
     /// a color.
-    void FillRect(const cRect* rect, uint8_t red, uint8_t green, uint8_t blue);
-#ifdef USING_SDL
-    // Constructor to be used for the mainwindow
-    cSurface(SDL_Window* window);
-    SDL_Surface* getSDLSurface();
-#endif
+    void FillRect(const cRect* rect, uint8_t red, uint8_t green, uint8_t blue, uint8_t alpha=255);
     
 private:
+    // Disable default constructor
+    cSurface();
+
     cWindow* mWindow;
-    cPixelFormat* mPixelFormat;
 #ifdef USING_SDL
-    SDL_Surface* mSurface;
+    SDL_Texture* mTexture;
 #endif
 };
 

@@ -32,12 +32,15 @@
 #include "eventreceiver.h"
 #include "hardwareeventreceiver.h"
 
+class cWindow;
+
 class cWidget : public cObject, 
                 public cBaseEventReceiver {
 public:
     cWidget(cWidget* parent=NULL) { mParent = dynamic_cast<cObject*>(parent); };
 
     virtual void process_event(cEvent* event);
+    virtual void Render_To(cWindow* window) { };
 // Following are event handlers for widgets.
 public:
     // virtual void onNameofeventCamelCase(cNameofeventCamelCaseEvent* event);

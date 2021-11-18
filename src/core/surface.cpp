@@ -23,61 +23,57 @@
  */
 
 #include "surface.h"
+#include "window.h"
 #include "rect.h"
 
 #ifdef USING_SDL
 #include "sdl_backend.h"
 #endif
 
+cSurface::cSurface(cWindow* window) 
+            : mWindow(window) {
+#ifdef USING_SDL
+    this->mTexture = SDL_CreateTexture(window->getSDLRenderer(), SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_TARGET, 1024, 768);
+#endif
+}
+
+
 cSurface::~cSurface() {
 #ifdef USING_SDL
-    SDL_FreeSurface(this->mSurface);
+    if(this->mTexture != NULL)
+        SDL_DestroyTexture(this->mTexture);
 #endif
 }
 
-void cSurface::Blit_To(cSurface* dest, cRect* rect) {
+void cSurface::Blit_To(cRect* dest) {
 #ifdef USING_SDL
-    SDL_Rect aRect = { rect->x, rect->y, rect->w, rect->h };
-    SDL_BlitSurface(this->mSurface, NULL, dest->getSDLSurface(), &aRect);
+    SDL_Rect aRect = { dest->x, dest->y, dest->w, dest->h };
+    SDL_RenderCopy(this->mWindow->getSDLRenderer(), 
+                   this->mTexture, 
+                   NULL, 
+                   &aRect);
 #endif
 }
 
-void cSurface::Blit_From(cSurface* source, cRect* rect) {
-#ifdef USING_SDL
-    SDL_Rect aRect = { rect->x, rect->y, rect->w, rect->h };
-    SDL_BlitSurface(source->getSDLSurface(), NULL, this->mSurface, &aRect);
-#endif
+void cSurface::Fill(uint8_t red, uint8_t green, uint8_t blue, uint8_t alpha) { 
+    this->FillRect(NULL, red, green, blue, alpha); 
 }
 
-void cSurface::Fill(uint8_t red, uint8_t green, uint8_t blue) { 
-    this->FillRect(NULL, red, green, blue); 
-}
-
-void cSurface::FillRect(const cRect* rect, uint8_t red, uint8_t green, uint8_t blue) {
+void cSurface::FillRect(const cRect* rect, uint8_t red, uint8_t green, uint8_t blue, uint8_t alpha) {
 #ifdef USING_SDL
-    if(rect != NULL) {
+    // cache the current render target so we can restore it later
+    SDL_Texture* renderCache = SDL_GetRenderTarget(this->mWindow->getSDLRenderer() );
+    // change the render target so we can fill the rect
+    if(SDL_SetRenderTarget(this->mWindow->getSDLRenderer(), this->mTexture) == 0) {
         SDL_Rect aRect = { rect->x, rect->y, rect->w, rect->h };
-        SDL_FillRect( this->mSurface, &aRect, 
-                        SDL_MapRGB( this->mSurface->format, 
-                                    red, green, blue ) );
-    } else {
-        SDL_FillRect( this->mSurface, NULL, 
-                        SDL_MapRGB( this->mSurface->format, 
-                                    red, green, blue ) );
+        SDL_SetRenderDrawColor(this->mWindow->getSDLRenderer(), red, green, blue, alpha);
+        SDL_RenderFillRect(this->mWindow->getSDLRenderer(), &aRect);
+
+        // restore the cached render target
+        SDL_SetRenderTarget(this->mWindow->getSDLRenderer(), renderCache);
     }
 #endif
 }
 
-#ifdef USING_SDL
-// Constructor to be used for the mainwindow
-cSurface::cSurface(SDL_Window* window) {
-    this->mSurface = SDL_GetWindowSurface(
-        window);
-}
-
-SDL_Surface* cSurface::getSDLSurface() {
-    return this->mSurface;
-}
-#endif
 
 
