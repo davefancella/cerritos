@@ -66,12 +66,17 @@ public:
     /// Call to update the window
     virtual void Update();
     
-    void onMouseOver(cMouseMotionEvent* evt);
-private:
-    /// Call to actually render the window.  cMainWindow::Update()
-    /// should call this.
-    void Render();
+    virtual void Render();
+    
+    void beginRender();
+    void finishRender();
+    void guiRender();
+    void renderAll();
 
+    void onMouseOver(cMouseMotionEvent* evt);
+    
+    cWindow* getWindow();
+private:
     //The window we'll be rendering to
     cWindow* window = NULL;
 };

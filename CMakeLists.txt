@@ -12,6 +12,11 @@ project(cerritos VERSION 0.1.0)
 set(CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake" ${CMAKE_MODULE_PATH})
 
 include(sdl)
+INCLUDE(FindPkgConfig)
+#find_package(SDL_ttf REQUIRED)
+#PKG_SEARCH_MODULE(SDL2 REQUIRED sdl2)
+#PKG_SEARCH_MODULE(SDL2IMAGE REQUIRED SDL2_image)
+PKG_SEARCH_MODULE(SDL2TTF REQUIRED SDL2_ttf)
 
 # The actual cerritos sources
 add_subdirectory(src)

@@ -25,6 +25,10 @@
 #ifndef SDL_BACKEND__H
 #define SDL_BACKEND__H
 
+#ifndef SDL_MAIN_HANDLED
+#define SDL_MAIN_HANDLED
+#endif
+
 #include "SDL.h"
 
 #include "backend.h"

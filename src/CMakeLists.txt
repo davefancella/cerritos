@@ -12,6 +12,7 @@ add_library(cerritos SHARED
     core/application.cpp
     core/event.cpp
     core/events/eventreceiver.cpp
+    core/font.cpp
     core/surface.cpp
     core/window.cpp
     widgets/widget.cpp
@@ -20,6 +21,8 @@ add_library(cerritos SHARED
 
 target_include_directories(cerritos PUBLIC
     ${SDL2_LIBRARIES}
+    ${SDL2IMAGE_INCLUDE_DIRS}
+    ${SDL2TTF_INCLUDE_DIRS}
     .
     backend
     core
@@ -28,7 +31,11 @@ target_include_directories(cerritos PUBLIC
     widgets
 )
 
-target_link_libraries(cerritos ${SDL2_LIBRARIES})
+target_link_libraries(cerritos 
+    ${SDL2_LIBRARIES}
+    ${SDL2IMAGE_LIBRARIES}
+    ${SDL2TTF_LIBRARIES}
+)
 
 # Setup the version header
 configure_file(cerritos_version.h.in cerritos_version.h)

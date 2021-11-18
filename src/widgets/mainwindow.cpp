@@ -104,19 +104,39 @@ cMainWindow::~cMainWindow() {
 }
 
 void cMainWindow::Update() {
-    this->Render();
+    this->renderAll();
 }
 
 void cMainWindow::Render() {
+    // Do nothing.
+}
+
+void cMainWindow::renderAll() {
+    this->beginRender();
+    this->Render();
+    this->guiRender();
+    this->finishRender();
+}
+
+void cMainWindow::beginRender() {
 #ifdef USING_SDL
     SDL_RenderClear(this->window->getSDLRenderer() );
 #endif
+}
+
+void cMainWindow::guiRender() {
     for (auto i = mChildren.begin(); i != mChildren.end(); ++i) {
         static_cast<cWidget*>(*i)->Render_To(this->window);
     }
+}
+
+void cMainWindow::finishRender() {
 #ifdef USING_SDL
     SDL_RenderPresent(this->window->getSDLRenderer() );
 #endif
 }
 
+cWindow* cMainWindow::getWindow() { 
+    return this->window; 
+}
 

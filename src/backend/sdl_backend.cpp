@@ -24,6 +24,10 @@
 
 #include <iostream>
 
+#ifndef SDL_MAIN_HANDLED
+#define SDL_MAIN_HANDLED
+#endif
+
 #include "SDL.h"
 #include "SDL_ttf.h"
 
@@ -44,14 +48,20 @@ void Delay(unsigned int ms) {
 }
 
 int backendInit() {
-    int successCode;
+    int successCode = 0;
+    SDL_SetMainReady();
     
-    successCode = SDL_Init(SDL_INIT_VIDEO|SDL_INIT_AUDIO);
-    if(successCode == -1) {
-        std::cout << "SDL_Init: " << SDL_GetError();
-        return -1;
+    successCode = SDL_Init(SDL_INIT_EVERYTHING);
+    if(successCode < 0) {
+        std::cout << "SDL_Init: " << SDL_GetError() << std::endl;
+        return successCode;
     }
-
+    successCode = TTF_Init();
+    if(successCode<0) {
+        std::cout << "TTF_Init: " << TTF_GetError() << std::endl;
+        return successCode;
+    }
+    
     return successCode;
 }
 
