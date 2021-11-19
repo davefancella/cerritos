@@ -22,30 +22,26 @@
  * 
  */
 
-#ifndef RECT__H
-#define RECT__H
-
 #include "point.h"
 
-class cRect {
-public:
-    cRect() {
-        position.x = 0;
-        position.y =0;
-        size.width = 0;
-        size.height =0;
-    };
-    cRect(int x, int y, int w, int h);
-    
-    cPointInt position;
-    cSizeInt size;
+cPointInt::cPointInt(int x, int y) : x(x), y(y) { }
 
-    cRect operator+(const cPointInt& other);
-    cRect operator-(const cPointInt& other);
-    cRect operator+(const cSizeInt& other);
-    cRect operator-(const cSizeInt& other);
-};
+cPointInt cPointInt::operator+(const cPointInt& other) {
+    return cPointInt(this->x + other.x, this->y + other.y);
+}
 
-#endif // RECT__H
+cPointInt cPointInt::operator-(const cPointInt& other) {
+    return cPointInt(this->x - other.x, this->y - other.y);
+}
+
+cSizeInt::cSizeInt(int width, int height) : width(width), height(height) { }
+
+cSizeInt cSizeInt::operator+(const cSizeInt& other) {
+    return cSizeInt(this->width + other.width, this->height + other.height);
+}
+
+cSizeInt cSizeInt::operator-(const cSizeInt& other) {
+    return cSizeInt(this->width - other.width, this->height - other.height);
+}
 
 

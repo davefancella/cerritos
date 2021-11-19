@@ -22,30 +22,35 @@
  * 
  */
 
-#ifndef RECT__H
-#define RECT__H
+#include "rect.h"
 
-#include "point.h"
+cRect::cRect(int x, int y, int w, int h) { 
+    this->position.x = x;
+    this->position.y = y;
+    this->size.width = w;
+    this->size.height = h;
+}
 
-class cRect {
-public:
-    cRect() {
-        position.x = 0;
-        position.y =0;
-        size.width = 0;
-        size.height =0;
-    };
-    cRect(int x, int y, int w, int h);
-    
-    cPointInt position;
-    cSizeInt size;
+cRect cRect::operator+(const cPointInt& other) {
+    return cRect(this->position.x + other.x, this->position.y + other.y,
+        this->size.width, this->size.height
+    );
+}
 
-    cRect operator+(const cPointInt& other);
-    cRect operator-(const cPointInt& other);
-    cRect operator+(const cSizeInt& other);
-    cRect operator-(const cSizeInt& other);
-};
+cRect cRect::operator-(const cPointInt& other) {
+    return cRect(this->position.x - other.x, this->position.x - other.x,
+        this->size.width, this->size.height
+    );
+}
 
-#endif // RECT__H
+cRect cRect::operator+(const cSizeInt& other) {
+    return cRect(this->position.x, this->position.y,
+        this->size.width + other.width, this->size.height + other.height);
+}
+
+cRect cRect::operator-(const cSizeInt& other) {
+    return cRect(this->position.x, this->position.y,
+        this->size.width - other.width, this->size.height - other.height);
+}
 
 

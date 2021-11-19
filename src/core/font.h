@@ -44,12 +44,22 @@ public:
     
     static cFont* loadFromFile(unicodestring filename, int size);
     
+    void SetFontStyle(int style);
+    
+    void SetFontOutline(int outline);
+    
+    void EnableFontKerning();
+    void DisableFontKerning();
+    void SetFontKerning(int kerning);
+    
+    void SetFontHinting(int hinting);
+    
 private:
 #ifdef USING_SDL
     TTF_Font* mFont;
 #endif
 };
 
-#endif // HEADER__H
+#endif // FONT__H
 
 

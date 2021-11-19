@@ -24,9 +24,6 @@
 
 #include <iostream>
 
-#undef NDEBUG
-#include <assert.h>
-
 #include "SDL.h"
 #include "SDL_ttf.h"
 
@@ -76,7 +73,7 @@ bool cFont::RenderText(cWindow* window, unicodestring text, cRect* dest, uint8_t
                 SDL_FreeSurface(textSurface);
                 return false;
             } else {
-                SDL_Rect aRect = { dest->x, dest->y, calcW, calcH };
+                SDL_Rect aRect = { dest->position.x, dest->position.y, calcW, calcH };
                 SDL_RenderCopy(window->getSDLRenderer(), 
                             texture, 
                             NULL, 
@@ -88,11 +85,8 @@ bool cFont::RenderText(cWindow* window, unicodestring text, cRect* dest, uint8_t
             SDL_DestroyTexture(texture);
         }
     }
-
-    return true;
-#else 
-    return true;
 #endif
+    return true;
 }
 
 int cFont::loadFontFile(const char* filename, int size) {
@@ -107,28 +101,58 @@ int cFont::loadFontFile(unicodestring filename, int size) {
         std::cout << "Failed to load font! SDL_ttf Error: " << TTF_GetError() << std::endl;
         TTF_CloseFont(this->mFont);
         this->mFont = NULL;
-        assert(this->mFont == NULL);
+
         return -1;
     }
-    TTF_SetFontStyle(this->mFont, TTF_STYLE_NORMAL);
-    TTF_SetFontOutline(this->mFont, 0);
-    TTF_SetFontKerning(this->mFont, 1);
-    TTF_SetFontHinting(this->mFont, TTF_HINTING_NORMAL);
-    std::cout << "Loaded font: "
-        << TTF_FontFaceFamilyName(this->mFont) << " "
-        << TTF_FontFaceStyleName(this->mFont) << " "
-        << TTF_FontHeight(this->mFont)
-        << std::endl;
     return 0;
 #endif
 }
+
+void cFont::SetFontStyle(int style) {
+#ifdef USING_SDL
+    TTF_SetFontStyle(this->mFont, style);
+#endif
+}
+
+void cFont::SetFontOutline(int outline) {
+#ifdef USING_SDL
+    TTF_SetFontOutline(this->mFont, outline);
+#endif
+}
+
+void cFont::EnableFontKerning() {
+    this->SetFontKerning(1);
+}
+
+void cFont::DisableFontKerning() {
+    this->SetFontKerning(0);
+}
+
+void cFont::SetFontKerning(int kerning) {
+#ifdef USING_SDL
+    TTF_SetFontKerning(this->mFont, kerning);
+#endif
+}
+
+void cFont::SetFontHinting(int hinting) {
+#ifdef USING_SDL
+    TTF_SetFontHinting(this->mFont, hinting);
+#endif
+}
+
+
 
 cFont* cFont::loadFromFile(unicodestring filename, int size) {
     cFont* theFont = NULL;
     
     theFont = new cFont();
     if(theFont->loadFontFile(filename, size) == 0) {
-        std::cout << "Loaded font '" << filename << "'" << std::endl;
+        theFont->SetFontOutline(0);
+        theFont->EnableFontKerning();
+#ifdef USING_SDL
+        theFont->SetFontStyle(TTF_STYLE_NORMAL);
+        theFont->SetFontHinting(TTF_HINTING_NORMAL);
+#endif
     }
     
     return theFont;

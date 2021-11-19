@@ -48,6 +48,10 @@ public:
     // Get the current timestep.
     const TimeStep getTimestep();
     
+    // Call to run the main loop.  Calling this surrenders control of
+    // the main loop to the application object.
+    void loop();
+    
     // Call this at the beginning of your main loop.  This updates the
     // timestep and collects all new events in the event queue.
     void BeginUpdate();

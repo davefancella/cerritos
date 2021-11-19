@@ -129,8 +129,16 @@ void cApplication::UpdateAll() {
     this->EndUpdate();
 }
 
+void cApplication::loop() {
+    while(keepRunning) {
+        UpdateAll();
+    }
+}
+
 void cApplication::EndUpdate() {
-    
+    if(this->mainwindow != NULL) {
+        this->mainwindow->renderAll();
+    }    
 }
 
 // Process one event internally.

@@ -33,10 +33,6 @@
 
 #include "backend.h"
 
-struct cSurfaceS : SDL_Surface { };
-struct cPixelFormat : SDL_PixelFormat { };
-//typedef cWindow SDL_Window;
-
 /** Window flags
  */
 typedef enum {
@@ -308,6 +304,7 @@ void Delay(unsigned int ms);
 int backendInit();
 void backendClose();
 void PollHardwareEvents(cEventManager* eventManager);
+const char* GetError();
 
 #include "sdl_hardwareventEnum.h"
 

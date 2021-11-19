@@ -60,15 +60,7 @@ int main( int argc, char* args[] ) {
     theWindow->setTitle("Hello, World!");
 
     // This is your game loop.
-    while(theApp->keepRunning) {
-        // In a real game, if you call cApplication::UpdateAll, you'd only
-        // do it because you created your own app object and implemented
-        // Update.  Here, we do it for convenience because this is the
-        // hello world app.
-        theApp->UpdateAll();
-        
-        Delay(50);
-    }
+    theApp->loop();
     
     // Close up cerritos before quitting.  This makes sure we don't leave
     // any devices open or whatever.  Most modern operating systems don't

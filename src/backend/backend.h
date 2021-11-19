@@ -36,6 +36,7 @@ class cWindow;
 class cEventManager;
 
 // These are the functions a backend must implement
+const char* GetError();
 
 // Clock
 unsigned int GetTicks();
@@ -54,39 +55,8 @@ void PollHardwareEvents(cEventManager* eventManager);
 
 // This is a forward declaration.  Typically, you'll define this in
 // your backend.  Currently, these are just placeholders for SDL stuff.
-struct cSurfaceS;
 struct cRect;
-struct cPixelFormat;
-//struct cWindow;
-
-const char* GetError();
-
-unsigned int MapRGB(cPixelFormat* format,
-                  uint8_t r, uint8_t g, uint8_t b);
-
-inline cSurfaceS* CreateRGBSurface();
-int CreateRGBSurfaceFrom();
-int FillRects();
-int FreeSurface();
-int GetClipRect();
-int GetColorKey();
-int GetSurfaceAlphaMod();
-int GetSurfaceBlendMode();
-int GetSurfaceColorMod();
-int LoadBMP_RW();
-int LockSurface();
-int LowerBlit();
-int MUSTLOCK();
-int SaveBMP_RW();
-int SetClipRect();
-int SetColorKey();
-int SetSurfaceAlphaMod();
-int SetSurfaceBlendMode();
-int SetSurfaceColorMod();
-int SetSurfacePalette();
-int SetSurfaceRLE();
-int SoftStretch();
-int UnlockSurface();
+//struct cPixelFormat;
 
 // These are the enums that a backend must provide
 

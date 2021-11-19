@@ -22,30 +22,39 @@
  * 
  */
 
-#ifndef RECT__H
-#define RECT__H
+#ifndef POINT__H
+#define POINT__H
 
-#include "point.h"
-
-class cRect {
-public:
-    cRect() {
-        position.x = 0;
-        position.y =0;
-        size.width = 0;
-        size.height =0;
-    };
-    cRect(int x, int y, int w, int h);
+class cPoint {
     
-    cPointInt position;
-    cSizeInt size;
-
-    cRect operator+(const cPointInt& other);
-    cRect operator-(const cPointInt& other);
-    cRect operator+(const cSizeInt& other);
-    cRect operator-(const cSizeInt& other);
 };
 
-#endif // RECT__H
+class cPointInt : public cPoint {
+public:
+    cPointInt() : x(0), y(0) { };
+    cPointInt(int x, int y);
+    
+    int x;
+    int y;
+    
+    // operators
+    cPointInt operator+(const cPointInt& other);
+    cPointInt operator-(const cPointInt& other);
+};
+
+class cSizeInt {
+public:
+    cSizeInt() : width(0), height(0) { };
+    cSizeInt(int width, int height);
+    
+    int width;
+    int height;
+    
+    cSizeInt operator+(const cPointInt& other);
+    cSizeInt operator+(const cSizeInt& other);
+    cSizeInt operator-(const cSizeInt& other);
+};
+
+#endif // POINT__H
 
 

@@ -104,7 +104,6 @@ cMainWindow::~cMainWindow() {
 }
 
 void cMainWindow::Update() {
-    this->renderAll();
 }
 
 void cMainWindow::Render() {

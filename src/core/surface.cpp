@@ -47,7 +47,8 @@ cSurface::~cSurface() {
 
 void cSurface::Blit_To(cRect* dest) {
 #ifdef USING_SDL
-    SDL_Rect aRect = { dest->x, dest->y, dest->w, dest->h };
+    SDL_Rect aRect = { dest->position.x, dest->position.y, 
+                       dest->size.width, dest->size.height };
     SDL_RenderCopy(this->mWindow->getSDLRenderer(), 
                    this->mTexture, 
                    NULL, 
@@ -65,7 +66,8 @@ void cSurface::FillRect(const cRect* rect, uint8_t red, uint8_t green, uint8_t b
     SDL_Texture* renderCache = SDL_GetRenderTarget(this->mWindow->getSDLRenderer() );
     // change the render target so we can fill the rect
     if(SDL_SetRenderTarget(this->mWindow->getSDLRenderer(), this->mTexture) == 0) {
-        SDL_Rect aRect = { rect->x, rect->y, rect->w, rect->h };
+        SDL_Rect aRect = { rect->position.x, rect->position.y, 
+                           rect->size.width, rect->size.height };
         SDL_SetRenderDrawColor(this->mWindow->getSDLRenderer(), red, green, blue, alpha);
         SDL_RenderFillRect(this->mWindow->getSDLRenderer(), &aRect);
 

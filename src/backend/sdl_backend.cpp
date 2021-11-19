@@ -70,35 +70,3 @@ void backendClose() {
 }
 
 
-unsigned int MapRGB(cPixelFormat* format,
-                  uint8_t r, uint8_t g, uint8_t b) {
-    return SDL_MapRGB(format, r, g, b);
-}
-
-/*
-SDL_CreateRGBSurface
-SDL_CreateRGBSurfaceFrom
-SDL_FillRect
-SDL_FillRects
-SDL_FreeSurface
-SDL_GetClipRect
-SDL_GetColorKey
-SDL_GetSurfaceAlphaMod
-SDL_GetSurfaceBlendMode
-SDL_GetSurfaceColorMod
-SDL_LoadBMP_RW
-SDL_LockSurface
-SDL_LowerBlit
-SDL_MUSTLOCK
-SDL_SaveBMP_RW
-SDL_SetClipRect
-SDL_SetColorKey
-SDL_SetSurfaceAlphaMod
-SDL_SetSurfaceBlendMode
-SDL_SetSurfaceColorMod
-SDL_SetSurfacePalette
-SDL_SetSurfaceRLE
-SDL_SoftStretch
-SDL_UnlockSurface
-*/
-
