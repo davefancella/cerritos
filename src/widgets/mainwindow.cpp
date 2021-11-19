@@ -31,6 +31,8 @@
 #include "mainwindow.h"
 #include "surface.h"
 
+using namespace cerritos;
+
 void cMainWindow::onMouseOver(cMouseMotionEvent* evt) {
 
 }

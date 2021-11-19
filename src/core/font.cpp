@@ -36,10 +36,29 @@ cFont::cFont() {
     this->mFont = NULL;
 }
 
+/** This is an overloaded function that just calls the unicode version.
+ * 
+ * @param window: the cWindow object to which you'll be rendering this text
+ * @param text: the text to render
+ * @param dest: the cRect to which you'll render.  Only the position is used.
+ * @param red: red part of color
+ * @param green: green part of color
+ * @param blue: blue part of color
+ * @param alpha: the alpha part of color
+ */
 bool cFont::RenderText(cWindow* window, const char* text, cRect* dest, uint8_t red, uint8_t green, uint8_t blue, uint8_t alpha) {
     return this->RenderText(window, unicodestring(text), dest, red, blue, green, alpha);
 }
 
+/**
+ * @param window the cWindow object to which you'll be rendering this text
+ * @param text   the text to render
+ * @param dest   the cRect to which you'll render.  Only the position is used.
+ * @param red    red part of color
+ * @param green  green part of color
+ * @param blue   blue part of color
+ * @param alpha: the alpha part of color
+ */
 bool cFont::RenderText(cWindow* window, unicodestring text, cRect* dest, uint8_t red, uint8_t blue, uint8_t green, uint8_t alpha) {
 #ifdef USING_SDL
     int calcW, calcH;
@@ -139,8 +158,6 @@ void cFont::SetFontHinting(int hinting) {
     TTF_SetFontHinting(this->mFont, hinting);
 #endif
 }
-
-
 
 cFont* cFont::loadFromFile(unicodestring filename, int size) {
     cFont* theFont = NULL;

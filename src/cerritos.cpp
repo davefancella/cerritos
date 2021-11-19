@@ -29,7 +29,9 @@
 #include "application.h"
 #include "mainwindow.h"
 
-void PrintCerritosVersion() {
+using namespace cerritos;
+
+void cerritos::PrintCerritosVersion() {
     std::cout << "Cerritos Version " 
               << CERRITOS_VERSION_MAJOR << "."
               << CERRITOS_VERSION_MINOR << "."
@@ -39,13 +41,13 @@ void PrintCerritosVersion() {
 
 /** Initialize cerritos
  */
-void cInit() {
+void cerritos::cInit() {
     PrintCerritosVersion();
     backendInit();
 };
 
 /// Initializes and creates a default application object
-cApplication* cInitApp(CER_WindowFlags winFlags) {
+cApplication* cerritos::cInitApp(CER_WindowFlags winFlags) {
     PrintCerritosVersion();
     if(backendInit() == -1)
         return NULL;
@@ -60,11 +62,11 @@ cApplication* cInitApp(CER_WindowFlags winFlags) {
 
 /** Close cerritos
  */
-void cClose() {
+void cerritos::cClose() {
     backendClose();
 };
 
-unsigned int flags(int num, ...) {
+unsigned int cerritos::flags(int num, ...) {
     va_list args;
     unsigned int returnFlags = 0;
     int i;

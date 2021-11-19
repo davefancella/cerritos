@@ -22,17 +22,10 @@
  * 
  */
 
-#ifndef HEADER__H
-#define HEADER__H
+#include "layout.h"
 
-// Includes and forward declarations go here
+using namespace cerritos;
 
-namespace cerritos {
 
-// Code goes here
-    
-} // namespace cerritos
-
-#endif // HEADER__H
 
 

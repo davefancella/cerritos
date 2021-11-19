@@ -30,6 +30,8 @@
 #include "eventreceiver.h"
 #include "mainwindow.h"
 
+namespace cerritos {
+    
 class cApplication : public cObject,
                      public cBaseEventReceiver {
 public:
@@ -94,6 +96,7 @@ private:
     unsigned int lastTimestep;
 };
 
+} // namespace cerritos
 #endif // APPLICATION__H
 
 

@@ -33,18 +33,29 @@
 #include "hardwareeventreceiver.h"
 
 class cWindow;
+class cLayout;
+
+namespace cerritos {
 
 class cWidget : public cObject, 
                 public cBaseEventReceiver {
 public:
-    cWidget(cWidget* parent=NULL) { mParent = dynamic_cast<cObject*>(parent); };
+    cWidget(cWidget* parent=NULL) { 
+        mParent = dynamic_cast<cObject*>(parent); 
+    };
 
     virtual void process_event(cEvent* event);
     virtual void Render_To(cWindow* window) { };
+    
+protected:
+    /// The top level layout for this widget.
+    cLayout* mLayout;
 // Following are event handlers for widgets.
 public:
     // virtual void onNameofeventCamelCase(cNameofeventCamelCaseEvent* event);
 };
+
+} // namespace cerritos
 
 #endif // WIDGET__H
 

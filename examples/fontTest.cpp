@@ -37,6 +37,8 @@
 #include "font.h"
 #include "rect.h"
 
+using namespace cerritos;
+
 class etMainWindow : public cMainWindow {
 public:
     void onMouseMotion(cMouseMotionEvent* evt) {

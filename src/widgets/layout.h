@@ -22,17 +22,30 @@
  * 
  */
 
-#ifndef HEADER__H
-#define HEADER__H
+#ifndef LAYOUT__H
+#define LAYOUT__H
 
-// Includes and forward declarations go here
+#include "point.h"
 
 namespace cerritos {
-
-// Code goes here
     
+class cWidget;
+
+/** The base class for all layouts.
+ */
+class cLayout {
+public:
+    /// Adds a widget to this layout.
+    void addWidget(cWidget* widget);
+    
+    /// The minimum size for this layout
+    cSizeInt minSize;
+    /// The current size for this layout
+    cSizeInt size;
+};
+
 } // namespace cerritos
 
-#endif // HEADER__H
+#endif // LAYOUT__H
 
 

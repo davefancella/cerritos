@@ -17,8 +17,9 @@ add_library(cerritos SHARED
     core/rect.cpp
     core/surface.cpp
     core/window.cpp
-    widgets/widget.cpp
+    widgets/layout.cpp
     widgets/mainwindow.cpp
+    widgets/widget.cpp
 )
 
 target_include_directories(cerritos PUBLIC

@@ -35,6 +35,8 @@
 
 #include "event.h"
 
+using namespace cerritos;
+
 class etMainWindow : public cMainWindow {
 public:
     void onMouseMotion(cMouseMotionEvent* evt) {

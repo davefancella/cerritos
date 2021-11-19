@@ -29,12 +29,12 @@ class cSurface;
 
 #include "backend.h"
 
-#include "cerritos.h"
-
 #include "widget.h"
 #include "string.h"
 
-class cMainWindow : public cWidget {
+namespace cerritos {
+
+class cMainWindow : public cerritos::cWidget {
 public:
     // The title of the window
     unicodestring Title;
@@ -80,6 +80,8 @@ private:
     //The window we'll be rendering to
     cWindow* window = NULL;
 };
+
+} // namespace cerritos
 
 #endif
 

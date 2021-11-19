@@ -33,21 +33,27 @@
 #include "backend.h"
 
 #include "event.h"
+#include "application.h"
 
-class cApplication;
+namespace cerritos {
 
-// Simple function to take a variable list of flags and return a single
-// variable combining all flags together.
+/// Simple function to take a variable list of flags and return a single
+/// variable combining all flags together.
 unsigned int flags(int num, ...);
 
-// Basic library initialization
+/// Basic library initialization.  Call before you use the library.
 void cInit();
+
+/// Call this to cleanup the library when you're finished with it.
 void cClose();
-// Initialize the library and get an application object with a an already
-// setup mainwindow
+
+/// Initialize the library and get an application object with a an already
+/// setup mainwindow
 cApplication* cInitApp(CER_WindowFlags winFlags=CER_Shown);
 
+/// Prints the cerritos library version
 void PrintCerritosVersion();
 
+} // namespace cerritos
 #endif
 

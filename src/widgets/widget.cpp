@@ -24,6 +24,8 @@
 
 #include "widget.h"
 
+using namespace cerritos;
+
 void cWidget::process_event(cEvent* event) {
     for (auto i = mChildren.begin(); i != mChildren.end(); ++i) {
         static_cast<cWidget*>(*i)->process_event(event);

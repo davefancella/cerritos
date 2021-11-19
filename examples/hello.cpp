@@ -34,6 +34,8 @@
 #include "application.h"
 #include "mainwindow.h"
 
+using namespace cerritos;
+
 int main( int argc, char* args[] ) {
     // This is a handy way to initialize cerritos and get a default
     // application object.  Typically, more complex games need more than

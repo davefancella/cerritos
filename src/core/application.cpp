@@ -33,6 +33,8 @@
 // hardware events.
 #include "hardwareeventprocessor.h"
 
+using namespace cerritos;
+
 cApplication::cApplication() {
     // Start by setting up the timestep
     unsigned int newTimestep = GetTicks();
