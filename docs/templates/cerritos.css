@@ -14,7 +14,7 @@ div#mainContent {
 }
 
 p.reference, p.definition {
-	font: 400 14px/22px Roboto,sans-serif;
+	font: 400 14pt/22pt Roboto,sans-serif;
 }
 
 /* @group Heading Levels */
@@ -24,20 +24,20 @@ h1.groupheader {
 }
 
 .title {
-	font: 400 14px/28px Roboto,sans-serif;
+	font: 400 14pt/28pt Roboto,sans-serif;
 	font-size: 150%;
 	font-weight: bold;
-	margin: 10px 2px;
+	margin: 10pt 2pt;
 }
 
 h2.groupheader {
-	border-bottom: 1px solid #879ECB;
+	border-bottom: 1pt solid #879ECB;
 	color: #354C7B;
 	font-size: 150%;
 	font-weight: normal;
 	margin-top: 1.75em;
-	padding-top: 8px;
-	padding-bottom: 4px;
+	padding-top: 8pt;
+	padding-bottom: 4pt;
 	width: 100%;
 }
 
@@ -51,11 +51,11 @@ h1, h2, h3, h4, h5, h6 {
 	-ms-transition: text-shadow 0.5s linear;
 	-o-transition: text-shadow 0.5s linear;
 	transition: text-shadow 0.5s linear;
-	margin-right: 15px;
+	margin-right: 15pt;
 }
 
 h1.glow, h2.glow, h3.glow, h4.glow, h5.glow, h6.glow {
-	text-shadow: 0 0 15px cyan;
+	text-shadow: 0 0 15pt cyan;
 }
 
 dt {
@@ -70,23 +70,23 @@ div.multicol {
 }
 
 p.startli, p.startdd {
-	margin-top: 2px;
+	margin-top: 2pt;
 }
 
 p.starttd {
-	margin-top: 0px;
+	margin-top: 0pt;
 }
 
 p.endli {
-	margin-bottom: 0px;
+	margin-bottom: 0pt;
 }
 
 p.enddd {
-	margin-bottom: 4px;
+	margin-bottom: 4pt;
 }
 
 p.endtd {
-	margin-bottom: 2px;
+	margin-bottom: 2pt;
 }
 
 /* @end */
@@ -107,7 +107,7 @@ h3.version {
 
 div.qindex, div.navtab{
 	background-color: #EBEFF6;
-	border: 1px solid #A3B4D7;
+	border: 1pt solid #A3B4D7;
 	text-align: center;
 }
 
@@ -117,7 +117,7 @@ div.qindex, div.navpath {
 }
 
 div.navtab {
-	margin-right: 15px;
+	margin-right: 15pt;
 }
 
 /* @group Link Styling */
@@ -144,7 +144,7 @@ a.qindexHL {
 	font-weight: bold;
 	background-color: #9CAFD4;
 	color: #ffffff;
-	border: 1px double #869DCA;
+	border: 1pt double #869DCA;
 }
 
 .contents a.qindexHL:visited {
@@ -173,10 +173,10 @@ dl.el {
 }
 
 pre.fragment {
-        border: 1px solid #C4CFE5;
+        border: 1pt solid #C4CFE5;
         background-color: #FBFCFD;
-        padding: 4px 6px;
-        margin: 4px 8px 4px 2px;
+        padding: 4pt 6pt;
+        margin: 4pt 8pt 4pt 2pt;
         overflow: auto;
         word-wrap: break-word;
         font-size:  9pt;
@@ -186,16 +186,16 @@ pre.fragment {
 }
 
 div.fragment {
-        padding: 0px;
-        margin: 4px 8px 4px 2px;
+        padding: 0pt;
+        margin: 4pt 8pt 4pt 2pt;
 	background-color: #FBFCFD;
-	border: 1px solid #C4CFE5;
+	border: 1pt solid #C4CFE5;
 }
 
 div.line {
 	font-family: monospace, fixed;
-        font-size: 13px;
-	min-height: 13px;
+        font-size: 13pt;
+	min-height: 13pt;
 	line-height: 1.0;
 	text-wrap: unrestricted;
 	white-space: -moz-pre-wrap; /* Moz */
@@ -203,10 +203,10 @@ div.line {
 	white-space: -o-pre-wrap;   /* Opera 7 */
 	white-space: pre-wrap;      /* CSS3  */
 	word-wrap: break-word;      /* IE 5.5+ */
-	text-indent: -53px;
-	padding-left: 53px;
-	padding-bottom: 0px;
-	margin: 0px;
+	text-indent: -53pt;
+	padding-left: 53pt;
+	padding-bottom: 0pt;
+	margin: 0pt;
 	-webkit-transition-property: background-color, box-shadow;
 	-webkit-transition-duration: 0.5s;
 	-moz-transition-property: background-color, box-shadow;
@@ -226,14 +226,14 @@ div.line:after {
 
 div.line.glow {
 	background-color: cyan;
-	box-shadow: 0 0 10px cyan;
+	box-shadow: 0 0 10pt cyan;
 }
 
 
 span.lineno {
-	padding-right: 4px;
+	padding-right: 4pt;
 	text-align: right;
-	border-right: 2px solid #0F0;
+	border-right: 2pt solid #0F0;
 	background-color: #E8E8E8;
         white-space: pre;
 }
@@ -258,16 +258,16 @@ div.ah, span.ah {
 	background-color: black;
 	font-weight: bold;
 	color: #ffffff;
-	margin-bottom: 3px;
-	margin-top: 3px;
+	margin-bottom: 3pt;
+	margin-top: 3pt;
 	padding: 0.2em;
 	border: solid thin #333;
 	border-radius: 0.5em;
 	-webkit-border-radius: .5em;
 	-moz-border-radius: .5em;
-	box-shadow: 2px 2px 3px #999;
-	-webkit-box-shadow: 2px 2px 3px #999;
-	-moz-box-shadow: rgba(0, 0, 0, 0.15) 2px 2px 2px;
+	box-shadow: 2pt 2pt 3pt #999;
+	-webkit-box-shadow: 2pt 2pt 3pt #999;
+	-moz-box-shadow: rgba(0, 0, 0, 0.15) 2pt 2pt 2pt;
 	background-image: -webkit-gradient(linear, left top, left bottom, from(#eee), to(#000),color-stop(0.3, #444));
 	background-image: -moz-linear-gradient(center top, #eee 0%, #444 40%, #000 110%);
 }
@@ -282,13 +282,13 @@ div.classindex span.ai {
 }
 
 div.groupHeader {
-	margin-left: 16px;
-	margin-top: 12px;
+	margin-left: 16pt;
+	margin-top: 12pt;
 	font-weight: bold;
 }
 
 div.groupText {
-	margin-left: 16px;
+	margin-left: 16pt;
 	font-style: italic;
 }
 
@@ -299,9 +299,9 @@ body {
 }
 
 div.contents {
-	/* margin-top: 10px;
-	margin-left: 12px;
-	margin-right: 8px; */
+	/* margin-top: 10pt;
+	margin-left: 12pt;
+	margin-right: 8pt; */
     width: 90%;
     margin: auto;
     background-color: #fefefe;
@@ -310,18 +310,18 @@ div.contents {
 td.indexkey {
 	background-color: #EBEFF6;
 	font-weight: bold;
-	border: 1px solid #C4CFE5;
-	margin: 2px 0px 2px 0;
-	padding: 2px 10px;
+	border: 1pt solid #C4CFE5;
+	margin: 2pt 0pt 2pt 0;
+	padding: 2pt 10pt;
         white-space: nowrap;
         vertical-align: top;
 }
 
 td.indexvalue {
 	background-color: #EBEFF6;
-	border: 1px solid #C4CFE5;
-	padding: 2px 10px;
-	margin: 2px 0px;
+	border: 1pt solid #C4CFE5;
+	padding: 2pt 10pt;
+	margin: 2pt 0pt;
 }
 
 tr.memlist {
@@ -342,22 +342,22 @@ img.formulaInl {
 
 div.center {
 	text-align: center;
-        margin-top: 0px;
-        margin-bottom: 0px;
-        padding: 0px;
+        margin-top: 0pt;
+        margin-bottom: 0pt;
+        padding: 0pt;
 }
 
 div.center img {
-	border: 0px;
+	border: 0pt;
 }
 
 address.footer {
 	text-align: right;
-	padding-right: 12px;
+	padding-right: 12pt;
 }
 
 img.footer {
-	border: 0px;
+	border: 0pt;
 	vertical-align: middle;
 }
 
@@ -409,9 +409,9 @@ span.vhdllogic {
 
 blockquote {
         background-color: #F7F8FB;
-        border-left: 2px solid #9CAFD4;
-        margin: 0 24px 0 4px;
-        padding: 0 12px 0 16px;
+        border-left: 2pt solid #9CAFD4;
+        margin: 0 24pt 0 4pt;
+        padding: 0 12pt 0 16pt;
 }
 
 /* @end */
@@ -423,8 +423,8 @@ blockquote {
 }
 
 form.search {
-	margin-bottom: 0px;
-	margin-top: 0px;
+	margin-bottom: 0pt;
+	margin-top: 0pt;
 }
 
 input.search {
@@ -440,9 +440,9 @@ td.tiny {
 }
 
 .dirtab {
-	padding: 4px;
+	padding: 4pt;
 	border-collapse: collapse;
-	border: 1px solid #A3B4D7;
+	border: 1pt solid #A3B4D7;
 }
 
 th.dirtab {
@@ -451,20 +451,20 @@ th.dirtab {
 }
 
 hr {
-	height: 0px;
+	height: 0pt;
 	border: none;
-	border-top: 1px solid #4A6AAA;
+	border-top: 1pt solid #4A6AAA;
 }
 
 hr.footer {
-	height: 1px;
+	height: 1pt;
 }
 
 /* @group Member Descriptions */
 
 table.memberdecls {
-	border-spacing: 0px;
-	padding: 0px;
+	border-spacing: 0pt;
+	padding: 0pt;
 }
 
 .memberdecls td, .fieldtable tr {
@@ -482,7 +482,7 @@ table.memberdecls {
 
 .memberdecls td.glow, .fieldtable tr.glow {
 	background-color: cyan;
-	box-shadow: 0 0 15px cyan;
+	box-shadow: 0 0 15pt cyan;
 }
 
 .mdescLeft, .mdescRight,
@@ -490,20 +490,20 @@ table.memberdecls {
 .memTemplItemLeft, .memTemplItemRight, .memTemplParams {
 	background-color: #F9FAFC;
 	border: none;
-	margin: 4px;
-	padding: 1px 0 0 8px;
+	margin: 4pt;
+	padding: 1pt 0 0 8pt;
 }
 
 .mdescLeft, .mdescRight {
-	padding: 0px 8px 4px 8px;
+	padding: 0pt 8pt 4pt 8pt;
 	color: #555;
 }
 
 .memSeparator {
-        border-bottom: 1px solid #DEE4F0;
-        line-height: 1px;
-        margin: 0px;
-        padding: 0px;
+        border-bottom: 1pt solid #DEE4F0;
+        line-height: 1pt;
+        margin: 0pt;
+        padding: 0pt;
 }
 
 .memItemLeft, .memTemplItemLeft {
@@ -527,13 +527,13 @@ table.memberdecls {
 /* Styles for detailed member documentation */
 
 .memtitle {
-	padding: 8px;
-	border-top: 1px solid #A8B8D9;
-	border-left: 1px solid #A8B8D9;
-	border-right: 1px solid #A8B8D9;
-	border-top-right-radius: 4px;
-	border-top-left-radius: 4px;
-	margin-bottom: -1px;
+	padding: 8pt;
+	border-top: 1pt solid #A8B8D9;
+	border-left: 1pt solid #A8B8D9;
+	border-right: 1pt solid #A8B8D9;
+	border-top-right-radius: 4pt;
+	border-top-left-radius: 4pt;
+	margin-bottom: -1pt;
 	background-image: url('nav_f.png');
 	background-repeat: repeat-x;
 	background-color: #E2E8F2;
@@ -553,16 +553,16 @@ table.memberdecls {
 	font-size: 80%;
 	color: #4665A2;
 	font-weight: normal;
-	margin-left: 9px;
+	margin-left: 9pt;
 }
 
 .memnav {
 	background-color: #EBEFF6;
-	border: 1px solid #A3B4D7;
+	border: 1pt solid #A3B4D7;
 	text-align: center;
-	margin: 2px;
-	margin-right: 15px;
-	padding: 2px;
+	margin: 2pt;
+	margin-right: 15pt;
+	padding: 2pt;
 }
 
 .mempage {
@@ -571,8 +571,8 @@ table.memberdecls {
 
 .memitem {
 	padding: 0;
-	margin-bottom: 10px;
-	margin-right: 5px;
+	margin-bottom: 10pt;
+	margin-right: 5pt;
         -webkit-transition: box-shadow 0.5s linear;
         -moz-transition: box-shadow 0.5s linear;
         -ms-transition: box-shadow 0.5s linear;
@@ -583,12 +583,12 @@ table.memberdecls {
 }
 
 .memitem.glow {
-         box-shadow: 0 0 15px cyan;
+         box-shadow: 0 0 15pt cyan;
 }
 
 .memname {
         font-weight: 400;
-        margin-left: 6px;
+        margin-left: 6pt;
 }
 
 .memname td {
@@ -596,23 +596,23 @@ table.memberdecls {
 }
 
 .memproto, dl.reflist dt {
-        border-top: 1px solid #A8B8D9;
-        border-left: 1px solid #A8B8D9;
-        border-right: 1px solid #A8B8D9;
-        padding: 6px 0px 6px 0px;
+        border-top: 1pt solid #A8B8D9;
+        border-left: 1pt solid #A8B8D9;
+        border-right: 1pt solid #A8B8D9;
+        padding: 6pt 0pt 6pt 0pt;
         color: #253555;
         font-weight: bold;
-        text-shadow: 0px 1px 1px rgba(255, 255, 255, 0.9);
+        text-shadow: 0pt 1pt 1pt rgba(255, 255, 255, 0.9);
         background-color: #DFE5F1;
         /* opera specific markup */
-        box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.15);
-        border-top-right-radius: 4px;
+        box-shadow: 5pt 5pt 5pt rgba(0, 0, 0, 0.15);
+        border-top-right-radius: 4pt;
         /* firefox specific markup */
-        -moz-box-shadow: rgba(0, 0, 0, 0.15) 5px 5px 5px;
-        -moz-border-radius-topright: 4px;
+        -moz-box-shadow: rgba(0, 0, 0, 0.15) 5pt 5pt 5pt;
+        -moz-border-radius-topright: 4pt;
         /* webkit specific markup */
-        -webkit-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.15);
-        -webkit-border-top-right-radius: 4px;
+        -webkit-box-shadow: 5pt 5pt 5pt rgba(0, 0, 0, 0.15);
+        -webkit-border-top-right-radius: 4pt;
 
 }
 
@@ -622,36 +622,36 @@ table.memberdecls {
 }
 
 .memdoc, dl.reflist dd {
-        border-bottom: 1px solid #A8B8D9;      
-        border-left: 1px solid #A8B8D9;      
-        border-right: 1px solid #A8B8D9; 
-        padding: 6px 10px 2px 10px;
+        border-bottom: 1pt solid #A8B8D9;      
+        border-left: 1pt solid #A8B8D9;      
+        border-right: 1pt solid #A8B8D9; 
+        padding: 6pt 10pt 2pt 10pt;
         background-color: #FBFCFD;
         border-top-width: 0;
         background-image:url('nav_g.png');
         background-repeat:repeat-x;
         background-color: #FFFFFF;
         /* opera specific markup */
-        border-bottom-left-radius: 4px;
-        border-bottom-right-radius: 4px;
-        box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.15);
+        border-bottom-left-radius: 4pt;
+        border-bottom-right-radius: 4pt;
+        box-shadow: 5pt 5pt 5pt rgba(0, 0, 0, 0.15);
         /* firefox specific markup */
-        -moz-border-radius-bottomleft: 4px;
-        -moz-border-radius-bottomright: 4px;
-        -moz-box-shadow: rgba(0, 0, 0, 0.15) 5px 5px 5px;
+        -moz-border-radius-bottomleft: 4pt;
+        -moz-border-radius-bottomright: 4pt;
+        -moz-box-shadow: rgba(0, 0, 0, 0.15) 5pt 5pt 5pt;
         /* webkit specific markup */
-        -webkit-border-bottom-left-radius: 4px;
-        -webkit-border-bottom-right-radius: 4px;
-        -webkit-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.15);
+        -webkit-border-bottom-left-radius: 4pt;
+        -webkit-border-bottom-right-radius: 4pt;
+        -webkit-box-shadow: 5pt 5pt 5pt rgba(0, 0, 0, 0.15);
 }
 
 dl.reflist dt {
-        padding: 5px;
+        padding: 5pt;
 }
 
 dl.reflist dd {
-        margin: 0px 0px 10px 0px;
-        padding: 5px;
+        margin: 0pt 0pt 10pt 0pt;
+        padding: 5pt;
 }
 
 .paramkey {
@@ -670,12 +670,12 @@ dl.reflist dd {
 	font-style: normal;
 }
 .paramname code {
-        line-height: 14px;
+        line-height: 14pt;
 }
 
 .params, .retval, .exception, .tparams {
-        margin-left: 0px;
-        padding-left: 0px;
+        margin-left: 0pt;
+        padding-left: 0pt;
 }       
 
 .params .paramname, .retval .paramname {
@@ -694,35 +694,35 @@ dl.reflist dd {
 }
 
 table.mlabels {
-	border-spacing: 0px;
+	border-spacing: 0pt;
 }
 
 td.mlabels-left {
 	width: 100%;
-	padding: 0px;
+	padding: 0pt;
 }
 
 td.mlabels-right {
 	vertical-align: bottom;
-	padding: 0px;
+	padding: 0pt;
 	white-space: nowrap;
 }
 
 span.mlabels {
-        margin-left: 8px;
+        margin-left: 8pt;
 }
 
 span.mlabel {
         background-color: #728DC1;
-        border-top:1px solid #5373B4;
-        border-left:1px solid #5373B4;
-        border-right:1px solid #C4CFE5;
-        border-bottom:1px solid #C4CFE5;
+        border-top:1pt solid #5373B4;
+        border-left:1pt solid #5373B4;
+        border-right:1pt solid #C4CFE5;
+        border-bottom:1pt solid #C4CFE5;
 	text-shadow: none;
 	color: white;
-	margin-right: 4px;
-	padding: 2px 3px;
-	border-radius: 3px;
+	margin-right: 4pt;
+	padding: 2pt 3pt;
+	border-radius: 3pt;
 	font-size: 7pt;
 	white-space: nowrap;
 	vertical-align: middle;
@@ -735,9 +735,9 @@ span.mlabel {
 /* these are for tree view inside a (index) page */
 
 div.directory {
-        margin: 10px 0px;
-        border-top: 1px solid #9CAFD4;
-        border-bottom: 1px solid #9CAFD4;
+        margin: 10pt 0pt;
+        border-top: 1pt solid #9CAFD4;
+        border-bottom: 1pt solid #9CAFD4;
         width: 100%;
 }
 
@@ -746,15 +746,15 @@ div.directory {
 }
 
 .directory td {
-        margin: 0px;
-        padding: 0px;
+        margin: 0pt;
+        padding: 0pt;
 	vertical-align: top;
 }
 
 .directory td.entry {
         white-space: nowrap;
-        padding-right: 6px;
-	padding-top: 3px;
+        padding-right: 6pt;
+	padding-top: 3pt;
 }
 
 .directory td.entry a {
@@ -767,14 +767,14 @@ div.directory {
 
 .directory td.desc {
         width: 100%;
-        padding-left: 6px;
-	padding-right: 6px;
-	padding-top: 3px;
-	border-left: 1px solid rgba(0,0,0,0.05);
+        padding-left: 6pt;
+	padding-right: 6pt;
+	padding-top: 3pt;
+	border-left: 1pt solid rgba(0,0,0,0.05);
 }
 
 .directory tr.even {
-	padding-left: 6px;
+	padding-left: 6pt;
 	background-color: #F7F8FB;
 }
 
@@ -791,8 +791,8 @@ div.directory {
 
 .directory .levels span {
         cursor: pointer;
-        padding-left: 2px;
-        padding-right: 2px;
+        padding-left: 2pt;
+        padding-right: 2pt;
 	color: #3D578C;
 }
 
@@ -806,33 +806,33 @@ div.directory {
     cursor: pointer;
     font-size: 80%;
     display: inline-block;
-    width: 16px;
-    height: 22px;
+    width: 16pt;
+    height: 22pt;
 }
 
 .icon {
     font-family: Arial, Helvetica;
     font-weight: bold;
-    font-size: 12px;
-    height: 14px;
-    width: 16px;
+    font-size: 12pt;
+    height: 14pt;
+    width: 16pt;
     display: inline-block;
     background-color: #728DC1;
     color: white;
     text-align: center;
-    border-radius: 4px;
-    margin-left: 2px;
-    margin-right: 2px;
+    border-radius: 4pt;
+    margin-left: 2pt;
+    margin-right: 2pt;
 }
 
 .icona {
-    width: 24px;
-    height: 22px;
+    width: 24pt;
+    height: 22pt;
     display: inline-block;
 }
 
 .iconfopen {
-    width: 24px;
+    width: 24pt;
     height: 18px;
     margin-bottom: 4px;
     background-image:url('folderopen.png');
