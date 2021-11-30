@@ -1,7 +1,16 @@
 /* The standard CSS for doxygen 1.8.13 */
 
 body, table, div, p, dl {
-	font: 400 14px/22px Roboto,sans-serif;
+	font: 400 14pt/22pt Roboto,sans-serif;
+}
+
+div {
+    background-color: #fefefe;
+}
+
+div#mainContent {
+    margin: auto;
+    width: 80%;
 }
 
 p.reference, p.definition {
@@ -284,15 +293,18 @@ div.groupText {
 }
 
 body {
-	background-color: white;
+	background-color: black;
 	color: black;
         margin: 0;
 }
 
 div.contents {
-	margin-top: 10px;
+	/* margin-top: 10px;
 	margin-left: 12px;
-	margin-right: 8px;
+	margin-right: 8px; */
+    width: 90%;
+    margin: auto;
+    background-color: #fefefe;
 }
 
 td.indexkey {
@@ -1159,6 +1171,13 @@ dl.section dd {
 	text-align: center;
 	vertical-align: bottom;
 	border-collapse: separate;
+    padding-left: 16px;
+    padding-right: 16px;
+}
+
+#projectlogo img {
+    height: 120px;
+    width: 60px;
 }
  
 #projectlogo img
