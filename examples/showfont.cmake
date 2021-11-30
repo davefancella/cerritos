@@ -1,3 +1,7 @@
+# Not built by default.  You'll have to uncomment this file to make it
+# work.
+
+#[[
 add_executable(showfont
     showfont.c
 )
@@ -11,4 +15,7 @@ target_link_libraries(showfont
     ${SDL2IMAGE_LIBRARIES}
     ${SDL2TTF_LIBRARIES}
 )
+
+]]
+
 
