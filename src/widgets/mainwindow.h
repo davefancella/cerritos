@@ -26,6 +26,7 @@
 #define MAINWINDOW_H
 
 class cSurface;
+class cLayout;
 
 #include "backend.h"
 
@@ -63,14 +64,28 @@ public:
     void setSize(int width, int height);
     
     void Move();
-    /// Call to update the window
+    
+    /// Call to update the window.  This is where all new sizes are
+    /// calculated, but no rendering is done.
     virtual void Update();
     
+    /// Call to render the window.  No new calculations should be needed,
+    /// but anything not involving drawing the window does not happen
+    /// here.
     virtual void Render();
     
+    /// Called at the start of rendering.  Typically clears the window.
     void beginRender();
+    
+    /// Called to finish any rendering tasks, manage double-buffering,
+    /// etc.
     void finishRender();
+    
+    /// Called to render the gui.  It's called before finishRender(),
+    /// but after the game screen has been rendered.
     void guiRender();
+    
+    /// Called internally to render the window.
     void renderAll();
 
     void onMouseOver(cMouseMotionEvent* evt);
@@ -78,7 +93,8 @@ public:
     cWindow* getWindow();
 private:
     //The window we'll be rendering to
-    cWindow* window = NULL;
+    cWindow* m_Window = NULL;
+    cLayout* m_Layout = NULL;
 };
 
 } // namespace cerritos

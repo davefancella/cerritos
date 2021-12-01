@@ -46,27 +46,5 @@ public:
     }
 };
 
-int main( int argc, char* args[] ) {
-    // This is a handy way to initialize cerritos and get a default
-    // application object.  Typically, more complex games need more than
-    // a default application object.
-    cApplication* theApp;
-    cMainWindow* theWindow;
-
-    cInit();
-    
-    theApp = new cApplication();
-    theWindow = new etMainWindow();
-    
-    theApp->setMainWindow(theWindow);
-    theWindow->setTitle("Hello, World!");
-
-    // This is your game loop.
-    theApp->loop();
-    
-    // Close up cerritos before quitting.  This makes sure we don't leave
-    // any devices open or whatever.  Most modern operating systems don't
-    // have those problems anymore, but this helps avoid segfaults.
-    cClose();
-}
+CERRITOSMAIN(cApplication, etMainWindow)
 

@@ -37,6 +37,8 @@ class cLayout {
 public:
     /// Adds a widget to this layout.
     void addWidget(cWidget* widget);
+    /// Adds a layout to this layout.
+    void addLayout(cLayout* layout);
     
     /// The minimum size for this layout
     cSizeInt minSize;

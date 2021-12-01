@@ -32,50 +32,72 @@
 
 namespace cerritos {
     
+/** 
+ * @class cApplication
+ * 
+ * The cApplication class is how your game interacts with the operating
+ * system, hence why it's called an application rather than a game.
+ * Cerritos distinguishes between three main objects, the application,
+ * the main window, and the game itself.  The application contains the
+ * main window, and the main window contains the game and the gui.  The
+ * game renders to a game screen in the main window, and the gui then
+ * renders on top of that.
+ * 
+ * This is the application portion of all of that.  It handles commandline
+ * process, configuration loading, file access, networking, etc.
+ * Polling for input is also done in cApplication.
+ * 
+ * There are several ways for you to use it.  The common, expected way 
+ * is to use one of the #CERRITOSMAIN macros, passing it your subclass
+ * of cApplication, where you will reimplement virtual functions that
+ * are called at appropriate times.
+ * 
+ * cApplication contains the main application loop.
+ */
 class cApplication : public cObject,
                      public cBaseEventReceiver {
 public:
     cApplication();
     
-    // Set the main window for the object.  If it's not set, it won't be
-    // updated.
+    /// Set the main window for the object.  If it's not set, it won't be
+    /// updated.
     void setMainWindow(cMainWindow* window);
     cMainWindow* getMainWindow();
     
     bool hasEvent();
     
-    // Polls the event manager for a single event
+    /// Polls the event manager for a single event
     cEvent* PollEvent();
     
-    // Get the current timestep.
+    /// Get the current timestep.
     const TimeStep getTimestep();
     
-    // Call to run the main loop.  Calling this surrenders control of
-    // the main loop to the application object.
+    /// Call to run the main loop.  Calling this surrenders control of
+    /// the main loop to the application object.
     void loop();
     
-    // Call this at the beginning of your main loop.  This updates the
-    // timestep and collects all new events in the event queue.
+    /// Call this at the beginning of your main loop.  This updates the
+    /// timestep and collects all new events in the event queue.
     void BeginUpdate();
     
-    // Call this to process events.  It will delete the events as it goes.
+    /// Call this to process events.  It will delete the events as it goes.
     void ProcessEvents();
     
-    // This method will be called to process each event.
+    /// This method will be called to process each event.
     virtual void ProcessOneEvent(cEvent* evt);
     
-    // This is the method provided for subclasses to do their own internal
-    // updating.
+    /// This is the method provided for subclasses to do their own internal
+    /// updating.
     virtual void Update();
 
-    // Updates the view, which is typically all graphics, used for animating
-    // stuff that needs to be animated.
+    /// Updates the view, which is typically all graphics, used for animating
+    /// stuff that needs to be animated.
     void UpdateView();
     
-    // Call at the end of the main loop to finish all pending updates.
+    /// Call at the end of the main loop to finish all pending updates.
     void EndUpdate();
     
-    // Call this to simply update everything at once.
+    /// Call this to simply update everything at once.
     void UpdateAll();
     
     bool keepRunning;
@@ -90,9 +112,9 @@ private:
     
     TimeStep currentTimestep;
 
-    // The first timestep ever in the app
+    /// The first timestep ever in the app
     unsigned int firstTimestep;
-    // The most recent timestep called
+    /// The most recent timestep called
     unsigned int lastTimestep;
 };
 

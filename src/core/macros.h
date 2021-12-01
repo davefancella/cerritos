@@ -22,38 +22,47 @@
  * 
  */
 
-#ifndef CERRITOS_H
-#define CERRITOS_H
+#ifndef MACROS__H
+#define MACROS__H
 
-/* This file is the base header file you need to include to use cerritos.
+/** @file
+ * 
+ * This file contains useful and important macros that don't have
+ * a specific home, or for whom this file is the most specific home.
  */
 
-#include "cerritos_version.h"
-#include "macros.h"
-#include "backend.h"
+/** This macro provides a main loop.  Using it enables more Java-style
+ *  programming.  The arguments provide the names of the classes used.
+ * 
+ *  @arg app : The name of your cApplication class.
+ *  @arg window : The name of your cMainWindow class.
+ */
+#define CERRITOSMAIN(app, window) \
+int main( int argc, char* args[] ) { \
+    app* theApp; \
+    window* theWindow; \
+\
+    cInit(); \
+\
+    theApp = new app(); \
+    theWindow = new window(); \
+\
+    theApp->setMainWindow(theWindow); \
+\
+    theApp->loop(); \
+\
+    cClose(); \
+}\
 
-#include "event.h"
-#include "application.h"
+
+// Includes and forward declarations go here
 
 namespace cerritos {
 
-/// Simple function to take a variable list of flags and return a single
-/// variable combining all flags together.
-unsigned int flags(int num, ...);
-
-/// Basic library initialization.  Call before you use the library.
-void cInit();
-
-/// Call this to cleanup the library when you're finished with it.
-void cClose();
-
-/// Initialize the library and get an application object with a an already
-/// setup mainwindow
-cApplication* cInitApp(CER_WindowFlags winFlags=CER_Shown);
-
-/// Prints the cerritos library version
-void PrintCerritosVersion();
-
+// Code goes here
+    
 } // namespace cerritos
-#endif
+
+#endif // MACROS__H
+
 

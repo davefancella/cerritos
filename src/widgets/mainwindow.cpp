@@ -68,7 +68,7 @@ cMainWindow::cMainWindow(CER_WindowFlags winFlags)
             : Title("Cerritos Window"), width(800), height(600), 
                 posx(CER_WindowPos_Centered), posy(CER_WindowPos_Centered),
                 windowFlags(winFlags) {
-    this->window = new cWindow( this->Title, 
+    this->m_Window = new cWindow( this->Title, 
             this->posx, this->posy,
             this->width, this->height, this->windowFlags );
     
@@ -78,7 +78,7 @@ cMainWindow::cMainWindow(unicodestring title, CER_WindowFlags winFlags)
             : Title(title), width(800), height(600), 
                 posx(CER_WindowPos_Centered), posy(CER_WindowPos_Centered),
                 windowFlags(winFlags) {
-    this->window = new cWindow( this->Title, 
+    this->m_Window = new cWindow( this->Title, 
             this->posx, this->posy,
             this->width, this->height, this->windowFlags );
 }
@@ -87,7 +87,7 @@ cMainWindow::cMainWindow(unicodestring title, int width, int height, CER_WindowF
             : Title(title), width(width), height(height), 
                 posx(CER_WindowPos_Centered), posy(CER_WindowPos_Centered),
                 windowFlags(winFlags) {
-    this->window = new cWindow( this->Title, 
+    this->m_Window = new cWindow( this->Title, 
             this->posx, this->posy,
             this->width, this->height, this->windowFlags );
 }
@@ -96,22 +96,31 @@ cMainWindow::cMainWindow(unicodestring title, int width, int height, int posx, i
             : Title(title), width(width), height(height), 
                 posx(posx), posy(posy),
                 windowFlags(winFlags) {
-    this->window = new cWindow( this->Title, 
+    this->m_Window = new cWindow( this->Title, 
             this->posx, this->posy,
             this->width, this->height, this->windowFlags );
 }
 
 cMainWindow::~cMainWindow() {
-    delete this->window;
+    delete m_Window;
 }
 
 void cMainWindow::Update() {
 }
 
+/**
+ * This method is intended to render the game screen.  It's likely
+ * just a placeholder for now.
+ */
 void cMainWindow::Render() {
     // Do nothing.
 }
 
+/**
+ * This method will render the main window.  It will call the virtual
+ * Render() method at the appropriate time for any subclass rendering
+ * that needs to happen.
+ */
 void cMainWindow::renderAll() {
     this->beginRender();
     this->Render();
@@ -121,23 +130,23 @@ void cMainWindow::renderAll() {
 
 void cMainWindow::beginRender() {
 #ifdef USING_SDL
-    SDL_RenderClear(this->window->getSDLRenderer() );
+    SDL_RenderClear(m_Window->getSDLRenderer() );
 #endif
 }
 
 void cMainWindow::guiRender() {
     for (auto i = mChildren.begin(); i != mChildren.end(); ++i) {
-        static_cast<cWidget*>(*i)->Render_To(this->window);
+        static_cast<cWidget*>(*i)->Render_To(m_Window);
     }
 }
 
 void cMainWindow::finishRender() {
 #ifdef USING_SDL
-    SDL_RenderPresent(this->window->getSDLRenderer() );
+    SDL_RenderPresent(m_Window->getSDLRenderer() );
 #endif
 }
 
 cWindow* cMainWindow::getWindow() { 
-    return this->window; 
+    return m_Window; 
 }
 
