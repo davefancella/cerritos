@@ -15,6 +15,7 @@ add_library(cerritos SHARED
     core/font.cpp
     core/point.cpp
     core/rect.cpp
+    core/sprite.cpp
     core/surface.cpp
     core/window.cpp
     widgets/layout.cpp
