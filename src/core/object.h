@@ -22,10 +22,6 @@
  * 
  */
 
-
-/* This file is the base header file you need to include to use davenetgame.
- */
-
 #ifndef CERRITOSCORE_H
 #define CERRITOSCORE_H
 
@@ -46,8 +42,9 @@ protected:
     cList<cObject*> mChildren;
 };
 
-// Timesteps are such an integral part of everything that happens in a game
-// that the timestep class is included here.
+/** Timesteps are such an integral part of everything that happens in a game
+ *  that the timestep class is included here.
+ */
 class TimeStep {
 public:   
     unsigned int fromBeginning;

@@ -36,6 +36,9 @@ class cWindow;
 class cRect;
 struct cPixelFormat;
 
+/** A surface to which to render.  It's used by widgets, sprites, fonts,
+ *  and pretty much anything that needs to draw to the screen.
+ */
 class cSurface {
 public:
     cSurface(cWindow* window);
@@ -52,12 +55,12 @@ public:
     void FillRect(const cRect* rect, uint8_t red, uint8_t green, uint8_t blue, uint8_t alpha=255);
     
 private:
-    // Disable default constructor
+    /// Disable default constructor
     cSurface();
 
-    cWindow* mWindow;
+    cWindow* m_Window;
 #ifdef USING_SDL
-    SDL_Texture* mTexture;
+    SDL_Texture* m_Texture;
 #endif
 };
 

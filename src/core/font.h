@@ -32,6 +32,13 @@
 class cWindow;
 class cRect;
 
+/** A simple font class.
+ * 
+ *  It loads fonts from a file and can render to a rect.  It does not
+ *  do any multiline handling or range checking or anything.  Simply
+ *  tell it to print text, give a cSurface to print it on, and it'll do
+ *  that.
+ */
 class cFont {
 public:
     /// Default constructor.

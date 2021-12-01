@@ -33,7 +33,6 @@ struct SDL_Renderer;
 
 /** This class contains os-specific window information.
  */
-
 class cWindow {
 public:
     cWindow(unicodestring title, int posx, int posy, int width, int height, CER_WindowFlags winFlags=CER_Shown);
@@ -52,22 +51,22 @@ public:
     // Window flags
     CER_WindowFlags windowFlags;
     
-    bool isValid() { return this->mIsValid; };
+    bool isValid() { return m_IsValid; };
     
 #ifdef USING_SDL
-    SDL_Window* getSDLWindow() { return this->mWindow; };
-    SDL_Renderer* getSDLRenderer() { return this->mRenderer; };
+    SDL_Window* getSDLWindow() { return m_Window; };
+    SDL_Renderer* getSDLRenderer() { return m_Renderer; };
 #endif
     
 private:
     // Forbid use of default constructor
     cWindow();
     
-    bool mIsValid;
+    bool m_IsValid;
     
 #ifdef USING_SDL
-    SDL_Window* mWindow;
-    SDL_Renderer* mRenderer;
+    SDL_Window* m_Window;
+    SDL_Renderer* m_Renderer;
 #endif
 };
 

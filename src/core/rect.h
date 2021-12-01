@@ -27,6 +27,8 @@
 
 #include "point.h"
 
+/** A simple class that contains a location and a size defining a rectangle.
+ */
 class cRect {
 public:
     cRect() {

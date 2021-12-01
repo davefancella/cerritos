@@ -33,20 +33,20 @@ cWindow::cWindow(unicodestring title, int posx, int posy, int width, int height,
             : Title(title), width(width), height(height), 
                 posx(posx), posy(posy),
                 windowFlags(winFlags) {
-    this->mWindow = SDL_CreateWindow( this->Title.data(), 
+    m_Window = SDL_CreateWindow( this->Title.data(), 
             this->posx, this->posy,
             this->width, this->height, this->windowFlags);
     
     // Check for an error first
-    if( this->mWindow == NULL ) {
-        this->mIsValid = false;
+    if( m_Window == NULL ) {
+        m_IsValid = false;
         std::cout << "Window could not be created! Backend: " <<
             GetError() << std::endl;
     } else {
 #ifdef USING_SDL
         // This is when the window is created successfully
-        this->mRenderer = SDL_CreateRenderer(this->mWindow, -1, SDL_RENDERER_ACCELERATED);
-        SDL_SetRenderDrawColor(this->mRenderer, 0,0,0,255);
+        m_Renderer = SDL_CreateRenderer(m_Window, -1, SDL_RENDERER_ACCELERATED);
+        SDL_SetRenderDrawColor(m_Renderer, 0,0,0,255);
 #endif
     }
 }

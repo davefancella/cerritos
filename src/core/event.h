@@ -35,7 +35,7 @@ typedef enum {
     HARDWAREENUM
 } CER_EventType;
 
-// The base class for events.
+/// The base class for events.
 class cEvent {
 public:
     CER_EventType type() { return this->evtype; };
@@ -47,7 +47,7 @@ protected:
     bool active = true;
 };
 
-// The class that manages the event queue
+/// The class that manages the event queue
 class cEventManager {
 public:
     void addEvent(cEvent* event);

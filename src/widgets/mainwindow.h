@@ -37,18 +37,18 @@ namespace cerritos {
 
 class cMainWindow : public cerritos::cWidget {
 public:
-    // The title of the window
+    /// The title of the window
     unicodestring Title;
     
-    // Size of window
+    /// Size of window
     int width;
     int height;
     
-    // Window position
+    /// Window position
     int posx;
     int posy;
     
-    // Window flags
+    /// Window flags
     CER_WindowFlags windowFlags;
     
     // Constructors
@@ -92,7 +92,7 @@ public:
     
     cWindow* getWindow();
 private:
-    //The window we'll be rendering to
+    /// The window we'll be rendering to
     cWindow* m_Window = NULL;
     cLayout* m_Layout = NULL;
 };
