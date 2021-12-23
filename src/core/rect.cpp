@@ -24,6 +24,8 @@
 
 #include "rect.h"
 
+using namespace cerritos;
+
 cRect::cRect(int x, int y, int w, int h) { 
     this->position.x = x;
     this->position.y = y;

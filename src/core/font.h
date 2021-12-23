@@ -29,11 +29,10 @@
 
 #include "string.h"
 
-class cRect;
-
 namespace cerritos {
 
 class cWindow;
+class cRect;
 
 /** A simple font class.
  * 

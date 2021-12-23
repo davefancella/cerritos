@@ -74,10 +74,19 @@ int main( int argc, char* args[] ) {
     etMainWindow* theWindow;
     cFont* theFont;
 
+    std::cout << "Starting..." << std::endl;
+    
     cInit();
     
+    std::cout << "Finished init" << std::endl;
+
     theApp = new cApplication();
+
+    std::cout << "Creating window" << std::endl;
+
     theWindow = new etMainWindow();
+
+    std::cout << "Opening window" << std::endl;
     
     theApp->setMainWindow(theWindow);
     theWindow->setTitle("Font Test");

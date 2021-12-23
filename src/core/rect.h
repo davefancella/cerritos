@@ -27,6 +27,8 @@
 
 #include "point.h"
 
+namespace cerritos {
+
 /** A simple class that contains a location and a size defining a rectangle.
  */
 class cRect {
@@ -47,6 +49,8 @@ public:
     cRect operator+(const cSizeInt& other);
     cRect operator-(const cSizeInt& other);
 };
+
+}
 
 #endif // RECT__H
 

@@ -32,15 +32,19 @@
 struct SDL_Texture;
 #endif
 
-class cRect;
 struct cPixelFormat;
 
 namespace cerritos {
 
 class cWindow;
+class cRect;
 
 /** A surface to which to render.  It's used by widgets, sprites, fonts,
  *  and pretty much anything that needs to draw to the screen.
+ * 
+ *  When you create a new surface, you have to pass it the one and only
+ *  one pointer to the window to which the surface will ultimately draw
+ *  itself.  Otherwise, it simply stores a texture internally.
  */
 class cSurface {
 public:

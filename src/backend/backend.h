@@ -55,7 +55,7 @@ void PollHardwareEvents(cEventManager* eventManager);
 
 // This is a forward declaration.  Typically, you'll define this in
 // your backend.  Currently, these are just placeholders for SDL stuff.
-struct cRect;
+//struct cRect;
 //struct cPixelFormat;
 
 // These are the enums that a backend must provide

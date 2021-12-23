@@ -68,6 +68,8 @@ cMainWindow::cMainWindow(CER_WindowFlags winFlags)
             : Title("Cerritos Window"), width(800), height(600), 
                 posx(CER_WindowPos_Centered), posy(CER_WindowPos_Centered),
                 windowFlags(winFlags) {
+    std::cout << "Creating cWindow object" << std::endl;                
+    
     this->m_Window = new cWindow( this->Title, 
             this->posx, this->posy,
             this->width, this->height, this->windowFlags );
