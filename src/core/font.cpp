@@ -32,6 +32,8 @@
 #include "string.h"
 #include "rect.h"
 
+using namespace cerritos;
+
 cFont::cFont() {
     this->mFont = NULL;
 }

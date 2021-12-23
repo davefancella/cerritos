@@ -30,6 +30,8 @@
 #include "sdl_backend.h"
 #endif
 
+using namespace cerritos;
+
 cSurface::cSurface(cWindow* window) 
             : m_Window(window) {
 #ifdef USING_SDL

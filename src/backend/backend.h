@@ -32,7 +32,7 @@
 
 #include "string.h"
 
-class cWindow;
+//class cWindow;
 class cEventManager;
 
 // These are the functions a backend must implement

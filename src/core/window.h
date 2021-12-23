@@ -31,6 +31,8 @@
 struct SDL_Window;
 struct SDL_Renderer;
 
+namespace cerritos {
+
 /** This class contains os-specific window information.
  */
 class cWindow {
@@ -69,6 +71,8 @@ private:
     SDL_Renderer* m_Renderer;
 #endif
 };
+
+}
 
 #endif // WINDOW__H
 

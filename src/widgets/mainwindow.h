@@ -25,15 +25,15 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-class cSurface;
-class cLayout;
-
 #include "backend.h"
 
 #include "widget.h"
 #include "string.h"
 
 namespace cerritos {
+
+class cSurface;
+class cLayout;
 
 class cMainWindow : public cerritos::cWidget {
 public:

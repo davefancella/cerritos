@@ -32,10 +32,9 @@
 #include "eventreceiver.h"
 #include "hardwareeventreceiver.h"
 
-class cWindow;
-
 namespace cerritos {
 
+class cWindow;
 class cLayout;
 
 /** The base class for all widgets in Cerritos.

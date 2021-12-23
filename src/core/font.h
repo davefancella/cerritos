@@ -29,8 +29,11 @@
 
 #include "string.h"
 
-class cWindow;
 class cRect;
+
+namespace cerritos {
+
+class cWindow;
 
 /** A simple font class.
  * 
@@ -77,6 +80,8 @@ private:
     TTF_Font* mFont;
 #endif
 };
+
+}
 
 #endif // FONT__H
 

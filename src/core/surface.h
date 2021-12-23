@@ -32,9 +32,12 @@
 struct SDL_Texture;
 #endif
 
-class cWindow;
 class cRect;
 struct cPixelFormat;
+
+namespace cerritos {
+
+class cWindow;
 
 /** A surface to which to render.  It's used by widgets, sprites, fonts,
  *  and pretty much anything that needs to draw to the screen.
@@ -63,6 +66,8 @@ private:
     SDL_Texture* m_Texture;
 #endif
 };
+
+}
 
 #endif // SURFACE__H
 
