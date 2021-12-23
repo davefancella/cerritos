@@ -23,11 +23,17 @@
  */
 
 #include "widget.h"
+#include "layout.h"
 
 using namespace cerritos;
 
+void cWidget::setLayout(cLayout* theLayout) { 
+    m_Layout = theLayout; 
+    m_Layout->reparent(this);
+}
+
 void cWidget::process_event(cEvent* event) {
-    for (auto i = mChildren.begin(); i != mChildren.end(); ++i) {
+    for (auto i = m_Children.begin(); i != m_Children.end(); ++i) {
         static_cast<cWidget*>(*i)->process_event(event);
     }
     if(event->isActive() ) {

@@ -27,19 +27,31 @@
 
 #include "list.h"
 
+namespace cerritos {
+
 /** The base class for all cerritos objects
  */
 class cObject {
 public:
     cObject();
-    cObject(cObject* parent) : mParent(parent) { }
+    cObject(cObject* parent);
     
-    // Call to update an object in a game loop.  Not all objects need this.
+    /// Adds a child to the object
+    void addChild(cObject* newChild);
+    
+    /// Changes the parent of this widget
+    void reparent(cObject* newParent);
+    
+    /// Call whenever you're removing a child from somewhere other than
+    /// this class.
+    void removingObject(cObject* theChild) { };
+    
+    /// Call to update an object in a game loop.  Not all objects need this.
     virtual void Update() { };
     
 protected:
-    cObject* mParent;
-    cList<cObject*> mChildren;
+    cObject* m_Parent;
+    cList<cObject*> m_Children;
 };
 
 /** Timesteps are such an integral part of everything that happens in a game
@@ -51,6 +63,7 @@ public:
     unsigned int fromLast;
 };
 
+}
 
 #endif
 

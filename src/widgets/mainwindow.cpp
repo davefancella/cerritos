@@ -135,7 +135,7 @@ void cMainWindow::beginRender() {
 }
 
 void cMainWindow::guiRender() {
-    for (auto i = mChildren.begin(); i != mChildren.end(); ++i) {
+    for (auto i = m_Children.begin(); i != m_Children.end(); ++i) {
         static_cast<cWidget*>(*i)->Render_To(m_Window);
     }
 }

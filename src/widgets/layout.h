@@ -26,6 +26,7 @@
 #define LAYOUT__H
 
 #include "point.h"
+#include "object.h"
 
 namespace cerritos {
     
@@ -33,7 +34,7 @@ class cWidget;
 
 /** The base class for all layouts.
  */
-class cLayout {
+class cLayout : public cObject {
 public:
     /// Adds a widget to this layout.
     void addWidget(cWidget* widget);

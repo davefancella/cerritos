@@ -24,8 +24,34 @@
 
 #include "object.h"
 
+using namespace cerritos;
+
 cObject::cObject() {
-    
+    m_Parent = NULL;
 };
+
+cObject::cObject(cObject* parent) : m_Parent(parent) { 
+    parent->addChild(this);
+}
+
+void cObject::addChild(cObject* newChild) {
+    for (auto i = m_Children.begin(); i != m_Children.end(); ++i) {
+        if(*i == newChild)
+            return;
+    }
+    
+    m_Children.push_back(newChild);
+}
+
+void cObject::reparent(cObject* newParent) {
+    // First let the old parent know we're leaving their family
+    if(m_Parent != NULL) {
+        m_Parent->removingObject(this);
+    }
+    
+    // Now join the new parent
+    newParent->addChild(this);
+    m_Parent = newParent;
+}
 
 

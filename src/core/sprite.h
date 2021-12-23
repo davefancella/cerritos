@@ -35,6 +35,6 @@ class cSprite {
     
 } // namespace cerritos
 
-#endif // HEADER__H
+#endif // SPRITE__H
 
 

@@ -33,9 +33,10 @@
 #include "hardwareeventreceiver.h"
 
 class cWindow;
-class cLayout;
 
 namespace cerritos {
+
+class cLayout;
 
 /** The base class for all widgets in Cerritos.
  * 
@@ -49,8 +50,14 @@ class cWidget : public cObject,
                 public cBaseEventReceiver {
 public:
     cWidget(cWidget* parent=NULL) { 
-        mParent = dynamic_cast<cObject*>(parent); 
+        parent->addChild(dynamic_cast<cObject*>(this));
+        m_Parent = dynamic_cast<cObject*>(parent);
     };
+    
+    /// Set the layout for this widget.  Each widget can have only
+    /// one top-level layout.  This is it.  The layout will be reparented
+    /// to this widget.
+    void setLayout(cLayout* theLayout);
     
     /// Processes an event.  Generally no need to reimplement it, but
     /// if you do, make sure you call the base implementation.
@@ -63,7 +70,7 @@ public:
     
 protected:
     /// The top level layout for this widget.
-    cLayout* mLayout;
+    cLayout* m_Layout;
 // Following are event handlers for widgets.
 public:
     // virtual void onNameofeventCamelCase(cNameofeventCamelCaseEvent* event);
