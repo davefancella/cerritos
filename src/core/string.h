@@ -33,10 +33,10 @@
 #include <string>
 
 #ifdef _WIN32
-typedef std::wstring unicodestring;
+typedef std::wstring cString;
 #define UNI(text) L ## text
 /*
-std::string _formatForConsole(const unicodestring &str)
+std::string _formatForConsole(const cString &str)
 {
     std::string result;
     //Call WideCharToMultiByte to do the conversion
@@ -44,10 +44,10 @@ std::string _formatForConsole(const unicodestring &str)
 }
 */
 #else
-typedef std::string unicodestring;
+typedef std::string cString;
 #define UNI(text) text
 /*
-std::string _formatForConsole(const unicodestring &str)
+std::string _formatForConsole(const cString &str)
 {
     return str;
 }

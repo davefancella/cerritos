@@ -49,14 +49,14 @@ public:
     /// Renders text to the screen
     bool RenderText(cWindow* window, const char* text, cRect* dest, uint8_t red, uint8_t green, uint8_t blue, uint8_t alpha=0);
     /// Renders text to the screen
-    bool RenderText(cWindow* window, unicodestring text, cRect* dest, uint8_t red, uint8_t green, uint8_t blue, uint8_t alpha=0);
+    bool RenderText(cWindow* window, cString text, cRect* dest, uint8_t red, uint8_t green, uint8_t blue, uint8_t alpha=0);
     
     /// Loads a font from a file
     int loadFontFile(const char* filename, int size);
-    int loadFontFile(unicodestring filename, int size);
+    int loadFontFile(cString filename, int size);
 
     /// Static method to create a new cFont object from a file.
-    static cFont* loadFromFile(unicodestring filename, int size);
+    static cFont* loadFromFile(cString filename, int size);
     
     /// Set the style to be rendered, i.e. bold/italic/etc.
     void SetFontStyle(int style);

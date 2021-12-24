@@ -37,10 +37,10 @@ namespace cerritos {
  */
 class cWindow {
 public:
-    cWindow(unicodestring title, int posx, int posy, int width, int height, CER_WindowFlags winFlags=CER_Shown);
+    cWindow(cString title, int posx, int posy, int width, int height, CER_WindowFlags winFlags=CER_Shown);
 
     // The title of the window
-    unicodestring Title;
+    cString Title;
     
     // Size of window
     int width;

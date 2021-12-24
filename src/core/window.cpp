@@ -31,7 +31,7 @@
 
 using namespace cerritos;
 
-cWindow::cWindow(unicodestring title, int posx, int posy, int width, int height, CER_WindowFlags winFlags)
+cWindow::cWindow(cString title, int posx, int posy, int width, int height, CER_WindowFlags winFlags)
             : Title(title), width(width), height(height), 
                 posx(posx), posy(posy),
                 windowFlags(winFlags) {

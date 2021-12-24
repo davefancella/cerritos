@@ -49,7 +49,7 @@ cFont::cFont() {
  * @param alpha: the alpha part of color
  */
 bool cFont::RenderText(cWindow* window, const char* text, cRect* dest, uint8_t red, uint8_t green, uint8_t blue, uint8_t alpha) {
-    return this->RenderText(window, unicodestring(text), dest, red, blue, green, alpha);
+    return this->RenderText(window, cString(text), dest, red, blue, green, alpha);
 }
 
 /**
@@ -61,7 +61,7 @@ bool cFont::RenderText(cWindow* window, const char* text, cRect* dest, uint8_t r
  * @param blue   blue part of color
  * @param alpha: the alpha part of color
  */
-bool cFont::RenderText(cWindow* window, unicodestring text, cRect* dest, uint8_t red, uint8_t blue, uint8_t green, uint8_t alpha) {
+bool cFont::RenderText(cWindow* window, cString text, cRect* dest, uint8_t red, uint8_t blue, uint8_t green, uint8_t alpha) {
 #ifdef USING_SDL
     int calcW, calcH;
     
@@ -111,10 +111,10 @@ bool cFont::RenderText(cWindow* window, unicodestring text, cRect* dest, uint8_t
 }
 
 int cFont::loadFontFile(const char* filename, int size) {
-    return this->loadFontFile(unicodestring(filename), size);
+    return this->loadFontFile(cString(filename), size);
 }
 
-int cFont::loadFontFile(unicodestring filename, int size) {
+int cFont::loadFontFile(cString filename, int size) {
 #ifdef USING_SDL
     this->mFont = TTF_OpenFont(filename.data(), size);
     if( this->mFont == NULL )
@@ -161,7 +161,7 @@ void cFont::SetFontHinting(int hinting) {
 #endif
 }
 
-cFont* cFont::loadFromFile(unicodestring filename, int size) {
+cFont* cFont::loadFromFile(cString filename, int size) {
     cFont* theFont = NULL;
     
     theFont = new cFont();

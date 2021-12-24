@@ -37,7 +37,7 @@ void cMainWindow::onMouseOver(cMouseMotionEvent* evt) {
 
 }
 
-void cMainWindow::setTitle(unicodestring title) {
+void cMainWindow::setTitle(cString title) {
     this->Title = title;
     
     //SDL_SetWindowTitle(this->window, title.data() );
@@ -76,7 +76,7 @@ cMainWindow::cMainWindow(CER_WindowFlags winFlags)
     
 }
 
-cMainWindow::cMainWindow(unicodestring title, CER_WindowFlags winFlags) 
+cMainWindow::cMainWindow(cString title, CER_WindowFlags winFlags) 
             : cWidget(NULL), Title(title), width(800), height(600), 
                 posx(CER_WindowPos_Centered), posy(CER_WindowPos_Centered),
                 windowFlags(winFlags) {
@@ -85,7 +85,7 @@ cMainWindow::cMainWindow(unicodestring title, CER_WindowFlags winFlags)
             this->width, this->height, this->windowFlags );
 }
 
-cMainWindow::cMainWindow(unicodestring title, int width, int height, CER_WindowFlags winFlags) 
+cMainWindow::cMainWindow(cString title, int width, int height, CER_WindowFlags winFlags) 
             : cWidget(NULL), Title(title), width(width), height(height), 
                 posx(CER_WindowPos_Centered), posy(CER_WindowPos_Centered),
                 windowFlags(winFlags) {
@@ -94,7 +94,7 @@ cMainWindow::cMainWindow(unicodestring title, int width, int height, CER_WindowF
             this->width, this->height, this->windowFlags );
 }
 
-cMainWindow::cMainWindow(unicodestring title, int width, int height, int posx, int posy, CER_WindowFlags winFlags) 
+cMainWindow::cMainWindow(cString title, int width, int height, int posx, int posy, CER_WindowFlags winFlags) 
             : cWidget(NULL), Title(title), width(width), height(height), 
                 posx(posx), posy(posy),
                 windowFlags(winFlags) {

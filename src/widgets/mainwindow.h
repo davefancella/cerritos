@@ -38,7 +38,7 @@ class cLayout;
 class cMainWindow : public cerritos::cWidget {
 public:
     /// The title of the window
-    unicodestring Title;
+    cString Title;
     
     /// Size of window
     int width;
@@ -54,12 +54,12 @@ public:
     // Constructors
     //cMainWindow();
     cMainWindow(CER_WindowFlags winFlags=CER_Shown);
-    cMainWindow(unicodestring title, CER_WindowFlags winFlags=CER_Shown);
-    cMainWindow(unicodestring title, int width, int height, CER_WindowFlags winFlags=CER_Shown);
-    cMainWindow(unicodestring title, int width, int height, int posx, int posy, CER_WindowFlags winFlags=CER_Shown);
+    cMainWindow(cString title, CER_WindowFlags winFlags=CER_Shown);
+    cMainWindow(cString title, int width, int height, CER_WindowFlags winFlags=CER_Shown);
+    cMainWindow(cString title, int width, int height, int posx, int posy, CER_WindowFlags winFlags=CER_Shown);
     virtual ~cMainWindow();
     
-    void setTitle(unicodestring title);
+    void setTitle(cString title);
     void setPosition(int posx, int posy);
     void setSize(int width, int height);
     
