@@ -38,9 +38,9 @@ struct cPixelFormat;
 
 namespace cerritos {
 
-class cWindow;
-class cRect;
-class cPointInt;
+class Window;
+class Rect;
+class PointInt;
 
 /** A surface to which to render.  It's used by widgets, sprites, fonts,
  *  and pretty much anything that needs to draw to the screen.
@@ -49,26 +49,26 @@ class cPointInt;
  *  one pointer to the window to which the surface will ultimately draw
  *  itself.  Otherwise, it simply stores a texture internally.
  */
-class cSurface {
+class Surface {
 public:
-    cSurface(cWindow* window);
-    ~cSurface();
+    Surface(Window* window);
+    ~Surface();
 
     /// Copies this surface to another surface.
-    void Blit_To(cRect* dest, const double angle=0.0, const cPointInt *center=NULL, CER_RenderFlags flip=CER_None);
+    void Blit_To(Rect* dest, const double angle=0.0, const PointInt *center=NULL, CER_RenderFlags flip=CER_None);
     
     /// Use this to fill the entire surface with one color
     void Fill(uint8_t red, uint8_t green, uint8_t blue, uint8_t alpha=255);
     
     /// Use this to fill the surface or an area of the surface with
     /// a color.
-    void FillRect(const cRect* rect, uint8_t red, uint8_t green, uint8_t blue, uint8_t alpha=255);
+    void FillRect(const Rect* rect, uint8_t red, uint8_t green, uint8_t blue, uint8_t alpha=255);
     
 private:
     /// Disable default constructor
-    cSurface();
+    Surface();
 
-    cWindow* m_Window;
+    Window* m_Window;
 #ifdef USING_SDL
     SDL_Texture* m_Texture;
 #endif

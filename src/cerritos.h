@@ -49,7 +49,7 @@ void cClose();
 
 /// Initialize the library and get an application object with a an already
 /// setup mainwindow
-cApplication* cInitApp(CER_WindowFlags winFlags=CER_Shown);
+Application* cInitApp(CER_WindowFlags winFlags=CER_Shown);
 
 /// Prints the cerritos library version
 void PrintCerritosVersion();

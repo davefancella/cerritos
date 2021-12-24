@@ -27,18 +27,18 @@
  * strings from the C++ standard library
  */
 
-#ifndef CSTRING__H
-#define CSTRING__H
+#ifndef String__H
+#define String__H
 
 #include <string>
 
 namespace cerritos {
 
 #ifdef _WIN32
-typedef std::wstring cString;
+typedef std::wstring String;
 #define UNI(text) L ## text
 /*
-std::string _formatForConsole(const cString &str)
+std::string _formatForConsole(const String &str)
 {
     std::string result;
     //Call WideCharToMultiByte to do the conversion
@@ -46,10 +46,10 @@ std::string _formatForConsole(const cString &str)
 }
 */
 #else
-typedef std::string cString;
+typedef std::string String;
 #define UNI(text) text
 /*
-std::string _formatForConsole(const cString &str)
+std::string _formatForConsole(const String &str)
 {
     return str;
 }
@@ -58,6 +58,6 @@ std::string _formatForConsole(const cString &str)
 
 }
 
-#endif // CSTRING__H
+#endif // String__H
 
 

@@ -135,7 +135,7 @@ def main():
         
         cerName = "CER_"
         headerName = ""
-        className = "c"
+        className = ""
         eventHandlerName = "on"
         
         for b in theValues:
@@ -327,7 +327,7 @@ outputHeader = '''/*
 
 namespace cerritos {
 
-class $classname : public cEvent {
+class $classname : public Event {
 public:
     $classname() { 
         evtype=$eventtype; 
@@ -390,10 +390,10 @@ beginSDLPoller = '''/*
  
 using namespace cerritos;
  
-void cerritos::PollHardwareEvents(cEventManager* eventManager) {
+void cerritos::PollHardwareEvents(EventManager* eventManager) {
     // Get SDL events
     SDL_Event event;
-    cEvent* newEvent = NULL;
+    Event* newEvent = NULL;
     
     while (SDL_PollEvent(&event)) {
         newEvent = NULL;
@@ -405,7 +405,7 @@ endSDLPoller = '''            default:
                 break;
         }
         if(newEvent != NULL)
-            eventManager->addEvent( (cEvent*) newEvent);
+            eventManager->addEvent( (Event*) newEvent);
     }
 }
 

@@ -27,21 +27,21 @@
 
 namespace cerritos {
 
-class cPoint {
+class Point {
     
 };
 
-class cPointInt : public cPoint {
+class PointInt : public Point {
 public:
-    cPointInt() : x(0), y(0) { };
-    cPointInt(int x, int y);
+    PointInt() : x(0), y(0) { };
+    PointInt(int x, int y);
     
     int x;
     int y;
     
     // operators
-    cPointInt operator+(const cPointInt& other);
-    cPointInt operator-(const cPointInt& other);
+    PointInt operator+(const PointInt& other);
+    PointInt operator-(const PointInt& other);
 };
 
 class cSizeInt {
@@ -52,7 +52,7 @@ public:
     int width;
     int height;
     
-    cSizeInt operator+(const cPointInt& other);
+    cSizeInt operator+(const PointInt& other);
     cSizeInt operator+(const cSizeInt& other);
     cSizeInt operator-(const cSizeInt& other);
 };

@@ -26,14 +26,14 @@
 
 using namespace cerritos;
 
-cPointInt::cPointInt(int x, int y) : x(x), y(y) { }
+PointInt::PointInt(int x, int y) : x(x), y(y) { }
 
-cPointInt cPointInt::operator+(const cPointInt& other) {
-    return cPointInt(this->x + other.x, this->y + other.y);
+PointInt PointInt::operator+(const PointInt& other) {
+    return PointInt(this->x + other.x, this->y + other.y);
 }
 
-cPointInt cPointInt::operator-(const cPointInt& other) {
-    return cPointInt(this->x - other.x, this->y - other.y);
+PointInt PointInt::operator-(const PointInt& other) {
+    return PointInt(this->x - other.x, this->y - other.y);
 }
 
 cSizeInt::cSizeInt(int width, int height) : width(width), height(height) { }

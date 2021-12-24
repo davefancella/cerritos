@@ -34,7 +34,7 @@
 /** This macro provides a main loop.  Using it enables more Java-style
  *  programming.  The arguments provide the names of the classes used.
  * 
- *  @arg app : The name of your cApplication class.
+ *  @arg app : The name of your Application class.
  *  @arg window : The name of your cMainWindow class.
  */
 #define CERRITOSMAIN(app, window) \

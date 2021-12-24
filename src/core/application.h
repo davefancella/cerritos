@@ -33,9 +33,9 @@
 namespace cerritos {
     
 /** 
- * @class cApplication
+ * @class Application
  * 
- * The cApplication class is how your game interacts with the operating
+ * The Application class is how your game interacts with the operating
  * system, hence why it's called an application rather than a game.
  * Cerritos distinguishes between three main objects, the application,
  * the main window, and the game itself.  The application contains the
@@ -45,19 +45,19 @@ namespace cerritos {
  * 
  * This is the application portion of all of that.  It handles commandline
  * process, configuration loading, file access, networking, etc.
- * Polling for input is also done in cApplication.
+ * Polling for input is also done in Application.
  * 
  * There are several ways for you to use it.  The common, expected way 
  * is to use one of the #CERRITOSMAIN macros, passing it your subclass
- * of cApplication, where you will reimplement virtual functions that
+ * of Application, where you will reimplement virtual functions that
  * are called at appropriate times.
  * 
- * cApplication contains the main application loop.
+ * Application contains the main application loop.
  */
-class cApplication : public cObject,
+class Application : public Object,
                      public cBaseEventReceiver {
 public:
-    cApplication();
+    Application();
     
     /// Set the main window for the object.  If it's not set, it won't be
     /// updated.
@@ -67,7 +67,7 @@ public:
     bool hasEvent();
     
     /// Polls the event manager for a single event
-    cEvent* PollEvent();
+    Event* PollEvent();
     
     /// Get the current timestep.
     const TimeStep getTimestep();
@@ -84,7 +84,7 @@ public:
     void ProcessEvents();
     
     /// This method will be called to process each event.
-    virtual void ProcessOneEvent(cEvent* evt);
+    virtual void ProcessOneEvent(Event* evt);
     
     /// This is the method provided for subclasses to do their own internal
     /// updating.
@@ -105,10 +105,10 @@ public:
     cMainWindow* mainwindow = NULL;
 
 protected:
-    void ProcessOneEventI(cEvent* evt);
+    void ProcessOneEventI(Event* evt);
     
 private:
-    cEventManager* eventManager;
+    EventManager* eventManager;
     
     TimeStep currentTimestep;
 

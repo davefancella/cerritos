@@ -31,13 +31,13 @@
 
 namespace cerritos {
 
-class cQuitEvent : public cEvent {
+class QuitEvent : public Event {
 public:
-    cQuitEvent() { 
+    QuitEvent() { 
         evtype=CER_QuitEvent; 
     };
     
-    cQuitEvent(unsigned int timestamp) { 
+    QuitEvent(unsigned int timestamp) { 
         evtype = CER_QuitEvent;
         evtimestamp = timestamp;
     };

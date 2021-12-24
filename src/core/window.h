@@ -35,12 +35,12 @@ namespace cerritos {
 
 /** This class contains os-specific window information.
  */
-class cWindow {
+class Window {
 public:
-    cWindow(cString title, int posx, int posy, int width, int height, CER_WindowFlags winFlags=CER_Shown);
+    Window(String title, int posx, int posy, int width, int height, CER_WindowFlags winFlags=CER_Shown);
 
     // The title of the window
-    cString Title;
+    String Title;
     
     // Size of window
     int width;
@@ -62,7 +62,7 @@ public:
     
 private:
     // Forbid use of default constructor
-    cWindow();
+    Window();
     
     bool m_IsValid;
     

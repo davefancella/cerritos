@@ -31,9 +31,9 @@
 
 namespace cerritos {
 
-class cRenderDeviceResetEvent : public cEvent {
+class RenderDeviceResetEvent : public Event {
 public:
-    cRenderDeviceResetEvent() { 
+    RenderDeviceResetEvent() { 
         evtype=CER_RenderDeviceResetEvent; 
     };
 };

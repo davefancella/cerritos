@@ -31,9 +31,9 @@
 
 namespace cerritos {
 
-class cKeymapchangedEvent : public cEvent {
+class KeymapchangedEvent : public Event {
 public:
-    cKeymapchangedEvent() { 
+    KeymapchangedEvent() { 
         evtype=CER_KeymapchangedEvent; 
     };
 };

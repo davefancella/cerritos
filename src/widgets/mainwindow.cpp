@@ -33,11 +33,11 @@
 
 using namespace cerritos;
 
-void cMainWindow::onMouseOver(cMouseMotionEvent* evt) {
+void cMainWindow::onMouseOver(MouseMotionEvent* evt) {
 
 }
 
-void cMainWindow::setTitle(cString title) {
+void cMainWindow::setTitle(String title) {
     this->Title = title;
     
     //SDL_SetWindowTitle(this->window, title.data() );
@@ -68,37 +68,37 @@ cMainWindow::cMainWindow(CER_WindowFlags winFlags)
             : cWidget(NULL), Title("Cerritos Window"), width(800), height(600), 
                 posx(CER_WindowPos_Centered), posy(CER_WindowPos_Centered),
                 windowFlags(winFlags) {
-    std::cout << "Creating cWindow object" << std::endl;                
+    std::cout << "Creating Window object" << std::endl;                
     
-    this->m_Window = new cWindow( this->Title, 
+    this->m_Window = new Window( this->Title, 
             this->posx, this->posy,
             this->width, this->height, this->windowFlags );
     
 }
 
-cMainWindow::cMainWindow(cString title, CER_WindowFlags winFlags) 
+cMainWindow::cMainWindow(String title, CER_WindowFlags winFlags) 
             : cWidget(NULL), Title(title), width(800), height(600), 
                 posx(CER_WindowPos_Centered), posy(CER_WindowPos_Centered),
                 windowFlags(winFlags) {
-    this->m_Window = new cWindow( this->Title, 
+    this->m_Window = new Window( this->Title, 
             this->posx, this->posy,
             this->width, this->height, this->windowFlags );
 }
 
-cMainWindow::cMainWindow(cString title, int width, int height, CER_WindowFlags winFlags) 
+cMainWindow::cMainWindow(String title, int width, int height, CER_WindowFlags winFlags) 
             : cWidget(NULL), Title(title), width(width), height(height), 
                 posx(CER_WindowPos_Centered), posy(CER_WindowPos_Centered),
                 windowFlags(winFlags) {
-    this->m_Window = new cWindow( this->Title, 
+    this->m_Window = new Window( this->Title, 
             this->posx, this->posy,
             this->width, this->height, this->windowFlags );
 }
 
-cMainWindow::cMainWindow(cString title, int width, int height, int posx, int posy, CER_WindowFlags winFlags) 
+cMainWindow::cMainWindow(String title, int width, int height, int posx, int posy, CER_WindowFlags winFlags) 
             : cWidget(NULL), Title(title), width(width), height(height), 
                 posx(posx), posy(posy),
                 windowFlags(winFlags) {
-    this->m_Window = new cWindow( this->Title, 
+    this->m_Window = new Window( this->Title, 
             this->posx, this->posy,
             this->width, this->height, this->windowFlags );
 }
@@ -148,7 +148,7 @@ void cMainWindow::finishRender() {
 #endif
 }
 
-cWindow* cMainWindow::getWindow() { 
+Window* cMainWindow::getWindow() { 
     return m_Window; 
 }
 

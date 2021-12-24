@@ -28,7 +28,7 @@
 
 using namespace cerritos;
 
-void cBaseEventReceiver::process_event(cEvent* event) {
+void cBaseEventReceiver::process_event(Event* event) {
     if(event->isActive() ) {
         switch(event->type() ) {
             PROCESSHARDWAREEVENTS

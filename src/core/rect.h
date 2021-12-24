@@ -31,23 +31,23 @@ namespace cerritos {
 
 /** A simple class that contains a location and a size defining a rectangle.
  */
-class cRect {
+class Rect {
 public:
-    cRect() {
+    Rect() {
         position.x = 0;
         position.y =0;
         size.width = 0;
         size.height =0;
     };
-    cRect(int x, int y, int w, int h);
+    Rect(int x, int y, int w, int h);
     
-    cPointInt position;
+    PointInt position;
     cSizeInt size;
 
-    cRect operator+(const cPointInt& other);
-    cRect operator-(const cPointInt& other);
-    cRect operator+(const cSizeInt& other);
-    cRect operator-(const cSizeInt& other);
+    Rect operator+(const PointInt& other);
+    Rect operator-(const PointInt& other);
+    Rect operator+(const cSizeInt& other);
+    Rect operator-(const cSizeInt& other);
 };
 
 }

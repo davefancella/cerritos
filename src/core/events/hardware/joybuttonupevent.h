@@ -31,13 +31,13 @@
 
 namespace cerritos {
 
-class cJoyButtonupEvent : public cEvent {
+class JoyButtonupEvent : public Event {
 public:
-    cJoyButtonupEvent() { 
+    JoyButtonupEvent() { 
         evtype=CER_JoyButtonupEvent; 
     };
     
-    cJoyButtonupEvent(unsigned int timestamp) { 
+    JoyButtonupEvent(unsigned int timestamp) { 
         evtype = CER_JoyButtonupEvent;
         evtimestamp = timestamp;
     };

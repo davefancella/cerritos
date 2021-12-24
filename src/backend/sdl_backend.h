@@ -315,7 +315,7 @@ unsigned int GetTicks();
 void Delay(unsigned int ms);
 int backendInit();
 void backendClose();
-void PollHardwareEvents(cEventManager* eventManager);
+void PollHardwareEvents(EventManager* eventManager);
 const char* GetError();
 
 }

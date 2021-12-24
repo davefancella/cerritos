@@ -34,282 +34,282 @@
  
 using namespace cerritos;
  
-void cerritos::PollHardwareEvents(cEventManager* eventManager) {
+void cerritos::PollHardwareEvents(EventManager* eventManager) {
     // Get SDL events
     SDL_Event event;
-    cEvent* newEvent = NULL;
+    Event* newEvent = NULL;
     
     while (SDL_PollEvent(&event)) {
         newEvent = NULL;
         switch (event.type) {
             case SDL_QUIT:
-                newEvent = new cQuitEvent(
+                newEvent = new QuitEvent(
                     event.quit.timestamp
                 );
                 break;
             case SDL_WINDOWEVENT_SHOWN:
-                newEvent = new cWindowShownEvent(
+                newEvent = new WindowShownEvent(
                     event.window.timestamp, event.window.windowID
                 );
                 break;
             case SDL_WINDOWEVENT_HIDDEN:
-                newEvent = new cWindowHiddenEvent(
+                newEvent = new WindowHiddenEvent(
                     event.window.timestamp, event.window.windowID
                 );
                 break;
             case SDL_WINDOWEVENT_EXPOSED:
-                newEvent = new cWindowExposedEvent(
+                newEvent = new WindowExposedEvent(
                     event.window.timestamp, event.window.windowID
                 );
                 break;
             case SDL_WINDOWEVENT_MOVED:
-                newEvent = new cWindowMovedEvent(
+                newEvent = new WindowMovedEvent(
                     event.window.timestamp, event.window.windowID, event.window.data1, event.window.data2
                 );
                 break;
             case SDL_WINDOWEVENT_RESIZED:
-                newEvent = new cWindowResizedEvent(
+                newEvent = new WindowResizedEvent(
                     event.window.timestamp, event.window.windowID, event.window.data1, event.window.data2
                 );
                 break;
             case SDL_WINDOWEVENT_SIZE_CHANGED:
-                newEvent = new cWindowSizeChangedEvent(
+                newEvent = new WindowSizeChangedEvent(
                     event.window.timestamp, event.window.windowID, event.window.data1, event.window.data2
                 );
                 break;
             case SDL_WINDOWEVENT_MINIMIZED:
-                newEvent = new cWindowMinimizedEvent(
+                newEvent = new WindowMinimizedEvent(
                     event.window.timestamp, event.window.windowID
                 );
                 break;
             case SDL_WINDOWEVENT_MAXIMIZED:
-                newEvent = new cWindowMaximizedEvent(
+                newEvent = new WindowMaximizedEvent(
                     event.window.timestamp, event.window.windowID
                 );
                 break;
             case SDL_WINDOWEVENT_RESTORED:
-                newEvent = new cWindowRestoredEvent(
+                newEvent = new WindowRestoredEvent(
                     event.window.timestamp, event.window.windowID
                 );
                 break;
             case SDL_WINDOWEVENT_ENTER:
-                newEvent = new cWindowEnterEvent(
+                newEvent = new WindowEnterEvent(
                     event.window.timestamp, event.window.windowID
                 );
                 break;
             case SDL_WINDOWEVENT_LEAVE:
-                newEvent = new cWindowLeaveEvent(
+                newEvent = new WindowLeaveEvent(
                     event.window.timestamp, event.window.windowID
                 );
                 break;
             case SDL_WINDOWEVENT_FOCUS_GAINED:
-                newEvent = new cWindowFocusGainedEvent(
+                newEvent = new WindowFocusGainedEvent(
                     event.window.timestamp, event.window.windowID
                 );
                 break;
             case SDL_WINDOWEVENT_FOCUS_LOST:
-                newEvent = new cWindowFocusLostEvent(
+                newEvent = new WindowFocusLostEvent(
                     event.window.timestamp, event.window.windowID
                 );
                 break;
             case SDL_WINDOWEVENT_CLOSE:
-                newEvent = new cWindowCloseEvent(
+                newEvent = new WindowCloseEvent(
                     event.window.timestamp, event.window.windowID
                 );
                 break;
             case SDL_WINDOWEVENT_TAKE_FOCUS:
-                newEvent = new cWindowTakeFocusEvent(
+                newEvent = new WindowTakeFocusEvent(
                     event.window.timestamp, event.window.windowID
                 );
                 break;
             case SDL_WINDOWEVENT_HIT_TEST:
-                newEvent = new cWindowHitTestEvent(
+                newEvent = new WindowHitTestEvent(
                     event.window.timestamp, event.window.windowID
                 );
                 break;
             case SDL_KEYDOWN:
-                newEvent = new cKeydownEvent(
+                newEvent = new KeydownEvent(
                     event.key.timestamp, event.key.windowID, event.key.keysym.sym, event.key.keysym.scancode
                 );
                 break;
             case SDL_KEYUP:
-                newEvent = new cKeyupEvent(
+                newEvent = new KeyupEvent(
                     event.key.timestamp, event.key.windowID, event.key.keysym.sym, event.key.keysym.scancode
                 );
                 break;
             case SDL_TEXTEDITING:
-                newEvent = new cTextEditingEvent(
+                newEvent = new TextEditingEvent(
                     event.edit.timestamp, event.edit.windowID
                 );
                 break;
             case SDL_TEXTINPUT:
-                newEvent = new cTextInputEvent(
+                newEvent = new TextInputEvent(
                     event.text.timestamp, event.text.windowID
                 );
                 break;
             case SDL_KEYMAPCHANGED:
-                newEvent = new cKeymapchangedEvent;
+                newEvent = new KeymapchangedEvent;
                 break;
             case SDL_MOUSEBUTTONDOWN:
-                newEvent = new cMouseButtondownEvent(
+                newEvent = new MouseButtondownEvent(
                     event.button.timestamp
                 );
                 break;
             case SDL_MOUSEMOTION:
-                newEvent = new cMouseMotionEvent(
+                newEvent = new MouseMotionEvent(
                     event.motion.timestamp, event.motion.windowID, event.motion.x, event.motion.y, event.motion.xrel, event.motion.yrel
                 );
                 break;
             case SDL_MOUSEBUTTONUP:
-                newEvent = new cMouseButtonupEvent(
+                newEvent = new MouseButtonupEvent(
                     event.button.timestamp
                 );
                 break;
             case SDL_MOUSEWHEEL:
-                newEvent = new cMouseWheelEvent(
+                newEvent = new MouseWheelEvent(
                     event.wheel.timestamp
                 );
                 break;
             case SDL_JOYAXISMOTION:
-                newEvent = new cJoyAxisMotionEvent(
+                newEvent = new JoyAxisMotionEvent(
                     event.jaxis.timestamp
                 );
                 break;
             case SDL_JOYBALLMOTION:
-                newEvent = new cJoyBallMotionEvent(
+                newEvent = new JoyBallMotionEvent(
                     event.jball.timestamp
                 );
                 break;
             case SDL_JOYHATMOTION:
-                newEvent = new cJoyHatMotionEvent(
+                newEvent = new JoyHatMotionEvent(
                     event.jhat.timestamp
                 );
                 break;
             case SDL_JOYBUTTONDOWN:
-                newEvent = new cJoyButtondownEvent(
+                newEvent = new JoyButtondownEvent(
                     event.jbutton.timestamp
                 );
                 break;
             case SDL_JOYBUTTONUP:
-                newEvent = new cJoyButtonupEvent(
+                newEvent = new JoyButtonupEvent(
                     event.jbutton.timestamp
                 );
                 break;
             case SDL_JOYDEVICEADDED:
-                newEvent = new cJoyDeviceAddedEvent(
+                newEvent = new JoyDeviceAddedEvent(
                     event.jdevice.timestamp
                 );
                 break;
             case SDL_JOYDEVICEREMOVED:
-                newEvent = new cJoyDeviceRemovedEvent(
+                newEvent = new JoyDeviceRemovedEvent(
                     event.jdevice.timestamp
                 );
                 break;
             case SDL_CONTROLLERAXISMOTION:
-                newEvent = new cControllerAxisMotionEvent(
+                newEvent = new ControllerAxisMotionEvent(
                     event.caxis.timestamp
                 );
                 break;
             case SDL_CONTROLLERBUTTONDOWN:
-                newEvent = new cControllerButtondownEvent(
+                newEvent = new ControllerButtondownEvent(
                     event.cbutton.timestamp
                 );
                 break;
             case SDL_CONTROLLERBUTTONUP:
-                newEvent = new cControllerButtonupEvent(
+                newEvent = new ControllerButtonupEvent(
                     event.cbutton.timestamp
                 );
                 break;
             case SDL_CONTROLLERDEVICEADDED:
-                newEvent = new cControllerDeviceAddedEvent(
+                newEvent = new ControllerDeviceAddedEvent(
                     event.cdevice.timestamp
                 );
                 break;
             case SDL_CONTROLLERDEVICEREMOVED:
-                newEvent = new cControllerDeviceRemovedEvent(
+                newEvent = new ControllerDeviceRemovedEvent(
                     event.cdevice.timestamp
                 );
                 break;
             case SDL_CONTROLLERDEVICEREMAPPED:
-                newEvent = new cControllerDeviceRemappedEvent(
+                newEvent = new ControllerDeviceRemappedEvent(
                     event.cdevice.timestamp
                 );
                 break;
             case SDL_FINGERDOWN:
-                newEvent = new cFingerdownEvent(
+                newEvent = new FingerdownEvent(
                     event.tfinger.timestamp
                 );
                 break;
             case SDL_FINGERUP:
-                newEvent = new cFingerupEvent(
+                newEvent = new FingerupEvent(
                     event.tfinger.timestamp
                 );
                 break;
             case SDL_FINGERMOTION:
-                newEvent = new cFingerMotionEvent(
+                newEvent = new FingerMotionEvent(
                     event.tfinger.timestamp
                 );
                 break;
             case SDL_DOLLARGESTURE:
-                newEvent = new cDollarGestureEvent(
+                newEvent = new DollarGestureEvent(
                     event.dgesture.timestamp
                 );
                 break;
             case SDL_DOLLARRECORD:
-                newEvent = new cDollarRecordEvent(
+                newEvent = new DollarRecordEvent(
                     event.dgesture.timestamp
                 );
                 break;
             case SDL_MULTIGESTURE:
-                newEvent = new cMultiGestureEvent(
+                newEvent = new MultiGestureEvent(
                     event.mgesture.timestamp
                 );
                 break;
             case SDL_CLIPBOARDUPDATE:
-                newEvent = new cClipboardUpdateEvent;
+                newEvent = new ClipboardUpdateEvent;
                 break;
             case SDL_DROPFILE:
-                newEvent = new cDropFileEvent(
+                newEvent = new DropFileEvent(
                     event.drop.timestamp
                 );
                 break;
             case SDL_DROPTEXT:
-                newEvent = new cDropTextEvent(
+                newEvent = new DropTextEvent(
                     event.drop.timestamp
                 );
                 break;
             case SDL_DROPBEGIN:
-                newEvent = new cDropBeginEvent(
+                newEvent = new DropBeginEvent(
                     event.drop.timestamp
                 );
                 break;
             case SDL_DROPCOMPLETE:
-                newEvent = new cDropCompleteEvent(
+                newEvent = new DropCompleteEvent(
                     event.drop.timestamp
                 );
                 break;
             case SDL_AUDIODEVICEADDED:
-                newEvent = new cAudioDeviceAddedEvent(
+                newEvent = new AudioDeviceAddedEvent(
                     event.adevice.timestamp
                 );
                 break;
             case SDL_AUDIODEVICEREMOVED:
-                newEvent = new cAudioDeviceRemovedEvent(
+                newEvent = new AudioDeviceRemovedEvent(
                     event.adevice.timestamp
                 );
                 break;
             case SDL_RENDER_TARGETS_RESET:
-                newEvent = new cRenderTargetsResetEvent;
+                newEvent = new RenderTargetsResetEvent;
                 break;
             case SDL_RENDER_DEVICE_RESET:
-                newEvent = new cRenderDeviceResetEvent;
+                newEvent = new RenderDeviceResetEvent;
                 break;
             default:
                 // std::cout << "Unhandled Event!" << std::endl;
                 break;
         }
         if(newEvent != NULL)
-            eventManager->addEvent( (cEvent*) newEvent);
+            eventManager->addEvent( (Event*) newEvent);
     }
 }
 

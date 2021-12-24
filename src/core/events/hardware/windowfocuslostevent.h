@@ -31,13 +31,13 @@
 
 namespace cerritos {
 
-class cWindowFocusLostEvent : public cEvent {
+class WindowFocusLostEvent : public Event {
 public:
-    cWindowFocusLostEvent() { 
+    WindowFocusLostEvent() { 
         evtype=CER_WindowFocusLostEvent; 
     };
     
-    cWindowFocusLostEvent(unsigned int timestamp, unsigned int winId) { 
+    WindowFocusLostEvent(unsigned int timestamp, unsigned int winId) { 
         evtype = CER_WindowFocusLostEvent;
         evtimestamp = timestamp;
         windowId = winId;

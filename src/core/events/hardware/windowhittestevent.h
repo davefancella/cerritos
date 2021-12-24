@@ -31,13 +31,13 @@
 
 namespace cerritos {
 
-class cWindowHitTestEvent : public cEvent {
+class WindowHitTestEvent : public Event {
 public:
-    cWindowHitTestEvent() { 
+    WindowHitTestEvent() { 
         evtype=CER_WindowHitTestEvent; 
     };
     
-    cWindowHitTestEvent(unsigned int timestamp, unsigned int winId) { 
+    WindowHitTestEvent(unsigned int timestamp, unsigned int winId) { 
         evtype = CER_WindowHitTestEvent;
         evtimestamp = timestamp;
         windowId = winId;

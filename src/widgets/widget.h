@@ -34,7 +34,7 @@
 
 namespace cerritos {
 
-class cWindow;
+class Window;
 class cLayout;
 
 /** The base class for all widgets in Cerritos.
@@ -45,7 +45,7 @@ class cLayout;
  * You would use widgets to provide an in-game HUD, an in-game GUI, and
  * for the application gui when the player is not in-game.
  */
-class cWidget : public cObject, 
+class cWidget : public Object, 
                 public cBaseEventReceiver {
 public:
     cWidget(cWidget* parent=NULL);
@@ -57,12 +57,12 @@ public:
     
     /// Processes an event.  Generally no need to reimplement it, but
     /// if you do, make sure you call the base implementation.
-    virtual void process_event(cEvent* event);
+    virtual void process_event(Event* event);
     
     /// Renders the widget.  Base class implementation doesn't really
     /// do anything.  You'll need to reimplement in your subclasses if
     /// you want them to actually get drawn to the window.
-    virtual void Render_To(cWindow* window) { };
+    virtual void Render_To(Window* window) { };
     
 protected:
     /// The top level layout for this widget.

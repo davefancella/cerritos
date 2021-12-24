@@ -29,8 +29,8 @@ using namespace cerritos;
 
 cWidget::cWidget(cWidget* parent) {
     if(parent != NULL) {
-        parent->addChild(dynamic_cast<cObject*>(this));
-        m_Parent = dynamic_cast<cObject*>(parent);
+        parent->addChild(dynamic_cast<Object*>(this));
+        m_Parent = dynamic_cast<Object*>(parent);
     }
 }
 
@@ -39,7 +39,7 @@ void cWidget::setLayout(cLayout* theLayout) {
     m_Layout->reparent(this);
 }
 
-void cWidget::process_event(cEvent* event) {
+void cWidget::process_event(Event* event) {
     for (auto i = m_Children.begin(); i != m_Children.end(); ++i) {
         static_cast<cWidget*>(*i)->process_event(event);
     }

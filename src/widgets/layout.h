@@ -31,13 +31,13 @@
 namespace cerritos {
     
 class cWidget;
-class cObject;
+class Object;
 
 /** The base class for all layouts.
  */
-class cLayout : public cObject {
+class cLayout : public Object {
 public:
-    cLayout(cObject* parent=NULL);
+    cLayout(Object* parent=NULL);
     
     /// Adds a widget to this layout.
     void addWidget(cWidget* widget);

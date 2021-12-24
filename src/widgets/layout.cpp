@@ -28,14 +28,14 @@
 
 using namespace cerritos;
 
-cLayout::cLayout(cObject* parent) : cObject(parent) { }
+cLayout::cLayout(Object* parent) : Object(parent) { }
 
 void cLayout::addWidget(cWidget* widget) {
-    addChild(dynamic_cast<cObject*>(widget) );
+    addChild(dynamic_cast<Object*>(widget) );
 }
 
 void cLayout::addLayout(cLayout* layout) {
-    addChild(dynamic_cast<cObject*>(layout) );    
+    addChild(dynamic_cast<Object*>(layout) );    
 }
 
 

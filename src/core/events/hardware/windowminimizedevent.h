@@ -31,13 +31,13 @@
 
 namespace cerritos {
 
-class cWindowMinimizedEvent : public cEvent {
+class WindowMinimizedEvent : public Event {
 public:
-    cWindowMinimizedEvent() { 
+    WindowMinimizedEvent() { 
         evtype=CER_WindowMinimizedEvent; 
     };
     
-    cWindowMinimizedEvent(unsigned int timestamp, unsigned int winId) { 
+    WindowMinimizedEvent(unsigned int timestamp, unsigned int winId) { 
         evtype = CER_WindowMinimizedEvent;
         evtimestamp = timestamp;
         windowId = winId;

@@ -31,32 +31,32 @@
 
 namespace cerritos {
 
-class cWindow;
-class cRect;
+class Window;
+class Rect;
 
 /** A simple font class.
  * 
  *  It loads fonts from a file and can render to a rect.  It does not
  *  do any multiline handling or range checking or anything.  Simply
- *  tell it to print text, give a cSurface to print it on, and it'll do
+ *  tell it to print text, give a Surface to print it on, and it'll do
  *  that.
  */
-class cFont {
+class Font {
 public:
     /// Default constructor.
-    cFont();
+    Font();
     
     /// Renders text to the screen
-    bool RenderText(cWindow* window, const char* text, cRect* dest, uint8_t red, uint8_t green, uint8_t blue, uint8_t alpha=0);
+    bool RenderText(Window* window, const char* text, Rect* dest, uint8_t red, uint8_t green, uint8_t blue, uint8_t alpha=0);
     /// Renders text to the screen
-    bool RenderText(cWindow* window, cString text, cRect* dest, uint8_t red, uint8_t green, uint8_t blue, uint8_t alpha=0);
+    bool RenderText(Window* window, String text, Rect* dest, uint8_t red, uint8_t green, uint8_t blue, uint8_t alpha=0);
     
     /// Loads a font from a file
     int loadFontFile(const char* filename, int size);
-    int loadFontFile(cString filename, int size);
+    int loadFontFile(String filename, int size);
 
-    /// Static method to create a new cFont object from a file.
-    static cFont* loadFromFile(cString filename, int size);
+    /// Static method to create a new Font object from a file.
+    static Font* loadFromFile(String filename, int size);
     
     /// Set the style to be rendered, i.e. bold/italic/etc.
     void SetFontStyle(int style);

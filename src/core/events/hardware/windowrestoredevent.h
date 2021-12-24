@@ -31,13 +31,13 @@
 
 namespace cerritos {
 
-class cWindowRestoredEvent : public cEvent {
+class WindowRestoredEvent : public Event {
 public:
-    cWindowRestoredEvent() { 
+    WindowRestoredEvent() { 
         evtype=CER_WindowRestoredEvent; 
     };
     
-    cWindowRestoredEvent(unsigned int timestamp, unsigned int winId) { 
+    WindowRestoredEvent(unsigned int timestamp, unsigned int winId) { 
         evtype = CER_WindowRestoredEvent;
         evtimestamp = timestamp;
         windowId = winId;

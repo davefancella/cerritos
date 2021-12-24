@@ -33,7 +33,7 @@
 
 using namespace cerritos;
 
-cSurface::cSurface(cWindow* window) 
+Surface::Surface(Window* window) 
             : m_Window(window) {
 #ifdef USING_SDL
     m_Texture = SDL_CreateTexture(window->getSDLRenderer(), SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_TARGET, 1024, 768);
@@ -41,14 +41,14 @@ cSurface::cSurface(cWindow* window)
 }
 
 
-cSurface::~cSurface() {
+Surface::~Surface() {
 #ifdef USING_SDL
     if(m_Texture != NULL)
         SDL_DestroyTexture(m_Texture);
 #endif
 }
 
-void cSurface::Blit_To(cRect* dest, const double angle, const cPointInt *center, CER_RenderFlags flip) {
+void Surface::Blit_To(Rect* dest, const double angle, const PointInt *center, CER_RenderFlags flip) {
 #ifdef USING_SDL
     SDL_Rect aRect = { dest->position.x, dest->position.y, 
                        dest->size.width, dest->size.height };
@@ -69,11 +69,11 @@ void cSurface::Blit_To(cRect* dest, const double angle, const cPointInt *center,
 #endif
 }
 
-void cSurface::Fill(uint8_t red, uint8_t green, uint8_t blue, uint8_t alpha) { 
+void Surface::Fill(uint8_t red, uint8_t green, uint8_t blue, uint8_t alpha) { 
     this->FillRect(NULL, red, green, blue, alpha); 
 }
 
-void cSurface::FillRect(const cRect* rect, uint8_t red, uint8_t green, uint8_t blue, uint8_t alpha) {
+void Surface::FillRect(const Rect* rect, uint8_t red, uint8_t green, uint8_t blue, uint8_t alpha) {
 #ifdef USING_SDL
     // cache the current render target so we can restore it later
     SDL_Texture* renderCache = SDL_GetRenderTarget(m_Window->getSDLRenderer() );

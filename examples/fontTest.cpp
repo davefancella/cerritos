@@ -41,17 +41,17 @@ using namespace cerritos;
 
 class etMainWindow : public cMainWindow {
 public:
-    void onMouseMotion(cMouseMotionEvent* evt) {
+    void onMouseMotion(MouseMotionEvent* evt) {
         this->mousex = evt->posx;
         this->mousey = evt->posy;
     }
     
-    void setFont(cFont* theFont) {
+    void setFont(Font* theFont) {
         this->mFont = theFont;
     }
     
     void Render() {
-        cRect aRect = { 0,0,200,200 };
+        Rect aRect = { 0,0,200,200 };
         char buffer[100];
         snprintf(buffer, 100, "Mouse Motion: x(%d) y(%d)", mousex, mousey);
         mFont->RenderText(this->getWindow(),
@@ -60,7 +60,7 @@ public:
                           255, 255, 255);
     }
     
-    cFont* mFont;
+    Font* mFont;
     
     int mousex=0;
     int mousey=0;
@@ -70,9 +70,9 @@ int main( int argc, char* args[] ) {
     // This is a handy way to initialize cerritos and get a default
     // application object.  Typically, more complex games need more than
     // a default application object.
-    cApplication* theApp;
+    Application* theApp;
     etMainWindow* theWindow;
-    cFont* theFont;
+    Font* theFont;
 
     std::cout << "Starting..." << std::endl;
     
@@ -80,7 +80,7 @@ int main( int argc, char* args[] ) {
     
     std::cout << "Finished init" << std::endl;
 
-    theApp = new cApplication();
+    theApp = new Application();
 
     std::cout << "Creating window" << std::endl;
 
@@ -91,7 +91,7 @@ int main( int argc, char* args[] ) {
     theApp->setMainWindow(theWindow);
     theWindow->setTitle("Font Test");
     
-    theFont = cFont::loadFromFile("/usr/share/fonts/truetype/freefont/FreeSans.ttf", 30);
+    theFont = Font::loadFromFile("/usr/share/fonts/truetype/freefont/FreeSans.ttf", 30);
     theWindow->setFont(theFont);
     
     // This is your game loop.

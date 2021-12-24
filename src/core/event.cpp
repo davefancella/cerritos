@@ -26,18 +26,18 @@
 
 using namespace cerritos;
 
-void cEventManager::addEvent(cEvent* event) {
+void EventManager::addEvent(Event* event) {
     this->eventQueue.push(event);
 }
 
-bool cEventManager::hasEvent() { 
+bool EventManager::hasEvent() { 
     if(!this->eventQueue.empty() ) 
         return true; 
     return false; 
 }
 
-cEvent* cEventManager::popEvent() {
-    cEvent* returnEvent=NULL;
+Event* EventManager::popEvent() {
+    Event* returnEvent=NULL;
     
     if(this->hasEvent() ) {
         returnEvent = this->eventQueue.front();

@@ -31,9 +31,9 @@
 
 namespace cerritos {
 
-class cRenderTargetsResetEvent : public cEvent {
+class RenderTargetsResetEvent : public Event {
 public:
-    cRenderTargetsResetEvent() { 
+    RenderTargetsResetEvent() { 
         evtype=CER_RenderTargetsResetEvent; 
     };
 };

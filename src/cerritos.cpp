@@ -47,12 +47,12 @@ void cerritos::cInit() {
 };
 
 /// Initializes and creates a default application object
-cApplication* cerritos::cInitApp(CER_WindowFlags winFlags) {
+Application* cerritos::cInitApp(CER_WindowFlags winFlags) {
     PrintCerritosVersion();
     if(backendInit() == -1)
         return NULL;
     
-    cApplication* theApp = new cApplication();
+    Application* theApp = new Application();
     cMainWindow* mainWindow = new cMainWindow(winFlags);
     
     theApp->setMainWindow(mainWindow);

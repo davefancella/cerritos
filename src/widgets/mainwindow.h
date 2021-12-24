@@ -32,13 +32,13 @@
 
 namespace cerritos {
 
-class cSurface;
+class Surface;
 class cLayout;
 
 class cMainWindow : public cerritos::cWidget {
 public:
     /// The title of the window
-    cString Title;
+    String Title;
     
     /// Size of window
     int width;
@@ -54,12 +54,12 @@ public:
     // Constructors
     //cMainWindow();
     cMainWindow(CER_WindowFlags winFlags=CER_Shown);
-    cMainWindow(cString title, CER_WindowFlags winFlags=CER_Shown);
-    cMainWindow(cString title, int width, int height, CER_WindowFlags winFlags=CER_Shown);
-    cMainWindow(cString title, int width, int height, int posx, int posy, CER_WindowFlags winFlags=CER_Shown);
+    cMainWindow(String title, CER_WindowFlags winFlags=CER_Shown);
+    cMainWindow(String title, int width, int height, CER_WindowFlags winFlags=CER_Shown);
+    cMainWindow(String title, int width, int height, int posx, int posy, CER_WindowFlags winFlags=CER_Shown);
     virtual ~cMainWindow();
     
-    void setTitle(cString title);
+    void setTitle(String title);
     void setPosition(int posx, int posy);
     void setSize(int width, int height);
     
@@ -88,12 +88,12 @@ public:
     /// Called internally to render the window.
     void renderAll();
 
-    void onMouseOver(cMouseMotionEvent* evt);
+    void onMouseOver(MouseMotionEvent* evt);
     
-    cWindow* getWindow();
+    Window* getWindow();
 private:
     /// The window we'll be rendering to
-    cWindow* m_Window = NULL;
+    Window* m_Window = NULL;
     cLayout* m_Layout = NULL;
 };
 

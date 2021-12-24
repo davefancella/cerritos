@@ -35,113 +35,113 @@ class cHardwareEventReceiver {
 public:
     cHardwareEventReceiver() { };
     
-    virtual void onQuit(cQuitEvent* event) { };
+    virtual void onQuit(QuitEvent* event) { };
 
-    virtual void onWindowShown(cWindowShownEvent* event) { };
+    virtual void onWindowShown(WindowShownEvent* event) { };
 
-    virtual void onWindowHidden(cWindowHiddenEvent* event) { };
+    virtual void onWindowHidden(WindowHiddenEvent* event) { };
 
-    virtual void onWindowExposed(cWindowExposedEvent* event) { };
+    virtual void onWindowExposed(WindowExposedEvent* event) { };
 
-    virtual void onWindowMoved(cWindowMovedEvent* event) { };
+    virtual void onWindowMoved(WindowMovedEvent* event) { };
 
-    virtual void onWindowResized(cWindowResizedEvent* event) { };
+    virtual void onWindowResized(WindowResizedEvent* event) { };
 
-    virtual void onWindowSizeChanged(cWindowSizeChangedEvent* event) { };
+    virtual void onWindowSizeChanged(WindowSizeChangedEvent* event) { };
 
-    virtual void onWindowMinimized(cWindowMinimizedEvent* event) { };
+    virtual void onWindowMinimized(WindowMinimizedEvent* event) { };
 
-    virtual void onWindowMaximized(cWindowMaximizedEvent* event) { };
+    virtual void onWindowMaximized(WindowMaximizedEvent* event) { };
 
-    virtual void onWindowRestored(cWindowRestoredEvent* event) { };
+    virtual void onWindowRestored(WindowRestoredEvent* event) { };
 
-    virtual void onWindowEnter(cWindowEnterEvent* event) { };
+    virtual void onWindowEnter(WindowEnterEvent* event) { };
 
-    virtual void onWindowLeave(cWindowLeaveEvent* event) { };
+    virtual void onWindowLeave(WindowLeaveEvent* event) { };
 
-    virtual void onWindowFocusGained(cWindowFocusGainedEvent* event) { };
+    virtual void onWindowFocusGained(WindowFocusGainedEvent* event) { };
 
-    virtual void onWindowFocusLost(cWindowFocusLostEvent* event) { };
+    virtual void onWindowFocusLost(WindowFocusLostEvent* event) { };
 
-    virtual void onWindowClose(cWindowCloseEvent* event) { };
+    virtual void onWindowClose(WindowCloseEvent* event) { };
 
-    virtual void onWindowTakeFocus(cWindowTakeFocusEvent* event) { };
+    virtual void onWindowTakeFocus(WindowTakeFocusEvent* event) { };
 
-    virtual void onWindowHitTest(cWindowHitTestEvent* event) { };
+    virtual void onWindowHitTest(WindowHitTestEvent* event) { };
 
-    virtual void onKeydown(cKeydownEvent* event) { };
+    virtual void onKeydown(KeydownEvent* event) { };
 
-    virtual void onKeyup(cKeyupEvent* event) { };
+    virtual void onKeyup(KeyupEvent* event) { };
 
-    virtual void onTextEditing(cTextEditingEvent* event) { };
+    virtual void onTextEditing(TextEditingEvent* event) { };
 
-    virtual void onTextInput(cTextInputEvent* event) { };
+    virtual void onTextInput(TextInputEvent* event) { };
 
-    virtual void onKeymapchanged(cKeymapchangedEvent* event) { };
+    virtual void onKeymapchanged(KeymapchangedEvent* event) { };
 
-    virtual void onMouseButtondown(cMouseButtondownEvent* event) { };
+    virtual void onMouseButtondown(MouseButtondownEvent* event) { };
 
-    virtual void onMouseMotion(cMouseMotionEvent* event) { };
+    virtual void onMouseMotion(MouseMotionEvent* event) { };
 
-    virtual void onMouseButtonup(cMouseButtonupEvent* event) { };
+    virtual void onMouseButtonup(MouseButtonupEvent* event) { };
 
-    virtual void onMouseWheel(cMouseWheelEvent* event) { };
+    virtual void onMouseWheel(MouseWheelEvent* event) { };
 
-    virtual void onJoyAxisMotion(cJoyAxisMotionEvent* event) { };
+    virtual void onJoyAxisMotion(JoyAxisMotionEvent* event) { };
 
-    virtual void onJoyBallMotion(cJoyBallMotionEvent* event) { };
+    virtual void onJoyBallMotion(JoyBallMotionEvent* event) { };
 
-    virtual void onJoyHatMotion(cJoyHatMotionEvent* event) { };
+    virtual void onJoyHatMotion(JoyHatMotionEvent* event) { };
 
-    virtual void onJoyButtondown(cJoyButtondownEvent* event) { };
+    virtual void onJoyButtondown(JoyButtondownEvent* event) { };
 
-    virtual void onJoyButtonup(cJoyButtonupEvent* event) { };
+    virtual void onJoyButtonup(JoyButtonupEvent* event) { };
 
-    virtual void onJoyDeviceAdded(cJoyDeviceAddedEvent* event) { };
+    virtual void onJoyDeviceAdded(JoyDeviceAddedEvent* event) { };
 
-    virtual void onJoyDeviceRemoved(cJoyDeviceRemovedEvent* event) { };
+    virtual void onJoyDeviceRemoved(JoyDeviceRemovedEvent* event) { };
 
-    virtual void onControllerAxisMotion(cControllerAxisMotionEvent* event) { };
+    virtual void onControllerAxisMotion(ControllerAxisMotionEvent* event) { };
 
-    virtual void onControllerButtondown(cControllerButtondownEvent* event) { };
+    virtual void onControllerButtondown(ControllerButtondownEvent* event) { };
 
-    virtual void onControllerButtonup(cControllerButtonupEvent* event) { };
+    virtual void onControllerButtonup(ControllerButtonupEvent* event) { };
 
-    virtual void onControllerDeviceAdded(cControllerDeviceAddedEvent* event) { };
+    virtual void onControllerDeviceAdded(ControllerDeviceAddedEvent* event) { };
 
-    virtual void onControllerDeviceRemoved(cControllerDeviceRemovedEvent* event) { };
+    virtual void onControllerDeviceRemoved(ControllerDeviceRemovedEvent* event) { };
 
-    virtual void onControllerDeviceRemapped(cControllerDeviceRemappedEvent* event) { };
+    virtual void onControllerDeviceRemapped(ControllerDeviceRemappedEvent* event) { };
 
-    virtual void onFingerdown(cFingerdownEvent* event) { };
+    virtual void onFingerdown(FingerdownEvent* event) { };
 
-    virtual void onFingerup(cFingerupEvent* event) { };
+    virtual void onFingerup(FingerupEvent* event) { };
 
-    virtual void onFingerMotion(cFingerMotionEvent* event) { };
+    virtual void onFingerMotion(FingerMotionEvent* event) { };
 
-    virtual void onDollarGesture(cDollarGestureEvent* event) { };
+    virtual void onDollarGesture(DollarGestureEvent* event) { };
 
-    virtual void onDollarRecord(cDollarRecordEvent* event) { };
+    virtual void onDollarRecord(DollarRecordEvent* event) { };
 
-    virtual void onMultiGesture(cMultiGestureEvent* event) { };
+    virtual void onMultiGesture(MultiGestureEvent* event) { };
 
-    virtual void onClipboardUpdate(cClipboardUpdateEvent* event) { };
+    virtual void onClipboardUpdate(ClipboardUpdateEvent* event) { };
 
-    virtual void onDropFile(cDropFileEvent* event) { };
+    virtual void onDropFile(DropFileEvent* event) { };
 
-    virtual void onDropText(cDropTextEvent* event) { };
+    virtual void onDropText(DropTextEvent* event) { };
 
-    virtual void onDropBegin(cDropBeginEvent* event) { };
+    virtual void onDropBegin(DropBeginEvent* event) { };
 
-    virtual void onDropComplete(cDropCompleteEvent* event) { };
+    virtual void onDropComplete(DropCompleteEvent* event) { };
 
-    virtual void onAudioDeviceAdded(cAudioDeviceAddedEvent* event) { };
+    virtual void onAudioDeviceAdded(AudioDeviceAddedEvent* event) { };
 
-    virtual void onAudioDeviceRemoved(cAudioDeviceRemovedEvent* event) { };
+    virtual void onAudioDeviceRemoved(AudioDeviceRemovedEvent* event) { };
 
-    virtual void onRenderTargetsReset(cRenderTargetsResetEvent* event) { };
+    virtual void onRenderTargetsReset(RenderTargetsResetEvent* event) { };
 
-    virtual void onRenderDeviceReset(cRenderDeviceResetEvent* event) { };
+    virtual void onRenderDeviceReset(RenderDeviceResetEvent* event) { };
 
 };
 

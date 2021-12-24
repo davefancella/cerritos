@@ -31,27 +31,27 @@ namespace cerritos {
 
 /** The base class for all cerritos objects
  */
-class cObject {
+class Object {
 public:
-    cObject();
-    cObject(cObject* parent);
+    Object();
+    Object(Object* parent);
     
     /// Adds a child to the object
-    void addChild(cObject* newChild);
+    void addChild(Object* newChild);
     
     /// Changes the parent of this widget
-    void reparent(cObject* newParent);
+    void reparent(Object* newParent);
     
     /// Call whenever you're removing a child from somewhere other than
     /// this class.
-    void removingObject(cObject* theChild) { };
+    void removingObject(Object* theChild) { };
     
     /// Call to update an object in a game loop.  Not all objects need this.
     virtual void Update() { };
     
 protected:
-    cObject* m_Parent;
-    cList<cObject*> m_Children;
+    Object* m_Parent;
+    List<Object*> m_Children;
 };
 
 /** Timesteps are such an integral part of everything that happens in a game

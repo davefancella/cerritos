@@ -31,13 +31,13 @@
 
 namespace cerritos {
 
-class cTextInputEvent : public cEvent {
+class TextInputEvent : public Event {
 public:
-    cTextInputEvent() { 
+    TextInputEvent() { 
         evtype=CER_TextInputEvent; 
     };
     
-    cTextInputEvent(unsigned int timestamp, unsigned int winId) { 
+    TextInputEvent(unsigned int timestamp, unsigned int winId) { 
         evtype = CER_TextInputEvent;
         evtimestamp = timestamp;
         windowId = winId;

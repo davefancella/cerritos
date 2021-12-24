@@ -31,13 +31,13 @@
 
 namespace cerritos {
 
-class cWindowSizeChangedEvent : public cEvent {
+class WindowSizeChangedEvent : public Event {
 public:
-    cWindowSizeChangedEvent() { 
+    WindowSizeChangedEvent() { 
         evtype=CER_WindowSizeChangedEvent; 
     };
     
-    cWindowSizeChangedEvent(unsigned int timestamp, unsigned int winId, unsigned int new_width, unsigned int new_height) { 
+    WindowSizeChangedEvent(unsigned int timestamp, unsigned int winId, unsigned int new_width, unsigned int new_height) { 
         evtype = CER_WindowSizeChangedEvent;
         evtimestamp = timestamp;
         windowId = winId;

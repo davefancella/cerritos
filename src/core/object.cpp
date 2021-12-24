@@ -26,16 +26,16 @@
 
 using namespace cerritos;
 
-cObject::cObject() {
+Object::Object() {
     m_Parent = NULL;
 };
 
-cObject::cObject(cObject* parent) : m_Parent(parent) {
+Object::Object(Object* parent) : m_Parent(parent) {
     if(parent != NULL)
         parent->addChild(this);
 }
 
-void cObject::addChild(cObject* newChild) {
+void Object::addChild(Object* newChild) {
     for (auto i = m_Children.begin(); i != m_Children.end(); ++i) {
         if(*i == newChild)
             return;
@@ -44,7 +44,7 @@ void cObject::addChild(cObject* newChild) {
     m_Children.push_back(newChild);
 }
 
-void cObject::reparent(cObject* newParent) {
+void Object::reparent(Object* newParent) {
     // First let the old parent know we're leaving their family
     if(m_Parent != NULL) {
         m_Parent->removingObject(this);

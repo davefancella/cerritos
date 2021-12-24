@@ -36,7 +36,7 @@
 using namespace cerritos;
 
 /// Constructor.
-cApplication::cApplication() {
+Application::Application() {
     // Start by setting up the timestep
     unsigned int newTimestep = GetTicks();
 
@@ -46,36 +46,36 @@ cApplication::cApplication() {
     this->currentTimestep.fromLast = 0;
     
     // Create the event manager
-    this->eventManager = new cEventManager();
+    this->eventManager = new EventManager();
     
     // Setup miscellaneous stuff
     this->keepRunning = true;
 }
 
-void cApplication::setMainWindow(cMainWindow* window) {
+void Application::setMainWindow(cMainWindow* window) {
     this->mainwindow = window;
 }
 
-cMainWindow* cApplication::getMainWindow() {
+cMainWindow* Application::getMainWindow() {
     return this->mainwindow;
 }
 
-bool cApplication::hasEvent() { 
+bool Application::hasEvent() { 
     return this->eventManager->hasEvent();
 }
 
-cEvent* cApplication::PollEvent() {
+Event* Application::PollEvent() {
     if(this->hasEvent())
         return this->eventManager->popEvent();
     
     return NULL;
 }
 
-const TimeStep cApplication::getTimestep() {
+const TimeStep Application::getTimestep() {
     return this->currentTimestep;
 }
 
-void cApplication::BeginUpdate() {
+void Application::BeginUpdate() {
     unsigned int newTimestep;
     
     // update timestep
@@ -91,10 +91,10 @@ void cApplication::BeginUpdate() {
     
 }
 
-void cApplication::ProcessEvents() {
+void Application::ProcessEvents() {
     // This is the main event processing loop
     while(this->hasEvent() ) {
-        cEvent* anEvent = NULL;
+        Event* anEvent = NULL;
         anEvent = this->PollEvent();
         
         switch(anEvent->type() ) {
@@ -110,21 +110,21 @@ void cApplication::ProcessEvents() {
 // Process one event.  Default implementation does nothing.
 // If you subclass this and you want event processing to still
 // propogate throughout the gui, you'll need to call 
-// cApplication::ProcessOneEventI, which is what's used internally
-void cApplication::ProcessOneEvent(cEvent* evt) {
+// Application::ProcessOneEventI, which is what's used internally
+void Application::ProcessOneEvent(Event* evt) {
     this->ProcessOneEventI(evt);
 }
 
-void cApplication::Update() {
+void Application::Update() {
 }
 
-void cApplication::UpdateView() {
+void Application::UpdateView() {
     if(this->mainwindow != NULL) {
         this->mainwindow->Update();
     }
 }
 
-void cApplication::UpdateAll() {
+void Application::UpdateAll() {
     this->BeginUpdate();
     this->ProcessEvents();
     this->Update();
@@ -132,20 +132,20 @@ void cApplication::UpdateAll() {
     this->EndUpdate();
 }
 
-void cApplication::loop() {
+void Application::loop() {
     while(keepRunning) {
         UpdateAll();
     }
 }
 
-void cApplication::EndUpdate() {
+void Application::EndUpdate() {
     if(this->mainwindow != NULL) {
         this->mainwindow->renderAll();
     }    
 }
 
 // Process one event internally.
-void cApplication::ProcessOneEventI(cEvent* evt) {
+void Application::ProcessOneEventI(Event* evt) {
     // First delegate the event to the gui
     if(this->mainwindow != NULL) {
         this->mainwindow->process_event(evt);

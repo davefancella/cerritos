@@ -31,13 +31,13 @@
 
 namespace cerritos {
 
-class cControllerButtonupEvent : public cEvent {
+class ControllerButtonupEvent : public Event {
 public:
-    cControllerButtonupEvent() { 
+    ControllerButtonupEvent() { 
         evtype=CER_ControllerButtonupEvent; 
     };
     
-    cControllerButtonupEvent(unsigned int timestamp) { 
+    ControllerButtonupEvent(unsigned int timestamp) { 
         evtype = CER_ControllerButtonupEvent;
         evtimestamp = timestamp;
     };

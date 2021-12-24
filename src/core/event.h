@@ -38,7 +38,7 @@ typedef enum {
 } CER_EventType;
 
 /// The base class for events.
-class cEvent {
+class Event {
 public:
     CER_EventType type() { return this->evtype; };
     
@@ -50,13 +50,13 @@ protected:
 };
 
 /// The class that manages the event queue
-class cEventManager {
+class EventManager {
 public:
-    void addEvent(cEvent* event);
+    void addEvent(Event* event);
     bool hasEvent();
-    cEvent* popEvent();
+    Event* popEvent();
 private:
-    std::queue<cEvent*> eventQueue;
+    std::queue<Event*> eventQueue;
 };
 
 }

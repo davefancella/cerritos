@@ -34,7 +34,7 @@ namespace cerritos {
 // method, and the virtual event handlers that any event receiver needs.
 class cBaseEventReceiver : public cHardwareEventReceiver {
 public:
-    virtual void process_event(cEvent* event);
+    virtual void process_event(Event* event);
 };
 
 }

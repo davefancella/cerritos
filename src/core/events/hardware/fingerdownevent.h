@@ -31,13 +31,13 @@
 
 namespace cerritos {
 
-class cFingerdownEvent : public cEvent {
+class FingerdownEvent : public Event {
 public:
-    cFingerdownEvent() { 
+    FingerdownEvent() { 
         evtype=CER_FingerdownEvent; 
     };
     
-    cFingerdownEvent(unsigned int timestamp) { 
+    FingerdownEvent(unsigned int timestamp) { 
         evtype = CER_FingerdownEvent;
         evtimestamp = timestamp;
     };

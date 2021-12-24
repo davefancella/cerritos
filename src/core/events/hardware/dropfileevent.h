@@ -31,13 +31,13 @@
 
 namespace cerritos {
 
-class cDropFileEvent : public cEvent {
+class DropFileEvent : public Event {
 public:
-    cDropFileEvent() { 
+    DropFileEvent() { 
         evtype=CER_DropFileEvent; 
     };
     
-    cDropFileEvent(unsigned int timestamp) { 
+    DropFileEvent(unsigned int timestamp) { 
         evtype = CER_DropFileEvent;
         evtimestamp = timestamp;
     };

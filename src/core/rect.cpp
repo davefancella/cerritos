@@ -26,32 +26,32 @@
 
 using namespace cerritos;
 
-cRect::cRect(int x, int y, int w, int h) { 
+Rect::Rect(int x, int y, int w, int h) { 
     this->position.x = x;
     this->position.y = y;
     this->size.width = w;
     this->size.height = h;
 }
 
-cRect cRect::operator+(const cPointInt& other) {
-    return cRect(this->position.x + other.x, this->position.y + other.y,
+Rect Rect::operator+(const PointInt& other) {
+    return Rect(this->position.x + other.x, this->position.y + other.y,
         this->size.width, this->size.height
     );
 }
 
-cRect cRect::operator-(const cPointInt& other) {
-    return cRect(this->position.x - other.x, this->position.x - other.x,
+Rect Rect::operator-(const PointInt& other) {
+    return Rect(this->position.x - other.x, this->position.x - other.x,
         this->size.width, this->size.height
     );
 }
 
-cRect cRect::operator+(const cSizeInt& other) {
-    return cRect(this->position.x, this->position.y,
+Rect Rect::operator+(const cSizeInt& other) {
+    return Rect(this->position.x, this->position.y,
         this->size.width + other.width, this->size.height + other.height);
 }
 
-cRect cRect::operator-(const cSizeInt& other) {
-    return cRect(this->position.x, this->position.y,
+Rect Rect::operator-(const cSizeInt& other) {
+    return Rect(this->position.x, this->position.y,
         this->size.width - other.width, this->size.height - other.height);
 }
 

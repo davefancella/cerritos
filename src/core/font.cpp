@@ -34,34 +34,34 @@
 
 using namespace cerritos;
 
-cFont::cFont() {
+Font::Font() {
     this->mFont = NULL;
 }
 
 /** This is an overloaded function that just calls the unicode version.
  * 
- * @param window: the cWindow object to which you'll be rendering this text
+ * @param window: the Window object to which you'll be rendering this text
  * @param text: the text to render
- * @param dest: the cRect to which you'll render.  Only the position is used.
+ * @param dest: the Rect to which you'll render.  Only the position is used.
  * @param red: red part of color
  * @param green: green part of color
  * @param blue: blue part of color
  * @param alpha: the alpha part of color
  */
-bool cFont::RenderText(cWindow* window, const char* text, cRect* dest, uint8_t red, uint8_t green, uint8_t blue, uint8_t alpha) {
-    return this->RenderText(window, cString(text), dest, red, blue, green, alpha);
+bool Font::RenderText(Window* window, const char* text, Rect* dest, uint8_t red, uint8_t green, uint8_t blue, uint8_t alpha) {
+    return this->RenderText(window, String(text), dest, red, blue, green, alpha);
 }
 
 /**
- * @param window the cWindow object to which you'll be rendering this text
+ * @param window the Window object to which you'll be rendering this text
  * @param text   the text to render
- * @param dest   the cRect to which you'll render.  Only the position is used.
+ * @param dest   the Rect to which you'll render.  Only the position is used.
  * @param red    red part of color
  * @param green  green part of color
  * @param blue   blue part of color
  * @param alpha: the alpha part of color
  */
-bool cFont::RenderText(cWindow* window, cString text, cRect* dest, uint8_t red, uint8_t blue, uint8_t green, uint8_t alpha) {
+bool Font::RenderText(Window* window, String text, Rect* dest, uint8_t red, uint8_t blue, uint8_t green, uint8_t alpha) {
 #ifdef USING_SDL
     int calcW, calcH;
     
@@ -110,11 +110,11 @@ bool cFont::RenderText(cWindow* window, cString text, cRect* dest, uint8_t red, 
     return true;
 }
 
-int cFont::loadFontFile(const char* filename, int size) {
-    return this->loadFontFile(cString(filename), size);
+int Font::loadFontFile(const char* filename, int size) {
+    return this->loadFontFile(String(filename), size);
 }
 
-int cFont::loadFontFile(cString filename, int size) {
+int Font::loadFontFile(String filename, int size) {
 #ifdef USING_SDL
     this->mFont = TTF_OpenFont(filename.data(), size);
     if( this->mFont == NULL )
@@ -129,42 +129,42 @@ int cFont::loadFontFile(cString filename, int size) {
 #endif
 }
 
-void cFont::SetFontStyle(int style) {
+void Font::SetFontStyle(int style) {
 #ifdef USING_SDL
     TTF_SetFontStyle(this->mFont, style);
 #endif
 }
 
-void cFont::SetFontOutline(int outline) {
+void Font::SetFontOutline(int outline) {
 #ifdef USING_SDL
     TTF_SetFontOutline(this->mFont, outline);
 #endif
 }
 
-void cFont::EnableFontKerning() {
+void Font::EnableFontKerning() {
     this->SetFontKerning(1);
 }
 
-void cFont::DisableFontKerning() {
+void Font::DisableFontKerning() {
     this->SetFontKerning(0);
 }
 
-void cFont::SetFontKerning(int kerning) {
+void Font::SetFontKerning(int kerning) {
 #ifdef USING_SDL
     TTF_SetFontKerning(this->mFont, kerning);
 #endif
 }
 
-void cFont::SetFontHinting(int hinting) {
+void Font::SetFontHinting(int hinting) {
 #ifdef USING_SDL
     TTF_SetFontHinting(this->mFont, hinting);
 #endif
 }
 
-cFont* cFont::loadFromFile(cString filename, int size) {
-    cFont* theFont = NULL;
+Font* Font::loadFromFile(String filename, int size) {
+    Font* theFont = NULL;
     
-    theFont = new cFont();
+    theFont = new Font();
     if(theFont->loadFontFile(filename, size) == 0) {
         theFont->SetFontOutline(0);
         theFont->EnableFontKerning();

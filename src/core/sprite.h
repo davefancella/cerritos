@@ -29,7 +29,7 @@
 
 namespace cerritos {
 
-class cSprite {
+class Sprite {
     
 };
     

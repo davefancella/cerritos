@@ -31,13 +31,13 @@
 
 namespace cerritos {
 
-class cDollarGestureEvent : public cEvent {
+class DollarGestureEvent : public Event {
 public:
-    cDollarGestureEvent() { 
+    DollarGestureEvent() { 
         evtype=CER_DollarGestureEvent; 
     };
     
-    cDollarGestureEvent(unsigned int timestamp) { 
+    DollarGestureEvent(unsigned int timestamp) { 
         evtype = CER_DollarGestureEvent;
         evtimestamp = timestamp;
     };

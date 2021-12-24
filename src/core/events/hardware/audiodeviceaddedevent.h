@@ -31,13 +31,13 @@
 
 namespace cerritos {
 
-class cAudioDeviceAddedEvent : public cEvent {
+class AudioDeviceAddedEvent : public Event {
 public:
-    cAudioDeviceAddedEvent() { 
+    AudioDeviceAddedEvent() { 
         evtype=CER_AudioDeviceAddedEvent; 
     };
     
-    cAudioDeviceAddedEvent(unsigned int timestamp) { 
+    AudioDeviceAddedEvent(unsigned int timestamp) { 
         evtype = CER_AudioDeviceAddedEvent;
         evtimestamp = timestamp;
     };

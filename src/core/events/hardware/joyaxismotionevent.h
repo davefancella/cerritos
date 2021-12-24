@@ -31,13 +31,13 @@
 
 namespace cerritos {
 
-class cJoyAxisMotionEvent : public cEvent {
+class JoyAxisMotionEvent : public Event {
 public:
-    cJoyAxisMotionEvent() { 
+    JoyAxisMotionEvent() { 
         evtype=CER_JoyAxisMotionEvent; 
     };
     
-    cJoyAxisMotionEvent(unsigned int timestamp) { 
+    JoyAxisMotionEvent(unsigned int timestamp) { 
         evtype = CER_JoyAxisMotionEvent;
         evtimestamp = timestamp;
     };

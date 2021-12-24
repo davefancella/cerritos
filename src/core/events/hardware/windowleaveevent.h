@@ -31,13 +31,13 @@
 
 namespace cerritos {
 
-class cWindowLeaveEvent : public cEvent {
+class WindowLeaveEvent : public Event {
 public:
-    cWindowLeaveEvent() { 
+    WindowLeaveEvent() { 
         evtype=CER_WindowLeaveEvent; 
     };
     
-    cWindowLeaveEvent(unsigned int timestamp, unsigned int winId) { 
+    WindowLeaveEvent(unsigned int timestamp, unsigned int winId) { 
         evtype = CER_WindowLeaveEvent;
         evtimestamp = timestamp;
         windowId = winId;

@@ -31,13 +31,13 @@
 
 namespace cerritos {
 
-class cControllerDeviceRemovedEvent : public cEvent {
+class ControllerDeviceRemovedEvent : public Event {
 public:
-    cControllerDeviceRemovedEvent() { 
+    ControllerDeviceRemovedEvent() { 
         evtype=CER_ControllerDeviceRemovedEvent; 
     };
     
-    cControllerDeviceRemovedEvent(unsigned int timestamp) { 
+    ControllerDeviceRemovedEvent(unsigned int timestamp) { 
         evtype = CER_ControllerDeviceRemovedEvent;
         evtimestamp = timestamp;
     };

@@ -31,13 +31,13 @@
 
 namespace cerritos {
 
-class cKeydownEvent : public cEvent {
+class KeydownEvent : public Event {
 public:
-    cKeydownEvent() { 
+    KeydownEvent() { 
         evtype=CER_KeydownEvent; 
     };
     
-    cKeydownEvent(unsigned int timestamp, unsigned int winId, unsigned int key, unsigned int scode) { 
+    KeydownEvent(unsigned int timestamp, unsigned int winId, unsigned int key, unsigned int scode) { 
         evtype = CER_KeydownEvent;
         evtimestamp = timestamp;
         windowId = winId;

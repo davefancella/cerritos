@@ -31,13 +31,13 @@
 
 namespace cerritos {
 
-class cWindowMaximizedEvent : public cEvent {
+class WindowMaximizedEvent : public Event {
 public:
-    cWindowMaximizedEvent() { 
+    WindowMaximizedEvent() { 
         evtype=CER_WindowMaximizedEvent; 
     };
     
-    cWindowMaximizedEvent(unsigned int timestamp, unsigned int winId) { 
+    WindowMaximizedEvent(unsigned int timestamp, unsigned int winId) { 
         evtype = CER_WindowMaximizedEvent;
         evtimestamp = timestamp;
         windowId = winId;

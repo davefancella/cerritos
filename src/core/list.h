@@ -30,7 +30,7 @@
 namespace cerritos {
 
 template<typename T>
-using cList = std::vector<T>;
+using List = std::vector<T>;
 
 }
 

@@ -33,7 +33,7 @@
 #include "string.h"
 
 namespace cerritos {
-class cEventManager;
+class EventManager;
 
 // These are the functions a backend must implement
 const char* GetError();
@@ -49,7 +49,7 @@ int backendInit();
 void backendClose();
 
 // Poll backend for hardware events and put them in the event manager
-void PollHardwareEvents(cEventManager* eventManager);
+void PollHardwareEvents(EventManager* eventManager);
 
 } // cerritos namespace
 
@@ -57,7 +57,7 @@ void PollHardwareEvents(cEventManager* eventManager);
 
 // This is a forward declaration.  Typically, you'll define this in
 // your backend.  Currently, these are just placeholders for SDL stuff.
-//struct cRect;
+//struct Rect;
 //struct cPixelFormat;
 
 // These are the enums that a backend must provide

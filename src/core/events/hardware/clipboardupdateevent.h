@@ -31,9 +31,9 @@
 
 namespace cerritos {
 
-class cClipboardUpdateEvent : public cEvent {
+class ClipboardUpdateEvent : public Event {
 public:
-    cClipboardUpdateEvent() { 
+    ClipboardUpdateEvent() { 
         evtype=CER_ClipboardUpdateEvent; 
     };
 };

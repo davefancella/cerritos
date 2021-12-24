@@ -31,13 +31,13 @@
 
 namespace cerritos {
 
-class cMultiGestureEvent : public cEvent {
+class MultiGestureEvent : public Event {
 public:
-    cMultiGestureEvent() { 
+    MultiGestureEvent() { 
         evtype=CER_MultiGestureEvent; 
     };
     
-    cMultiGestureEvent(unsigned int timestamp) { 
+    MultiGestureEvent(unsigned int timestamp) { 
         evtype = CER_MultiGestureEvent;
         evtimestamp = timestamp;
     };
