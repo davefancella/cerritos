@@ -25,7 +25,7 @@
 #ifndef CERRITOSCORE_H
 #define CERRITOSCORE_H
 
-#include "list.h"
+#include "types.h"
 
 namespace cerritos {
 

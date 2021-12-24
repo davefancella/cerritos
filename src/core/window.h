@@ -25,7 +25,7 @@
 #ifndef WINDOW__H
 #define WINDOW__H
 
-#include "string.h"
+#include "types.h"
 #include "backend.h"
 
 struct SDL_Window;

@@ -29,7 +29,7 @@
 
 #include "window.h"
 #include "font.h"
-#include "string.h"
+#include "types.h"
 #include "rect.h"
 
 using namespace cerritos;

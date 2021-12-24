@@ -22,18 +22,59 @@
  * 
  */
 
-#ifndef LIST__H
-#define LIST__H
+/** @file types.h
+ * 
+ * This file contains numerous types that are useful but don't
+ * belong in their own headers.
+ */
 
+#ifndef TYPES__H
+#define TYPES__H
+
+#include <string>
 #include <vector>
+#include <map>
 
 namespace cerritos {
+
+#ifdef _WIN32
+/** A simple string implementation, sorta.  Right now, it's just some
+ * typedefs and defines that hopefully provide reasonable cross-platform
+ * strings from the C++ standard library
+ */
+typedef std::wstring String;
+#define UNI(text) L ## text
+/*
+std::string _formatForConsole(const String &str)
+{
+    std::string result;
+    //Call WideCharToMultiByte to do the conversion
+    return result;
+}
+*/
+#else
+/** A simple string implementation, sorta.  Right now, it's just some
+ * typedefs and defines that hopefully provide reasonable cross-platform
+ * strings from the C++ standard library
+ */
+typedef std::string String;
+#define UNI(text) text
+/*
+std::string _formatForConsole(const String &str)
+{
+    return str;
+}
+*/
+#endif
+
+template<typename T>
+using Dictionary = std::map<String, T>;
 
 template<typename T>
 using List = std::vector<T>;
 
 }
 
-#endif // LIST__H
+#endif // TYPES__H
 
 

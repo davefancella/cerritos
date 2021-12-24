@@ -32,6 +32,7 @@
 
 #include "application.h"
 #include "mainwindow.h"
+#include "path.h"
 
 #include "event.h"
 #include "font.h"
@@ -74,20 +75,14 @@ int main( int argc, char* args[] ) {
     etMainWindow* theWindow;
     Font* theFont;
 
-    std::cout << "Starting..." << std::endl;
-    
     cInit();
     
-    std::cout << "Finished init" << std::endl;
-
+    std::cout << Path::get().m_AppPath << std::endl;
+    
     theApp = new Application();
-
-    std::cout << "Creating window" << std::endl;
 
     theWindow = new etMainWindow();
 
-    std::cout << "Opening window" << std::endl;
-    
     theApp->setMainWindow(theWindow);
     theWindow->setTitle("Font Test");
     

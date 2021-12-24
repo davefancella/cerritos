@@ -22,8 +22,11 @@
  * 
  */
 
+#include <iostream>
+#include <filesystem>
+
 #include "path.h"
-#include "string.h"
+#include "types.h"
 
 #ifdef USING_SDL
 #include "sdl_backend.h"
@@ -32,18 +35,22 @@
 using namespace cerritos;
 
 Path::Path() {
-#ifdef USINGSDL
-    m_AppPath = new String(SDL_GetBasePath() );
+#ifdef USING_SDL
+    m_AppPath = SDL_GetBasePath();
+    
+    std::filesystem::path* aPath = new std::filesystem::path(m_AppPath);
+    
+    std::cout << *aPath << std::endl;
     
     // Need to figure out how to handle a few things here before adding this
     //m_ConfigPath = new String(SDL_GetPrefsPath(const char *org, const char *app) );
 #endif
 }
 
-Path* Path::get() {
-    static Path instance;
+Path& Path::get() {
+    static Path* instance = new Path();
     
-    return &instance;
+    return *instance;
 }
 
 

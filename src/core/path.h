@@ -22,7 +22,7 @@
  * 
  */
 
-#include "string.h"
+#include "types.h"
 
 #ifndef PATH__H
 #define PATH__H
@@ -35,13 +35,14 @@ namespace cerritos {
  *  way.
  */
 class Path {
-public:
-    Path();
+public:    
+    static Path& get();
     
-    static Path* get();
-    
-    String* m_AppPath;
+    String m_AppPath;
     String* m_ConfigPath;
+    
+private:
+    Path();
 };
     
 } // namespace cerritos

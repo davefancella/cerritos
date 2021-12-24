@@ -30,7 +30,7 @@
 
 #include <stdint.h>
 
-#include "string.h"
+#include "types.h"
 
 namespace cerritos {
 class EventManager;

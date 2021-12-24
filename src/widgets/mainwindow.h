@@ -28,7 +28,7 @@
 #include "backend.h"
 
 #include "widget.h"
-#include "string.h"
+#include "types.h"
 
 namespace cerritos {
 

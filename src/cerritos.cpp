@@ -47,7 +47,7 @@ void cerritos::cInit() {
     backendInit();
     
     // Sets up the path module
-    Path* tossIt = Path::get();
+    Path tossIt = Path::get();
 };
 
 /// Initializes and creates a default application object

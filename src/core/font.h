@@ -27,7 +27,7 @@
 
 #include "SDL_ttf.h"
 
-#include "string.h"
+#include "types.h"
 
 namespace cerritos {
 
