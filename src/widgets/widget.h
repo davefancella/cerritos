@@ -48,10 +48,7 @@ class cLayout;
 class cWidget : public cObject, 
                 public cBaseEventReceiver {
 public:
-    cWidget(cWidget* parent=NULL) { 
-        parent->addChild(dynamic_cast<cObject*>(this));
-        m_Parent = dynamic_cast<cObject*>(parent);
-    };
+    cWidget(cWidget* parent=NULL);
     
     /// Set the layout for this widget.  Each widget can have only
     /// one top-level layout.  This is it.  The layout will be reparented

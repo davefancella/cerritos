@@ -36,12 +36,12 @@ cObject::cObject(cObject* parent) : m_Parent(parent) {
 }
 
 void cObject::addChild(cObject* newChild) {
-    //for (auto i = m_Children.begin(); i != m_Children.end(); ++i) {
-    //    if(*i == newChild)
-    //        return;
-    //}
+    for (auto i = m_Children.begin(); i != m_Children.end(); ++i) {
+        if(*i == newChild)
+            return;
+    }
     
-    //m_Children.push_back(newChild);
+    m_Children.push_back(newChild);
 }
 
 void cObject::reparent(cObject* newParent) {

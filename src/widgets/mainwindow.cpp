@@ -65,7 +65,7 @@ void cMainWindow::Move() {
 }
 
 cMainWindow::cMainWindow(CER_WindowFlags winFlags) 
-            : Title("Cerritos Window"), width(800), height(600), 
+            : cWidget(NULL), Title("Cerritos Window"), width(800), height(600), 
                 posx(CER_WindowPos_Centered), posy(CER_WindowPos_Centered),
                 windowFlags(winFlags) {
     std::cout << "Creating cWindow object" << std::endl;                
@@ -77,7 +77,7 @@ cMainWindow::cMainWindow(CER_WindowFlags winFlags)
 }
 
 cMainWindow::cMainWindow(unicodestring title, CER_WindowFlags winFlags) 
-            : Title(title), width(800), height(600), 
+            : cWidget(NULL), Title(title), width(800), height(600), 
                 posx(CER_WindowPos_Centered), posy(CER_WindowPos_Centered),
                 windowFlags(winFlags) {
     this->m_Window = new cWindow( this->Title, 
@@ -86,7 +86,7 @@ cMainWindow::cMainWindow(unicodestring title, CER_WindowFlags winFlags)
 }
 
 cMainWindow::cMainWindow(unicodestring title, int width, int height, CER_WindowFlags winFlags) 
-            : Title(title), width(width), height(height), 
+            : cWidget(NULL), Title(title), width(width), height(height), 
                 posx(CER_WindowPos_Centered), posy(CER_WindowPos_Centered),
                 windowFlags(winFlags) {
     this->m_Window = new cWindow( this->Title, 
@@ -95,7 +95,7 @@ cMainWindow::cMainWindow(unicodestring title, int width, int height, CER_WindowF
 }
 
 cMainWindow::cMainWindow(unicodestring title, int width, int height, int posx, int posy, CER_WindowFlags winFlags) 
-            : Title(title), width(width), height(height), 
+            : cWidget(NULL), Title(title), width(width), height(height), 
                 posx(posx), posy(posy),
                 windowFlags(winFlags) {
     this->m_Window = new cWindow( this->Title, 
