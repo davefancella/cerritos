@@ -29,6 +29,8 @@
 #ifndef TEXTEDITINGEVENT__H
 #define TEXTEDITINGEVENT__H
 
+namespace cerritos {
+
 class cTextEditingEvent : public cEvent {
 public:
     cTextEditingEvent() { 
@@ -43,6 +45,8 @@ public:
     unsigned int evtimestamp;
     unsigned int windowId;
 };
+
+}
 
 #endif // TEXTEDITINGEVENT__H
 

@@ -29,6 +29,8 @@
 #ifndef MOUSEWHEELEVENT__H
 #define MOUSEWHEELEVENT__H
 
+namespace cerritos {
+
 class cMouseWheelEvent : public cEvent {
 public:
     cMouseWheelEvent() { 
@@ -41,6 +43,8 @@ public:
     };
     unsigned int evtimestamp;
 };
+
+}
 
 #endif // MOUSEWHEELEVENT__H
 

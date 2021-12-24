@@ -29,6 +29,8 @@
 #ifndef WINDOWMINIMIZEDEVENT__H
 #define WINDOWMINIMIZEDEVENT__H
 
+namespace cerritos {
+
 class cWindowMinimizedEvent : public cEvent {
 public:
     cWindowMinimizedEvent() { 
@@ -43,6 +45,8 @@ public:
     unsigned int evtimestamp;
     unsigned int windowId;
 };
+
+}
 
 #endif // WINDOWMINIMIZEDEVENT__H
 

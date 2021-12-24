@@ -29,6 +29,8 @@
 #ifndef DROPTEXTEVENT__H
 #define DROPTEXTEVENT__H
 
+namespace cerritos {
+
 class cDropTextEvent : public cEvent {
 public:
     cDropTextEvent() { 
@@ -41,6 +43,8 @@ public:
     };
     unsigned int evtimestamp;
 };
+
+}
 
 #endif // DROPTEXTEVENT__H
 

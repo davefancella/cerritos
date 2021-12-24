@@ -29,6 +29,8 @@
 #ifndef CONTROLLERAXISMOTIONEVENT__H
 #define CONTROLLERAXISMOTIONEVENT__H
 
+namespace cerritos {
+
 class cControllerAxisMotionEvent : public cEvent {
 public:
     cControllerAxisMotionEvent() { 
@@ -41,6 +43,8 @@ public:
     };
     unsigned int evtimestamp;
 };
+
+}
 
 #endif // CONTROLLERAXISMOTIONEVENT__H
 

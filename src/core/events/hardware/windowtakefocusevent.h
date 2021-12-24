@@ -29,6 +29,8 @@
 #ifndef WINDOWTAKEFOCUSEVENT__H
 #define WINDOWTAKEFOCUSEVENT__H
 
+namespace cerritos {
+
 class cWindowTakeFocusEvent : public cEvent {
 public:
     cWindowTakeFocusEvent() { 
@@ -43,6 +45,8 @@ public:
     unsigned int evtimestamp;
     unsigned int windowId;
 };
+
+}
 
 #endif // WINDOWTAKEFOCUSEVENT__H
 

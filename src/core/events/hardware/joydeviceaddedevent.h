@@ -29,6 +29,8 @@
 #ifndef JOYDEVICEADDEDEVENT__H
 #define JOYDEVICEADDEDEVENT__H
 
+namespace cerritos {
+
 class cJoyDeviceAddedEvent : public cEvent {
 public:
     cJoyDeviceAddedEvent() { 
@@ -41,6 +43,8 @@ public:
     };
     unsigned int evtimestamp;
 };
+
+}
 
 #endif // JOYDEVICEADDEDEVENT__H
 

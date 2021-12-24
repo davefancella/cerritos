@@ -24,6 +24,8 @@
 
 #include "event.h"
 
+using namespace cerritos;
+
 void cEventManager::addEvent(cEvent* event) {
     this->eventQueue.push(event);
 }

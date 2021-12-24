@@ -29,6 +29,8 @@
 #ifndef JOYBALLMOTIONEVENT__H
 #define JOYBALLMOTIONEVENT__H
 
+namespace cerritos {
+
 class cJoyBallMotionEvent : public cEvent {
 public:
     cJoyBallMotionEvent() { 
@@ -41,6 +43,8 @@ public:
     };
     unsigned int evtimestamp;
 };
+
+}
 
 #endif // JOYBALLMOTIONEVENT__H
 

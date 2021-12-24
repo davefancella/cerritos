@@ -29,6 +29,8 @@
 #ifndef WINDOWRESTOREDEVENT__H
 #define WINDOWRESTOREDEVENT__H
 
+namespace cerritos {
+
 class cWindowRestoredEvent : public cEvent {
 public:
     cWindowRestoredEvent() { 
@@ -43,6 +45,8 @@ public:
     unsigned int evtimestamp;
     unsigned int windowId;
 };
+
+}
 
 #endif // WINDOWRESTOREDEVENT__H
 

@@ -29,6 +29,8 @@
 #ifndef WINDOWCLOSEEVENT__H
 #define WINDOWCLOSEEVENT__H
 
+namespace cerritos {
+
 class cWindowCloseEvent : public cEvent {
 public:
     cWindowCloseEvent() { 
@@ -43,6 +45,8 @@ public:
     unsigned int evtimestamp;
     unsigned int windowId;
 };
+
+}
 
 #endif // WINDOWCLOSEEVENT__H
 

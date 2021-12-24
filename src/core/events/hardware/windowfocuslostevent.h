@@ -29,6 +29,8 @@
 #ifndef WINDOWFOCUSLOSTEVENT__H
 #define WINDOWFOCUSLOSTEVENT__H
 
+namespace cerritos {
+
 class cWindowFocusLostEvent : public cEvent {
 public:
     cWindowFocusLostEvent() { 
@@ -43,6 +45,8 @@ public:
     unsigned int evtimestamp;
     unsigned int windowId;
 };
+
+}
 
 #endif // WINDOWFOCUSLOSTEVENT__H
 

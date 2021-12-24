@@ -29,6 +29,8 @@
 #ifndef WINDOWHIDDENEVENT__H
 #define WINDOWHIDDENEVENT__H
 
+namespace cerritos {
+
 class cWindowHiddenEvent : public cEvent {
 public:
     cWindowHiddenEvent() { 
@@ -43,6 +45,8 @@ public:
     unsigned int evtimestamp;
     unsigned int windowId;
 };
+
+}
 
 #endif // WINDOWHIDDENEVENT__H
 

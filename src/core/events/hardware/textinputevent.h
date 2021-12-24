@@ -29,6 +29,8 @@
 #ifndef TEXTINPUTEVENT__H
 #define TEXTINPUTEVENT__H
 
+namespace cerritos {
+
 class cTextInputEvent : public cEvent {
 public:
     cTextInputEvent() { 
@@ -43,6 +45,8 @@ public:
     unsigned int evtimestamp;
     unsigned int windowId;
 };
+
+}
 
 #endif // TEXTINPUTEVENT__H
 

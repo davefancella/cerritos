@@ -29,6 +29,8 @@
 #ifndef QUITEVENT__H
 #define QUITEVENT__H
 
+namespace cerritos {
+
 class cQuitEvent : public cEvent {
 public:
     cQuitEvent() { 
@@ -41,6 +43,8 @@ public:
     };
     unsigned int evtimestamp;
 };
+
+}
 
 #endif // QUITEVENT__H
 

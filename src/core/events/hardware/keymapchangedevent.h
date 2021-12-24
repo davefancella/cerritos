@@ -29,12 +29,16 @@
 #ifndef KEYMAPCHANGEDEVENT__H
 #define KEYMAPCHANGEDEVENT__H
 
+namespace cerritos {
+
 class cKeymapchangedEvent : public cEvent {
 public:
     cKeymapchangedEvent() { 
         evtype=CER_KeymapchangedEvent; 
     };
 };
+
+}
 
 #endif // KEYMAPCHANGEDEVENT__H
 

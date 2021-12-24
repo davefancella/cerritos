@@ -26,6 +26,8 @@
 
 #include "hardwareeventprocessor.h"
 
+using namespace cerritos;
+
 void cBaseEventReceiver::process_event(cEvent* event) {
     if(event->isActive() ) {
         switch(event->type() ) {

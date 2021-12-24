@@ -29,12 +29,16 @@
 #ifndef CLIPBOARDUPDATEEVENT__H
 #define CLIPBOARDUPDATEEVENT__H
 
+namespace cerritos {
+
 class cClipboardUpdateEvent : public cEvent {
 public:
     cClipboardUpdateEvent() { 
         evtype=CER_ClipboardUpdateEvent; 
     };
 };
+
+}
 
 #endif // CLIPBOARDUPDATEEVENT__H
 

@@ -29,6 +29,8 @@
 #ifndef CONTROLLERBUTTONDOWNEVENT__H
 #define CONTROLLERBUTTONDOWNEVENT__H
 
+namespace cerritos {
+
 class cControllerButtondownEvent : public cEvent {
 public:
     cControllerButtondownEvent() { 
@@ -41,6 +43,8 @@ public:
     };
     unsigned int evtimestamp;
 };
+
+}
 
 #endif // CONTROLLERBUTTONDOWNEVENT__H
 

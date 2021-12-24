@@ -29,6 +29,8 @@
 #ifndef WINDOWSIZECHANGEDEVENT__H
 #define WINDOWSIZECHANGEDEVENT__H
 
+namespace cerritos {
+
 class cWindowSizeChangedEvent : public cEvent {
 public:
     cWindowSizeChangedEvent() { 
@@ -47,6 +49,8 @@ public:
     unsigned int width;
     unsigned int height;
 };
+
+}
 
 #endif // WINDOWSIZECHANGEDEVENT__H
 

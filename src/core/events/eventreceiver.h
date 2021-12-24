@@ -28,12 +28,16 @@
 #include "event.h"
 #include "hardwareeventreceiver.h"
 
+namespace cerritos {
+
 // A class that can receive events.  It contains the base event processor
 // method, and the virtual event handlers that any event receiver needs.
 class cBaseEventReceiver : public cHardwareEventReceiver {
 public:
     virtual void process_event(cEvent* event);
 };
+
+}
 
 #endif // EVENTRECEIVER__H
 

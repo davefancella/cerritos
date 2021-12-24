@@ -32,7 +32,7 @@
 
 #include "string.h"
 
-//class cWindow;
+namespace cerritos {
 class cEventManager;
 
 // These are the functions a backend must implement
@@ -50,6 +50,8 @@ void backendClose();
 
 // Poll backend for hardware events and put them in the event manager
 void PollHardwareEvents(cEventManager* eventManager);
+
+} // cerritos namespace
 
 // All the stuff needed to work with surfaces
 

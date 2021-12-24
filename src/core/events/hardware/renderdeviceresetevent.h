@@ -29,12 +29,16 @@
 #ifndef RENDERDEVICERESETEVENT__H
 #define RENDERDEVICERESETEVENT__H
 
+namespace cerritos {
+
 class cRenderDeviceResetEvent : public cEvent {
 public:
     cRenderDeviceResetEvent() { 
         evtype=CER_RenderDeviceResetEvent; 
     };
 };
+
+}
 
 #endif // RENDERDEVICERESETEVENT__H
 

@@ -29,6 +29,8 @@
 #ifndef KEYDOWNEVENT__H
 #define KEYDOWNEVENT__H
 
+namespace cerritos {
+
 class cKeydownEvent : public cEvent {
 public:
     cKeydownEvent() { 
@@ -47,6 +49,8 @@ public:
     unsigned int mKey;
     unsigned int scancode;
 };
+
+}
 
 #endif // KEYDOWNEVENT__H
 

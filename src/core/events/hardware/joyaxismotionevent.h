@@ -29,6 +29,8 @@
 #ifndef JOYAXISMOTIONEVENT__H
 #define JOYAXISMOTIONEVENT__H
 
+namespace cerritos {
+
 class cJoyAxisMotionEvent : public cEvent {
 public:
     cJoyAxisMotionEvent() { 
@@ -41,6 +43,8 @@ public:
     };
     unsigned int evtimestamp;
 };
+
+}
 
 #endif // JOYAXISMOTIONEVENT__H
 

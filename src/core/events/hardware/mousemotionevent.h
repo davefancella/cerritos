@@ -29,6 +29,8 @@
 #ifndef MOUSEMOTIONEVENT__H
 #define MOUSEMOTIONEVENT__H
 
+namespace cerritos {
+
 class cMouseMotionEvent : public cEvent {
 public:
     cMouseMotionEvent() { 
@@ -51,6 +53,8 @@ public:
     unsigned int relx;
     unsigned int rely;
 };
+
+}
 
 #endif // MOUSEMOTIONEVENT__H
 

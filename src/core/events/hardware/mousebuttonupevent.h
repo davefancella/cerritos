@@ -29,6 +29,8 @@
 #ifndef MOUSEBUTTONUPEVENT__H
 #define MOUSEBUTTONUPEVENT__H
 
+namespace cerritos {
+
 class cMouseButtonupEvent : public cEvent {
 public:
     cMouseButtonupEvent() { 
@@ -41,6 +43,8 @@ public:
     };
     unsigned int evtimestamp;
 };
+
+}
 
 #endif // MOUSEBUTTONUPEVENT__H
 

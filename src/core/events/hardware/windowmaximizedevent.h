@@ -29,6 +29,8 @@
 #ifndef WINDOWMAXIMIZEDEVENT__H
 #define WINDOWMAXIMIZEDEVENT__H
 
+namespace cerritos {
+
 class cWindowMaximizedEvent : public cEvent {
 public:
     cWindowMaximizedEvent() { 
@@ -43,6 +45,8 @@ public:
     unsigned int evtimestamp;
     unsigned int windowId;
 };
+
+}
 
 #endif // WINDOWMAXIMIZEDEVENT__H
 

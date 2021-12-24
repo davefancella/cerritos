@@ -29,12 +29,16 @@
 #ifndef RENDERTARGETSRESETEVENT__H
 #define RENDERTARGETSRESETEVENT__H
 
+namespace cerritos {
+
 class cRenderTargetsResetEvent : public cEvent {
 public:
     cRenderTargetsResetEvent() { 
         evtype=CER_RenderTargetsResetEvent; 
     };
 };
+
+}
 
 #endif // RENDERTARGETSRESETEVENT__H
 

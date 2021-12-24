@@ -29,6 +29,8 @@
 #ifndef DROPCOMPLETEEVENT__H
 #define DROPCOMPLETEEVENT__H
 
+namespace cerritos {
+
 class cDropCompleteEvent : public cEvent {
 public:
     cDropCompleteEvent() { 
@@ -41,6 +43,8 @@ public:
     };
     unsigned int evtimestamp;
 };
+
+}
 
 #endif // DROPCOMPLETEEVENT__H
 

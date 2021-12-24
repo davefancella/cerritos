@@ -29,6 +29,8 @@
 
 // This file is periodically generated.  Do not edit it directly.
 
+namespace cerritos {
+
 class cHardwareEventReceiver {
 public:
     cHardwareEventReceiver() { };
@@ -142,6 +144,8 @@ public:
     virtual void onRenderDeviceReset(cRenderDeviceResetEvent* event) { };
 
 };
+
+}
 
 #endif // HARDWAREEVENTRECEIVER__H
 

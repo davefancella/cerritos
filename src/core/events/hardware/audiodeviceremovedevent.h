@@ -29,6 +29,8 @@
 #ifndef AUDIODEVICEREMOVEDEVENT__H
 #define AUDIODEVICEREMOVEDEVENT__H
 
+namespace cerritos {
+
 class cAudioDeviceRemovedEvent : public cEvent {
 public:
     cAudioDeviceRemovedEvent() { 
@@ -41,6 +43,8 @@ public:
     };
     unsigned int evtimestamp;
 };
+
+}
 
 #endif // AUDIODEVICEREMOVEDEVENT__H
 

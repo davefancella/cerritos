@@ -32,6 +32,8 @@
 
 #include <string>
 
+namespace cerritos {
+
 #ifdef _WIN32
 typedef std::wstring cString;
 #define UNI(text) L ## text
@@ -53,6 +55,8 @@ std::string _formatForConsole(const cString &str)
 }
 */
 #endif
+
+}
 
 #endif // CSTRING__H
 

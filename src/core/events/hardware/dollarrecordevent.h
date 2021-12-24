@@ -29,6 +29,8 @@
 #ifndef DOLLARRECORDEVENT__H
 #define DOLLARRECORDEVENT__H
 
+namespace cerritos {
+
 class cDollarRecordEvent : public cEvent {
 public:
     cDollarRecordEvent() { 
@@ -41,6 +43,8 @@ public:
     };
     unsigned int evtimestamp;
 };
+
+}
 
 #endif // DOLLARRECORDEVENT__H
 

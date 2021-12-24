@@ -29,6 +29,8 @@
 #ifndef WINDOWENTEREVENT__H
 #define WINDOWENTEREVENT__H
 
+namespace cerritos {
+
 class cWindowEnterEvent : public cEvent {
 public:
     cWindowEnterEvent() { 
@@ -43,6 +45,8 @@ public:
     unsigned int evtimestamp;
     unsigned int windowId;
 };
+
+}
 
 #endif // WINDOWENTEREVENT__H
 

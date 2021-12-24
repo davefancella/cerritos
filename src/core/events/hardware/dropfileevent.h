@@ -29,6 +29,8 @@
 #ifndef DROPFILEEVENT__H
 #define DROPFILEEVENT__H
 
+namespace cerritos {
+
 class cDropFileEvent : public cEvent {
 public:
     cDropFileEvent() { 
@@ -41,6 +43,8 @@ public:
     };
     unsigned int evtimestamp;
 };
+
+}
 
 #endif // DROPFILEEVENT__H
 

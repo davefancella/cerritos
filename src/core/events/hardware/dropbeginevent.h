@@ -29,6 +29,8 @@
 #ifndef DROPBEGINEVENT__H
 #define DROPBEGINEVENT__H
 
+namespace cerritos {
+
 class cDropBeginEvent : public cEvent {
 public:
     cDropBeginEvent() { 
@@ -41,6 +43,8 @@ public:
     };
     unsigned int evtimestamp;
 };
+
+}
 
 #endif // DROPBEGINEVENT__H
 

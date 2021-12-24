@@ -35,19 +35,21 @@
 
 #include "event.h"
 
-const char* GetError() {
+using namespace cerritos;
+
+const char* cerritos::GetError() {
     return SDL_GetError();
 }
 
-unsigned int GetTicks() {
+unsigned int cerritos::GetTicks() {
     return SDL_GetTicks();
 }
 
-void Delay(unsigned int ms) {
+void cerritos::Delay(unsigned int ms) {
     SDL_Delay(ms);
 }
 
-int backendInit() {
+int cerritos::backendInit() {
     int successCode = 0;
     SDL_SetMainReady();
     
@@ -65,7 +67,7 @@ int backendInit() {
     return successCode;
 }
 
-void backendClose() {
+void cerritos::backendClose() {
     SDL_Quit();
 }
 

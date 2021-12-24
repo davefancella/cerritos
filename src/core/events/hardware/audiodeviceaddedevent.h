@@ -29,6 +29,8 @@
 #ifndef AUDIODEVICEADDEDEVENT__H
 #define AUDIODEVICEADDEDEVENT__H
 
+namespace cerritos {
+
 class cAudioDeviceAddedEvent : public cEvent {
 public:
     cAudioDeviceAddedEvent() { 
@@ -41,6 +43,8 @@ public:
     };
     unsigned int evtimestamp;
 };
+
+}
 
 #endif // AUDIODEVICEADDEDEVENT__H
 

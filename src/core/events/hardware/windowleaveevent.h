@@ -29,6 +29,8 @@
 #ifndef WINDOWLEAVEEVENT__H
 #define WINDOWLEAVEEVENT__H
 
+namespace cerritos {
+
 class cWindowLeaveEvent : public cEvent {
 public:
     cWindowLeaveEvent() { 
@@ -43,6 +45,8 @@ public:
     unsigned int evtimestamp;
     unsigned int windowId;
 };
+
+}
 
 #endif // WINDOWLEAVEEVENT__H
 

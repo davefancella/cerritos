@@ -29,6 +29,8 @@
 #ifndef JOYDEVICEREMOVEDEVENT__H
 #define JOYDEVICEREMOVEDEVENT__H
 
+namespace cerritos {
+
 class cJoyDeviceRemovedEvent : public cEvent {
 public:
     cJoyDeviceRemovedEvent() { 
@@ -41,6 +43,8 @@ public:
     };
     unsigned int evtimestamp;
 };
+
+}
 
 #endif // JOYDEVICEREMOVEDEVENT__H
 

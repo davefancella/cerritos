@@ -29,6 +29,8 @@
 #ifndef JOYBUTTONDOWNEVENT__H
 #define JOYBUTTONDOWNEVENT__H
 
+namespace cerritos {
+
 class cJoyButtondownEvent : public cEvent {
 public:
     cJoyButtondownEvent() { 
@@ -41,6 +43,8 @@ public:
     };
     unsigned int evtimestamp;
 };
+
+}
 
 #endif // JOYBUTTONDOWNEVENT__H
 

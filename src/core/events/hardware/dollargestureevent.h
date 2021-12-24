@@ -29,6 +29,8 @@
 #ifndef DOLLARGESTUREEVENT__H
 #define DOLLARGESTUREEVENT__H
 
+namespace cerritos {
+
 class cDollarGestureEvent : public cEvent {
 public:
     cDollarGestureEvent() { 
@@ -41,6 +43,8 @@ public:
     };
     unsigned int evtimestamp;
 };
+
+}
 
 #endif // DOLLARGESTUREEVENT__H
 

@@ -29,6 +29,8 @@
 #ifndef CONTROLLERDEVICEREMAPPEDEVENT__H
 #define CONTROLLERDEVICEREMAPPEDEVENT__H
 
+namespace cerritos {
+
 class cControllerDeviceRemappedEvent : public cEvent {
 public:
     cControllerDeviceRemappedEvent() { 
@@ -41,6 +43,8 @@ public:
     };
     unsigned int evtimestamp;
 };
+
+}
 
 #endif // CONTROLLERDEVICEREMAPPEDEVENT__H
 

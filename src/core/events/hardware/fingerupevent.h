@@ -29,6 +29,8 @@
 #ifndef FINGERUPEVENT__H
 #define FINGERUPEVENT__H
 
+namespace cerritos {
+
 class cFingerupEvent : public cEvent {
 public:
     cFingerupEvent() { 
@@ -41,6 +43,8 @@ public:
     };
     unsigned int evtimestamp;
 };
+
+}
 
 #endif // FINGERUPEVENT__H
 

@@ -29,6 +29,8 @@
 #ifndef MULTIGESTUREEVENT__H
 #define MULTIGESTUREEVENT__H
 
+namespace cerritos {
+
 class cMultiGestureEvent : public cEvent {
 public:
     cMultiGestureEvent() { 
@@ -41,6 +43,8 @@ public:
     };
     unsigned int evtimestamp;
 };
+
+}
 
 #endif // MULTIGESTUREEVENT__H
 

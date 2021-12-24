@@ -32,7 +32,9 @@
 
 // This file is periodically generated.  Do not edit it directly.
  
-void PollHardwareEvents(cEventManager* eventManager) {
+using namespace cerritos;
+ 
+void cerritos::PollHardwareEvents(cEventManager* eventManager) {
     // Get SDL events
     SDL_Event event;
     cEvent* newEvent = NULL;

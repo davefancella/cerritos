@@ -33,6 +33,8 @@
 
 #include "backend.h"
 
+namespace cerritos {
+
 /** Window flags
  */
 typedef enum {
@@ -315,6 +317,8 @@ int backendInit();
 void backendClose();
 void PollHardwareEvents(cEventManager* eventManager);
 const char* GetError();
+
+}
 
 #include "sdl_hardwareventEnum.h"
 

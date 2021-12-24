@@ -29,6 +29,8 @@
 #ifndef CONTROLLERDEVICEREMOVEDEVENT__H
 #define CONTROLLERDEVICEREMOVEDEVENT__H
 
+namespace cerritos {
+
 class cControllerDeviceRemovedEvent : public cEvent {
 public:
     cControllerDeviceRemovedEvent() { 
@@ -41,6 +43,8 @@ public:
     };
     unsigned int evtimestamp;
 };
+
+}
 
 #endif // CONTROLLERDEVICEREMOVEDEVENT__H
 

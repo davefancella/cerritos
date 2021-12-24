@@ -29,6 +29,8 @@
 #ifndef WINDOWMOVEDEVENT__H
 #define WINDOWMOVEDEVENT__H
 
+namespace cerritos {
+
 class cWindowMovedEvent : public cEvent {
 public:
     cWindowMovedEvent() { 
@@ -47,6 +49,8 @@ public:
     unsigned int posx;
     unsigned int posy;
 };
+
+}
 
 #endif // WINDOWMOVEDEVENT__H
 

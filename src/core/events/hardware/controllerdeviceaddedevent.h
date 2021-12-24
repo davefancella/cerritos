@@ -29,6 +29,8 @@
 #ifndef CONTROLLERDEVICEADDEDEVENT__H
 #define CONTROLLERDEVICEADDEDEVENT__H
 
+namespace cerritos {
+
 class cControllerDeviceAddedEvent : public cEvent {
 public:
     cControllerDeviceAddedEvent() { 
@@ -41,6 +43,8 @@ public:
     };
     unsigned int evtimestamp;
 };
+
+}
 
 #endif // CONTROLLERDEVICEADDEDEVENT__H
 

@@ -27,8 +27,12 @@
 
 #include <vector>
 
+namespace cerritos {
+
 template<typename T>
 using cList = std::vector<T>;
+
+}
 
 #endif // LIST__H
 

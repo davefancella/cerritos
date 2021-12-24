@@ -325,6 +325,8 @@ outputHeader = '''/*
 #ifndef $HEADERNAMECAPS__H
 #define $HEADERNAMECAPS__H
 
+namespace cerritos {
+
 class $classname : public cEvent {
 public:
     $classname() { 
@@ -333,6 +335,8 @@ public:
     $constructor
     $members
 };
+
+}
 
 #endif // $HEADERNAMECAPS__H
 '''
@@ -384,7 +388,9 @@ beginSDLPoller = '''/*
 
 // This file is periodically generated.  Do not edit it directly.
  
-void PollHardwareEvents(cEventManager* eventManager) {
+using namespace cerritos;
+ 
+void cerritos::PollHardwareEvents(cEventManager* eventManager) {
     // Get SDL events
     SDL_Event event;
     cEvent* newEvent = NULL;
@@ -500,6 +506,8 @@ beginEventHandlerClass = '''/*
 
 // This file is periodically generated.  Do not edit it directly.
 
+namespace cerritos {
+
 class cHardwareEventReceiver {
 public:
     cHardwareEventReceiver() { };
@@ -509,6 +517,8 @@ public:
 eventHandlerFunction = '    virtual void $funcname($eventtype* event) { };'
 
 endEventHandlerClass = '''};
+
+}
 
 #endif // HARDWAREEVENTRECEIVER__H
 

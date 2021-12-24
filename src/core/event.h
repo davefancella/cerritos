@@ -29,6 +29,8 @@
 #ifndef EVENT__H
 #define EVENT__H
 
+namespace cerritos {
+
 typedef enum {
     // hardwareenum is generated and comes from the backend.
     // It contains CER_* event types for hardware events.
@@ -56,6 +58,8 @@ public:
 private:
     std::queue<cEvent*> eventQueue;
 };
+
+}
 
 // Now include all the specific event headers
 #include "hardwareevents.h"

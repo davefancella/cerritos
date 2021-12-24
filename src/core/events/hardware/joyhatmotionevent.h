@@ -29,6 +29,8 @@
 #ifndef JOYHATMOTIONEVENT__H
 #define JOYHATMOTIONEVENT__H
 
+namespace cerritos {
+
 class cJoyHatMotionEvent : public cEvent {
 public:
     cJoyHatMotionEvent() { 
@@ -41,6 +43,8 @@ public:
     };
     unsigned int evtimestamp;
 };
+
+}
 
 #endif // JOYHATMOTIONEVENT__H
 
