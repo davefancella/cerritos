@@ -24,8 +24,11 @@
 
 #include "layout.h"
 #include "widget.h"
+#include "object.h"
 
 using namespace cerritos;
+
+cLayout::cLayout(cObject* parent) : cObject(parent) { }
 
 void cLayout::addWidget(cWidget* widget) {
     addChild(dynamic_cast<cObject*>(widget) );
