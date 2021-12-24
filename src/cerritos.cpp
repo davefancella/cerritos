@@ -28,6 +28,7 @@
 #include "cerritos.h"
 #include "application.h"
 #include "mainwindow.h"
+#include "path.h"
 
 using namespace cerritos;
 
@@ -44,6 +45,9 @@ void cerritos::PrintCerritosVersion() {
 void cerritos::cInit() {
     PrintCerritosVersion();
     backendInit();
+    
+    // Sets up the path module
+    Path* tossIt = Path::get();
 };
 
 /// Initializes and creates a default application object

@@ -8,11 +8,12 @@ add_library(cerritos SHARED
     cerritos.cpp
     backend/sdl_backend.cpp
     backend/sdl_poll_hardware_events.cpp
-    core/object.cpp
     core/application.cpp
     core/event.cpp
     core/events/eventreceiver.cpp
     core/font.cpp
+    core/object.cpp
+    core/path.cpp
     core/point.cpp
     core/rect.cpp
     core/sprite.cpp
