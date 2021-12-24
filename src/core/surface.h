@@ -27,6 +27,8 @@
 
 #include <cstdint>
 
+#include "backend.h"
+
 // SDL Forward declarations
 #ifdef USING_SDL
 struct SDL_Texture;
@@ -38,6 +40,7 @@ namespace cerritos {
 
 class cWindow;
 class cRect;
+class cPointInt;
 
 /** A surface to which to render.  It's used by widgets, sprites, fonts,
  *  and pretty much anything that needs to draw to the screen.
@@ -52,7 +55,7 @@ public:
     ~cSurface();
 
     /// Copies this surface to another surface.
-    void Blit_To(cRect* dest);
+    void Blit_To(cRect* dest, const double angle=0.0, const cPointInt *center=NULL, CER_RenderFlags flip=CER_None);
     
     /// Use this to fill the entire surface with one color
     void Fill(uint8_t red, uint8_t green, uint8_t blue, uint8_t alpha=255);

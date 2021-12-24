@@ -25,6 +25,7 @@
 #include "surface.h"
 #include "window.h"
 #include "rect.h"
+#include "point.h"
 
 #ifdef USING_SDL
 #include "sdl_backend.h"
@@ -47,14 +48,24 @@ cSurface::~cSurface() {
 #endif
 }
 
-void cSurface::Blit_To(cRect* dest) {
+void cSurface::Blit_To(cRect* dest, const double angle, const cPointInt *center, CER_RenderFlags flip) {
 #ifdef USING_SDL
     SDL_Rect aRect = { dest->position.x, dest->position.y, 
                        dest->size.width, dest->size.height };
-    SDL_RenderCopy(m_Window->getSDLRenderer(), 
+    SDL_Point* aPoint = NULL;
+    
+    if(center != NULL) {
+        aPoint->x = center->x;
+        aPoint->y = center->y;
+    }
+                       
+    SDL_RenderCopyEx(m_Window->getSDLRenderer(), 
                    m_Texture, 
                    NULL, 
-                   &aRect);
+                   &aRect,
+                   angle,
+                   aPoint,
+                   static_cast<SDL_RendererFlip>(flip) );
 #endif
 }
 

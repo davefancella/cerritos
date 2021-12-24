@@ -25,6 +25,8 @@
 #ifndef POINT__H
 #define POINT__H
 
+namespace cerritos {
+
 class cPoint {
     
 };
@@ -54,6 +56,8 @@ public:
     cSizeInt operator+(const cSizeInt& other);
     cSizeInt operator-(const cSizeInt& other);
 };
+
+}
 
 #endif // POINT__H
 

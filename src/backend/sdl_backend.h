@@ -61,6 +61,8 @@ typedef enum {
     CER_WindowPos_Undefined = SDL_WINDOWPOS_UNDEFINED,
 } CER_WindowFlags;
 
+/** Keycodes
+ */
 typedef enum {
     K_0                            = SDLK_0,
     K_1                            = SDLK_1,
@@ -298,6 +300,14 @@ typedef enum {
     K_RIGHTPAREN                   = SDLK_RIGHTPAREN,
     K_UNDERSCORE                   = SDLK_UNDERSCORE,
 } CER_Keycode;
+
+/** Renderer flags, used to designate texture flips
+ */
+typedef enum {
+    CER_None = SDL_FLIP_NONE,
+    CER_Horizontal = SDL_FLIP_HORIZONTAL,
+    CER_Vertical = SDL_FLIP_VERTICAL,
+} CER_RenderFlags;
 
 unsigned int GetTicks();
 void Delay(unsigned int ms);

@@ -24,6 +24,8 @@
 
 #include "point.h"
 
+using namespace cerritos;
+
 cPointInt::cPointInt(int x, int y) : x(x), y(y) { }
 
 cPointInt cPointInt::operator+(const cPointInt& other) {
