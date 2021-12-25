@@ -115,7 +115,16 @@ public:
      * 
      * Default implementation does nothing.
      */
-    virtual void ProcessOneEvent(Event* evt);
+    virtual void BeginProcessOneEvent(Event* evt) { };
+    
+    /**
+     * This method will be called to process each event.  It is called
+     * after the event is dispatched to the rest of the game, including
+     * the GUI, and only if the event is still active.
+     * 
+     * Default implementation does nothing.
+     */
+    virtual void ProcessOneEvent(Event* evt) { };
     
     /**
      * This is the driving part of the main loop.  This is where you'll

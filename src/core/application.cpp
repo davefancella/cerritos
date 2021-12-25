@@ -101,18 +101,18 @@ void Application::ProcessEvents() {
             case CER_QuitEvent:
                 this->keepRunning = false;
             default:
-                this->ProcessOneEvent(anEvent);
+                this->BeginProcessOneEvent(anEvent);
+                if(anEvent->isActive() ) {
+                    this->ProcessOneEventI(anEvent);
+                }
+                if(anEvent->isActive() ) {
+                    this->ProcessOneEvent(anEvent);
+                }
                 break;
         }
+        
+        delete anEvent;
     } 
-}
-
-// Process one event.  Default implementation does nothing.
-// If you subclass this and you want event processing to still
-// propogate throughout the gui, you'll need to call 
-// Application::ProcessOneEventI, which is what's used internally
-void Application::ProcessOneEvent(Event* evt) {
-    this->ProcessOneEventI(evt);
 }
 
 void Application::Update() {
