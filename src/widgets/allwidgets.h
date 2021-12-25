@@ -22,36 +22,22 @@
  * 
  */
 
-#ifndef CERRITOS_H
-#define CERRITOS_H
+#ifndef ALLWIDGETS__H
+#define ALLWIDGETS__H
 
-/* This file is the base header file you need to include to use cerritos.
+/** This file just contains includes for all widget files.
  */
 
-#include "cerritos_version.h"
-#include "backend.h"
-#include "core.h"
-#include "allwidgets.h"
+#include "layout.h"
+#include "mainwindow.h"
+#include "widget.h"
 
 namespace cerritos {
 
-/// Simple function to take a variable list of flags and return a single
-/// variable combining all flags together.
-unsigned int flags(int num, ...);
-
-/// Basic library initialization.  Call before you use the library.
-void cInit();
-
-/// Call this to cleanup the library when you're finished with it.
-void cClose();
-
-/// Initialize the library and get an application object with a an already
-/// setup mainwindow
-Application* cInitApp(int argc, char* args[], CER_WindowFlags winFlags=CER_Shown);
-
-/// Prints the cerritos library version
-void PrintCerritosVersion();
-
+// Code goes here
+    
 } // namespace cerritos
-#endif
+
+#endif // ALLWIDGETS__H
+
 

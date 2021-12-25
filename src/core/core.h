@@ -22,36 +22,37 @@
  * 
  */
 
-#ifndef CERRITOS_H
-#define CERRITOS_H
+#ifndef CORE__H
+#define CORE__H
 
-/* This file is the base header file you need to include to use cerritos.
+/** This file just contains includes for all core files.
  */
 
-#include "cerritos_version.h"
-#include "backend.h"
-#include "core.h"
-#include "allwidgets.h"
+// base include files
+#include "application.h"
+#include "event.h"
+#include "font.h"
+#include "macros.h"
+#include "object.h"
+#include "path.h"
+#include "point.h"
+#include "rect.h"
+#include "sprite.h"
+#include "surface.h"
+#include "types.h"
+#include "window.h"
+
+// event include files
+#include "hardwareevents.h"
+#include "hardwareeventreceiver.h"
+#include "eventreceiver.h"
 
 namespace cerritos {
 
-/// Simple function to take a variable list of flags and return a single
-/// variable combining all flags together.
-unsigned int flags(int num, ...);
-
-/// Basic library initialization.  Call before you use the library.
-void cInit();
-
-/// Call this to cleanup the library when you're finished with it.
-void cClose();
-
-/// Initialize the library and get an application object with a an already
-/// setup mainwindow
-Application* cInitApp(int argc, char* args[], CER_WindowFlags winFlags=CER_Shown);
-
-/// Prints the cerritos library version
-void PrintCerritosVersion();
-
+// Code goes here
+    
 } // namespace cerritos
-#endif
+
+#endif // CORE__H
+
 
