@@ -22,10 +22,10 @@
  * 
  */
 
+#include <cstdint>
+
 #ifndef SURFACE__H
 #define SURFACE__H
-
-#include <cstdint>
 
 #include "backend.h"
 
@@ -54,7 +54,15 @@ public:
     Surface(Window* window);
     ~Surface();
 
-    /// Copies this surface to another surface.
+    /**
+     * Renders this surface to the window given during construction.
+     * 
+     * @param dest The destination.  Only the position coordinates are used.
+     * @param angle The angle, in degrees, starting from straight north.
+     *              The surface will be rotated.
+     * @param center The origin of the surface.
+     * @param flip Whether or not to flip, horizontally or vertically.
+     */
     void Blit_To(Rect* dest, const double angle=0.0, const PointInt *center=NULL, CER_RenderFlags flip=CER_None);
     
     /// Use this to fill the entire surface with one color
