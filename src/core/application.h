@@ -66,14 +66,36 @@ public:
     
     bool hasEvent();
     
-    /// Polls the event manager for a single event
+    /*
+     * Polls the event manager for a single event.  This will result
+     * in the event being removed from the event queue, so if you call
+     * this, you'll need to handle the event.
+     * 
+     * Also, as with SDL, if you don't use the event loop, you'll need
+     * to call this anyway to keep the event queue from becoming a
+     * memory leak in your game.
+     */
     Event* PollEvent();
     
-    /// Get the current timestep.
+    /* Get the current timestep.  cApplication automatically sets the
+     * timestep at the beginning of every loop iteration and caches
+     * that timestep.  By calling this, you ensure that every object that
+     * uses the timestep uses the same one, thus ensuring accuracy of your
+     * simulation and animations.
+     */
     const TimeStep getTimestep();
     
-    /// Call to run the main loop.  Calling this surrenders control of
-    /// the main loop to the application object.
+    /**
+     * Call to run the main loop.  Calling this surrenders control of
+     * the main loop to the application object.  If you don't want to
+     * let cerritos handle your main loop, then obviously you won't use
+     * this method.  Also, you'll only ever call this directly in the
+     * case where you handle all the initialization yourself, in which
+     * case you'll need to call loop() to enter the main loop.
+     * 
+     * If you use any of the CERRITOSMAIN macros, this will be called
+     * automatically.
+     */
     void loop();
     
     /// Call this at the beginning of your main loop.  This updates the
@@ -83,21 +105,48 @@ public:
     /// Call this to process events.  It will delete the events as it goes.
     void ProcessEvents();
     
-    /// This method will be called to process each event.
+    /**
+     * This method will be called to process each event.  It is called
+     * before the event is dispatched to the rest of the game, including
+     * the GUI, to allow developers to override event behavior, create
+     * event filters, and so forth.  You can also use the event for your
+     * own purposes and then let it move on to be processed by the rest
+     * of the system.
+     * 
+     * Default implementation does nothing.
+     */
     virtual void ProcessOneEvent(Event* evt);
     
-    /// This is the method provided for subclasses to do their own internal
-    /// updating.
+    /**
+     * This is the driving part of the main loop.  This is where you'll
+     * put your own timestep for the main loop.  As the API is still under
+     * heavy development, this method will likely split into smaller parts.
+     *
+     * Default implementation does nothing.
+     */
     virtual void Update();
 
-    /// Updates the view, which is typically all graphics, used for animating
-    /// stuff that needs to be animated.
+    /**
+     * Updates the view, which is typically all graphics, used for animating
+     * stuff that needs to be animated.  Sound is mixed and sent to sound
+     * buffers, and all the goodness of the GUI gets rendered.
+     * 
+     * Absolutely no game simulation or user interaction happens in this
+     * method.
+     */
     void UpdateView();
     
     /// Call at the end of the main loop to finish all pending updates.
     void EndUpdate();
     
-    /// Call this to simply update everything at once.
+    /**
+     * Call this to simply update everything at once.  It will also
+     * initialize anything that needs to be initialized before getting
+     * started.  This is a way to keep some control of your main() function,
+     * while surrendering some control to cerritos.
+     * 
+     * It's probably a case of YouMightNeedThis.
+     */
     void UpdateAll();
     
     bool keepRunning;
@@ -105,6 +154,7 @@ public:
     cMainWindow* mainwindow = NULL;
 
 protected:
+    /// The internal method called that processes each event.
     void ProcessOneEventI(Event* evt);
     
 private:

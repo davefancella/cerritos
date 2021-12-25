@@ -27,10 +27,24 @@
 
 namespace cerritos {
 
+/**
+ * The base class for points.  Since every type of point is
+ * different enough, the base class doesn't do anything. It
+ * exists to allow for classes to store pointers to a point
+ * without needing to know the details of the point.
+ * 
+ * So, a class can store a pointer to a point without getting
+ * the point.
+ */
 class Point {
     
 };
 
+/**
+ * An integer point.  It is a two dimensional point, usually
+ * referring to a point on the screen.  It is written under
+ * the assumption that it usually means screen coordinates.
+ */
 class PointInt : public Point {
 public:
     PointInt() : x(0), y(0) { };
@@ -44,7 +58,13 @@ public:
     PointInt operator-(const PointInt& other);
 };
 
-class cSizeInt {
+/**
+ * A size, given as width x height.  It subclasses Point just
+ * to allow pointers to be held to it without knowing the
+ * details.  This is usually pointless, as size is pointless,
+ * i.e. it's not a Point.
+ */
+class cSizeInt : public Point {
 public:
     cSizeInt() : width(0), height(0) { };
     cSizeInt(int width, int height);

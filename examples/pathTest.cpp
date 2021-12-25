@@ -22,14 +22,18 @@
  * 
  */
 
-#include <iostream>
-
-// Include the cerritos header file.  This brings in pretty much everything.
+// Include the cerritos header file.  
+// This brings in pretty much everything.
 #include "cerritos.h"
+
+#include "types.h"
 
 using namespace cerritos;
 
 int main( int argc, char* args[] ) {
+    Path thePath = Path::get();
+    
+    cSTDOUT << thePath.m_AppPath << EOL;
 
 }
 

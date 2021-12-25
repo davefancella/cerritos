@@ -22,12 +22,12 @@
  * 
  */
 
-#include <queue>
+#ifndef EVENT__H
+#define EVENT__H
 
 #include "backend.h"
 
-#ifndef EVENT__H
-#define EVENT__H
+#include "types.h"
 
 namespace cerritos {
 
@@ -56,7 +56,7 @@ public:
     bool hasEvent();
     Event* popEvent();
 private:
-    std::queue<Event*> eventQueue;
+    Queue<Event*> eventQueue;
 };
 
 }

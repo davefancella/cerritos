@@ -22,7 +22,6 @@
  * 
  */
 
-#include <iostream>
 #include <filesystem>
 
 #include "path.h"
@@ -37,10 +36,6 @@ using namespace cerritos;
 Path::Path() {
 #ifdef USING_SDL
     m_AppPath = SDL_GetBasePath();
-    
-    std::filesystem::path* aPath = new std::filesystem::path(m_AppPath);
-    
-    std::cout << *aPath << std::endl;
     
     // Need to figure out how to handle a few things here before adding this
     //m_ConfigPath = new String(SDL_GetPrefsPath(const char *org, const char *app) );

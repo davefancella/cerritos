@@ -35,6 +35,7 @@ Window::Window(String title, int posx, int posy, int width, int height, CER_Wind
             : Title(title), width(width), height(height), 
                 posx(posx), posy(posy),
                 windowFlags(winFlags) {
+#ifdef USING_SDL
     m_Window = SDL_CreateWindow( this->Title.data(), 
             this->posx, this->posy,
             this->width, this->height, this->windowFlags);
@@ -45,7 +46,6 @@ Window::Window(String title, int posx, int posy, int width, int height, CER_Wind
         std::cout << "Window could not be created! Backend: " <<
             GetError() << std::endl;
     } else {
-#ifdef USING_SDL
         // This is when the window is created successfully
         m_Renderer = SDL_CreateRenderer(m_Window, -1, SDL_RENDERER_ACCELERATED);
         SDL_SetRenderDrawColor(m_Renderer, 0,0,0,255);

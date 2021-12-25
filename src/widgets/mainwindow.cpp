@@ -22,11 +22,9 @@
  * 
  */
 
-#include <iostream>
-
 #include "backend.h"
 
-#include "cerritos.h"
+//#include "cerritos.h"
 #include "window.h"
 #include "mainwindow.h"
 #include "surface.h"
@@ -67,9 +65,7 @@ void cMainWindow::Move() {
 cMainWindow::cMainWindow(CER_WindowFlags winFlags) 
             : cWidget(NULL), Title("Cerritos Window"), width(800), height(600), 
                 posx(CER_WindowPos_Centered), posy(CER_WindowPos_Centered),
-                windowFlags(winFlags) {
-    std::cout << "Creating Window object" << std::endl;                
-    
+                windowFlags(winFlags) {    
     this->m_Window = new Window( this->Title, 
             this->posx, this->posy,
             this->width, this->height, this->windowFlags );

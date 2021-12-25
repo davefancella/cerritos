@@ -29,11 +29,27 @@
 
 namespace cerritos {
 
-/** The base class for all cerritos objects
+/** The base class for all cerritos objects.  This class 
+ *  provides parent/child relationship management and should
+ *  be used wherever such relationships are needed.  It's
+ *  used extensively in the widget subsystem.
  */
 class Object {
 public:
+    /**
+     * Default constructor.  It does not parent the object,
+     * so should only be used for the top-level object in
+     * a hierarchy.
+     */
     Object();
+    
+    /**
+     * The constructor the provides parentage for your
+     * object.  It will automatically add itself as
+     * a child to the parent provided.
+     * 
+     * @param parent the parent for this object
+     */
     Object(Object* parent);
     
     /// Adds a child to the object
@@ -42,8 +58,11 @@ public:
     /// Changes the parent of this widget
     void reparent(Object* newParent);
     
-    /// Call whenever you're removing a child from somewhere other than
-    /// this class.
+    /** 
+     * Called whenever a child is removed from this object.
+     * It allows for any last-minute work the object needs
+     * to do before it loses a child.
+     */
     void removingObject(Object* theChild) { };
     
     /// Call to update an object in a game loop.  Not all objects need this.

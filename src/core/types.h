@@ -34,37 +34,25 @@
 #include <string>
 #include <vector>
 #include <map>
+#include <iostream>
+#include <queue>
 
+/// Use this instead of cout from iostream.
+#define cSTDOUT std::cout
+#define EOL std::endl
+    
 namespace cerritos {
 
+/** @class String
+ * 
+ * A simple string implementation, sorta.  Right now, it's just some
+ * typedefs and defines that hopefully provide reasonable cross-platform
+ * strings from the C++ standard library
+ */
 #ifdef _WIN32
-/** A simple string implementation, sorta.  Right now, it's just some
- * typedefs and defines that hopefully provide reasonable cross-platform
- * strings from the C++ standard library
- */
 typedef std::wstring String;
-#define UNI(text) L ## text
-/*
-std::string _formatForConsole(const String &str)
-{
-    std::string result;
-    //Call WideCharToMultiByte to do the conversion
-    return result;
-}
-*/
 #else
-/** A simple string implementation, sorta.  Right now, it's just some
- * typedefs and defines that hopefully provide reasonable cross-platform
- * strings from the C++ standard library
- */
 typedef std::string String;
-#define UNI(text) text
-/*
-std::string _formatForConsole(const String &str)
-{
-    return str;
-}
-*/
 #endif
 
 template<typename T>
@@ -72,6 +60,9 @@ using Dictionary = std::map<String, T>;
 
 template<typename T>
 using List = std::vector<T>;
+
+template<typename T>
+using Queue = std::queue<T>;
 
 }
 
