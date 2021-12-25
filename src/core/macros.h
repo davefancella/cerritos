@@ -44,7 +44,7 @@ int main( int argc, char* args[] ) { \
 \
     cInit(); \
 \
-    theApp = new app(); \
+    theApp = new app(argc, args); \
     theWindow = new window(); \
 \
     theApp->setMainWindow(theWindow); \

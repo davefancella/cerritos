@@ -40,7 +40,7 @@ int main( int argc, char* args[] ) {
     // This is a handy way to initialize cerritos and get a default
     // application object.  Typically, more complex games need more than
     // a default application object.
-    Application* theApp = cInitApp(CER_Shown);
+    Application* theApp = cInitApp(argc, args, CER_Shown);
     cMainWindow* theWindow;
     // There's also a default mainwindow available.
     theWindow = theApp->getMainWindow();

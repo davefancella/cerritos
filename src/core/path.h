@@ -22,6 +22,8 @@
  * 
  */
 
+#include <filesystem>
+
 #include "types.h"
 
 #ifndef PATH__H
@@ -30,6 +32,8 @@
 // Includes and forward declarations go here
 
 namespace cerritos {
+
+typedef std::filesystem::path Filepath;
 
 /** The class that provides access to the filesystem in a cross-platform
  *  way.
@@ -42,6 +46,7 @@ public:
     String* m_ConfigPath;
     
 private:
+    Dictionary<Filepath> m_AllPaths;
     Path();
 };
     

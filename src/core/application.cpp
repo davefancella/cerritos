@@ -36,7 +36,7 @@
 using namespace cerritos;
 
 /// Constructor.
-Application::Application() {
+Application::Application(int argc, char* argv[]) {
     // Start by setting up the timestep
     unsigned int newTimestep = GetTicks();
 

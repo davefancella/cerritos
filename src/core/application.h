@@ -57,7 +57,7 @@ namespace cerritos {
 class Application : public Object,
                      public cBaseEventReceiver {
 public:
-    Application();
+    Application(int argc, char* argv[]);
     
     /// Set the main window for the object.  If it's not set, it won't be
     /// updated.
@@ -116,6 +116,9 @@ private:
     unsigned int firstTimestep;
     /// The most recent timestep called
     unsigned int lastTimestep;
+    
+    // Disable default constructor
+    Application();
 };
 
 } // namespace cerritos

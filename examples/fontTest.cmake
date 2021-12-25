@@ -2,7 +2,7 @@
 add_executable(fontTest
     fontTest.cpp
 )
-target_include_directories(eventTest PUBLIC
+target_include_directories(fontTest PUBLIC
     src
     src/core
     src/widgets
