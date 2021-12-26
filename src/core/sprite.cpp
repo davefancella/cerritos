@@ -25,5 +25,16 @@
 #include "sprite.h"
 
 using namespace cerritos;
+/*
+Sprite::Sprite(String pathToTexture, int x, int y, int w, int h) {
+    rect = Rect(x, y, w, h);
+    surface = Surface::loadFromFile(pathToTexture);
+    
+}
 
+Sprite::~Sprite() {
+    SDL_FreeSurface(surface);
+}
 
+void Sprite::Draw() {
+    */

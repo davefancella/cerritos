@@ -26,13 +26,26 @@
 #define SPRITE__H
 
 // Includes and forward declarations go here
+#include "rect.h"
+#include "surface.h"
+#include "window.h"
+#include "types.h"
+
 
 namespace cerritos {
-
+/*
 class Sprite {
+public:
+    Rect* rect;
+    Surface* surface;
+    String* texture;
     
+    Sprite(String pathToTexture, int x, int y, int w, int h);
+    ~Sprite();
+    
+    void Draw();
 };
-    
+    */
 } // namespace cerritos
 
 #endif // SPRITE__H

@@ -90,10 +90,10 @@ void Surface::FillRect(const Rect* rect, uint8_t red, uint8_t green, uint8_t blu
 #endif
 }
 
-Surface* Surface::loadFromFile(String filename) {
+Surface* Surface::loadFromFile(Window* window, String filename) {
     Surface* theSurface = NULL;
     
-    theSurface = new Surface;
+    theSurface = new Surface(window);
     
     SDL_Surface* tempSurface = SDL_LoadBMP(filename.data());
     if (!tempSurface) {
