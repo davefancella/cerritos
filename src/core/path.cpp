@@ -49,8 +49,7 @@ Path& Path::get() {
 }
 
 String Path::getFilepath(String filename, String searchpath, bool useSysDirs) {
-    auto search = m_AllPaths.find(searchpath);
-    if (search != m_AllPaths.end()) {
+    if (m_AllPaths.has_key(searchpath)) {
         // Found the path
         return String( (m_AllPaths[searchpath] / filename).c_str() );
     }

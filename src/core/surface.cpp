@@ -52,11 +52,11 @@ void Surface::Blit_To(Rect* dest, const double angle, const PointInt *center, CE
 #ifdef USING_SDL
     SDL_Rect aRect = { dest->position.x, dest->position.y, 
                        dest->size.width, dest->size.height };
-    SDL_Point* aPoint = NULL;
+    SDL_Point aPoint = {0,0};
     
     if(center != NULL) {
-        aPoint->x = center->x;
-        aPoint->y = center->y;
+        aPoint.x = center->x;
+        aPoint.y = center->y;
     }
                        
     SDL_RenderCopyEx(m_Window->getSDLRenderer(), 
@@ -64,7 +64,7 @@ void Surface::Blit_To(Rect* dest, const double angle, const PointInt *center, CE
                    NULL, 
                    &aRect,
                    angle,
-                   aPoint,
+                   &aPoint,
                    static_cast<SDL_RendererFlip>(flip) );
 #endif
 }
