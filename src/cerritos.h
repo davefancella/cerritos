@@ -34,25 +34,5 @@
 #include "core.h"
 #include "allwidgets.h"
 
-namespace cerritos {
-
-/// Simple function to take a variable list of flags and return a single
-/// variable combining all flags together.
-unsigned int flags(int num, ...);
-
-/// Basic library initialization.  Call before you use the library.
-void cInit();
-
-/// Call this to cleanup the library when you're finished with it.
-void cClose();
-
-/// Initialize the library and get an application object with a an already
-/// setup mainwindow
-Application* cInitApp(int argc, char* args[], CER_WindowFlags winFlags=CER_Shown);
-
-/// Prints the cerritos library version
-void PrintCerritosVersion();
-
-} // namespace cerritos
 #endif
 

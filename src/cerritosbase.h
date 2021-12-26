@@ -22,8 +22,8 @@
  * 
  */
 
-#ifndef CERRITOS_H
-#define CERRITOS_H
+#ifndef CERRITOSBASE__H
+#define CERRITOSBASE__H
 
 #include "backend.h"
 
@@ -50,5 +50,5 @@ Application* cInitApp(int argc, char* args[], CER_WindowFlags winFlags=CER_Shown
 void PrintCerritosVersion();
 
 } // namespace cerritos
-#endif
+#endif  // CERRITOSBASE__H
 
