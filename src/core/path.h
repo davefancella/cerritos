@@ -42,19 +42,37 @@ class Path {
 public:    
     static Path& get();
     
-    String getFilepath(String filename, String searchpath);
-
-    /** 
+    /**
      * The workhorse of the Path object.  Tell it a searchpath and give it
      * a filename, and you get an absolute path to that file.  Possible
      * searchpaths are things like "share" for shared data, /usr/share in
      * POSIX operating systems, "site-config" for site config, /etc in
      * POSIX operating systems, or "user-config" for user config, ~/.local/appname
      * in POSIX operating systems.
+     * 
+     * @param filename The name of the file you want to find.  No checking is
+     *                 done to see if the file actually exists.
+     * @param searchpath The type of path you want, like "share" or "userconfig"
+     * @param useSysDirs Whether or not to also use system directories.  Default
+     *                   is not to use system directories, because games are
+     *                   expected to ship with everything they need to run.
      */
-    String getFilepath(const char* filename, const char* searchpath) { return getFilepath(String(filename), String(searchpath) ); };
-    String getFilepath(const char* filename, String searchpath) { return getFilepath(String(filename), searchpath); };
-    String getFilepath(String filename, const char* searchpath) { return getFilepath(filename, String(searchpath) ); };
+    String getFilepath(String filename, String searchpath, bool useSysDirs=false);
+
+    /// Overloaded member for convenience.
+    String getFilepath(const char* filename, const char* searchpath, bool useSysDirs=false) { 
+        return getFilepath(String(filename), String(searchpath), useSysDirs); 
+    };
+    
+    /// Overloaded member for convenience.
+    String getFilepath(const char* filename, String searchpath, bool useSysDirs=false) { 
+        return getFilepath(String(filename), searchpath, useSysDirs); 
+    };
+    
+    /// Overloaded member for convenience.
+    String getFilepath(String filename, const char* searchpath, bool useSysDirs=false) {
+        return getFilepath(filename, String(searchpath), useSysDirs ); 
+    };
     
     String getAppPath() { return m_AppPath; };
     
