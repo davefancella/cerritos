@@ -88,7 +88,6 @@ void Application::BeginUpdate() {
 
     // Get system-specific events from the backend
     PollHardwareEvents(this->eventManager);
-    
 }
 
 void Application::ProcessEvents() {
@@ -97,22 +96,25 @@ void Application::ProcessEvents() {
         Event* anEvent = NULL;
         anEvent = this->PollEvent();
         
-        switch(anEvent->type() ) {
-            case CER_QuitEvent:
-                this->keepRunning = false;
-            default:
-                this->BeginProcessOneEvent(anEvent);
-                if(anEvent->isActive() ) {
-                    this->ProcessOneEventI(anEvent);
-                }
-                if(anEvent->isActive() ) {
-                    this->ProcessOneEvent(anEvent);
-                }
-                break;
+        // Callback for users of the library
+        this->BeginProcessOneEvent(anEvent);
+        
+        // Actually process the event
+        if(anEvent->isActive() ) {
+            this->ProcessOneEventI(anEvent);
+        }
+        
+        // Callback for users of the library
+        if(anEvent->isActive() ) {
+            this->ProcessOneEvent(anEvent);
         }
         
         delete anEvent;
     } 
+}
+
+void Application::onQuit(QuitEvent* event) {
+    this->keepRunning = false;
 }
 
 void Application::Update() {
@@ -144,7 +146,6 @@ void Application::EndUpdate() {
     }    
 }
 
-// Process one event internally.
 void Application::ProcessOneEventI(Event* evt) {
     // First delegate the event to the gui
     if(this->mainwindow != NULL) {

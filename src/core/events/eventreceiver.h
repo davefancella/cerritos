@@ -30,8 +30,12 @@
 
 namespace cerritos {
 
-// A class that can receive events.  It contains the base event processor
-// method, and the virtual event handlers that any event receiver needs.
+/** 
+ * A class that can receive events.  It contains the base event processor
+ * method, and the virtual event handlers that any event receiver needs.
+ * The Application object, MainWindow, and all Widgets inherit this class.
+ * That's how event handlers are provided to these classes.
+ */
 class cBaseEventReceiver : public cHardwareEventReceiver {
 public:
     virtual void process_event(Event* event);

@@ -44,21 +44,14 @@ unsigned int GetTicks();
 // Just delay code execution, equivalent to sleep()
 void Delay(unsigned int ms);
 
-// Initialize the backend
+/// Initialize the backend
 int backendInit();
 void backendClose();
 
-// Poll backend for hardware events and put them in the event manager
+/// Poll backend for hardware events and put them in the event manager
 void PollHardwareEvents(EventManager* eventManager);
 
 } // cerritos namespace
-
-// All the stuff needed to work with surfaces
-
-// This is a forward declaration.  Typically, you'll define this in
-// your backend.  Currently, these are just placeholders for SDL stuff.
-//struct Rect;
-//struct cPixelFormat;
 
 // These are the enums that a backend must provide
 

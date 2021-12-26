@@ -120,7 +120,13 @@ public:
     /**
      * This method will be called to process each event.  It is called
      * after the event is dispatched to the rest of the game, including
-     * the GUI, and only if the event is still active.
+     * the GUI, after any event handlers have been called,
+     * and only if the event is still active.
+     * 
+     * There's very little need to ever use this method, but it is provided
+     * because just because we can't imagine needing it, doesn't mean the
+     * need won't exist, and it'll typically be compiled out of the executable
+     * when it's not needed.
      * 
      * Default implementation does nothing.
      */
@@ -163,7 +169,12 @@ public:
     cMainWindow* mainwindow = NULL;
 
 protected:
-    /// The internal method called that processes each event.
+    void onQuit(QuitEvent* event);
+    
+    /**
+     * Process one event internally.  This is where the events get delegated
+     * for processing.
+     */
     void ProcessOneEventI(Event* evt);
     
 private:
