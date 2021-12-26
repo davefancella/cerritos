@@ -34,13 +34,13 @@ using namespace cerritos;
 
 class spMainWindow : public cMainWindow {
 public:
-    Sprite* sprite;
+    Sprite* m_sprite;
     
     void setSprite(Sprite* sprite) {
-        sprite = sprite;
+        m_sprite = sprite;
     }
     void Render() {
-        sprite->Draw();
+        m_sprite->Draw();
     }
 };
 
@@ -58,7 +58,7 @@ int main( int argc, char* args[] ) {
 
     theWindow = new spMainWindow();
     
-    theSprite = new Sprite(theWindow->getWindow(), "/home/pi/Cerritos/cerritos/assets/spaceship.bmp", 0, 0, 64, 64);
+    theSprite = new Sprite(theWindow->getWindow(), "/home/pi/Projects/cerritos/assets/spaceship.bmp", 0, 0, 64, 64);
 
     theApp->setMainWindow(theWindow);
     theWindow->setTitle("Sprite Test");
