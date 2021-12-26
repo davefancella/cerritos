@@ -90,5 +90,26 @@ void Surface::FillRect(const Rect* rect, uint8_t red, uint8_t green, uint8_t blu
 #endif
 }
 
-
-
+Surface* Surface::loadFromFile(String filename) {
+    Surface* theSurface = NULL;
+    
+    theSurface = new Surface;
+    
+    SDL_Surface* tempSurface = SDL_LoadBMP(filename.data());
+    if (!tempSurface) {
+        std::cout << "Unable to load Texture! SDL Error: " << SDL_GetError() << "\n";
+    } else {
+        SDL_DestroyTexture(theSurface->m_Texture);
+        
+        theSurface->m_Texture = SDL_CreateTextureFromSurface(theSurface->m_Window->getSDLRenderer(), tempSurface);
+        if (!theSurface->m_Texture) {
+            std::cout << "Unable to load Texture! SDL Error: " << SDL_GetError() << "\n";
+        }
+        
+        SDL_FreeSurface(tempSurface);
+    }
+    
+    return theSurface;
+}
+    
+    
