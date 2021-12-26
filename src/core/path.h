@@ -42,10 +42,28 @@ class Path {
 public:    
     static Path& get();
     
+    String getFilepath(String filename, String searchpath);
+
+    /** 
+     * The workhorse of the Path object.  Tell it a searchpath and give it
+     * a filename, and you get an absolute path to that file.  Possible
+     * searchpaths are things like "share" for shared data, /usr/share in
+     * POSIX operating systems, "site-config" for site config, /etc in
+     * POSIX operating systems, or "user-config" for user config, ~/.local/appname
+     * in POSIX operating systems.
+     */
+    String getFilepath(const char* filename, const char* searchpath) { return getFilepath(String(filename), String(searchpath) ); };
+    String getFilepath(const char* filename, String searchpath) { return getFilepath(String(filename), searchpath); };
+    String getFilepath(String filename, const char* searchpath) { return getFilepath(filename, String(searchpath) ); };
+    
+    String getAppPath() { return m_AppPath; };
+    
+    void setAppDirectory(String appdir);
+    
+private:
     String m_AppPath;
     String* m_ConfigPath;
     
-private:
     Dictionary<Filepath> m_AllPaths;
     Path();
 };

@@ -30,14 +30,6 @@
 // Include the cerritos header file.  This brings in pretty much everything.
 #include "cerritos.h"
 
-#include "application.h"
-#include "mainwindow.h"
-#include "path.h"
-
-#include "event.h"
-#include "font.h"
-#include "rect.h"
-
 using namespace cerritos;
 
 class etMainWindow : public cMainWindow {
@@ -76,9 +68,7 @@ int main( int argc, char* args[] ) {
     Font* theFont;
 
     cInit();
-    
-    std::cout << Path::get().m_AppPath << std::endl;
-    
+        
     theApp = new Application(argc, args);
 
     theWindow = new etMainWindow();

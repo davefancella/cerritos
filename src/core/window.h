@@ -28,8 +28,10 @@
 #include "types.h"
 #include "backend.h"
 
+#ifdef USING_SDL
 struct SDL_Window;
 struct SDL_Renderer;
+#endif
 
 namespace cerritos {
 

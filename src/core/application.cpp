@@ -97,19 +97,24 @@ void Application::ProcessEvents() {
         anEvent = this->PollEvent();
         
         // Callback for users of the library
-        this->BeginProcessOneEvent(anEvent);
+        if(anEvent != NULL)
+            this->BeginProcessOneEvent(anEvent);
         
         // Actually process the event
-        if(anEvent->isActive() ) {
-            this->ProcessOneEventI(anEvent);
-        }
+        if(anEvent != NULL)
+            if(anEvent->isActive() ) {
+                this->ProcessOneEventI(anEvent);
+            }
         
         // Callback for users of the library
-        if(anEvent->isActive() ) {
-            this->ProcessOneEvent(anEvent);
-        }
-        
-        delete anEvent;
+        if(anEvent != NULL)
+            if(anEvent->isActive() ) {
+                this->ProcessOneEvent(anEvent);
+            }
+
+        // Just some protection in case users delete the event.
+        if(anEvent != NULL)
+            delete anEvent;
     } 
 }
 

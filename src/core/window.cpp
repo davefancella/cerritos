@@ -49,8 +49,8 @@ Window::Window(String title, int posx, int posy, int width, int height, CER_Wind
         // This is when the window is created successfully
         m_Renderer = SDL_CreateRenderer(m_Window, -1, SDL_RENDERER_ACCELERATED);
         SDL_SetRenderDrawColor(m_Renderer, 0,0,0,255);
-#endif
     }
+#endif
 }
 
 

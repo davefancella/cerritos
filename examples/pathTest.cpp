@@ -33,7 +33,7 @@ using namespace cerritos;
 int main( int argc, char* args[] ) {
     Path thePath = Path::get();
     
-    cSTDOUT << thePath.m_AppPath << EOL;
+    cSTDOUT << thePath.getAppPath() << EOL;
 
 }
 

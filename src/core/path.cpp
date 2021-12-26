@@ -48,5 +48,10 @@ Path& Path::get() {
     return *instance;
 }
 
+String Path::getFilepath(String filename, String searchpath) {
+    
+    
+    return String("");
+}
 
 

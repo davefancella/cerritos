@@ -32,7 +32,6 @@
 
 namespace cerritos {
 
-class Surface;
 class cLayout;
 
 class cMainWindow : public cerritos::cWidget {
