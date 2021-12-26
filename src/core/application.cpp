@@ -71,7 +71,7 @@ Event* Application::PollEvent() {
     return NULL;
 }
 
-const TimeStep Application::getTimestep() {
+const Timestep Application::getTimestep() {
     return this->currentTimestep;
 }
 
@@ -83,9 +83,6 @@ void Application::BeginUpdate() {
     
     this->currentTimestep.fromBeginning = newTimestep - this->firstTimestep;
     this->currentTimestep.fromLast = newTimestep - this->lastTimestep;
-    
-    this->mainwindow->timeStepBeginning = currentTimestep.fromBeginning;
-    this->mainwindow->timeStepLast      = currentTimestep.fromLast;
     
     this->lastTimestep = newTimestep;
 
@@ -130,7 +127,7 @@ void Application::Update() {
 
 void Application::UpdateView() {
     if(this->mainwindow != NULL) {
-        this->mainwindow->Update();
+        this->mainwindow->Update(this->getTimestep());
     }
 }
 

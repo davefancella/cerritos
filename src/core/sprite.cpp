@@ -50,11 +50,9 @@ void Sprite::addFrame(String pathToFrame) {
     m_Frames.push_back(newSurface);
 }
 
-void Sprite::Update(int timestep) {
-    std::cout << timestep << "\n";
-    int dt = (timestep / 1000) * m_Fps;
+void Sprite::Update(const Timestep timestep) {
+    int dt = (timestep.fromBeginning / (1000 / m_Fps));
     m_CurrentFrame = dt % m_Frames.size();
-    std::cout << dt << ", " << m_CurrentFrame << "\n";
     if (m_CurrentFrame >= m_Frames.size()) {
         m_CurrentFrame = 0;
     }

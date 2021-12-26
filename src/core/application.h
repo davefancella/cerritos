@@ -83,7 +83,7 @@ public:
      * uses the timestep uses the same one, thus ensuring accuracy of your
      * simulation and animations.
      */
-    const TimeStep getTimestep();
+    const Timestep getTimestep();
     
     /**
      * Call to run the main loop.  Calling this surrenders control of
@@ -180,7 +180,7 @@ protected:
 private:
     EventManager* eventManager;
     
-    TimeStep currentTimestep;
+    Timestep currentTimestep;
 
     /// The first timestep ever in the app
     unsigned int firstTimestep;
