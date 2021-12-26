@@ -31,6 +31,11 @@
 
 namespace cerritos {
 
+/**
+ * An event of CER_WindowEnterEvent.
+ *
+ * @ingroup eventgroup
+ */
 class WindowEnterEvent : public Event {
 public:
     WindowEnterEvent() { 

@@ -31,6 +31,11 @@
 
 namespace cerritos {
 
+/**
+ * An event of CER_WindowMovedEvent.
+ *
+ * @ingroup eventgroup
+ */
 class WindowMovedEvent : public Event {
 public:
     WindowMovedEvent() { 

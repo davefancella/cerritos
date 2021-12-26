@@ -31,6 +31,11 @@
 
 namespace cerritos {
 
+/**
+ * An event of CER_ControllerDeviceAddedEvent.
+ *
+ * @ingroup eventgroup
+ */
 class ControllerDeviceAddedEvent : public Event {
 public:
     ControllerDeviceAddedEvent() { 

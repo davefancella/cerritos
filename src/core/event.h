@@ -37,7 +37,11 @@ typedef enum {
     HARDWAREENUM
 } CER_EventType;
 
-/// The base class for events.
+/**
+ * The base class for events.
+ * 
+ * @defgroup eventgroup Events
+ */
 class Event {
 public:
     CER_EventType type() { return this->evtype; };

@@ -31,6 +31,11 @@
 
 namespace cerritos {
 
+/**
+ * An event of CER_WindowHiddenEvent.
+ *
+ * @ingroup eventgroup
+ */
 class WindowHiddenEvent : public Event {
 public:
     WindowHiddenEvent() { 

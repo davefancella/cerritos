@@ -31,6 +31,11 @@
 
 namespace cerritos {
 
+/**
+ * An event of CER_ClipboardUpdateEvent.
+ *
+ * @ingroup eventgroup
+ */
 class ClipboardUpdateEvent : public Event {
 public:
     ClipboardUpdateEvent() { 

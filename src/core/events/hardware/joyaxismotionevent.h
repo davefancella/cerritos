@@ -31,6 +31,11 @@
 
 namespace cerritos {
 
+/**
+ * An event of CER_JoyAxisMotionEvent.
+ *
+ * @ingroup eventgroup
+ */
 class JoyAxisMotionEvent : public Event {
 public:
     JoyAxisMotionEvent() { 

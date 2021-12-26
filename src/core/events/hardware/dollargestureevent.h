@@ -31,6 +31,11 @@
 
 namespace cerritos {
 
+/**
+ * An event of CER_DollarGestureEvent.
+ *
+ * @ingroup eventgroup
+ */
 class DollarGestureEvent : public Event {
 public:
     DollarGestureEvent() { 

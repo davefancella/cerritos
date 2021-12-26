@@ -31,6 +31,11 @@
 
 namespace cerritos {
 
+/**
+ * An event of CER_WindowCloseEvent.
+ *
+ * @ingroup eventgroup
+ */
 class WindowCloseEvent : public Event {
 public:
     WindowCloseEvent() { 

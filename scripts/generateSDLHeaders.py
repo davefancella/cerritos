@@ -327,6 +327,11 @@ outputHeader = '''/*
 
 namespace cerritos {
 
+/**
+ * An event of $eventtype.
+ *
+ * @ingroup eventgroup
+ */
 class $classname : public Event {
 public:
     $classname() { 
@@ -389,7 +394,13 @@ beginSDLPoller = '''/*
 // This file is periodically generated.  Do not edit it directly.
  
 using namespace cerritos;
- 
+
+/**
+ * This function polls SDL for hardware events and converts them to
+ * cerritos events.
+ *
+ * @ingroup eventgroup
+ */
 void cerritos::PollHardwareEvents(EventManager* eventManager) {
     // Get SDL events
     SDL_Event event;
@@ -508,6 +519,13 @@ beginEventHandlerClass = '''/*
 
 namespace cerritos {
 
+/**
+ * This class enables any class to receive hardware events.  It provides
+ * virtual event handlers for each type of hardware event, in the form of
+ * onHardwareEventName(class* event).
+ *
+ * @ingroup eventgroup
+ */
 class cHardwareEventReceiver {
 public:
     cHardwareEventReceiver() { };

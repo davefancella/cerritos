@@ -31,6 +31,11 @@
 
 namespace cerritos {
 
+/**
+ * An event of CER_WindowSizeChangedEvent.
+ *
+ * @ingroup eventgroup
+ */
 class WindowSizeChangedEvent : public Event {
 public:
     WindowSizeChangedEvent() { 

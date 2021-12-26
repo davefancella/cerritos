@@ -31,6 +31,11 @@
 
 namespace cerritos {
 
+/**
+ * An event of CER_RenderDeviceResetEvent.
+ *
+ * @ingroup eventgroup
+ */
 class RenderDeviceResetEvent : public Event {
 public:
     RenderDeviceResetEvent() { 

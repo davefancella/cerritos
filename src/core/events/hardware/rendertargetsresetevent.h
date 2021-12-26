@@ -31,6 +31,11 @@
 
 namespace cerritos {
 
+/**
+ * An event of CER_RenderTargetsResetEvent.
+ *
+ * @ingroup eventgroup
+ */
 class RenderTargetsResetEvent : public Event {
 public:
     RenderTargetsResetEvent() { 

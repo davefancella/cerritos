@@ -31,6 +31,11 @@
 
 namespace cerritos {
 
+/**
+ * An event of CER_WindowFocusLostEvent.
+ *
+ * @ingroup eventgroup
+ */
 class WindowFocusLostEvent : public Event {
 public:
     WindowFocusLostEvent() { 

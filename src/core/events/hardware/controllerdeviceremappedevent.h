@@ -31,6 +31,11 @@
 
 namespace cerritos {
 
+/**
+ * An event of CER_ControllerDeviceRemappedEvent.
+ *
+ * @ingroup eventgroup
+ */
 class ControllerDeviceRemappedEvent : public Event {
 public:
     ControllerDeviceRemappedEvent() { 

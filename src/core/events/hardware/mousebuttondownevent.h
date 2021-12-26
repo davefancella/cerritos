@@ -31,6 +31,11 @@
 
 namespace cerritos {
 
+/**
+ * An event of CER_MouseButtondownEvent.
+ *
+ * @ingroup eventgroup
+ */
 class MouseButtondownEvent : public Event {
 public:
     MouseButtondownEvent() { 

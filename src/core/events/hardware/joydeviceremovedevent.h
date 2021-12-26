@@ -31,6 +31,11 @@
 
 namespace cerritos {
 
+/**
+ * An event of CER_JoyDeviceRemovedEvent.
+ *
+ * @ingroup eventgroup
+ */
 class JoyDeviceRemovedEvent : public Event {
 public:
     JoyDeviceRemovedEvent() { 

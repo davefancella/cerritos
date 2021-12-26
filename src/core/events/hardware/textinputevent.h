@@ -31,6 +31,11 @@
 
 namespace cerritos {
 
+/**
+ * An event of CER_TextInputEvent.
+ *
+ * @ingroup eventgroup
+ */
 class TextInputEvent : public Event {
 public:
     TextInputEvent() { 

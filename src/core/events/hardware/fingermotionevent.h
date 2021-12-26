@@ -31,6 +31,11 @@
 
 namespace cerritos {
 
+/**
+ * An event of CER_FingerMotionEvent.
+ *
+ * @ingroup eventgroup
+ */
 class FingerMotionEvent : public Event {
 public:
     FingerMotionEvent() { 

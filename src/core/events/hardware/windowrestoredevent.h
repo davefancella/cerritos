@@ -31,6 +31,11 @@
 
 namespace cerritos {
 
+/**
+ * An event of CER_WindowRestoredEvent.
+ *
+ * @ingroup eventgroup
+ */
 class WindowRestoredEvent : public Event {
 public:
     WindowRestoredEvent() { 

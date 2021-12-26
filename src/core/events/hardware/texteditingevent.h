@@ -31,6 +31,11 @@
 
 namespace cerritos {
 
+/**
+ * An event of CER_TextEditingEvent.
+ *
+ * @ingroup eventgroup
+ */
 class TextEditingEvent : public Event {
 public:
     TextEditingEvent() { 

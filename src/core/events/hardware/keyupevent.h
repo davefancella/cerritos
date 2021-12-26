@@ -31,6 +31,11 @@
 
 namespace cerritos {
 
+/**
+ * An event of CER_KeyupEvent.
+ *
+ * @ingroup eventgroup
+ */
 class KeyupEvent : public Event {
 public:
     KeyupEvent() { 

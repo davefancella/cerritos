@@ -31,6 +31,11 @@
 
 namespace cerritos {
 
+/**
+ * An event of CER_AudioDeviceRemovedEvent.
+ *
+ * @ingroup eventgroup
+ */
 class AudioDeviceRemovedEvent : public Event {
 public:
     AudioDeviceRemovedEvent() { 

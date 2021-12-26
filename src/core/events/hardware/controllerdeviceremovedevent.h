@@ -31,6 +31,11 @@
 
 namespace cerritos {
 
+/**
+ * An event of CER_ControllerDeviceRemovedEvent.
+ *
+ * @ingroup eventgroup
+ */
 class ControllerDeviceRemovedEvent : public Event {
 public:
     ControllerDeviceRemovedEvent() { 

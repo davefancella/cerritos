@@ -31,6 +31,11 @@
 
 namespace cerritos {
 
+/**
+ * An event of CER_ControllerButtonupEvent.
+ *
+ * @ingroup eventgroup
+ */
 class ControllerButtonupEvent : public Event {
 public:
     ControllerButtonupEvent() { 

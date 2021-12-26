@@ -31,6 +31,11 @@
 
 namespace cerritos {
 
+/**
+ * An event of CER_WindowHitTestEvent.
+ *
+ * @ingroup eventgroup
+ */
 class WindowHitTestEvent : public Event {
 public:
     WindowHitTestEvent() { 
