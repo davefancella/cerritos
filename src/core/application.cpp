@@ -84,6 +84,9 @@ void Application::BeginUpdate() {
     this->currentTimestep.fromBeginning = newTimestep - this->firstTimestep;
     this->currentTimestep.fromLast = newTimestep - this->lastTimestep;
     
+    this->mainwindow->timeStepBeginning = currentTimestep.fromBeginning;
+    this->mainwindow->timeStepLast      = currentTimestep.fromLast;
+    
     this->lastTimestep = newTimestep;
 
     // Get system-specific events from the backend
@@ -141,6 +144,7 @@ void Application::UpdateAll() {
 
 void Application::loop() {
     while(keepRunning) {
+        
         UpdateAll();
     }
 }

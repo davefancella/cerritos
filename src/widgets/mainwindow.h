@@ -47,6 +47,10 @@ public:
     int posx;
     int posy;
     
+    /// Timestep
+    int timeStepBeginning;
+    int timeStepLast;
+    
     /// Window flags
     CER_WindowFlags windowFlags;
     

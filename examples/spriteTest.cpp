@@ -52,7 +52,7 @@ public:
         m_sprite->m_Rect->position.x = mousex;
         m_sprite->m_Rect->position.y = mousey;
         
-        m_sprite->update();
+        m_sprite->Update(this->timeStepBeginning);
         m_sprite->Draw();
     }
 };
@@ -71,9 +71,12 @@ int main( int argc, char* args[] ) {
 
     theWindow = new spMainWindow();
     
-    theSprite = new Sprite(theWindow->getWindow(), 0, 0, 64, 64);
+    theSprite = new Sprite(theWindow->getWindow(), 0, 0, 64, 64, 60);
     
     theSprite->addFrame("/home/pi/Cerritos/cerritos/assets/stickman0.bmp");
+    theSprite->addFrame("/home/pi/Cerritos/cerritos/assets/stickman1.bmp");
+    theSprite->addFrame("/home/pi/Cerritos/cerritos/assets/stickman2.bmp");
+    theSprite->addFrame("/home/pi/Cerritos/cerritos/assets/stickman1.bmp");
 
     theApp->setMainWindow(theWindow);
     theWindow->setTitle("Sprite Test");

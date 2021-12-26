@@ -26,10 +26,10 @@
 
 using namespace cerritos;
 
-Sprite::Sprite(Window* window, int x, int y, int w, int h) {
+Sprite::Sprite(Window* window, int x, int y, int w, int h, int fps) {
     m_Rect = new Rect(x, y, w, h);
     m_Surface = NULL;
-//    m_Fps = fps;
+    m_Fps = fps;
     m_CurrentFrame = 0;
     m_Window = window;
     
@@ -50,13 +50,14 @@ void Sprite::addFrame(String pathToFrame) {
     m_Frames.push_back(newSurface);
 }
 
-void Sprite::update() {
-    m_CurrentFrame++;
-    if (m_CurrentFrame > m_Frames.size()) {
+void Sprite::Update(int timestep) {
+    std::cout << timestep << "\n";
+    int dt = (timestep / 1000) * m_Fps;
+    m_CurrentFrame = dt % m_Frames.size();
+    std::cout << dt << ", " << m_CurrentFrame << "\n";
+    if (m_CurrentFrame >= m_Frames.size()) {
         m_CurrentFrame = 0;
     }
-    
-    std::cout << m_Surface;
     
     m_Surface = m_Frames[m_CurrentFrame];
 }

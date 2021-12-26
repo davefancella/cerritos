@@ -30,6 +30,7 @@
 #include "surface.h"
 #include "window.h"
 #include "types.h"
+#include "object.h"
 
 
 namespace cerritos {
@@ -45,12 +46,12 @@ public:
     
     Window* m_Window;
     
-    Sprite(Window* window, int x, int y, int w, int h);
+    Sprite(Window* window, int x, int y, int w, int h, int fps);
     ~Sprite();
     
     void Draw();
     void addFrame(String pathToFrame);
-    void update();
+    void Update(int timestep);
 };
     
 } // namespace cerritos
