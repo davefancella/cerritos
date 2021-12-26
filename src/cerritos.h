@@ -29,6 +29,7 @@
  */
 
 #include "cerritos_version.h"
+#include "cerritosbase.h"
 #include "backend.h"
 #include "core.h"
 #include "allwidgets.h"

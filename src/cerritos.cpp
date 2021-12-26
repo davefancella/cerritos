@@ -25,7 +25,8 @@
 #include <cstdarg>
 #include <iostream>
 
-#include "cerritos.h"
+#include "cerritos_version.h"
+#include "cerritosbase.h"
 #include "application.h"
 #include "mainwindow.h"
 #include "path.h"

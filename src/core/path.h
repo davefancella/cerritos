@@ -33,7 +33,7 @@
 
 namespace cerritos {
 
-typedef std::filesystem::path Filepath;
+typedef std::filesystem::path Dirpath;
 
 /** The class that provides access to the filesystem in a cross-platform
  *  way.
@@ -82,7 +82,7 @@ private:
     String m_AppPath;
     String* m_ConfigPath;
     
-    Dictionary<Filepath> m_AllPaths;
+    Dictionary<Dirpath> m_AllPaths;
     Path();
 };
     
