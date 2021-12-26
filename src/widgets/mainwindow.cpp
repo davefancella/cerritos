@@ -103,14 +103,14 @@ cMainWindow::~cMainWindow() {
     delete m_Window;
 }
 
-void cMainWindow::Update() {
+void cMainWindow::Update(Timestep* timestep) {
 }
 
 /**
  * This method is intended to render the game screen.  It's likely
  * just a placeholder for now.
  */
-void cMainWindow::Render() {
+void cMainWindow::Render(Timestep* timestep) {
     // Do nothing.
 }
 
@@ -119,26 +119,26 @@ void cMainWindow::Render() {
  * Render() method at the appropriate time for any subclass rendering
  * that needs to happen.
  */
-void cMainWindow::renderAll() {
+void cMainWindow::renderAll(Timestep* timestep) {
     this->beginRender();
     this->Render();
     this->guiRender();
     this->finishRender();
 }
 
-void cMainWindow::beginRender() {
+void cMainWindow::beginRender(Timestep* timestep) {
 #ifdef USING_SDL
     SDL_RenderClear(m_Window->getSDLRenderer() );
 #endif
 }
 
-void cMainWindow::guiRender() {
+void cMainWindow::guiRender(Timestep* timestep) {
     for (auto i = m_Children.begin(); i != m_Children.end(); ++i) {
         static_cast<cWidget*>(*i)->Render_To(m_Window);
     }
 }
 
-void cMainWindow::finishRender() {
+void cMainWindow::finishRender(Timestep* timestep) {
 #ifdef USING_SDL
     SDL_RenderPresent(m_Window->getSDLRenderer() );
 #endif

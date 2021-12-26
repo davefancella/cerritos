@@ -70,26 +70,26 @@ public:
     
     /// Call to update the window.  This is where all new sizes are
     /// calculated, but no rendering is done.
-    virtual void Update();
+    virtual void Update(Timestep* timestep=NULL);
     
     /// Call to render the window.  No new calculations should be needed,
     /// but anything not involving drawing the window does not happen
     /// here.
-    virtual void Render();
+    virtual void Render(Timestep* timestep=NULL);
     
     /// Called at the start of rendering.  Typically clears the window.
-    void beginRender();
+    void beginRender(Timestep* timestep=NULL);
     
     /// Called to finish any rendering tasks, manage double-buffering,
     /// etc.
-    void finishRender();
+    void finishRender(Timestep* timestep=NULL);
     
     /// Called to render the gui.  It's called before finishRender(),
     /// but after the game screen has been rendered.
-    void guiRender();
+    void guiRender(Timestep* timestep=NULL);
     
     /// Called internally to render the window.
-    void renderAll();
+    void renderAll(Timestep* timestep=NULL);
 
     void onMouseOver(MouseMotionEvent* evt);
     

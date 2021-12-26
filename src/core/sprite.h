@@ -51,7 +51,7 @@ public:
     
     void Draw();
     void addFrame(String pathToFrame);
-    void Update(int timestep);
+    void Update(Timestep* timestep);
 };
     
 } // namespace cerritos

@@ -71,7 +71,7 @@ Event* Application::PollEvent() {
     return NULL;
 }
 
-const TimeStep Application::getTimestep() {
+const Timestep Application::getTimestep() {
     return this->currentTimestep;
 }
 
