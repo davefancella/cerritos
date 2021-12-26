@@ -1,5 +1,5 @@
 /*
- * Cerritos
+ * Projects
  * Copyright 2021 by Dave Fancella, Anthony Fancella
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a 
@@ -74,12 +74,12 @@ int main( int argc, char* args[] ) {
 
     theWindow = new spMainWindow();
     
-    theSprite = new Sprite(theWindow->getWindow(), 0, 0, 64, 64, 6);
+    theSprite = new Sprite(theWindow->getWindow(), 0, 0, 64, 64, 10);
     
-    theSprite->addFrame("/home/pi/Cerritos/cerritos/assets/stickman0.bmp");
-    theSprite->addFrame("/home/pi/Cerritos/cerritos/assets/stickman1.bmp");
-    theSprite->addFrame("/home/pi/Cerritos/cerritos/assets/stickman2.bmp");
-    theSprite->addFrame("/home/pi/Cerritos/cerritos/assets/stickman1.bmp");
+    theSprite->addFrame("/home/pi/Projects/cerritos/assets/stickman0.bmp");
+    theSprite->addFrame("/home/pi/Projects/cerritos/assets/stickman1.bmp");
+    theSprite->addFrame("/home/pi/Projects/cerritos/assets/stickman2.bmp");
+    theSprite->addFrame("/home/pi/Projects/cerritos/assets/stickman1.bmp");
     
     theApp->setMainWindow(theWindow);
     theWindow->setTitle("Sprite Test");

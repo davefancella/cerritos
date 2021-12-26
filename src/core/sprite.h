@@ -64,9 +64,13 @@ public:
     ///Draw method: simply passes m_Rect to surface->Blit_To()
     void Draw();
     
-    ///This adds a frame to the list of frames at the back
-    ///it takes one parameter, a String that is the path
-    ///to the frame you want to add.
+    /** 
+     * This adds a frame to the list of frames at the back.  
+     * It takes one parameter, a String that is the path to the 
+     * frame you want to add.
+     * 
+     * @param pathToFrame path to image file for frame
+     */
     void addFrame(String pathToFrame);
     
     ///Update takes the timestep from the app and
