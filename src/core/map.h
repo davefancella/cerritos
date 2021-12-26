@@ -22,39 +22,24 @@
  * 
  */
 
-#ifndef LAYOUT__H
-#define LAYOUT__H
+#include <map>
 
-#include "point.h"
-#include "object.h"
+#ifndef HEADER__H
+#define HEADER__H
+
+// Includes and forward declarations go here
 
 namespace cerritos {
-    
-class cWidget;
-class Object;
 
-/** 
- * The base class for all layouts.
- * 
- * @ingroup widgetgroup
- */
-class cLayout : public Object {
-public:
-    cLayout(Object* parent=NULL);
-    
-    /// Adds a widget to this layout.
-    void addWidget(cWidget* widget);
-    /// Adds a layout to this layout.
-    void addLayout(cLayout* layout);
-    
-    /// The minimum size for this layout
-    cSizeInt minSize;
-    /// The current size for this layout
-    cSizeInt size;
+template<class Key, 
+         class T, 
+         class Compare = std::less<Key> >
+class cMap : public std::map<Key, T, Compare> {
+    bool has_key(Key aKey);
 };
-
+    
 } // namespace cerritos
 
-#endif // LAYOUT__H
+#endif // HEADER__H
 
 

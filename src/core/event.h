@@ -41,6 +41,7 @@ typedef enum {
  * The base class for events.
  * 
  * @defgroup eventgroup Events
+ * @ingroup eventgroup
  */
 class Event {
 public:

@@ -22,39 +22,20 @@
  * 
  */
 
-#ifndef LAYOUT__H
-#define LAYOUT__H
+#ifndef EXCEPTION__H
+#define EXCEPTION__H
 
-#include "point.h"
-#include "object.h"
+// Includes and forward declarations go here
 
 namespace cerritos {
-    
-class cWidget;
-class Object;
 
-/** 
- * The base class for all layouts.
- * 
- * @ingroup widgetgroup
- */
-class cLayout : public Object {
-public:
-    cLayout(Object* parent=NULL);
+/// The base class for exceptions
+class Exception {
     
-    /// Adds a widget to this layout.
-    void addWidget(cWidget* widget);
-    /// Adds a layout to this layout.
-    void addLayout(cLayout* layout);
+}
     
-    /// The minimum size for this layout
-    cSizeInt minSize;
-    /// The current size for this layout
-    cSizeInt size;
-};
-
 } // namespace cerritos
 
-#endif // LAYOUT__H
+#endif // EXCEPTION__H
 
 

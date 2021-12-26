@@ -34,6 +34,12 @@ namespace cerritos {
 
 class cLayout;
 
+/**
+ * The main window for the application.  It contains the game
+ * screen and GUI.
+ * 
+ * @ingroup widgetgroup
+ */
 class cMainWindow : public cerritos::cWidget {
 public:
     /// The title of the window

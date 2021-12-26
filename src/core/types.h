@@ -33,9 +33,10 @@
 
 #include <string>
 #include <vector>
-#include <map>
 #include <iostream>
 #include <queue>
+
+#include "map.h"
 
 /// Use this instead of cout from iostream.
 #define cSTDOUT std::cout
@@ -56,7 +57,7 @@ typedef std::string String;
 #endif
 
 template<typename T>
-using Dictionary = std::map<String, T>;
+using Dictionary = cMap<String, T>;
 
 template<typename T>
 using List = std::vector<T>;

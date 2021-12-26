@@ -22,39 +22,18 @@
  * 
  */
 
-#ifndef LAYOUT__H
-#define LAYOUT__H
+#include "map.h"
 
-#include "point.h"
-#include "object.h"
+using namespace cerritos;
 
-namespace cerritos {
+template<class Key, 
+         class T, 
+         class Compare>
+bool cMap<Key, T, Compare>::has_key(Key aKey) {
+    auto search = find(aKey);
+    if (search != this->end()) {
+        return true;
+    }
     
-class cWidget;
-class Object;
-
-/** 
- * The base class for all layouts.
- * 
- * @ingroup widgetgroup
- */
-class cLayout : public Object {
-public:
-    cLayout(Object* parent=NULL);
-    
-    /// Adds a widget to this layout.
-    void addWidget(cWidget* widget);
-    /// Adds a layout to this layout.
-    void addLayout(cLayout* layout);
-    
-    /// The minimum size for this layout
-    cSizeInt minSize;
-    /// The current size for this layout
-    cSizeInt size;
-};
-
-} // namespace cerritos
-
-#endif // LAYOUT__H
-
-
+    return false;
+}

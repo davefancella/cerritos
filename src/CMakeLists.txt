@@ -12,6 +12,7 @@ add_library(cerritos SHARED
     core/event.cpp
     core/events/eventreceiver.cpp
     core/font.cpp
+    core/map.cpp
     core/object.cpp
     core/path.cpp
     core/point.cpp

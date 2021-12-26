@@ -37,13 +37,17 @@ namespace cerritos {
 class Window;
 class cLayout;
 
-/** The base class for all widgets in Cerritos.
+/** 
+ * The base class for all widgets in Cerritos.
  * 
  * Every non-game object that a player interacts with is a widget.
  * Additionally, the GUI is rendered on top of the game screen and starts
  * with a single top-level widget that contains everything underneath it.
  * You would use widgets to provide an in-game HUD, an in-game GUI, and
  * for the application gui when the player is not in-game.
+ * 
+ * @defgroup widgetgroup Widgets
+ * @ingroup widgetgroup
  */
 class cWidget : public Object, 
                 public cBaseEventReceiver {

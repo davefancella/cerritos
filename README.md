@@ -3,8 +3,8 @@
 
 This is the documentation for the Cerritos Game Engine.
 
-- \subpage gettingstarted Getting Started
+- \subpage gettingstarted
 - \subpage helloworld
-- \subpage programmingstyle Programming Styles
+- \subpage programmingstyle
 
 
