@@ -148,8 +148,9 @@ public:
      * 
      * Absolutely no game simulation or user interaction happens in this
      * method.
+     * 
      */
-    void UpdateView();
+    void UpdateView(const Timestep timestep);
     
     /// Call at the end of the main loop to finish all pending updates.
     void EndUpdate();
@@ -162,7 +163,7 @@ public:
      * 
      * It's probably a case of YouMightNeedThis.
      */
-    void UpdateAll();
+    void UpdateAll(const Timestep timestep);
     
     bool keepRunning;
     

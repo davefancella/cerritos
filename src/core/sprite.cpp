@@ -40,7 +40,10 @@ Sprite::~Sprite() {
 }
 
 void Sprite::Draw() {
-    if (m_Rect != NULL) {
+    
+    if (m_Rect == NULL) {
+        cSTDOUT << "There is no rect to draw on!" << EOL;
+    } else {
         m_Surface->Blit_To(m_Rect);
     }
 }

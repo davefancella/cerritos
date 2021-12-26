@@ -72,6 +72,9 @@ public:
     /// a color.
     void FillRect(const Rect* rect, uint8_t red, uint8_t green, uint8_t blue, uint8_t alpha=255);
     
+    ///Creates a new surface from a stored Bitmap image.
+    ///@param window The main window
+    ///@param filename A string storing the path to the Bitmap
     static Surface* loadFromFile(Window* window, String filename);
     
 private:

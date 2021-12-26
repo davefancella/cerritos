@@ -110,7 +110,7 @@ void cMainWindow::Update(const Timestep timestep) {
  * This method is intended to render the game screen.  It's likely
  * just a placeholder for now.
  */
-void cMainWindow::Render(Timestep* timestep) {
+void cMainWindow::Render(const Timestep timestep) {
     // Do nothing.
 }
 
@@ -119,26 +119,26 @@ void cMainWindow::Render(Timestep* timestep) {
  * Render() method at the appropriate time for any subclass rendering
  * that needs to happen.
  */
-void cMainWindow::renderAll(Timestep* timestep) {
+void cMainWindow::renderAll(const Timestep timestep) {
     this->beginRender();
-    this->Render();
+    this->Render(timestep);
     this->guiRender();
     this->finishRender();
 }
 
-void cMainWindow::beginRender(Timestep* timestep) {
+void cMainWindow::beginRender() {
 #ifdef USING_SDL
     SDL_RenderClear(m_Window->getSDLRenderer() );
 #endif
 }
 
-void cMainWindow::guiRender(Timestep* timestep) {
+void cMainWindow::guiRender() {
     for (auto i = m_Children.begin(); i != m_Children.end(); ++i) {
         static_cast<cWidget*>(*i)->Render_To(m_Window);
     }
 }
 
-void cMainWindow::finishRender(Timestep* timestep) {
+void cMainWindow::finishRender() {
 #ifdef USING_SDL
     SDL_RenderPresent(m_Window->getSDLRenderer() );
 #endif

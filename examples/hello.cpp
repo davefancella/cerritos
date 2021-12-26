@@ -49,7 +49,7 @@ int main( int argc, char* args[] ) {
         // do it because you created your own app object and implemented
         // Update.  Here, we do it for convenience because this is the
         // hello world app.
-        theApp->UpdateAll();
+        theApp->UpdateAll(theApp->getTimestep());
         
         Delay(50);
     }

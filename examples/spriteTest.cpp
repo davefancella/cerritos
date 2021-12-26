@@ -55,7 +55,7 @@ public:
         m_sprite->Update(timestep);
     }
     
-    void Render() {
+    void Render(const Timestep timestep) {
         m_sprite->Draw();
     }
 };

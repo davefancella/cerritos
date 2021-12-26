@@ -35,6 +35,15 @@
 
 namespace cerritos {
 
+/**
+ * @class Sprite
+ * 
+ * This is the Sprite class used to render images to the screen
+ * For now it uses a Rect to know how big it is and where to
+ * blit it's Surface to the screen.
+ * 
+ */
+    
 class Sprite {
 public:
     int m_Fps;
@@ -46,11 +55,23 @@ public:
     
     Window* m_Window;
     
+    
+    
     Sprite(Window* window, int x, int y, int w, int h, int fps);
     ~Sprite();
     
+    
+    ///Draw method: simply passes m_Rect to surface->Blit_To()
     void Draw();
+    
+    ///This adds a frame to the list of frames at the back
+    ///it takes one parameter, a String that is the path
+    ///to the frame you want to add.
     void addFrame(String pathToFrame);
+    
+    ///Update takes the timestep from the app and
+    ///updates the animation frame according to
+    ///the programmer set Frames Per Second.
     void Update(const Timestep timestep);
 };
     

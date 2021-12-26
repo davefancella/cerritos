@@ -75,21 +75,21 @@ public:
     /// Call to render the window.  No new calculations should be needed,
     /// but anything not involving drawing the window does not happen
     /// here.
-    virtual void Render(Timestep* timestep=NULL);
+    virtual void Render(const Timestep timestep);
     
     /// Called at the start of rendering.  Typically clears the window.
-    void beginRender(Timestep* timestep=NULL);
+    void beginRender();
     
     /// Called to finish any rendering tasks, manage double-buffering,
     /// etc.
-    void finishRender(Timestep* timestep=NULL);
+    void finishRender();
     
     /// Called to render the gui.  It's called before finishRender(),
     /// but after the game screen has been rendered.
-    void guiRender(Timestep* timestep=NULL);
+    void guiRender();
     
     /// Called internally to render the window.
-    void renderAll(Timestep* timestep=NULL);
+    void renderAll(const Timestep timestep);
 
     void onMouseOver(MouseMotionEvent* evt);
     

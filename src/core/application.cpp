@@ -125,30 +125,29 @@ void Application::onQuit(QuitEvent* event) {
 void Application::Update() {
 }
 
-void Application::UpdateView() {
+void Application::UpdateView(const Timestep timestep) {
     if(this->mainwindow != NULL) {
-        this->mainwindow->Update(this->getTimestep());
+        this->mainwindow->Update(timestep);
     }
 }
 
-void Application::UpdateAll() {
+void Application::UpdateAll(const Timestep timestep) {
     this->BeginUpdate();
     this->ProcessEvents();
     this->Update();
-    this->UpdateView();
+    this->UpdateView(timestep);
     this->EndUpdate();
 }
 
 void Application::loop() {
     while(keepRunning) {
-        
-        UpdateAll();
+        UpdateAll(this->getTimestep());
     }
 }
 
 void Application::EndUpdate() {
     if(this->mainwindow != NULL) {
-        this->mainwindow->renderAll();
+        this->mainwindow->renderAll(this->getTimestep());
     }    
 }
 
