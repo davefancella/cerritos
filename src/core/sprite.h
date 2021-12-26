@@ -36,13 +36,21 @@ namespace cerritos {
 
 class Sprite {
 public:
+    int m_Fps;
+    int m_CurrentFrame;
+    
     Rect* m_Rect;
     Surface* m_Surface;
+    List<Surface*> m_Frames;
     
-    Sprite(Window* window, String pathToTexture, int x, int y, int w, int h);
+    Window* m_Window;
+    
+    Sprite(Window* window, int x, int y, int w, int h);
     ~Sprite();
     
     void Draw();
+    void addFrame(String pathToFrame);
+    void update();
 };
     
 } // namespace cerritos

@@ -36,10 +36,23 @@ class spMainWindow : public cMainWindow {
 public:
     Sprite* m_sprite;
     
+    int mousex;
+    int mousey;
+    
+    void onMouseMotion(MouseMotionEvent* evt) {
+        this->mousex = evt->posx;
+        this->mousey = evt->posy;
+    }
+    
     void setSprite(Sprite* sprite) {
         m_sprite = sprite;
     }
+    
     void Render() {
+        m_sprite->m_Rect->position.x = mousex;
+        m_sprite->m_Rect->position.y = mousey;
+        
+        m_sprite->update();
         m_sprite->Draw();
     }
 };
@@ -58,7 +71,9 @@ int main( int argc, char* args[] ) {
 
     theWindow = new spMainWindow();
     
-    theSprite = new Sprite(theWindow->getWindow(), "/home/pi/Projects/cerritos/assets/spaceship.bmp", 0, 0, 64, 64);
+    theSprite = new Sprite(theWindow->getWindow(), 0, 0, 64, 64);
+    
+    theSprite->addFrame("/home/pi/Cerritos/cerritos/assets/stickman0.bmp");
 
     theApp->setMainWindow(theWindow);
     theWindow->setTitle("Sprite Test");

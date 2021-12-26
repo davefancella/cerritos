@@ -26,21 +26,38 @@
 
 using namespace cerritos;
 
-Sprite::Sprite(Window* window, String pathToTexture, int x, int y, int w, int h) {
+Sprite::Sprite(Window* window, int x, int y, int w, int h) {
     m_Rect = new Rect(x, y, w, h);
-    m_Surface = Surface::loadFromFile(window, pathToTexture);
+    m_Surface = NULL;
+//    m_Fps = fps;
+    m_CurrentFrame = 0;
+    m_Window = window;
     
 }
 
 Sprite::~Sprite() {
-    
+    m_Surface->~Surface();
 }
 
 void Sprite::Draw() {
-    std::cout << "not here";
     if (m_Rect != NULL) {
-        std::cout << "some text";
         m_Surface->Blit_To(m_Rect);
-        std::cout << "some other text";
     }
 }
+    
+void Sprite::addFrame(String pathToFrame) {
+    Surface* newSurface = Surface::loadFromFile(m_Window, pathToFrame);
+    m_Frames.push_back(newSurface);
+}
+
+void Sprite::update() {
+    m_CurrentFrame++;
+    if (m_CurrentFrame > m_Frames.size()) {
+        m_CurrentFrame = 0;
+    }
+    
+    std::cout << m_Surface;
+    
+    m_Surface = m_Frames[m_CurrentFrame];
+}
+
