@@ -31,6 +31,11 @@
 
 namespace cerritos {
 
+/**
+ * An event of CER_KeymapchangedEvent.
+ *
+ * @ingroup eventgroup
+ */
 class KeymapchangedEvent : public Event {
 public:
     KeymapchangedEvent() { 

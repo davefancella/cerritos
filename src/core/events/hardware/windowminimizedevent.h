@@ -31,6 +31,11 @@
 
 namespace cerritos {
 
+/**
+ * An event of CER_WindowMinimizedEvent.
+ *
+ * @ingroup eventgroup
+ */
 class WindowMinimizedEvent : public Event {
 public:
     WindowMinimizedEvent() { 

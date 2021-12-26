@@ -31,6 +31,11 @@
 
 namespace cerritos {
 
+/**
+ * An event of CER_DropFileEvent.
+ *
+ * @ingroup eventgroup
+ */
 class DropFileEvent : public Event {
 public:
     DropFileEvent() { 

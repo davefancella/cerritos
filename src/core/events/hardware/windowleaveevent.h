@@ -31,6 +31,11 @@
 
 namespace cerritos {
 
+/**
+ * An event of CER_WindowLeaveEvent.
+ *
+ * @ingroup eventgroup
+ */
 class WindowLeaveEvent : public Event {
 public:
     WindowLeaveEvent() { 

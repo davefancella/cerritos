@@ -31,6 +31,11 @@
 
 namespace cerritos {
 
+/**
+ * An event of CER_DropTextEvent.
+ *
+ * @ingroup eventgroup
+ */
 class DropTextEvent : public Event {
 public:
     DropTextEvent() { 

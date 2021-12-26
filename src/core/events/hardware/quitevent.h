@@ -31,6 +31,11 @@
 
 namespace cerritos {
 
+/**
+ * An event of CER_QuitEvent.
+ *
+ * @ingroup eventgroup
+ */
 class QuitEvent : public Event {
 public:
     QuitEvent() { 

@@ -22,34 +22,33 @@
  * 
  */
 
-#include "event.h"
+#ifndef CERRITOSBASE__H
+#define CERRITOSBASE__H
 
-// This file is periodically generated.  Do not edit it directly.
-
-#ifndef FINGERMOTIONEVENT__H
-#define FINGERMOTIONEVENT__H
+#include "backend.h"
 
 namespace cerritos {
 
-/**
- * An event of CER_FingerMotionEvent.
- *
- * @ingroup eventgroup
- */
-class FingerMotionEvent : public Event {
-public:
-    FingerMotionEvent() { 
-        evtype=CER_FingerMotionEvent; 
-    };
+// Forward declarations
+class Application;
     
-    FingerMotionEvent(unsigned int timestamp) { 
-        evtype = CER_FingerMotionEvent;
-        evtimestamp = timestamp;
-    };
-    unsigned int evtimestamp;
-};
+/// Simple function to take a variable list of flags and return a single
+/// variable combining all flags together.
+unsigned int flags(int num, ...);
 
-}
+/// Basic library initialization.  Call before you use the library.
+void cInit();
 
-#endif // FINGERMOTIONEVENT__H
+/// Call this to cleanup the library when you're finished with it.
+void cClose();
+
+/// Initialize the library and get an application object with a an already
+/// setup mainwindow
+Application* cInitApp(int argc, char* args[], CER_WindowFlags winFlags=CER_Shown);
+
+/// Prints the cerritos library version
+void PrintCerritosVersion();
+
+} // namespace cerritos
+#endif  // CERRITOSBASE__H
 

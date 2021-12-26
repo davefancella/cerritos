@@ -31,6 +31,11 @@
 
 namespace cerritos {
 
+/**
+ * An event of CER_ControllerAxisMotionEvent.
+ *
+ * @ingroup eventgroup
+ */
 class ControllerAxisMotionEvent : public Event {
 public:
     ControllerAxisMotionEvent() { 

@@ -31,6 +31,11 @@
 
 namespace cerritos {
 
+/**
+ * An event of CER_WindowShownEvent.
+ *
+ * @ingroup eventgroup
+ */
 class WindowShownEvent : public Event {
 public:
     WindowShownEvent() { 

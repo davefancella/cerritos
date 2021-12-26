@@ -31,9 +31,6 @@
 // Include the cerritos header file.  This brings in pretty much everything.
 #include "cerritos.h"
 
-#include "application.h"
-#include "mainwindow.h"
-
 using namespace cerritos;
 
 int main( int argc, char* args[] ) {

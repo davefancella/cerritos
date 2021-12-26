@@ -31,6 +31,11 @@
 
 namespace cerritos {
 
+/**
+ * An event of CER_JoyButtonupEvent.
+ *
+ * @ingroup eventgroup
+ */
 class JoyButtonupEvent : public Event {
 public:
     JoyButtonupEvent() { 

@@ -31,6 +31,11 @@
 
 namespace cerritos {
 
+/**
+ * An event of CER_WindowResizedEvent.
+ *
+ * @ingroup eventgroup
+ */
 class WindowResizedEvent : public Event {
 public:
     WindowResizedEvent() { 

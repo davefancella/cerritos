@@ -31,6 +31,11 @@
 
 namespace cerritos {
 
+/**
+ * An event of CER_WindowMaximizedEvent.
+ *
+ * @ingroup eventgroup
+ */
 class WindowMaximizedEvent : public Event {
 public:
     WindowMaximizedEvent() { 

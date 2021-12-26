@@ -31,6 +31,11 @@
 
 namespace cerritos {
 
+/**
+ * An event of CER_DropBeginEvent.
+ *
+ * @ingroup eventgroup
+ */
 class DropBeginEvent : public Event {
 public:
     DropBeginEvent() { 

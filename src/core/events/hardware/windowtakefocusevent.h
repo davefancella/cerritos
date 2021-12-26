@@ -31,6 +31,11 @@
 
 namespace cerritos {
 
+/**
+ * An event of CER_WindowTakeFocusEvent.
+ *
+ * @ingroup eventgroup
+ */
 class WindowTakeFocusEvent : public Event {
 public:
     WindowTakeFocusEvent() { 

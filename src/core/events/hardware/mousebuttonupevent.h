@@ -31,6 +31,11 @@
 
 namespace cerritos {
 
+/**
+ * An event of CER_MouseButtonupEvent.
+ *
+ * @ingroup eventgroup
+ */
 class MouseButtonupEvent : public Event {
 public:
     MouseButtonupEvent() { 

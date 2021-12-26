@@ -33,7 +33,13 @@
 // This file is periodically generated.  Do not edit it directly.
  
 using namespace cerritos;
- 
+
+/**
+ * This function polls SDL for hardware events and converts them to
+ * cerritos events.
+ *
+ * @ingroup eventgroup
+ */
 void cerritos::PollHardwareEvents(EventManager* eventManager) {
     // Get SDL events
     SDL_Event event;

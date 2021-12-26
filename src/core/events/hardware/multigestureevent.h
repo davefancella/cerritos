@@ -31,6 +31,11 @@
 
 namespace cerritos {
 
+/**
+ * An event of CER_MultiGestureEvent.
+ *
+ * @ingroup eventgroup
+ */
 class MultiGestureEvent : public Event {
 public:
     MultiGestureEvent() { 

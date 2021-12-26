@@ -31,6 +31,11 @@
 
 namespace cerritos {
 
+/**
+ * An event of CER_MouseWheelEvent.
+ *
+ * @ingroup eventgroup
+ */
 class MouseWheelEvent : public Event {
 public:
     MouseWheelEvent() { 

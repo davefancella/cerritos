@@ -31,6 +31,11 @@
 
 namespace cerritos {
 
+/**
+ * An event of CER_WindowExposedEvent.
+ *
+ * @ingroup eventgroup
+ */
 class WindowExposedEvent : public Event {
 public:
     WindowExposedEvent() { 

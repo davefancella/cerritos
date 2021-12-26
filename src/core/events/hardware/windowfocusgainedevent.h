@@ -31,6 +31,11 @@
 
 namespace cerritos {
 
+/**
+ * An event of CER_WindowFocusGainedEvent.
+ *
+ * @ingroup eventgroup
+ */
 class WindowFocusGainedEvent : public Event {
 public:
     WindowFocusGainedEvent() { 

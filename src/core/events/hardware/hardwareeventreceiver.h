@@ -31,6 +31,13 @@
 
 namespace cerritos {
 
+/**
+ * This class enables any class to receive hardware events.  It provides
+ * virtual event handlers for each type of hardware event, in the form of
+ * onHardwareEventName(class* event).
+ *
+ * @ingroup eventgroup
+ */
 class cHardwareEventReceiver {
 public:
     cHardwareEventReceiver() { };
