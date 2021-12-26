@@ -33,19 +33,18 @@
 
 
 namespace cerritos {
-/*
+
 class Sprite {
 public:
-    Rect* rect;
-    Surface* surface;
-    String* texture;
+    Rect* m_Rect;
+    Surface* m_Surface;
     
-    Sprite(String pathToTexture, int x, int y, int w, int h);
+    Sprite(Window* window, String pathToTexture, int x, int y, int w, int h);
     ~Sprite();
     
     void Draw();
 };
-    */
+    
 } // namespace cerritos
 
 #endif // SPRITE__H

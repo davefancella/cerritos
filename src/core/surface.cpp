@@ -49,15 +49,18 @@ Surface::~Surface() {
 }
 
 void Surface::Blit_To(Rect* dest, const double angle, const PointInt *center, CER_RenderFlags flip) {
+    std::cout << "0";
 #ifdef USING_SDL
+    std::cout << "1";
     SDL_Rect aRect = { dest->position.x, dest->position.y, 
                        dest->size.width, dest->size.height };
-    SDL_Point* aPoint = NULL;
+    std::cout << "2";
+    SDL_Point* aPoint = NULL; std::cout << "3";
     
     if(center != NULL) {
         aPoint->x = center->x;
         aPoint->y = center->y;
-    }
+    } std::cout << "4";
                        
     SDL_RenderCopyEx(m_Window->getSDLRenderer(), 
                    m_Texture, 
@@ -65,7 +68,7 @@ void Surface::Blit_To(Rect* dest, const double angle, const PointInt *center, CE
                    &aRect,
                    angle,
                    aPoint,
-                   static_cast<SDL_RendererFlip>(flip) );
+                   static_cast<SDL_RendererFlip>(flip) ); std::cout << "4";
 #endif
 }
 
@@ -103,7 +106,7 @@ Surface* Surface::loadFromFile(Window* window, String filename) {
         
         theSurface->m_Texture = SDL_CreateTextureFromSurface(theSurface->m_Window->getSDLRenderer(), tempSurface);
         if (!theSurface->m_Texture) {
-            std::cout << "Unable to load Texture! SDL Error: " << SDL_GetError() << "\n";
+            std::cout << "Unable to load create texture from surface! SDL Error: " << SDL_GetError() << "\n";
         }
         
         SDL_FreeSurface(tempSurface);

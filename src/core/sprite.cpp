@@ -25,16 +25,22 @@
 #include "sprite.h"
 
 using namespace cerritos;
-/*
-Sprite::Sprite(String pathToTexture, int x, int y, int w, int h) {
-    rect = Rect(x, y, w, h);
-    surface = Surface::loadFromFile(pathToTexture);
+
+Sprite::Sprite(Window* window, String pathToTexture, int x, int y, int w, int h) {
+    m_Rect = new Rect(x, y, w, h);
+    m_Surface = Surface::loadFromFile(window, pathToTexture);
     
 }
 
 Sprite::~Sprite() {
-    SDL_FreeSurface(surface);
+    
 }
 
 void Sprite::Draw() {
-    */
+    std::cout << "not here";
+    if (m_Rect != NULL) {
+        std::cout << "some text";
+        m_Surface->Blit_To(m_Rect);
+        std::cout << "some other text";
+    }
+}
