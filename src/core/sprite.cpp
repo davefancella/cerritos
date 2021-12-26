@@ -32,6 +32,8 @@ Sprite::Sprite(Window* window, int x, int y, int w, int h, int fps) {
     m_Fps = fps;
     m_CurrentFrame = 0;
     m_Window = window;
+    int m_w = w;
+    int m_h = h;
     
 }
 
@@ -74,6 +76,9 @@ void Sprite::Update(const Timestep timestep) {
     }
     
     m_Surface = m_Frames[m_CurrentFrame];
+    
+    m_Rect->position.x = (m_x - (m_w / 2));
+    m_Rect->position.y = (m_y - (m_h / 2));
 }
 
 void Sprite::setDefaultMode(int mode) {

@@ -49,6 +49,11 @@ public:
     int m_Fps;
     int m_CurrentFrame;
     
+    int m_x;
+    int m_y;
+    int m_w;
+    int m_h;
+    
     Rect* m_Rect;
     Surface* m_Surface;
     List<Surface*> m_Frames;
