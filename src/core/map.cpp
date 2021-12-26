@@ -22,18 +22,23 @@
  * 
  */
 
+#include <map>
+
 #include "map.h"
 
 using namespace cerritos;
 
+/*
 template<class Key, 
-         class T, 
-         class Compare>
-bool cMap<Key, T, Compare>::has_key(Key aKey) {
-    auto search = find(aKey);
-    if (search != this->end()) {
+         class T>
+bool cMap<Key, T>::has_key(Key aKey) {
+    auto search = this->find(aKey);
+    if (search != this->end() ) {
         return true;
     }
     
     return false;
-}
+};
+*/
+
+

@@ -53,7 +53,7 @@ public:
     Surface* m_Surface;
     List<Surface*> m_Frames;
     
-    std::map<int, List<Surface*>> m_Modes;
+    cMap<int, List<Surface*>> m_Modes;
     int m_Mode;
     int m_DefaultMode;
     

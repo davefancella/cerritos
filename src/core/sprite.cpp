@@ -59,8 +59,7 @@ void Sprite::addSpriteMode(int mode, List<String> frames) {
 
 void Sprite::Update(const Timestep timestep) {
     int theMode = 0;
-    auto search = m_Modes.find(m_Mode);
-    if (search != m_Modes.end()) {
+    if(m_Modes.has_key(m_Mode) ) {
         theMode = m_Mode;
     } else {
         theMode = m_DefaultMode;

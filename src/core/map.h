@@ -23,6 +23,7 @@
  */
 
 #include <map>
+#include <functional>
 
 #ifndef HEADER__H
 #define HEADER__H
@@ -32,10 +33,17 @@
 namespace cerritos {
 
 template<class Key, 
-         class T, 
-         class Compare = std::less<Key> >
-class cMap : public std::map<Key, T, Compare> {
-    bool has_key(Key aKey);
+         class T>
+class cMap : public std::map<Key, T> {
+public:
+    bool has_key(Key aKey) {
+        auto search = this->find(aKey);
+        if (search != this->end() ) {
+            return true;
+        }
+        
+        return false;
+    };
 };
     
 } // namespace cerritos

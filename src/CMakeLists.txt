@@ -42,6 +42,7 @@ target_link_libraries(cerritos
     ${SDL2IMAGE_LIBRARIES}
     ${SDL2TTF_LIBRARIES}
     stdc++fs
+    stdc++
 )
 
 # Setup the version header
