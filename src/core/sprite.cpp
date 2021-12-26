@@ -47,13 +47,27 @@ void Sprite::Draw() {
         m_Surface->Blit_To(m_Rect);
     }
 }
-    
-void Sprite::addFrame(String pathToFrame) {
-    Surface* newSurface = Surface::loadFromFile(m_Window, pathToFrame);
-    m_Frames.push_back(newSurface);
+
+void Sprite::addSpriteMode(int mode, List<String> frames) {
+    List<Surface*> tempList;
+    for (int frame = 0; frame != frames.size(); frame++) {
+        Surface* surf = Surface::loadFromFile(m_Window, frames[frame]);
+        tempList.push_back(surf);
+    }
+    m_Modes.insert({mode, tempList});
 }
 
 void Sprite::Update(const Timestep timestep) {
+    int theMode = 0;
+    auto search = m_Modes.find(m_Mode);
+    if (search != m_Modes.end()) {
+        theMode = m_Mode;
+    } else {
+        theMode = m_DefaultMode;
+    }
+    
+    m_Frames = m_Modes[theMode];
+    
     int dt = (timestep.fromBeginning / (1000 / m_Fps));
     m_CurrentFrame = dt % m_Frames.size();
     if (m_CurrentFrame >= m_Frames.size()) {
@@ -63,3 +77,6 @@ void Sprite::Update(const Timestep timestep) {
     m_Surface = m_Frames[m_CurrentFrame];
 }
 
+void Sprite::setDefaultMode(int mode) {
+    m_DefaultMode = mode;
+}

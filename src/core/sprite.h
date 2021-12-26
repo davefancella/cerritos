@@ -53,6 +53,10 @@ public:
     Surface* m_Surface;
     List<Surface*> m_Frames;
     
+    std::map<int, List<Surface*>> m_Modes;
+    int m_Mode;
+    int m_DefaultMode;
+    
     Window* m_Window;
     
     
@@ -64,19 +68,14 @@ public:
     ///Draw method: simply passes m_Rect to surface->Blit_To()
     void Draw();
     
-    /** 
-     * This adds a frame to the list of frames at the back.  
-     * It takes one parameter, a String that is the path to the 
-     * frame you want to add.
-     * 
-     * @param pathToFrame path to image file for frame
-     */
-    void addFrame(String pathToFrame);
-    
     ///Update takes the timestep from the app and
     ///updates the animation frame according to
     ///the programmer set Frames Per Second.
     void Update(const Timestep timestep);
+    
+    void addSpriteMode(int mode, List<String> frames);
+    
+    void setDefaultMode(int mode);
 };
     
 } // namespace cerritos

@@ -58,6 +58,15 @@ public:
     void Render(const Timestep timestep) {
         m_sprite->Draw();
     }
+    
+    void onKeydown(KeydownEvent* evt) {
+        m_sprite->m_Mode = 0;
+    }
+    
+    void onKeyup(KeyupEvent* evt) {
+        m_sprite->m_Mode = 1;
+    }
+        
 };
 
 int main( int argc, char* args[] ) {
@@ -76,10 +85,24 @@ int main( int argc, char* args[] ) {
     
     theSprite = new Sprite(theWindow->getWindow(), 0, 0, 64, 64, 10);
     
-    theSprite->addFrame("/home/pi/Projects/cerritos/assets/stickman0.bmp");
-    theSprite->addFrame("/home/pi/Projects/cerritos/assets/stickman1.bmp");
-    theSprite->addFrame("/home/pi/Projects/cerritos/assets/stickman2.bmp");
-    theSprite->addFrame("/home/pi/Projects/cerritos/assets/stickman1.bmp");
+    std::vector<String> dancing = {"/home/pi/Cerritos/cerritos/assets/boimlerdance00.bmp",
+                                  "/home/pi/Cerritos/cerritos/assets/boimlerdance01.bmp",
+                                  "/home/pi/Cerritos/cerritos/assets/boimlerdance02.bmp",
+                                  "/home/pi/Cerritos/cerritos/assets/boimlerdance01.bmp" };
+                                  
+    std::vector<String> walking = {"/home/pi/Cerritos/cerritos/assets/boimlerdance10.bmp",
+                                   "/home/pi/Cerritos/cerritos/assets/boimlerdance11.bmp",
+                                   "/home/pi/Cerritos/cerritos/assets/boimlerdance12.bmp",
+                                   "/home/pi/Cerritos/cerritos/assets/boimlerdance13.bmp",
+                                   "/home/pi/Cerritos/cerritos/assets/boimlerdance14.bmp",
+                                   "/home/pi/Cerritos/cerritos/assets/boimlerdance12.bmp" };
+    
+    theSprite->addSpriteMode(0, dancing);
+    theSprite->setDefaultMode(1);
+    
+    theSprite->m_Mode = 2;
+    
+    theSprite->addSpriteMode(1, walking);
     
     theApp->setMainWindow(theWindow);
     theWindow->setTitle("Sprite Test");
