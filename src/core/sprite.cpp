@@ -67,6 +67,8 @@ void Sprite::Update(const Timestep timestep) {
     if(m_Modes.has_key(m_Mode) ) {
         theMode = m_Mode;
     } else {
+        cSTDOUT << "Improper mode for sprite selected" << EOL;
+        m_Mode = m_DefaultMode;
         theMode = m_DefaultMode;
     }
     
@@ -83,4 +85,8 @@ void Sprite::Update(const Timestep timestep) {
 
 void Sprite::setDefaultMode(int mode) {
     m_DefaultMode = mode;
+}
+
+void Sprite::setMode(int mode) {
+    m_Mode = mode;
 }

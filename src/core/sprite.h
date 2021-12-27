@@ -50,6 +50,23 @@ public:
     Sprite(Window* window, int x, int y, int w, int h, int fps);
     ~Sprite();
     
+    ///Draw method: simply passes m_Rect to surface->Blit_To()
+    void Draw();
+    
+    ///Update takes the timestep from the app and
+    ///updates the animation frame according to
+    ///the programmer set Frames Per Second.
+    void Update(const Timestep timestep);
+    
+    void addSpriteMode(int mode, List<String> frames);
+    
+    void setDefaultMode(int mode);
+    void setMode(int mode);
+    
+    void setPosition(int x, int y) { setPosition(PointInt(x, y) ); };
+    void setPosition(PointInt newPosition) { m_Position = newPosition; };
+
+private:
     int m_Fps;
     int m_CurrentFrame;
     
@@ -67,21 +84,6 @@ public:
     int m_DefaultMode;
     
     Window* m_Window;
-    
-    ///Draw method: simply passes m_Rect to surface->Blit_To()
-    void Draw();
-    
-    ///Update takes the timestep from the app and
-    ///updates the animation frame according to
-    ///the programmer set Frames Per Second.
-    void Update(const Timestep timestep);
-    
-    void addSpriteMode(int mode, List<String> frames);
-    
-    void setDefaultMode(int mode);
-    
-    void setPosition(int x, int y) { setPosition(PointInt(x, y) ); };
-    void setPosition(PointInt newPosition) { m_Position = newPosition; };
 };
     
 } // namespace cerritos

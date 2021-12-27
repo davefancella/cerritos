@@ -60,14 +60,14 @@ public:
     void onKeydown(KeydownEvent* evt) {
         switch (evt->mKey) {
             case K_0:
-                m_sprite->m_Mode = 0;
+                m_sprite->setMode(0);
                 break;
                 
             case K_1:
-                m_sprite->m_Mode = 1;
+                m_sprite->setMode(1);
                 break;
             case K_a:
-                m_sprite->m_Mode = 999;
+                m_sprite->setMode(999);
                 break;
         }
     }
@@ -104,8 +104,6 @@ int main( int argc, char* args[] ) {
     
     theSprite->addSpriteMode(0, dancing);
     theSprite->setDefaultMode(1);
-    
-    theSprite->m_Mode = 2;
     
     theSprite->addSpriteMode(1, walking);
     
