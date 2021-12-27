@@ -39,6 +39,13 @@ public:
         size.width = 0;
         size.height =0;
     };
+    Rect(PointInt* pos, cSizeInt* siz) {
+        position.x = pos->x;
+        position.y = pos->y;
+        size.width = siz->width;
+        size.height = siz->height;
+    };
+    
     Rect(int x, int y, int w, int h);
     
     PointInt position;

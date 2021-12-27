@@ -38,6 +38,7 @@ Sprite::Sprite(Window* window, int x, int y, int w, int h, int fps) {
     m_Window = window;
     int m_w = w;
     int m_h = h;
+    double m_Radius = (m_Size.width - m_Origin.x);
     
 }
 
@@ -67,6 +68,7 @@ double Sprite::distance(Sprite* other) {
 }
 
 void Sprite::Update(const Timestep timestep) {
+    PointInt previousPos = m_Position;
     int theMode = 0;
     if(m_Modes.has_key(m_Mode) ) {
         theMode = m_Mode;
@@ -85,6 +87,7 @@ void Sprite::Update(const Timestep timestep) {
     }
     
     m_Surface = m_Frames[m_CurrentFrame];
+    
 }
 
 void Sprite::setDefaultMode(int mode) {
@@ -93,4 +96,34 @@ void Sprite::setDefaultMode(int mode) {
 
 void Sprite::setMode(int mode) {
     m_Mode = mode;
+}
+
+Rect Sprite::getRect() {
+    Rect aRect;
+    aRect.position.x = m_Position.x;
+    aRect.position.y = m_Position.y;
+    aRect.size.width = m_Size.width;
+    aRect.size.height = m_Size.height;
+    
+    return aRect;
+}
+
+int Sprite::GetCollide(Sprite* other) {
+    bool collided = this->getRect().overlaps(other->getRect());
+    if (collided) {
+        if (m_Position.x > (other->getPosition().x + (other->getSize().width / 2))) {
+            return 1;
+        }
+        if (m_Position.y > (other->getPosition().y + (other->getSize().height / 2))) {
+            return 2;
+        }
+        if (((m_Position.x + m_Size.width / 2)) < other->getPosition().x) {
+            return 3;
+        }
+        if (((m_Position.y + m_Size.height / 2)) < other->getPosition().y) {
+            return 0;
+        }
+    }
+    
+    return -1;
 }

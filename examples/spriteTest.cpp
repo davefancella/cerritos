@@ -1,5 +1,5 @@
 /*
- * Projects
+ * Cerritos
  * Copyright 2021 by Dave Fancella, Anthony Fancella
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a 
@@ -35,26 +35,32 @@ using namespace cerritos;
 class spMainWindow : public cMainWindow {
 public:
     Sprite* m_sprite;
+    Sprite* m_sprite_one;
     
     int mousex;
     int mousey;
+    
+    int counter = 0;
     
     void onMouseMotion(MouseMotionEvent* evt) {
         m_sprite->setPosition(evt->posx, evt->posy);
     }
     
-    void setSprite(Sprite* sprite) {
-        m_sprite = sprite;
-    }
-    
     void Update(const Timestep timestep) {
-//        std::cout << mousex << ", " << m_sprite->m_Rect->position.x << ", " << mousey << ", " << m_sprite->m_Rect->position.y << "\n";
         
         m_sprite->Update(timestep);
+        m_sprite_one->Update(timestep);
+
+        int collide = m_sprite->GetCollide(m_sprite_one);
+        if (collide >= 0) {
+            std::cout << counter << ": The Sprites have hit on: " << collide << " side!\n";
+            counter++;
+        }
     }
     
     void Render(const Timestep timestep) {
         m_sprite->Draw();
+        m_sprite_one->Draw();
     }
     
     void onKeydown(KeydownEvent* evt) {
@@ -81,6 +87,7 @@ int main( int argc, char* args[] ) {
     Application* theApp;
     spMainWindow* theWindow;
     Sprite* theSprite;
+    Sprite* theOtherSprite;
 
     cInit();
         
@@ -89,28 +96,35 @@ int main( int argc, char* args[] ) {
     theWindow = new spMainWindow();
     
     theSprite = new Sprite(theWindow->getWindow(), 0, 0, 64, 64, 10);
+    theOtherSprite = new Sprite(theWindow->getWindow(), 100, 100, 64, 64, 1);
     
-    std::vector<String> dancing = {"/home/pi/Projects/cerritos/assets/boimlerdance00.bmp",
-                                  "/home/pi/Projects/cerritos/assets/boimlerdance01.bmp",
-                                  "/home/pi/Projects/cerritos/assets/boimlerdance02.bmp",
-                                  "/home/pi/Projects/cerritos/assets/boimlerdance01.bmp" };
+    std::vector<String> dancing = {"/home/pi/Cerritos/cerritos/assets/boimlerdance00.bmp",
+                                  "/home/pi/Cerritos/cerritos/assets/boimlerdance01.bmp",
+                                  "/home/pi/Cerritos/cerritos/assets/boimlerdance02.bmp",
+                                  "/home/pi/Cerritos/cerritos/assets/boimlerdance01.bmp" };
                                   
-    std::vector<String> walking = {"/home/pi/Projects/cerritos/assets/boimlerdance10.bmp",
-                                   "/home/pi/Projects/cerritos/assets/boimlerdance11.bmp",
-                                   "/home/pi/Projects/cerritos/assets/boimlerdance12.bmp",
-                                   "/home/pi/Projects/cerritos/assets/boimlerdance13.bmp",
-                                   "/home/pi/Projects/cerritos/assets/boimlerdance14.bmp",
-                                   "/home/pi/Projects/cerritos/assets/boimlerdance12.bmp" };
+    std::vector<String> walking = {"/home/pi/Cerritos/cerritos/assets/boimlerdance10.bmp",
+                                   "/home/pi/Cerritos/cerritos/assets/boimlerdance11.bmp",
+                                   "/home/pi/Cerritos/cerritos/assets/boimlerdance12.bmp",
+                                   "/home/pi/Cerritos/cerritos/assets/boimlerdance13.bmp",
+                                   "/home/pi/Cerritos/cerritos/assets/boimlerdance14.bmp",
+                                   "/home/pi/Cerritos/cerritos/assets/boimlerdance12.bmp" };
+                                   
+    std::vector<String> ship = {"/home/pi/Cerritos/cerritos/assets/spaceship.bmp"};
     
     theSprite->addSpriteMode(0, dancing);
     theSprite->setDefaultMode(1);
     
     theSprite->addSpriteMode(1, walking);
     
+    theOtherSprite->addSpriteMode(0, ship);
+    theOtherSprite->setDefaultMode(0);
+    
     theApp->setMainWindow(theWindow);
     theWindow->setTitle("Sprite Test");
 
-    theWindow->setSprite(theSprite);
+    theWindow->m_sprite = theSprite;
+    theWindow->m_sprite_one = theOtherSprite;
     // This is your game loop.
     theApp->loop();
     // Close up cerritos before quitting.  This makes sure we don't leave

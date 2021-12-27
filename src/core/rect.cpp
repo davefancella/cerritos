@@ -34,9 +34,9 @@ Rect::Rect(int x, int y, int w, int h) {
 }
 
 bool Rect::overlaps(Rect other) {
-    if( this->position.x > (other.position.x + other.size.width) &&
-        this->position.y > (other.position.y + other.size.height) &&
-        (this->position.x + this->size.width) < other.position.x &&
+    if( this->position.x > (other.position.x + other.size.width) ||
+        this->position.y > (other.position.y + other.size.height) ||
+        (this->position.x + this->size.width) < other.position.x ||
         (this->position.y + this->size.height) < other.position.y ) {
         return false;
     }

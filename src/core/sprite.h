@@ -66,8 +66,14 @@ public:
     double distance(Sprite* other);
     
     PointInt getPosition() { return m_Position; };
+    cSizeInt getSize() { return m_Size; };
     void setPosition(int x, int y) { setPosition(PointInt(x, y) ); };
     void setPosition(PointInt newPosition) { m_Position = newPosition; };
+    
+    int GetCollide(Sprite* other);
+    double getRadius() { return m_Radius; };
+    
+    Rect getRect();
 
 private:
     int m_Fps;
@@ -87,7 +93,10 @@ private:
     int m_DefaultMode;
     
     Window* m_Window;
+    
+    double m_Radius;
 };
+    
     
 } // namespace cerritos
 
