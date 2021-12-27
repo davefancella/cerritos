@@ -62,6 +62,10 @@ void Sprite::addSpriteMode(int mode, List<String> frames) {
     m_Modes.insert({mode, tempList});
 }
 
+double Sprite::distance(Sprite* other) {
+    return m_Position.distance(other->getPosition() );
+}
+
 void Sprite::Update(const Timestep timestep) {
     int theMode = 0;
     if(m_Modes.has_key(m_Mode) ) {

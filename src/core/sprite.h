@@ -63,6 +63,9 @@ public:
     void setDefaultMode(int mode);
     void setMode(int mode);
     
+    double distance(Sprite* other);
+    
+    PointInt getPosition() { return m_Position; };
     void setPosition(int x, int y) { setPosition(PointInt(x, y) ); };
     void setPosition(PointInt newPosition) { m_Position = newPosition; };
 

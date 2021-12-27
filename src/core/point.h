@@ -53,6 +53,8 @@ public:
     int x;
     int y;
     
+    double distance(PointInt other);
+    
     // operators
     PointInt operator+(const PointInt& other);
     PointInt operator-(const PointInt& other);
