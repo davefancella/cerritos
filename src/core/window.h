@@ -57,6 +57,8 @@ public:
     
     bool isValid() { return m_IsValid; };
     
+    void saveScreenshot();
+    
 #ifdef USING_SDL
     SDL_Window* getSDLWindow() { return m_Window; };
     SDL_Renderer* getSDLRenderer() { return m_Renderer; };

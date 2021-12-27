@@ -53,4 +53,16 @@ Window::Window(String title, int posx, int posy, int width, int height, CER_Wind
 #endif
 }
 
+void Window::saveScreenshot() {
+#ifdef USING_SDL
+    const Uint32 format = SDL_PIXELFORMAT_ARGB8888;
+    auto renderer = getSDLRenderer();
+ 
+    SDL_Surface *surface = SDL_CreateRGBSurfaceWithFormat(0, width, height, 32, format);
+    SDL_RenderReadPixels(renderer, NULL, format, surface->pixels, surface->pitch);
+    SDL_SaveBMP(surface, "screenshot.bmp");
+    SDL_FreeSurface(surface);
+#endif
+}
+
 
