@@ -31,6 +31,7 @@
 #include "window.h"
 #include "types.h"
 #include "object.h"
+#include "point.h"
 
 
 namespace cerritos {
@@ -46,15 +47,18 @@ namespace cerritos {
     
 class Sprite {
 public:
+    Sprite(Window* window, int x, int y, int w, int h, int fps);
+    ~Sprite();
+    
     int m_Fps;
     int m_CurrentFrame;
     
-    int m_x;
-    int m_y;
-    int m_w;
-    int m_h;
+    /// Position of the sprite on the screen.
+    PointInt m_Position;
+    cSizeInt m_Size;
+    /// The actual origin of the sprite, defaults to center of graphic.
+    PointInt m_Origin;
     
-    Rect* m_Rect;
     Surface* m_Surface;
     List<Surface*> m_Frames;
     
@@ -63,12 +67,6 @@ public:
     int m_DefaultMode;
     
     Window* m_Window;
-    
-    
-    
-    Sprite(Window* window, int x, int y, int w, int h, int fps);
-    ~Sprite();
-    
     
     ///Draw method: simply passes m_Rect to surface->Blit_To()
     void Draw();
@@ -81,6 +79,9 @@ public:
     void addSpriteMode(int mode, List<String> frames);
     
     void setDefaultMode(int mode);
+    
+    void setPosition(int x, int y) { setPosition(PointInt(x, y) ); };
+    void setPosition(PointInt newPosition) { m_Position = newPosition; };
 };
     
 } // namespace cerritos

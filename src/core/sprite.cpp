@@ -23,11 +23,15 @@
  */
 
 #include "sprite.h"
+#include "point.h"
 
 using namespace cerritos;
 
 Sprite::Sprite(Window* window, int x, int y, int w, int h, int fps) {
-    m_Rect = new Rect(x, y, w, h);
+    m_Position.x = x;
+    m_Position.y = y;
+    m_Size.width = w;
+    m_Size.height = h;
     m_Surface = NULL;
     m_Fps = fps;
     m_CurrentFrame = 0;
@@ -42,18 +46,17 @@ Sprite::~Sprite() {
 }
 
 void Sprite::Draw() {
-    
-    if (m_Rect == NULL) {
-        cSTDOUT << "There is no rect to draw on!" << EOL;
-    } else {
-        m_Surface->Blit_To(m_Rect);
-    }
+    PointInt* drawPos = new PointInt(m_Position.x - m_Origin.x,
+                                     m_Position.y - m_Origin.y);
+    m_Surface->Blit_To(drawPos, 0.0, &m_Origin);
 }
 
 void Sprite::addSpriteMode(int mode, List<String> frames) {
     List<Surface*> tempList;
     for (int frame = 0; frame != frames.size(); frame++) {
         Surface* surf = Surface::loadFromFile(m_Window, frames[frame]);
+        m_Size = surf->size();
+        m_Origin = PointInt(m_Size.width/2, m_Size.height/2);
         tempList.push_back(surf);
     }
     m_Modes.insert({mode, tempList});
@@ -76,9 +79,6 @@ void Sprite::Update(const Timestep timestep) {
     }
     
     m_Surface = m_Frames[m_CurrentFrame];
-    
-    m_Rect->position.x = (m_x - (m_w / 2));
-    m_Rect->position.y = (m_y - (m_h / 2));
 }
 
 void Sprite::setDefaultMode(int mode) {

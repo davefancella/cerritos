@@ -48,10 +48,10 @@ Surface::~Surface() {
 #endif
 }
 
-void Surface::Blit_To(Rect* dest, const double angle, const PointInt *center, CER_RenderFlags flip) {
+void Surface::Blit_To(PointInt* dest, const double angle, const PointInt *center, CER_RenderFlags flip) {
 #ifdef USING_SDL
-    SDL_Rect aRect = { dest->position.x, dest->position.y, 
-                       dest->size.width, dest->size.height };
+    SDL_Rect aRect = { dest->x, dest->y, 
+                       m_Size.width, m_Size.height };
     SDL_Point aPoint = {0,0};
     
     if(center != NULL) {
@@ -100,6 +100,8 @@ Surface* Surface::loadFromFile(Window* window, String filename) {
         std::cout << "Unable to load Texture! SDL Error: " << SDL_GetError() << "\n";
     } else {
         SDL_DestroyTexture(theSurface->m_Texture);
+        
+        theSurface->setSize(cSizeInt(tempSurface->w, tempSurface->h) );
         
         theSurface->m_Texture = SDL_CreateTextureFromSurface(theSurface->m_Window->getSDLRenderer(), tempSurface);
         if (!theSurface->m_Texture) {
