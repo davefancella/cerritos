@@ -31,7 +31,7 @@ using namespace cerritos;
 PointInt::PointInt(int x, int y) : x(x), y(y) { }
 
 double PointInt::distance(PointInt other) {
-    return sqrt( (other.x - x)^2 + (other.y - y)^2 );
+    return sqrt( pow(other.x - x, 2) + pow(other.y - y, 2) );
 }
 
 PointInt PointInt::operator+(const PointInt& other) {

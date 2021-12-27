@@ -25,8 +25,8 @@
 #include <map>
 #include <functional>
 
-#ifndef HEADER__H
-#define HEADER__H
+#ifndef MAP__H
+#define MAP__H
 
 // Includes and forward declarations go here
 
@@ -48,6 +48,6 @@ public:
     
 } // namespace cerritos
 
-#endif // HEADER__H
+#endif // MAP__H
 
 

@@ -33,6 +33,17 @@ Rect::Rect(int x, int y, int w, int h) {
     this->size.height = h;
 }
 
+bool Rect::overlaps(Rect other) {
+    if( this->position.x > (other.position.x + other.size.width) &&
+        this->position.y > (other.position.y + other.size.height) &&
+        (this->position.x + this->size.width) < other.position.x &&
+        (this->position.y + this->size.height) < other.position.y ) {
+        return false;
+    }
+    
+    return true;
+}
+
 Rect Rect::operator+(const PointInt& other) {
     return Rect(this->position.x + other.x, this->position.y + other.y,
         this->size.width, this->size.height

@@ -43,6 +43,14 @@ public:
     
     PointInt position;
     cSizeInt size;
+    
+    /**
+     * Checks to see if this rect overlaps another rect.
+     * 
+     * @param other the other rect
+     * @returns True if they overlap, false otherwise
+     */
+    bool overlaps(Rect other);
 
     Rect operator+(const PointInt& other);
     Rect operator-(const PointInt& other);
