@@ -24,8 +24,10 @@
 
 #include <iostream>
 
+#ifdef USING_SDL
 #include "SDL.h"
 #include "SDL_ttf.h"
+#endif
 
 #include "window.h"
 #include "font.h"

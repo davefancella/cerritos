@@ -1,7 +1,7 @@
 How to build cerritos
 
 1.  Install dependencies
-cmake libsdl2 doxygen graphviz
+cmake libsdl2 doxygen graphviz libsdl2-image-dev libsdl2-ttf-dev
 
 2.  Create build directory
 mkdir build

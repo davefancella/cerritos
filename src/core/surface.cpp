@@ -23,6 +23,7 @@
  */
 
 #include "surface.h"
+#include "imagemanager.h"
 #include "window.h"
 #include "rect.h"
 #include "point.h"
@@ -90,28 +91,10 @@ void Surface::FillRect(const Rect* rect, uint8_t red, uint8_t green, uint8_t blu
 #endif
 }
 
-Surface* Surface::loadFromFile(Window* window, String filename) {
-    Surface* theSurface = NULL;
-    
-    theSurface = new Surface(window);
-    
-    SDL_Surface* tempSurface = SDL_LoadBMP(filename.data());
-    if (!tempSurface) {
-        std::cout << "Unable to load Texture! SDL Error: " << SDL_GetError() << "\n";
-    } else {
-        SDL_DestroyTexture(theSurface->m_Texture);
-        
-        theSurface->setSize(cSizeInt(tempSurface->w, tempSurface->h) );
-        
-        theSurface->m_Texture = SDL_CreateTextureFromSurface(theSurface->m_Window->getSDLRenderer(), tempSurface);
-        if (!theSurface->m_Texture) {
-            std::cout << "Unable to load create texture from surface! SDL Error: " << SDL_GetError() << "\n";
-        }
-        
-        SDL_FreeSurface(tempSurface);
-    }
-    
-    return theSurface;
+Surface* Surface::loadFromFile(String filename) {
+    ImageManager img = ImageManager::get();
+
+    return img.loadImageFromFile(filename);
 }
     
     

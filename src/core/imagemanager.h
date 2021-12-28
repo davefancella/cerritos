@@ -25,9 +25,15 @@
 #ifndef IMAGEMANAGER__H
 #define IMAGEMANAGER__H
 
+#include "path.h"
+#include "types.h"
+
 // Includes and forward declarations go here
 
 namespace cerritos {
+
+class Surface;
+class Window;
 
 /**
  * Manages images on disk, loads them into memory, etc.
@@ -35,6 +41,16 @@ namespace cerritos {
 class ImageManager {
 public:
     static ImageManager& get();
+    
+    void setWindow(Window* newWindow);
+    
+    Surface* loadImageFromFile(const char* filename);
+    Surface* loadImageFromFile(String filename);
+    
+private:
+    Window* m_Window;
+    
+    ImageManager();
 };
     
 } // namespace cerritos

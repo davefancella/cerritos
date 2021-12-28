@@ -24,7 +24,7 @@
 
 #include "backend.h"
 
-//#include "cerritos.h"
+#include "imagemanager.h"
 #include "window.h"
 #include "mainwindow.h"
 #include "surface.h"
@@ -69,7 +69,8 @@ cMainWindow::cMainWindow(CER_WindowFlags winFlags)
     this->m_Window = new Window( this->Title, 
             this->posx, this->posy,
             this->width, this->height, this->windowFlags );
-    
+    ImageManager img = ImageManager::get();
+    img.setWindow(this->m_Window);
 }
 
 cMainWindow::cMainWindow(String title, CER_WindowFlags winFlags) 
@@ -79,6 +80,8 @@ cMainWindow::cMainWindow(String title, CER_WindowFlags winFlags)
     this->m_Window = new Window( this->Title, 
             this->posx, this->posy,
             this->width, this->height, this->windowFlags );
+    ImageManager img = ImageManager::get();
+    img.setWindow(this->m_Window);
 }
 
 cMainWindow::cMainWindow(String title, int width, int height, CER_WindowFlags winFlags) 
@@ -88,6 +91,8 @@ cMainWindow::cMainWindow(String title, int width, int height, CER_WindowFlags wi
     this->m_Window = new Window( this->Title, 
             this->posx, this->posy,
             this->width, this->height, this->windowFlags );
+    ImageManager img = ImageManager::get();
+    img.setWindow(this->m_Window);
 }
 
 cMainWindow::cMainWindow(String title, int width, int height, int posx, int posy, CER_WindowFlags winFlags) 
@@ -97,6 +102,8 @@ cMainWindow::cMainWindow(String title, int width, int height, int posx, int posy
     this->m_Window = new Window( this->Title, 
             this->posx, this->posy,
             this->width, this->height, this->windowFlags );
+    ImageManager img = ImageManager::get();
+    img.setWindow(this->m_Window);
 }
 
 cMainWindow::~cMainWindow() {

@@ -43,7 +43,7 @@ public:
         this->mFont = theFont;
     }
     
-    void Render() {
+    void Render(const Timestep timestep) {
         Rect aRect = { 0,0,200,200 };
         char buffer[100];
         snprintf(buffer, 100, "Mouse Motion: x(%d) y(%d)", mousex, mousey);

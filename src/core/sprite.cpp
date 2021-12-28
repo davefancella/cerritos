@@ -49,16 +49,21 @@ Sprite::~Sprite() {
 void Sprite::Draw() {
     PointInt* drawPos = new PointInt(m_Position.x - m_Origin.x,
                                      m_Position.y - m_Origin.y);
-    m_Surface->Blit_To(drawPos, 0.0, &m_Origin);
+    if(m_Surface != NULL) {
+        m_Surface->Blit_To(drawPos, 0.0, &m_Origin);
+    }
 }
 
 void Sprite::addSpriteMode(int mode, List<String> frames) {
     List<Surface*> tempList;
     for (int frame = 0; frame != frames.size(); frame++) {
-        Surface* surf = Surface::loadFromFile(m_Window, frames[frame]);
-        m_Size = surf->size();
-        m_Origin = PointInt(m_Size.width/2, m_Size.height/2);
-        tempList.push_back(surf);
+        Surface* surf = Surface::loadFromFile(frames[frame]);
+        
+        if(surf != NULL) {
+            m_Size = surf->size();
+            m_Origin = PointInt(m_Size.width/2, m_Size.height/2);
+            tempList.push_back(surf);
+        }
     }
     m_Modes.insert({mode, tempList});
 }
