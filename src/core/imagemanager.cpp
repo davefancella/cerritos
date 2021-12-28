@@ -26,4 +26,9 @@
 
 using namespace cerritos;
 
+ImageManager& ImageManager::get() {
+    static ImageManager* instance = new ImageManager();
+    
+    return *instance;
+}
 
