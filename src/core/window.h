@@ -60,8 +60,8 @@ public:
     void saveScreenshot();
     
 #ifdef USING_SDL
-    SDL_Window* getSDLWindow() { return m_Window; };
-    SDL_Renderer* getSDLRenderer() { return m_Renderer; };
+    SDL_Window* getSDLWindow();
+    SDL_Renderer* getSDLRenderer();
 #endif
     
 private:

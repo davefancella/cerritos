@@ -53,27 +53,60 @@ Surface* ImageManager::loadImageFromFile(const char* filename) {
 }
 
 Surface* ImageManager::loadImageFromFile(String filename) {
-#ifdef USING_SDL
-    SDL_Surface *tempSurface;
+    Surface* theSurface = NULL;
     
+    // Do all the safety checks first
     if(m_Window == NULL) {
         cSTDOUT << "ImageManager: No m_Window initialized.  Cannot load image." << EOL;
         return NULL;
     }
     
-    Surface* theSurface = new Surface(m_Window);
+#ifdef USING_SDL
+    SDL_ClearError();
+    
+    SDL_Renderer* renderer = m_Window->getSDLRenderer();
+    
+    if(renderer == NULL) {
+        cSTDOUT << "ImageManager: m_Window has NULL renderer." << EOL;
+        return NULL;
+    }
+    
+    cSTDOUT << SDL_GetCurrentVideoDriver() << EOL;
+
+    SDL_RendererInfo info;
+    cSTDOUT << "Getting renderer info" << EOL;
+    int er = SDL_GetRendererInfo(renderer, &info);
+    cSTDOUT << "Done" << EOL;
+    
+    cSTDOUT << info.name << EOL;
+    // Safety checks are done
+    
+    // Do the actual loading now
+    SDL_Surface* tempSurface = NULL;
     
     tempSurface = IMG_Load(filename.data() );
 
-    if(!tempSurface) {
+    if(tempSurface == NULL) {
         cSTDOUT << "ImageManager: " << IMG_GetError() << EOL;
-    } else {
-        theSurface->setSize(cSizeInt(tempSurface->w, tempSurface->h) );
         
-        theSurface->setTexture(SDL_CreateTextureFromSurface(m_Window->getSDLRenderer(), tempSurface) );
-        if (!theSurface->getTexture() ) {
-            std::cout << "Unable to load create texture from surface! SDL Error: " << SDL_GetError() << "\n";
+        return NULL;
+    } else {
+        theSurface = new Surface(m_Window);
+
+        theSurface->setSize(cSizeInt(tempSurface->w, tempSurface->h) );
+
+        cSTDOUT << "Creating texture from surface" << EOL;
+        SDL_Texture* tempText = SDL_CreateTextureFromSurface(renderer, tempSurface);
+        cSTDOUT << "Done" << EOL;
+        
+        if (tempText == NULL) {
+            cSTDOUT << "ImageManager: Unable to create texture from surface.  ";
+            cSTDOUT << "SDL Error: " << SDL_GetError() << EOL;
+            
+            return NULL;
         }
+
+        theSurface->setTexture(tempText);
         
         SDL_FreeSurface(tempSurface);
     }

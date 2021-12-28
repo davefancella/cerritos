@@ -35,6 +35,7 @@
 #include "sdl_backend.h"
 
 #include "event.h"
+#include "types.h"
 
 using namespace cerritos;
 
@@ -56,12 +57,12 @@ int cerritos::backendInit() {
     
     successCode = SDL_Init(SDL_INIT_EVERYTHING);
     if(successCode < 0) {
-        std::cout << "SDL_Init: " << SDL_GetError() << std::endl;
+        cSTDOUT << "SDL_Init: " << SDL_GetError() << EOL;
         return successCode;
     }
     successCode = TTF_Init();
     if(successCode<0) {
-        std::cout << "TTF_Init: " << TTF_GetError() << std::endl;
+        cSTDOUT << "TTF_Init: " << TTF_GetError() << EOL;
         return successCode;
     }
     
@@ -69,8 +70,8 @@ int cerritos::backendInit() {
     int flags=IMG_INIT_JPG|IMG_INIT_PNG;
     int initted=IMG_Init(flags);
     if((initted&flags) != flags) {
-        printf("IMG_Init: Failed to init required jpg and png support!\n");
-        printf("IMG_Init: %s\n", IMG_GetError());
+        cSTDOUT << "IMG_Init: Failed to init required jpg and png support" << EOL;
+        cSTDOUT << "IMG_Init: " << IMG_GetError() << EOL;
         // handle error
     }
     

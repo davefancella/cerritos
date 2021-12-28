@@ -28,6 +28,7 @@
 #include "cerritos_version.h"
 #include "cerritosbase.h"
 #include "application.h"
+#include "imagemanager.h"
 #include "mainwindow.h"
 #include "path.h"
 
@@ -49,6 +50,8 @@ void cerritos::cInit() {
     
     // Sets up the path module
     Path tossIt = Path::get();
+    // Sets up the imageloader module
+    ImageManager tossItToo = ImageManager::get();
 };
 
 /// Initializes and creates a default application object

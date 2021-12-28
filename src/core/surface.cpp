@@ -37,7 +37,7 @@ using namespace cerritos;
 Surface::Surface(Window* window) 
             : m_Window(window) {
 #ifdef USING_SDL
-    m_Texture = SDL_CreateTexture(window->getSDLRenderer(), SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_TARGET, 1024, 768);
+    m_Texture = NULL;
 #endif
 }
 
@@ -96,5 +96,16 @@ Surface* Surface::loadFromFile(String filename) {
 
     return img.loadImageFromFile(filename);
 }
+
+#ifdef USING_SDL
+void Surface::setTexture(SDL_Texture* newTexture) {
+    SDL_DestroyTexture(m_Texture);
     
-    
+    m_Texture = newTexture;
+}
+
+SDL_Texture* Surface::getTexture() {
+    return m_Texture;
+}
+#endif
+

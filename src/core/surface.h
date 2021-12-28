@@ -84,13 +84,9 @@ public:
     }
     
 #ifdef USING_SDL
-    void setTexture(SDL_Texture* newTexture) {
-        m_Texture = newTexture;
-    }
+    void setTexture(SDL_Texture* newTexture);
     
-    SDL_Texture* getTexture() {
-        return m_Texture;
-    }
+    SDL_Texture* getTexture();
 #endif
 
 private:

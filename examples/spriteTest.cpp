@@ -1,5 +1,5 @@
 /*
- * Cerritos
+ * Projects
  * Copyright 2021 by Dave Fancella, Anthony Fancella
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a 
@@ -98,19 +98,19 @@ int main( int argc, char* args[] ) {
     theSprite = new Sprite(theWindow->getWindow(), 0, 0, 64, 64, 10);
     theOtherSprite = new Sprite(theWindow->getWindow(), 100, 100, 64, 64, 1);
     
-    std::vector<String> dancing = {"/home/pi/Cerritos/cerritos/assets/boimlerdance00.bmp",
-                                  "/home/pi/Cerritos/cerritos/assets/boimlerdance01.bmp",
-                                  "/home/pi/Cerritos/cerritos/assets/boimlerdance02.bmp",
-                                  "/home/pi/Cerritos/cerritos/assets/boimlerdance01.bmp" };
+    List<String> dancing = {"/home/pi/Projects/cerritos/assets/boimlerdance00.bmp",
+                                  "/home/pi/Projects/cerritos/assets/boimlerdance01.bmp",
+                                  "/home/pi/Projects/cerritos/assets/boimlerdance02.bmp",
+                                  "/home/pi/Projects/cerritos/assets/boimlerdance01.bmp" };
                                   
-    std::vector<String> walking = {"/home/pi/Cerritos/cerritos/assets/boimlerdance10.bmp",
-                                   "/home/pi/Cerritos/cerritos/assets/boimlerdance11.bmp",
-                                   "/home/pi/Cerritos/cerritos/assets/boimlerdance12.bmp",
-                                   "/home/pi/Cerritos/cerritos/assets/boimlerdance13.bmp",
-                                   "/home/pi/Cerritos/cerritos/assets/boimlerdance14.bmp",
-                                   "/home/pi/Cerritos/cerritos/assets/boimlerdance12.bmp" };
+    std::vector<String> walking = {"/home/pi/Projects/cerritos/assets/boimlerdance10.bmp",
+                                   "/home/pi/Projects/cerritos/assets/boimlerdance11.bmp",
+                                   "/home/pi/Projects/cerritos/assets/boimlerdance12.bmp",
+                                   "/home/pi/Projects/cerritos/assets/boimlerdance13.bmp",
+                                   "/home/pi/Projects/cerritos/assets/boimlerdance14.bmp",
+                                   "/home/pi/Projects/cerritos/assets/boimlerdance12.bmp" };
                                    
-    std::vector<String> ship = {"/home/pi/Cerritos/cerritos/assets/spaceship.bmp"};
+    std::vector<String> ship = {"/home/pi/Projects/cerritos/assets/spaceship.bmp"};
     
     theSprite->addSpriteMode(0, dancing);
     theSprite->setDefaultMode(1);

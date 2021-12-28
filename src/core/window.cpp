@@ -40,15 +40,22 @@ Window::Window(String title, int posx, int posy, int width, int height, CER_Wind
             this->posx, this->posy,
             this->width, this->height, this->windowFlags);
     
+    m_Renderer = NULL;
     // Check for an error first
     if( m_Window == NULL ) {
         m_IsValid = false;
-        std::cout << "Window could not be created! Backend: " <<
-            GetError() << std::endl;
+        cSTDOUT << "Window could not be created! Backend: " <<
+            GetError() << EOL;
     } else {
+        SDL_ClearError();
         // This is when the window is created successfully
         m_Renderer = SDL_CreateRenderer(m_Window, -1, SDL_RENDERER_ACCELERATED);
-        SDL_SetRenderDrawColor(m_Renderer, 0,0,0,255);
+        
+        if(m_Renderer == NULL) {
+            cSTDOUT << "Window: Unable to create renderer.  Error from SDL: " << SDL_GetError() << EOL;
+        } else {
+            SDL_SetRenderDrawColor(m_Renderer, 0,0,0,255);
+        }
     }
 #endif
 }
@@ -64,5 +71,15 @@ void Window::saveScreenshot() {
     SDL_FreeSurface(surface);
 #endif
 }
+
+#ifdef USING_SDL
+    SDL_Window* Window::getSDLWindow() { 
+        return m_Window; 
+    };
+    
+    SDL_Renderer* Window::getSDLRenderer() { 
+        return m_Renderer; 
+    };
+#endif
 
 

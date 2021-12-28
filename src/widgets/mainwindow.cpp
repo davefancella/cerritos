@@ -102,8 +102,7 @@ cMainWindow::cMainWindow(String title, int width, int height, int posx, int posy
     this->m_Window = new Window( this->Title, 
             this->posx, this->posy,
             this->width, this->height, this->windowFlags );
-    ImageManager img = ImageManager::get();
-    img.setWindow(this->m_Window);
+    ImageManager::get().setWindow(this->m_Window);
 }
 
 cMainWindow::~cMainWindow() {
