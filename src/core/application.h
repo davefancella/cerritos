@@ -172,6 +172,8 @@ public:
 protected:
     void onQuit(QuitEvent* event);
     
+    
+    
     /**
      * Process one event internally.  This is where the events get delegated
      * for processing.

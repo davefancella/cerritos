@@ -34,7 +34,7 @@ namespace cerritos {
  */
 class ImageManager {
     
-}
+};
     
 } // namespace cerritos
 

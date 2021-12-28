@@ -13,6 +13,7 @@ add_library(cerritos SHARED
     core/event.cpp
     core/events/eventreceiver.cpp
     core/font.cpp
+    core/imagemanager.cpp
     core/map.cpp
     core/object.cpp
     core/path.cpp
