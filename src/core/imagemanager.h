@@ -33,7 +33,8 @@ namespace cerritos {
  * Manages images on disk, loads them into memory, etc.
  */
 class ImageManager {
-    
+public:
+    static ImageManager& get();
 };
     
 } // namespace cerritos
