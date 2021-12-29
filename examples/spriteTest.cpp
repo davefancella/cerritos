@@ -25,8 +25,6 @@
 // This is an adaptation of the hello.cpp example that shows how to
 // handle events using the Application object.
 
-#include <iostream>
-#include <stdio.h>
 // Include the cerritos header file.  This brings in pretty much everything.
 #include "cerritos.h"
 
@@ -40,20 +38,19 @@ public:
     int mousex;
     int mousey;
     
-    int counter = 0;
-    
     void onMouseMotion(MouseMotionEvent* evt) {
         m_sprite->setPosition(evt->posx, evt->posy);
     }
     
     void Update(const Timestep timestep) {
+        static int counter = 0;
         
         m_sprite->Update(timestep);
         m_sprite_one->Update(timestep);
 
         int collide = m_sprite->GetCollide(m_sprite_one);
         if (collide >= 0) {
-            std::cout << counter << ": The Sprites have hit on: " << collide << " side!\n";
+            cSTDOUT << counter << ": The Sprites have hit on: " << collide << " side!" << EOL;
             counter++;
         }
     }
