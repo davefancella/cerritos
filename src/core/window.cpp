@@ -36,11 +36,16 @@ Window::Window(String title, int posx, int posy, int width, int height, CER_Wind
                 posx(posx), posy(posy),
                 windowFlags(winFlags) {
 #ifdef USING_SDL
+    m_Renderer = NULL;
+    m_Window = NULL;
+    
+    //int er = SDL_CreateWindowAndRenderer(
+    //    this->width, this->height, this->windowFlags,
+    //    &m_Window, &m_Renderer);
     m_Window = SDL_CreateWindow( this->Title.data(), 
             this->posx, this->posy,
             this->width, this->height, this->windowFlags);
     
-    m_Renderer = NULL;
     // Check for an error first
     if( m_Window == NULL ) {
         m_IsValid = false;

@@ -27,6 +27,7 @@
 
 #include "backend.h"
 
+#include "point.h"
 #include "widget.h"
 #include "types.h"
 
@@ -43,27 +44,29 @@ class cLayout;
 class cMainWindow : public cerritos::cWidget {
 public:
     /// The title of the window
-    String Title;
+    String Title();
     
     /// Size of window
-    int width;
-    int height;
+    cSizeInt size();
     
     /// Window position
-    int posx;
-    int posy;
+    PointInt position();
     
     /// Window flags
-    CER_WindowFlags windowFlags;
+    CER_WindowFlags windowFlags();
     
     // Constructors
     //cMainWindow();
-    cMainWindow(CER_WindowFlags winFlags=CER_Shown);
-    cMainWindow(String title, CER_WindowFlags winFlags=CER_Shown);
-    cMainWindow(String title, int width, int height, CER_WindowFlags winFlags=CER_Shown);
+    cMainWindow(CER_WindowFlags winFlags=CER_Shown) :
+            cMainWindow("Cerritos Window", 800, 600, CER_WindowPos_Centered, CER_WindowPos_Centered, winFlags) { };
+    cMainWindow(String title, CER_WindowFlags winFlags=CER_Shown) :
+            cMainWindow(title, 800, 600, CER_WindowPos_Centered, CER_WindowPos_Centered, winFlags) { };
+    cMainWindow(String title, int width, int height, CER_WindowFlags winFlags=CER_Shown) :
+            cMainWindow(title, 800, 600, CER_WindowPos_Centered, CER_WindowPos_Centered, winFlags) { };
     cMainWindow(String title, int width, int height, int posx, int posy, CER_WindowFlags winFlags=CER_Shown);
     virtual ~cMainWindow();
     
+    void setTitle(const char* title);
     void setTitle(String title);
     void setPosition(int posx, int posy);
     void setSize(int width, int height);
@@ -97,6 +100,18 @@ public:
     
     Window* getWindow();
 private:
+    /// The title of the window
+    String m_Title;
+    
+    /// Size of window
+    cSizeInt m_Size;
+    
+    /// Window position
+    PointInt m_Position;
+    
+    /// Window flags
+    CER_WindowFlags m_WindowFlags;
+    
     /// The window we'll be rendering to
     Window* m_Window = NULL;
     cLayout* m_Layout = NULL;

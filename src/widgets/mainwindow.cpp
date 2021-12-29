@@ -35,22 +35,24 @@ void cMainWindow::onMouseOver(MouseMotionEvent* evt) {
 
 }
 
+void cMainWindow::setTitle(const char* title) {
+    setTitle(String(title) );
+}
+
 void cMainWindow::setTitle(String title) {
-    this->Title = title;
+    m_Title = title;
     
     //SDL_SetWindowTitle(this->window, title.data() );
 }
 
 void cMainWindow::setPosition(int posx, int posy) {
-    this->posx = posx;
-    this->posy = posy;
+    m_Position = PointInt(posx, posy);
     
     this->Move();
 }
 
 void cMainWindow::setSize(int width, int height) {
-    this->width = width;
-    this->height = height;
+    m_Size = cSizeInt(width, height);
     
     this->Move();
 }
@@ -62,51 +64,37 @@ void cMainWindow::Move() {
 #endif
 }
 
-cMainWindow::cMainWindow(CER_WindowFlags winFlags) 
-            : cWidget(NULL), Title("Cerritos Window"), width(800), height(600), 
-                posx(CER_WindowPos_Centered), posy(CER_WindowPos_Centered),
-                windowFlags(winFlags) {    
-    this->m_Window = new Window( this->Title, 
-            this->posx, this->posy,
-            this->width, this->height, this->windowFlags );
-    ImageManager img = ImageManager::get();
-    img.setWindow(this->m_Window);
-}
-
-cMainWindow::cMainWindow(String title, CER_WindowFlags winFlags) 
-            : cWidget(NULL), Title(title), width(800), height(600), 
-                posx(CER_WindowPos_Centered), posy(CER_WindowPos_Centered),
-                windowFlags(winFlags) {
-    this->m_Window = new Window( this->Title, 
-            this->posx, this->posy,
-            this->width, this->height, this->windowFlags );
-    ImageManager img = ImageManager::get();
-    img.setWindow(this->m_Window);
-}
-
-cMainWindow::cMainWindow(String title, int width, int height, CER_WindowFlags winFlags) 
-            : cWidget(NULL), Title(title), width(width), height(height), 
-                posx(CER_WindowPos_Centered), posy(CER_WindowPos_Centered),
-                windowFlags(winFlags) {
-    this->m_Window = new Window( this->Title, 
-            this->posx, this->posy,
-            this->width, this->height, this->windowFlags );
-    ImageManager img = ImageManager::get();
-    img.setWindow(this->m_Window);
-}
-
 cMainWindow::cMainWindow(String title, int width, int height, int posx, int posy, CER_WindowFlags winFlags) 
-            : cWidget(NULL), Title(title), width(width), height(height), 
-                posx(posx), posy(posy),
-                windowFlags(winFlags) {
-    this->m_Window = new Window( this->Title, 
-            this->posx, this->posy,
-            this->width, this->height, this->windowFlags );
-    ImageManager::get().setWindow(this->m_Window);
+            : cWidget(NULL), m_Title(title), m_Size(width, height), 
+                m_Position(posx, posy),
+                m_WindowFlags(winFlags) {    
+    m_Window = new Window( m_Title, 
+            m_Position.x, m_Position.y,
+            m_Size.width, m_Size.height, m_WindowFlags );
+    ImageManager::get().setWindow(m_Window);
 }
 
 cMainWindow::~cMainWindow() {
     delete m_Window;
+}
+
+String cMainWindow::Title() {
+    return m_Title;
+}
+
+/// Size of window
+cSizeInt cMainWindow::size() {
+    return m_Size;
+}
+
+/// Window position
+PointInt cMainWindow::position() {
+    return m_Position;
+}
+
+/// Window flags
+CER_WindowFlags cMainWindow::windowFlags() {
+    return m_WindowFlags;
 }
 
 void cMainWindow::Update(const Timestep timestep) {

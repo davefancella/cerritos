@@ -71,14 +71,6 @@ Surface* ImageManager::loadImageFromFile(String filename) {
         return NULL;
     }
     
-    cSTDOUT << SDL_GetCurrentVideoDriver() << EOL;
-
-    SDL_RendererInfo info;
-    cSTDOUT << "Getting renderer info" << EOL;
-    int er = SDL_GetRendererInfo(renderer, &info);
-    cSTDOUT << "Done" << EOL;
-    
-    cSTDOUT << info.name << EOL;
     // Safety checks are done
     
     // Do the actual loading now
@@ -95,9 +87,7 @@ Surface* ImageManager::loadImageFromFile(String filename) {
 
         theSurface->setSize(cSizeInt(tempSurface->w, tempSurface->h) );
 
-        cSTDOUT << "Creating texture from surface" << EOL;
         SDL_Texture* tempText = SDL_CreateTextureFromSurface(renderer, tempSurface);
-        cSTDOUT << "Done" << EOL;
         
         if (tempText == NULL) {
             cSTDOUT << "ImageManager: Unable to create texture from surface.  ";
