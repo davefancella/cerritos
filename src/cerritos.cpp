@@ -25,6 +25,8 @@
 #include <cstdarg>
 #include <iostream>
 
+#include "binreloc.h"
+
 #include "application.h"
 #include "cerritos_version.h"
 #include "cerritosbase.h"
@@ -49,10 +51,15 @@ void cerritos::cInit() {
     PrintCerritosVersion();
     backendInit();
     
-    // Sets up the path module
-    Path tossIt = Path::get();
-    // Sets up the imageloader module
-    ImageManager tossItToo = ImageManager::get();
+#ifdef BUILD_LINUX
+    // Setup binreloc
+    br_init();
+#endif
+    
+    // Create the path singleton without initializing it
+    _PATH;
+    // Create the imageloader singleton without initializing it
+    _IMG;
 };
 
 /// Initializes and creates a default application object
