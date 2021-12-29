@@ -38,8 +38,27 @@ namespace cerritos {
  *  way.
  */
 class Path {
-public:    
+public:
+    /**
+     * Gets the singleton Path instance.  Use the _PATH macro instead.
+     */
     static Path& get();
+
+    /**
+     * Initializes the Path instance.  It must be called from outside
+     * the constructor (duh).  Application will call it and set the
+     * program name to whatever's in argv[0].  Application will not
+     * reinitialize, however, so if you initialize the Path instance
+     * before creating Application, you can overright Application.
+     *
+     * @param programName the name of your program.  If NULL, it will
+     *                    use m_ProgramName, which is set by calling
+     *                    setProgramName.
+     * @param overwrite If you want to overwrite the existing object
+     *                  because it has already been initialized, set to
+     *                  true.  It's usually safest to leave it alone.
+     */
+    static void init(const char* programName=NULL, bool overwrite=false);
     
     /**
      * The workhorse of the Path object.  Tell it a searchpath and give it
@@ -96,7 +115,12 @@ public:
     /// Just show all paths currently stored in the object
     void showPaths();
     
+    bool isInit() {
+        return m_IsInit;
+    }
+    
 private:
+    bool m_IsInit;
     Dirpath m_ProgramName;
     
     Dirpath m_AppPath;
@@ -105,6 +129,10 @@ private:
     Dirpath m_Prefix;
     
     Dictionary<Dirpath> m_AllPaths;
+
+    /// The method that initializes the path instance
+    void m_initialize(const char* programName=NULL, bool overwite=false);
+
     Path();
 };
     

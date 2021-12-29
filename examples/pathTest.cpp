@@ -29,9 +29,8 @@
 using namespace cerritos;
 
 int main( int argc, char* args[] ) {
-    _PATH;
-    
-    Application* anApp = new Application(argc, args);
-
+    _PATH.init("pathTest", true);
+    _PATH.setProgramName(args[0]);
+    _PATH.showPaths();
 }
 

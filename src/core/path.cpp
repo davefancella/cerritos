@@ -42,6 +42,30 @@
 using namespace cerritos;
 
 Path::Path() {
+    m_IsInit = false;
+}
+
+/// This method is declared static.
+void Path::init(const char* programName, bool overwrite) {
+    // Delegate to the instance
+    _PATH.m_initialize(programName, overwrite);
+}
+
+/// This method is private, not static, and is called from the
+/// static init method.
+void Path::m_initialize(const char* programName, bool overwrite) {
+    String p_name;
+    
+    // Do not initialize if we're already initialized
+    if(isInit() && overwrite)
+        return;
+    
+    if(programName != NULL) {
+        p_name = Dirpath(programName).filename();
+    } else {
+        p_name = getProgramNameFile();
+    }
+    
     #ifdef USING_SDL
     m_AppPath = SDL_GetBasePath();
         
@@ -57,28 +81,28 @@ Path::Path() {
             setPrefix("/usr/local/games");
             keepGoing = false;
             foundPrefix = true;
-            m_AllPaths["share"] = Dirpath("/usr/local/share/games") /= m_ProgramName;
+            m_AllPaths["share"] = Dirpath("/usr/local/share/games") /= p_name;
             m_AllPaths["siteconfig"] = Dirpath("/usr/local/etc");
         }
         if(tmpPath == "/usr/local") {
             setPrefix("/usr/local");
             keepGoing = false;
             foundPrefix = true;
-            m_AllPaths["share"] = Dirpath("/usr/local/share") /= m_ProgramName;
+            m_AllPaths["share"] = Dirpath("/usr/local/share") /= p_name;
             m_AllPaths["siteconfig"] = Dirpath("/usr/local/etc");
         }
         if(tmpPath == "/usr/games") {
             setPrefix("/usr/games");
             keepGoing = false;
             foundPrefix = true;
-            m_AllPaths["share"] = Dirpath("/usr/share/games") /= m_ProgramName;
+            m_AllPaths["share"] = Dirpath("/usr/share/games") /= p_name;
             m_AllPaths["siteconfig"] = Dirpath("/etc");
         }
         if(tmpPath == "/usr") {
             setPrefix("/usr");
             keepGoing = false;
             foundPrefix = true;
-            m_AllPaths["share"] = Dirpath("/usr/share") /= m_ProgramName;
+            m_AllPaths["share"] = Dirpath("/usr/share") /= p_name;
             m_AllPaths["siteconfig"] = Dirpath("/etc");
         }
         tmpPath = tmpPath.parent_path();
@@ -96,7 +120,9 @@ Path::Path() {
         cSTDOUT << homedir << EOL;
         m_AllPaths["home"] = Dirpath(homedir);
         Dirpath userconfig = m_AllPaths["home"];
-        userconfig.replace_filename("." + getProgramNameFile() );
+        String hname;
+        hname = "." + p_name;
+        userconfig /= hname;
         m_AllPaths["userconfig"] = userconfig;
     }
         
@@ -105,7 +131,6 @@ Path::Path() {
     // Need to figure out how to handle a few things here before adding this
     //m_ConfigPath = new String(SDL_GetPrefsPath(const char *org, const char *app) );
     #endif // USING_SDL
-    
 }
 
 void Path::setPrefix(Dirpath prefix) {
@@ -118,12 +143,6 @@ String Path::getProgramNameFile() {
 
 void Path::setProgramName(String programName) {
     m_ProgramName = programName;
-    m_AllPaths["share"] = m_AllPaths["share"] /= m_ProgramName;
-    Dirpath userconfig = m_AllPaths["home"];
-    userconfig.replace_filename("." + getProgramNameFile() );
-    m_AllPaths["userconfig"] = userconfig;
-    
-    showPaths();
 }
 
 void Path::showPaths() {

@@ -39,6 +39,7 @@ using namespace cerritos;
 /// Constructor.
 Application::Application(int argc, char* argv[]) {
     _PATH.setProgramName(argv[0]);
+    Path::init();
     
     // Start by setting up the timestep
     unsigned int newTimestep = GetTicks();
