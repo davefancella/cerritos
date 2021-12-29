@@ -3,12 +3,15 @@ cmake_minimum_required(VERSION 3.10)
 # set the project name
 project(cerritos VERSION 0.1.0)
 
+# Thirdparty sources
+# currently not used in this form
+#add_subdirectory(thirdparty)
+
 # add the library
 add_library(cerritos SHARED
     cerritos.cpp
     backend/sdl_backend.cpp
     backend/sdl_poll_hardware_events.cpp
-    binreloc/binreloc.c
     core/application.cpp
     core/circle.cpp
     core/event.cpp
@@ -23,6 +26,7 @@ add_library(cerritos SHARED
     core/sprite.cpp
     core/surface.cpp
     core/window.cpp
+    thirdparty/binreloc/binreloc.c
     widgets/layout.cpp
     widgets/mainwindow.cpp
     widgets/widget.cpp
@@ -37,6 +41,7 @@ target_include_directories(cerritos PUBLIC
     core
     core/events
     core/events/hardware
+    thirdparty/binreloc
     widgets
 )
 
