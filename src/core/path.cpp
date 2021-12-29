@@ -26,6 +26,12 @@
 
 #include "platform.h"
 
+#ifdef BUILD_LINUX
+#include <unistd.h>
+#include <sys/types.h>
+#include <pwd.h>
+#endif
+
 #include "path.h"
 #include "types.h"
 
@@ -79,6 +85,20 @@ Path::Path() {
         if(tmpPath == tmpPath.root_path() )
             keepGoing = false;
     }
+
+    // What to do when the prefix is found
+    if(foundPrefix) {
+        const char *homedir;
+
+        if ((homedir = getenv("XDG_CONFIG_HOME")) == NULL) {
+            homedir = getpwuid(getuid())->pw_dir;
+        }
+        cSTDOUT << homedir << EOL;
+        m_AllPaths["home"] = Dirpath(homedir);
+        Dirpath userconfig = m_AllPaths["home"];
+        userconfig.replace_filename("." + getProgramNameFile() );
+        m_AllPaths["userconfig"] = userconfig;
+    }
         
     #endif // BUILD_LINUX
     
@@ -86,21 +106,32 @@ Path::Path() {
     //m_ConfigPath = new String(SDL_GetPrefsPath(const char *org, const char *app) );
     #endif // USING_SDL
     
-    for (auto& t : m_AllPaths) {
-        cSTDOUT << t.first << ": " 
-                << t.second << EOL;
-    }
 }
 
 void Path::setPrefix(Dirpath prefix) {
     m_Prefix = prefix;
 }
 
+String Path::getProgramNameFile() {
+    return String(m_ProgramName.filename() );
+}
+
 void Path::setProgramName(String programName) {
     m_ProgramName = programName;
     m_AllPaths["share"] = m_AllPaths["share"] /= m_ProgramName;
+    Dirpath userconfig = m_AllPaths["home"];
+    userconfig.replace_filename("." + getProgramNameFile() );
+    m_AllPaths["userconfig"] = userconfig;
     
-    cSTDOUT << m_AllPaths["share"] << EOL;
+    showPaths();
+}
+
+void Path::showPaths() {
+    cSTDOUT << "Program name: " << m_ProgramName << EOL;
+    for (auto& t : m_AllPaths) {
+        cSTDOUT << t.first << ": " 
+                << t.second << EOL;
+    }
 }
 
 String Path::getFilepath(String filename, String searchpath, bool useSysDirs) {

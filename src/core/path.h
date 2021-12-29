@@ -86,13 +86,18 @@ public:
     }
     void setProgramName(String programName);
     
+    String getProgramNameFile();
+    
     void setAppDirectory(const char* appdir) {
         setAppDirectory(String(appdir) );
     }
     void setAppDirectory(String appdir);
     
+    /// Just show all paths currently stored in the object
+    void showPaths();
+    
 private:
-    String m_ProgramName;
+    Dirpath m_ProgramName;
     
     Dirpath m_AppPath;
     /// The prefix where the program is installed.  In Posix, this will
