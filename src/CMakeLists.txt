@@ -8,6 +8,7 @@ add_library(cerritos SHARED
     cerritos.cpp
     backend/sdl_backend.cpp
     backend/sdl_poll_hardware_events.cpp
+    binreloc/binreloc.c
     core/application.cpp
     core/circle.cpp
     core/event.cpp
