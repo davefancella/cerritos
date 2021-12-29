@@ -75,11 +75,29 @@ public:
     
     String getAppPath() { return m_AppPath; };
     
+    void setPrefix(const char* prefix) {
+        setPrefix(String(prefix) );
+    }
+    
+    void setPrefix(Dirpath prefix);
+    
+    void setProgramName(const char* programName) {
+        setProgramName(String(programName) );
+    }
+    void setProgramName(String programName);
+    
+    void setAppDirectory(const char* appdir) {
+        setAppDirectory(String(appdir) );
+    }
     void setAppDirectory(String appdir);
     
 private:
-    String m_AppPath;
-    String* m_ConfigPath;
+    String m_ProgramName;
+    
+    Dirpath m_AppPath;
+    /// The prefix where the program is installed.  In Posix, this will
+    /// be /usr or /usr/local, /usr/games, or /usr/local/games.
+    Dirpath m_Prefix;
     
     Dictionary<Dirpath> m_AllPaths;
     Path();

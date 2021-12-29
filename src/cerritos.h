@@ -28,6 +28,8 @@
 /* This file is the base header file you need to include to use cerritos.
  */
 
+#include "platform.h"
+
 #include "cerritos_version.h"
 #include "cerritosbase.h"
 #include "backend.h"

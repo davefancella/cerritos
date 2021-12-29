@@ -22,16 +22,16 @@
  * 
  */
 
-// Include the cerritos header file.  
-// This brings in pretty much everything.
-#include "cerritos.h"
+#ifndef PLATFORM__H
+#define PLATFORM__H
 
-using namespace cerritos;
+// This file contains checks for what compiler we're using and
+// what platform we're on.
 
-int main( int argc, char* args[] ) {
-    _PATH;
-    
-    Application* anApp = new Application(argc, args);
+#ifdef __gnu_linux__
+#define BUILD_LINUX
+#endif
 
-}
+#endif // PLATFORM__H
+
 

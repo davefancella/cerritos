@@ -28,6 +28,7 @@
 
 #include "application.h"
 #include "event.h"
+#include "path.h"
 
 // This is a generated file that contains the macro for processing
 // hardware events.
@@ -37,6 +38,8 @@ using namespace cerritos;
 
 /// Constructor.
 Application::Application(int argc, char* argv[]) {
+    _PATH.setProgramName(argv[0]);
+    
     // Start by setting up the timestep
     unsigned int newTimestep = GetTicks();
 
