@@ -83,7 +83,7 @@ bool Font::RenderText(Window* window, String text, Rect* dest, uint8_t red, uint
         
         if( textSurface == NULL )
         {
-            std::cout << "Unable to render text surface! SDL_ttf Error: " << TTF_GetError() << std::endl;
+            cSTDOUT << "Font: Unable to render text surface. SDL Error: " << TTF_GetError() << EOL;
             
             return false;
         } else {
@@ -91,7 +91,7 @@ bool Font::RenderText(Window* window, String text, Rect* dest, uint8_t red, uint
             texture = SDL_CreateTextureFromSurface(window->getSDLRenderer(), textSurface );
             if( texture == NULL )
             {
-                std::cout << "Unable to create texture from rendered text! SDL Error: " << SDL_GetError() << std::endl;
+                cSTDOUT << "Font: Unable to create texture from rendered text. SDL Error: " << SDL_GetError() << EOL;
                 
                 SDL_FreeSurface(textSurface);
                 return false;
@@ -121,7 +121,7 @@ int Font::loadFontFile(String filename, int size) {
     this->mFont = TTF_OpenFont(filename.data(), size);
     if( this->mFont == NULL )
     {
-        std::cout << "Failed to load font! SDL_ttf Error: " << TTF_GetError() << std::endl;
+        cSTDOUT << "Font: Failed to load font. SDL Error: " << TTF_GetError() << EOL;
         TTF_CloseFont(this->mFont);
         this->mFont = NULL;
 

@@ -385,11 +385,13 @@ beginSDLPoller = '''/*
  
 #include <iostream>
 
+#ifdef USING_SDL
 #include "SDL.h"
-
 #include "sdl_backend.h"
+#endif
 
 #include "event.h"
+#include "types.h"
 
 // This file is periodically generated.  Do not edit it directly.
  
@@ -412,7 +414,7 @@ void cerritos::PollHardwareEvents(EventManager* eventManager) {
 '''
 
 endSDLPoller = '''            default:
-                // std::cout << "Unhandled Event!" << std::endl;
+                // cSTDOUT << "PollHardwareEvents: Unhandled Event." << EOL;
                 break;
         }
         if(newEvent != NULL)

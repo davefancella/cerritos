@@ -25,21 +25,22 @@
 #include <cstdarg>
 #include <iostream>
 
+#include "application.h"
 #include "cerritos_version.h"
 #include "cerritosbase.h"
-#include "application.h"
 #include "imagemanager.h"
 #include "mainwindow.h"
 #include "path.h"
+#include "types.h"
 
 using namespace cerritos;
 
 void cerritos::PrintCerritosVersion() {
-    std::cout << "Cerritos Version " 
+    cSTDOUT << "Cerritos Version " 
               << CERRITOS_VERSION_MAJOR << "."
               << CERRITOS_VERSION_MINOR << "."
               << CERRITOS_VERSION_PATCH << "."
-              << std::endl;
+              << EOL;
 }
 
 /** Initialize cerritos

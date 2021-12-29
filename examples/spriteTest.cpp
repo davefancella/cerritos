@@ -103,14 +103,14 @@ int main( int argc, char* args[] ) {
                                   "/home/pi/Projects/cerritos/assets/boimlerdance02.bmp",
                                   "/home/pi/Projects/cerritos/assets/boimlerdance01.bmp" };
                                   
-    std::vector<String> walking = {"/home/pi/Projects/cerritos/assets/boimlerdance10.bmp",
+    List<String> walking = {"/home/pi/Projects/cerritos/assets/boimlerdance10.bmp",
                                    "/home/pi/Projects/cerritos/assets/boimlerdance11.bmp",
                                    "/home/pi/Projects/cerritos/assets/boimlerdance12.bmp",
                                    "/home/pi/Projects/cerritos/assets/boimlerdance13.bmp",
                                    "/home/pi/Projects/cerritos/assets/boimlerdance14.bmp",
                                    "/home/pi/Projects/cerritos/assets/boimlerdance12.bmp" };
                                    
-    std::vector<String> ship = {"/home/pi/Projects/cerritos/assets/spaceship.bmp"};
+    List<String> ship = {"/home/pi/Projects/cerritos/assets/spaceship.bmp"};
     
     theSprite->addSpriteMode(0, dancing);
     theSprite->setDefaultMode(1);
