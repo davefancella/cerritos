@@ -94,7 +94,7 @@ void Surface::FillRect(const Rect* rect, uint8_t red, uint8_t green, uint8_t blu
 Surface* Surface::loadFromFile(String filename) {
     ImageManager img = ImageManager::get();
 
-    return img.loadImageFromFile(filename);
+    return img.loadFromFile(filename);
 }
 
 #ifdef USING_SDL

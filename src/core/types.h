@@ -31,10 +31,11 @@
 #ifndef TYPES__H
 #define TYPES__H
 
-#include <string>
-#include <vector>
+#include <filesystem>
 #include <iostream>
 #include <queue>
+#include <string>
+#include <vector>
 
 #include "map.h"
 
@@ -55,6 +56,8 @@ typedef std::wstring String;
 #else
 typedef std::string String;
 #endif
+
+typedef std::filesystem::path Dirpath;
 
 template<typename T>
 using Dictionary = cMap<String, T>;

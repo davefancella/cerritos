@@ -48,11 +48,11 @@ void ImageManager::setWindow(Window* newWindow) {
     m_Window = newWindow;
 }
 
-Surface* ImageManager::loadImageFromFile(const char* filename) {
-    return loadImageFromFile(String(filename) );
+Surface* ImageManager::loadFromFile(const char* filename) {
+    return loadFromFile(String(filename) );
 }
 
-Surface* ImageManager::loadImageFromFile(String filename) {
+Surface* ImageManager::loadFromFile(String filename) {
     Surface* theSurface = NULL;
     
     // Do all the safety checks first

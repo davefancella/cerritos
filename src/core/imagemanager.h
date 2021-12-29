@@ -30,6 +30,9 @@
 
 // Includes and forward declarations go here
 
+/// A useful macro that gets you the ImageManager's singleton
+#define _IMG ImageManager::get()
+
 namespace cerritos {
 
 class Surface;
@@ -44,8 +47,8 @@ public:
     
     void setWindow(Window* newWindow);
     
-    Surface* loadImageFromFile(const char* filename);
-    Surface* loadImageFromFile(String filename);
+    Surface* loadFromFile(const char* filename);
+    Surface* loadFromFile(String filename);
     
 private:
     Window* m_Window;

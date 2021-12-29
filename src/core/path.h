@@ -22,8 +22,6 @@
  * 
  */
 
-#include <filesystem>
-
 #include "types.h"
 
 #ifndef PATH__H
@@ -31,9 +29,10 @@
 
 // Includes and forward declarations go here
 
-namespace cerritos {
+/// A useful macro that simple gives you the Path singleton
+#define _PATH Path::get()
 
-typedef std::filesystem::path Dirpath;
+namespace cerritos {
 
 /** The class that provides access to the filesystem in a cross-platform
  *  way.
