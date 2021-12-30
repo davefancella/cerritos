@@ -27,6 +27,32 @@
 
 using namespace cerritos;
 
+double CCW(PointInt a, PointInt b, PointInt c) { return (b.x-a.x)*(c.y-a.y) - (b.y-a.y)*(c.x-a.x); };
+
+int middle(int a, int b, int c) {
+  int t;    
+  if ( a > b ) {
+    t = a;
+    a = b;
+    b = t;
+  }
+  if ( a <= c && c <= b ) return 1;
+  return 0;
+}
+
+int intersect(Line a, Line b) {
+  if ( ( CCW(a.s, a.e, b.s) * CCW(a.s, a.e, b.e) < 0 ) &&
+     ( CCW(b.s, b.e, a.s) * CCW(b.s, b.e, a.e) < 0 ) ) return 1;
+
+  if ( CCW(a.s, a.e, b.s) == 0 && middle(a.s.x, a.e.x, b.s.x) && middle(a.s.y, a.e.y, b.s.y) ) return 1;
+  if ( CCW(a.s, a.e, b.e) == 0 && middle(a.s.x, a.e.x, b.e.x) && middle(a.s.y, a.e.y, b.e.y) ) return 1;
+  if ( CCW(b.s, b.e, a.s) == 0 && middle(b.s.x, b.e.x, a.s.x) && middle(b.s.y, b.e.y, a.s.y) ) return 1;
+  if ( CCW(b.s, b.e, a.e) == 0 && middle(b.s.x, b.e.x, a.e.x) && middle(b.s.y, b.e.y, a.e.y) ) return 1;
+
+    return 0;
+}
+
+
 Sprite::Sprite(Window* window, int x, int y, int w, int h, int fps) {
     m_Position.x = x;
     m_Position.y = y;
@@ -73,7 +99,9 @@ double Sprite::distance(Sprite* other) {
 }
 
 void Sprite::Update(const Timestep timestep) {
-    PointInt previousPos = m_Position;
+    m_previousPosition.x = m_Position.x - m_Origin.x;
+    m_previousPosition.y = m_Position.y - m_Origin.y;
+    
     int theMode = 0;
     if(m_Modes.has_key(m_Mode) ) {
         theMode = m_Mode;
@@ -113,22 +141,43 @@ Rect Sprite::getRect() {
     return aRect;
 }
 
-int Sprite::GetCollide(Sprite* other) {
+String Sprite::GetCollide(Sprite* other) {
     bool collided = this->getRect().overlaps(other->getRect());
     if (collided) {
-        if (m_Position.x > (other->getPosition().x + (other->getSize().width / 2))) {
-            return 1;
+        if (intersect(this->getSide("right"), other->getSide("left")) == 1) {
+            return "Right";
         }
-        if (m_Position.y > (other->getPosition().y + (other->getSize().height / 2))) {
-            return 2;
+        if (intersect(this->getSide("bottom"), other->getSide("top")) == 1) {
+            return "Bottom";
         }
-        if (((m_Position.x + m_Size.width / 2)) < other->getPosition().x) {
-            return 3;
+        if (intersect(this->getSide("left"), other->getSide("right")) == 1) {
+            return "Left";
         }
-        if (((m_Position.y + m_Size.height / 2)) < other->getPosition().y) {
-            return 0;
+        if (intersect(this->getSide("top"), other->getSide("bottom")) == 1) {
+            return "Top";
         }
     }
     
-    return -1;
+    return "none";
 }
+
+Line Sprite::getSide(String side) {
+    Line line;
+    if (side == "top") {
+        line.s = m_Position;
+        line.e = PointInt(m_Position.x + m_Size.width, m_Position.y);
+    } else if (side == "bottom") {
+        line.s = PointInt(m_Position.x, m_Position.y + m_Size.height);
+        line.e = PointInt(m_Position.x + m_Size.width, m_Position.y + m_Size.height);
+    } else if (side == "left") {
+        line.s = m_Position;
+        line.e = PointInt(m_Position.x, m_Position.y + m_Size.height);
+    } else if (side == "right") {
+        line.s = PointInt(m_Position.x + m_Size.width, m_Position.y);
+        line.e = PointInt(m_Position.x + m_Size.width, m_Position.y + m_Size.height);
+    }
+    
+    return line;
+}
+
+

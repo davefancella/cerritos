@@ -38,6 +38,7 @@
 #include <vector>
 
 #include "map.h"
+#include "point.h"
 
 /// Use this instead of cout from iostream.
 #define cSTDOUT std::cout
@@ -67,6 +68,8 @@ using List = std::vector<T>;
 
 template<typename T>
 using Queue = std::queue<T>;
+
+struct Line {PointInt s, e; };
 
 }
 

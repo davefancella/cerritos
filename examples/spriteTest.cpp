@@ -1,5 +1,5 @@
 /*
- * Projects
+ * Cerritos
  * Copyright 2021 by Dave Fancella, Anthony Fancella
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a 
@@ -48,8 +48,8 @@ public:
         m_sprite->Update(timestep);
         m_sprite_one->Update(timestep);
 
-        int collide = m_sprite->GetCollide(m_sprite_one);
-        if (collide >= 0) {
+        String collide = m_sprite->GetCollide(m_sprite_one);
+        if (collide != "none") {
             cSTDOUT << counter << ": The Sprites have hit on: " << collide << " side!" << EOL;
             counter++;
         }
@@ -95,19 +95,19 @@ int main( int argc, char* args[] ) {
     theSprite = new Sprite(theWindow->getWindow(), 0, 0, 64, 64, 10);
     theOtherSprite = new Sprite(theWindow->getWindow(), 100, 100, 64, 64, 1);
     
-    List<String> dancing = {"/home/pi/Projects/cerritos/assets/boimlerdance00.bmp",
-                                  "/home/pi/Projects/cerritos/assets/boimlerdance01.bmp",
-                                  "/home/pi/Projects/cerritos/assets/boimlerdance02.bmp",
-                                  "/home/pi/Projects/cerritos/assets/boimlerdance01.bmp" };
+    List<String> dancing = {"/home/pi/cerritos/assets/boimlerdance00.bmp",
+                                  "/home/pi/cerritos/assets/boimlerdance01.bmp",
+                                  "/home/pi/cerritos/assets/boimlerdance02.bmp",
+                                  "/home/pi/cerritos/assets/boimlerdance01.bmp" };
                                   
-    List<String> walking = {"/home/pi/Projects/cerritos/assets/boimlerdance10.bmp",
-                                   "/home/pi/Projects/cerritos/assets/boimlerdance11.bmp",
-                                   "/home/pi/Projects/cerritos/assets/boimlerdance12.bmp",
-                                   "/home/pi/Projects/cerritos/assets/boimlerdance13.bmp",
-                                   "/home/pi/Projects/cerritos/assets/boimlerdance14.bmp",
-                                   "/home/pi/Projects/cerritos/assets/boimlerdance12.bmp" };
+    List<String> walking = {"/home/pi/cerritos/assets/boimlerdance10.bmp",
+                                   "/home/pi/cerritos/assets/boimlerdance11.bmp",
+                                   "/home/pi/cerritos/assets/boimlerdance12.bmp",
+                                   "/home/pi/cerritos/assets/boimlerdance13.bmp",
+                                   "/home/pi/cerritos/assets/boimlerdance14.bmp",
+                                   "/home/pi/cerritos/assets/boimlerdance12.bmp" };
                                    
-    List<String> ship = {"/home/pi/Projects/cerritos/assets/spaceship.bmp"};
+    List<String> ship = {"/home/pi/cerritos/assets/spaceship.bmp"};
     
     theSprite->addSpriteMode(0, dancing);
     theSprite->setDefaultMode(1);

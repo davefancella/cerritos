@@ -70,10 +70,16 @@ public:
     void setPosition(int x, int y) { setPosition(PointInt(x, y) ); };
     void setPosition(PointInt newPosition) { m_Position = newPosition; };
     
-    int GetCollide(Sprite* other);
+    String GetCollide(Sprite* other);
     double getRadius() { return m_Radius; };
     
+    Line getSide(String side);
+    Line getMove();
+    
     Rect getRect();
+    
+    unsigned int m_xVelocity;
+    unsigned int m_yVelocity;
 
 private:
     int m_Fps;
@@ -81,6 +87,7 @@ private:
     
     /// Position of the sprite on the screen.
     PointInt m_Position;
+    PointInt m_previousPosition;
     cSizeInt m_Size;
     /// The actual origin of the sprite, defaults to center of graphic.
     PointInt m_Origin;
