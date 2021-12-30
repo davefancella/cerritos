@@ -41,6 +41,7 @@ target_include_directories(cerritos PUBLIC
     core
     core/events
     core/events/hardware
+    thirdparty/   # enables include boost/whatever.hpp pattern used in boost
     thirdparty/binreloc
     widgets
 )
