@@ -20,6 +20,7 @@ PKG_SEARCH_MODULE(SDL2TTF REQUIRED SDL2_ttf)
 
 # The actual cerritos sources
 add_subdirectory(src)
+# support libraries in thirdparty
 
 # Build documentation
 option(BUILD_DOC "Build documentation" ON)
@@ -28,6 +29,8 @@ option(USE_SDL "Use SDL" ON)
 if(USE_SDL)
     target_compile_definitions(cerritos PUBLIC USING_SDL)
 endif(USE_SDL)
+
+target_compile_definitions(cerritos PUBLIC BOOST_NO_CXX11_SCOPED_ENUMS)
 
 # check if Doxygen is installed
 find_package(Doxygen)
