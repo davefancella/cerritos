@@ -5,7 +5,7 @@ project(cerritos VERSION 0.1.0)
 
 # Thirdparty sources
 # currently not used in this form
-#add_subdirectory(thirdparty)
+#add_subdirectory(thirdparty/boost/libs/filesystem)
 
 # add the library
 add_library(cerritos SHARED
@@ -41,7 +41,7 @@ target_include_directories(cerritos PUBLIC
     core
     core/events
     core/events/hardware
-    thirdparty/   # enables include boost/whatever.hpp pattern used in boost
+    thirdparty/boost
     thirdparty/binreloc
     widgets
 )
