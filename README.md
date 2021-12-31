@@ -1,3 +1,11 @@
+# Cerritos Game Engine
+## The least important game engine on the planet.
+
+Welcome to the Cerritos Readme!  Here, when we get our cybernetic implants
+working again, we'll write useful stuff for you to read.  In the meantime, 
+enjoy the placeholder text.
+
+
 @page gettingstarted Getting Started
 
 How to acquire and install cerritos.
