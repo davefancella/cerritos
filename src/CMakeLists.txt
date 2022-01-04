@@ -33,6 +33,40 @@ add_library(cerritos SHARED
     widgets/widget.cpp
 )
 
+# Setup the version header
+configure_file(cerritos_version.h.in cerritos_version.h)
+target_include_directories(cerritos PUBLIC
+                           "${PROJECT_BINARY_DIR}"
+                           )
+
+install(TARGETS cerritos 
+    DESTINATION lib/cerritos)
+
+#    cerritos_version.h  # This is obviously very important
+install(FILES 
+    cerritos.h
+    backend/sdl_backend.h
+    core/application.h
+    core/circle.h
+    core/event.h
+    core/events/eventreceiver.h
+    core/font.h
+    core/imagemanager.h
+    core/map.h
+    core/object.h
+    core/path.h
+    core/point.h
+    core/rect.h
+    core/sprite.h
+    core/surface.h
+    core/window.h
+    thirdparty/binreloc/binreloc.c
+    widgets/layout.h
+    widgets/mainwindow.h
+    widgets/widget.h
+    DESTINATION include
+)
+
 target_include_directories(cerritos PUBLIC
     ${SDL2_LIBRARIES}
     ${SDL2IMAGE_INCLUDE_DIRS}
@@ -55,10 +89,12 @@ target_link_libraries(cerritos
     stdc++
 )
 
-# Setup the version header
-configure_file(cerritos_version.h.in cerritos_version.h)
-target_include_directories(cerritos PUBLIC
-                           "${PROJECT_BINARY_DIR}"
-                           )
-
-
+install(TARGETS cerritos
+        EXPORT cerritos
+        LIBRARY DESTINATION lib
+       ARCHIVE DESTINATION lib
+        RUNTIME DESTINATION bin
+        INCLUDES DESTINATION include
+)
+        
+        

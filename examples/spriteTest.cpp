@@ -22,10 +22,10 @@
  * 
  */
 
-// This is an adaptation of the hello.cpp example that shows how to
-// handle events using the Application object.
+/// This is an adaptation of the hello.cpp example that shows how to
+/// handle events using the Application object.
 
-// Include the cerritos header file.  This brings in pretty much everything.
+/// Include the cerritos header file.  This brings in pretty much everything.
 #include "cerritos.h"
 
 using namespace cerritos;
@@ -112,9 +112,9 @@ public:
 };
 
 int main( int argc, char* args[] ) {
-    // This is a handy way to initialize cerritos and get a default
-    // application object.  Typically, more complex games need more than
-    // a default application object.
+    /// This is a handy way to initialize cerritos and get a default
+    /// application object.  Typically, more complex games need more than
+    /// a default application object.
     Application* theApp;
     spMainWindow* theWindow;
     Sprite* theSprite;
@@ -129,19 +129,19 @@ int main( int argc, char* args[] ) {
     theSprite = new Sprite(theWindow->getWindow(), 0, 0, 64, 64, 10);
     theOtherSprite = new Sprite(theWindow->getWindow(), 250, 250, 64, 64, 1);
     
-    List<String> dancing = {"/home/pi/cerritos/assets/boimlerdance00.bmp",
-                                  "/home/pi/cerritos/assets/boimlerdance01.bmp",
-                                  "/home/pi/cerritos/assets/boimlerdance02.bmp",
-                                  "/home/pi/cerritos/assets/boimlerdance01.bmp" };
+    List<String> dancing = {"../assets/boimlerdance00.bmp",
+                                  "../assets/boimlerdance01.bmp",
+                                  "../assets/boimlerdance02.bmp",
+                                  "../assets/boimlerdance01.bmp" };
                                   
-    List<String> walking = {"/home/pi/cerritos/assets/boimlerdance10.bmp",
-                                   "/home/pi/cerritos/assets/boimlerdance11.bmp",
-                                   "/home/pi/cerritos/assets/boimlerdance12.bmp",
-                                   "/home/pi/cerritos/assets/boimlerdance13.bmp",
-                                   "/home/pi/cerritos/assets/boimlerdance14.bmp",
-                                   "/home/pi/cerritos/assets/boimlerdance12.bmp" };
+    List<String> walking = {"../assets/boimlerdance10.bmp",
+                                   "../assets/boimlerdance11.bmp",
+                                   "../assets/boimlerdance12.bmp",
+                                   "../assets/boimlerdance13.bmp",
+                                   "../assets/boimlerdance14.bmp",
+                                   "../assets/boimlerdance12.bmp" };
                                    
-    List<String> ship = {"/home/pi/cerritos/assets/spaceship.bmp"};
+    List<String> ship = {"../assets/spaceship.bmp"};
     
     theSprite->addSpriteMode(0, dancing);
     theSprite->setDefaultMode(1);
@@ -156,11 +156,11 @@ int main( int argc, char* args[] ) {
 
     theWindow->m_sprite = theSprite;
     theWindow->m_sprite_one = theOtherSprite;
-    // This is your game loop.
+    /// This is your game loop.
     theApp->loop();
-    // Close up cerritos before quitting.  This makes sure we don't leave
-    // any devices open or whatever.  Most modern operating systems don't
-    // have those problems anymore, but this helps avoid segfaults.
+    /// Close up cerritos before quitting.  This makes sure we don't leave
+    /// any devices open or whatever.  Most modern operating systems don't
+    /// have those problems anymore, but this helps avoid segfaults.
     cClose();
 }
 

@@ -66,7 +66,7 @@ void Path::m_initialize(const char* programName, bool overwrite) {
         p_name = getProgramNameFile();
     }
     
-    #ifdef USING_SDL
+#ifdef USING_SDL
     m_AppPath = SDL_GetBasePath();
         
     // Find Linux system directories
@@ -130,7 +130,7 @@ void Path::m_initialize(const char* programName, bool overwrite) {
     
     // Need to figure out how to handle a few things here before adding this
     //m_ConfigPath = new String(SDL_GetPrefsPath(const char *org, const char *app) );
-    #endif // USING_SDL
+#endif // USING_SDL
 }
 
 void Path::setPrefix(Dirpath prefix) {
