@@ -48,11 +48,16 @@ public:
         m_sprite->Update(timestep);
         m_sprite_one->Update(timestep);
 
-        String collide = m_sprite->GetCollide(m_sprite_one);
-        if (collide != "none") {
-            cSTDOUT << counter << ": The Sprites have hit on: " << collide << " side!" << EOL;
-            counter++;
+        Collision* collide = m_sprite->GetCollide(m_sprite_one);
+        if (collide != NULL) {
+            PointInt colpos = collide->getPosition();
+            PointInt colvec = collide->getVector();
+            
+            cSTDOUT << colpos.x << "," << colpos.y << ", " << colvec.x << ", " << colvec.y << EOL;
+            
+            m_sprite->setPosition(colpos.x - colvec.x, colpos.y - colvec.y);
         }
+        
     }
     
     void Render(const Timestep timestep) {
@@ -71,6 +76,35 @@ public:
                 break;
             case K_a:
                 m_sprite->setMode(999);
+                break;
+            case K_LEFT:
+                m_sprite->m_xVelocity = -5;
+                break;
+            case K_RIGHT:
+                m_sprite->m_xVelocity = 5;
+                break;
+            case K_UP:
+                m_sprite->m_yVelocity = -5;
+                break;
+            case K_DOWN:
+                m_sprite->m_yVelocity = 5;
+                break;
+        }
+    }
+    
+    void onKeyup(KeyupEvent* evt) {
+        switch (evt->mKey) {
+            case K_LEFT:
+                m_sprite->m_xVelocity = 0;
+                break;
+            case K_RIGHT:
+                m_sprite->m_xVelocity = 0;
+                break;
+            case K_UP:
+                m_sprite->m_yVelocity = 0;
+                break;
+            case K_DOWN:
+                m_sprite->m_yVelocity = 0;
                 break;
         }
     }
@@ -93,7 +127,7 @@ int main( int argc, char* args[] ) {
     theWindow = new spMainWindow();
     
     theSprite = new Sprite(theWindow->getWindow(), 0, 0, 64, 64, 10);
-    theOtherSprite = new Sprite(theWindow->getWindow(), 100, 100, 64, 64, 1);
+    theOtherSprite = new Sprite(theWindow->getWindow(), 250, 250, 64, 64, 1);
     
     List<String> dancing = {"/home/pi/cerritos/assets/boimlerdance00.bmp",
                                   "/home/pi/cerritos/assets/boimlerdance01.bmp",

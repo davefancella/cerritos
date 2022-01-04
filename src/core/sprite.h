@@ -32,6 +32,7 @@
 #include "types.h"
 #include "object.h"
 #include "point.h"
+#include "collide.h"
 
 
 namespace cerritos {
@@ -70,7 +71,7 @@ public:
     void setPosition(int x, int y) { setPosition(PointInt(x, y) ); };
     void setPosition(PointInt newPosition) { m_Position = newPosition; };
     
-    String GetCollide(Sprite* other);
+    Collision* GetCollide(Sprite* other);
     double getRadius() { return m_Radius; };
     
     Line getSide(String side);

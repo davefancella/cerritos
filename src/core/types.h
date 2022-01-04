@@ -69,7 +69,7 @@ using List = std::vector<T>;
 template<typename T>
 using Queue = std::queue<T>;
 
-struct Line {PointInt s, e; };
+struct Line {PointInt s; PointInt e; };
 
 }
 

@@ -26,6 +26,7 @@ add_library(cerritos SHARED
     core/sprite.cpp
     core/surface.cpp
     core/window.cpp
+    core/collide.cpp
     thirdparty/binreloc/binreloc.c
     widgets/layout.cpp
     widgets/mainwindow.cpp

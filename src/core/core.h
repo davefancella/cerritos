@@ -41,6 +41,7 @@
 #include "surface.h"
 #include "types.h"
 #include "window.h"
+#include "collide.h"
 
 // event include files
 #include "hardwareevents.h"
