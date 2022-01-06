@@ -32,6 +32,8 @@ int main( int argc, char* args[] ) {
     _PATH.init("pathTest", true);
     _PATH.setProgramName(args[0]);
     _PATH.showPaths();
+    
+    cSTDOUT << _PATH.getFilepath("share", "boimlerdance00.bmp") << EOL;
 }
 
 

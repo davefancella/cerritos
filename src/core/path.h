@@ -78,19 +78,35 @@ public:
     String getFilepath(String filename, String searchpath, bool useSysDirs=false);
 
     /// Overloaded member for convenience.
-    String getFilepath(const char* filename, const char* searchpath, bool useSysDirs=false) { 
-        return getFilepath(String(filename), String(searchpath), useSysDirs); 
+    String getFilepath(const char* searchpath, const char* filename, bool useSysDirs=false) { 
+        return getFilepath(String(searchpath), String(filename), useSysDirs); 
     };
     
     /// Overloaded member for convenience.
-    String getFilepath(const char* filename, String searchpath, bool useSysDirs=false) { 
-        return getFilepath(String(filename), searchpath, useSysDirs); 
+    String getFilepath(String searchpath, const char* filename, bool useSysDirs=false) { 
+        return getFilepath(searchpath, String(filename), useSysDirs); 
     };
     
     /// Overloaded member for convenience.
-    String getFilepath(String filename, const char* searchpath, bool useSysDirs=false) {
-        return getFilepath(filename, String(searchpath), useSysDirs ); 
+    String getFilepath(const char* searchpath, String filename, bool useSysDirs=false) {
+        return getFilepath(String(searchpath), filename, useSysDirs ); 
     };
+    
+    /**
+     * Sets the name of the asset dir.  In Linux, this means the following things:
+     * If the prefix is /usr/games, the asset directory will be /usr/share/games/PROGRAMNAME/ASSETDIR
+     * If the prefix is /usr, the asset directory will be /usr/share/PROGRAMNAME/ASSETDIR
+     * If you're running from a directory, the asset directory will be "./ASSETDIR".
+     * If you're running from a **build** directory, the asset directory will be "../ASSETDIR"
+     */
+    void setAssetDir(String newAssetDir);
+    
+    /// Overloaded member for convenience.
+    void setAssetDir(const char* newAssetdir) {
+        setAssetDir(String(newAssetdir) );
+    };
+    
+    String getAssetDir() { return m_AssetDir; };
     
     String getAppPath() { return m_AppPath; };
     
@@ -120,10 +136,19 @@ public:
     }
     
 private:
+    /// The name of the asset directory to be searched.  Can be configured.
+    String m_AssetDir;
+    /// The name of the config directory
+    String m_Siteconfig;
+    
     bool m_IsInit;
     Dirpath m_ProgramName;
     
+    // Current working directory
+    Dirpath m_Cwd;
+    
     Dirpath m_AppPath;
+    
     /// The prefix where the program is installed.  In Posix, this will
     /// be /usr or /usr/local, /usr/games, or /usr/local/games.
     Dirpath m_Prefix;

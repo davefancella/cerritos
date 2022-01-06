@@ -129,19 +129,19 @@ int main( int argc, char* args[] ) {
     theSprite = new Sprite(theWindow->getWindow(), 0, 0, 64, 64, 10);
     theOtherSprite = new Sprite(theWindow->getWindow(), 250, 250, 64, 64, 1);
     
-    List<String> dancing = {"../assets/boimlerdance00.bmp",
-                                  "../assets/boimlerdance01.bmp",
-                                  "../assets/boimlerdance02.bmp",
-                                  "../assets/boimlerdance01.bmp" };
+    List<String> dancing = {_PATH.getFilepath("share", "boimlerdance00.bmp"),
+                            _PATH.getFilepath("share", "boimlerdance01.bmp",
+                            _PATH.getFilepath("share", "boimlerdance02.bmp",
+                            _PATH.getFilepath("share", "boimlerdance01.bmp" };
                                   
-    List<String> walking = {"../assets/boimlerdance10.bmp",
-                                   "../assets/boimlerdance11.bmp",
-                                   "../assets/boimlerdance12.bmp",
-                                   "../assets/boimlerdance13.bmp",
-                                   "../assets/boimlerdance14.bmp",
-                                   "../assets/boimlerdance12.bmp" };
+    List<String> walking = {_PATH.getFilepath("share", "boimlerdance10.bmp",
+                                   _PATH.getFilepath("share", "boimlerdance11.bmp",
+                                   _PATH.getFilepath("share", "boimlerdance12.bmp",
+                                   _PATH.getFilepath("share", "boimlerdance13.bmp",
+                                   _PATH.getFilepath("share", "boimlerdance14.bmp",
+                                   _PATH.getFilepath("share", "boimlerdance12.bmp" };
                                    
-    List<String> ship = {"../assets/spaceship.bmp"};
+    List<String> ship = {_PATH.getFilepath("share", "spaceship.bmp"};
     
     theSprite->addSpriteMode(0, dancing);
     theSprite->setDefaultMode(1);
