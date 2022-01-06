@@ -75,7 +75,7 @@ public:
      *                   is not to use system directories, because games are
      *                   expected to ship with everything they need to run.
      */
-    String getFilepath(String filename, String searchpath, bool useSysDirs=false);
+    const Dirpath getFilepath(String filename, String searchpath, bool useSysDirs=false);
 
     /// Overloaded member for convenience.
     String getFilepath(const char* searchpath, const char* filename, bool useSysDirs=false) { 
@@ -115,6 +115,10 @@ public:
     }
     
     void setPrefix(Dirpath prefix);
+    
+    Dirpath getPrefix() {
+        return m_Prefix;
+    };
     
     void setProgramName(const char* programName) {
         setProgramName(String(programName) );

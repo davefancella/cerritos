@@ -94,6 +94,7 @@ void Path::m_initialize(const char* programName, bool overwrite) {
         
         m_AppPath = Dirpath(br_find_exe_dir(p_name.data() ) );
         
+        // Look for the games path so we can set our Prefix correctly
         if(m_AppPath == "/usr/games" || m_AppPath == "/usr/local/games") {
             setPrefix(m_AppPath);
         } else {
@@ -107,71 +108,71 @@ void Path::m_initialize(const char* programName, bool overwrite) {
             if(m_Prefix.filename() == "build") {
                 m_AllPaths["share"] = Dirpath("../") /= m_AssetDir;
                 m_AllPaths["siteconfig"] = Dirpath("../") /= m_Siteconfig;
+            } else {
+                // We're probably running from a binary archive directory
+                // or somesuch.  This code should be rarely used, if ever.
+                m_AllPaths["share"] = Dirpath("./") /= m_AssetDir;
+                m_AllPaths["siteconfig"] = Dirpath("./") /= m_Siteconfig;
             }
         } else {
             // Find Linux system directories
-            Dirpath tmpPath = m_AppPath.parent_path();
+            Dirpath tmpPath = getPrefix();
             bool keepGoing = true;
             bool foundPrefix = false;
             
             m_AllPaths["share"] = Dirpath(br_find_data_dir("./") ) /= p_name;
             m_AllPaths["siteconfig"] = Dirpath("/etc") /= p_name;
             
-            /*
+            // Work out locations if we're in a games prefix.  This is a
+            // common installed prefix for Linux distributions.
             while(keepGoing) {
                 if(tmpPath == "/usr/local/games") {
                     setPrefix("/usr/local/games");
                     keepGoing = false;
                     foundPrefix = true;
                     m_AllPaths["share"] = Dirpath("/usr/local/share/games") /= p_name;
-                    m_AllPaths["siteconfig"] = Dirpath("/usr/local/etc");
-                }
-                if(tmpPath == "/usr/local") {
-                    setPrefix("/usr/local");
-                    keepGoing = false;
-                    foundPrefix = true;
-                    m_AllPaths["share"] = Dirpath("/usr/local/share") /= p_name;
-                    m_AllPaths["siteconfig"] = Dirpath("/usr/local/etc");
+                    m_AllPaths["siteconfig"] = Dirpath("/usr/local/etc") /= p_name;;
                 }
                 if(tmpPath == "/usr/games") {
                     setPrefix("/usr/games");
                     keepGoing = false;
-                    foundPrefix = true;
                     m_AllPaths["share"] = Dirpath("/usr/share/games") /= p_name;
-                    m_AllPaths["siteconfig"] = Dirpath("/etc");
-                }
-                if(tmpPath == "/usr") {
-                    setPrefix("/usr");
-                    keepGoing = false;
-                    foundPrefix = true;
-                    m_AllPaths["share"] = Dirpath("/usr/share") /= p_name;
-                    m_AllPaths["siteconfig"] = Dirpath("/etc");
+                    m_AllPaths["siteconfig"] = Dirpath("/etc") /= p_name;;
                 }
                 tmpPath = tmpPath.parent_path();
                 if(tmpPath == tmpPath.root_path() )
                     keepGoing = false;
             }
-            */
-            // What to do when the prefix is found
-            if(foundPrefix) {
-                const char *homedir;
+            
+            // Now setup the userconfig directories
+            const char *homedir;
 
-                if ((homedir = getenv("XDG_CONFIG_HOME")) == NULL) {
-                    homedir = getpwuid(getuid())->pw_dir;
-                }
-                cSTDOUT << homedir << EOL;
-                m_AllPaths["home"] = Dirpath(homedir);
-                Dirpath userconfig = m_AllPaths["home"];
-                String hname;
-                hname = "." + p_name;
-                userconfig /= hname;
-                m_AllPaths["userconfig"] = userconfig;
+            if ((homedir = getenv("XDG_CONFIG_HOME")) == NULL) {
+                homedir = getpwuid(getuid())->pw_dir;
             }
+            cSTDOUT << homedir << EOL;
+            m_AllPaths["home"] = Dirpath(homedir);
+            Dirpath userconfig = m_AllPaths["home"];
+            String hname;
+            hname = "." + p_name;
+            userconfig /= hname;
+            m_AllPaths["userconfig"] = userconfig;
         }
     }
-    // Need to figure out how to handle a few things here before adding this
-    //m_ConfigPath = new String(SDL_GetPrefsPath(const char *org, const char *app) );
-#endif // BUILD_LINUX
+#elif defined(_WIN32)
+    // Windows stuff goes here
+#elif defined(USING_OSX)
+    // Mac OS X stuff goes here
+#endif
+
+    // Now all the OS specific paths have been found, it's time to
+    // add all the rest that are built on top of those
+    m_AllPaths["images"] = Dirpath(m_AllPaths["share"]) /= "images";
+    m_AllPaths["sprites"] = Dirpath(m_AllPaths["share"]) /= "sprites";
+    m_AllPaths["fonts"] = Dirpath(m_AllPaths["share"]) /= "fonts";
+    m_AllPaths["sounds"] = Dirpath(m_AllPaths["share"]) /= "sounds";
+    m_AllPaths["music"] = Dirpath(m_AllPaths["share"]) /= "music";
+
 }
 
 void Path::setPrefix(Dirpath prefix) {
@@ -200,7 +201,7 @@ void Path::showPaths() {
     }
 }
 
-String Path::getFilepath(String searchpath, String filename, bool useSysDirs) {
+const Dirpath Path::getFilepath(String searchpath, String filename, bool useSysDirs) {
     if (m_AllPaths.has_key(searchpath)) {
         // Found the path
         return String( (m_AllPaths[searchpath] / filename).c_str() );

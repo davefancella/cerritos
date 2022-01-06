@@ -26,14 +26,20 @@
 // This brings in pretty much everything.
 #include "cerritos.h"
 
+/** @file
+ * 
+ * This file tests the path module.  Use it whenever you're trying to port
+ * Path to a new platform or to troubleshoot it.
+ * 
+ * This is one of the few examples that doesn't get deleted.
+ */
+
 using namespace cerritos;
 
 int main( int argc, char* args[] ) {
     _PATH.init("pathTest", true);
     _PATH.setProgramName(args[0]);
-    _PATH.showPaths();
-    
-    cSTDOUT << _PATH.getFilepath("share", "boimlerdance00.bmp") << EOL;
+    _PATH.showPaths();    
 }
 
 
