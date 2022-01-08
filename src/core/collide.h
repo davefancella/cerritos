@@ -29,19 +29,20 @@
 #include "rect.h"
 #include "circle.h"
 #include "point.h"
+#include "pointtemplate.h"
 
 namespace cerritos {
 
 class Collision {
 public:
-    Collision(PointInt pos, FloatVector vec);
+    Collision(PointInt pos, VectorT<double> vec);
     
     PointInt getPosition();
-    FloatVector getVector();
+    VectorT<double> getVector();
     
 private:
     PointInt m_position;
-    FloatVector m_vector;
+    VectorT<double> m_vector;
 };
 
 }

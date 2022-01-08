@@ -37,25 +37,29 @@ namespace cerritos {
  * the point.
  */
 template <typename T>
-class Point {
+class PointT {
 public:
     T m_X;
     T m_Y;
 
-    Point();
-    Point(T x, T y);
+    PointT() { };
+    PointT(T x, T y);
 
-    double distance(Point<T> other);
+    double distance(PointT<T> other);
     
     // operators
-    Point<T> operator+(const Point<T>& other);
-    Point<T> operator-(const Point<T>& other);
+    PointT<T> operator+(const PointT<T>& other);
+    PointT<T> operator-(const PointT<T>& other);
 };
 
 template <typename T>
-class Vector : public Point<T> {
+class VectorT : public PointT<T> {
+public:
+    VectorT() : PointT<T>() { };
+    VectorT(T x, T y) : PointT<T>(x,y) { };
+    
     double magnitude() {
-        return distance(Point<T>(0,0) );
+        return sqrt( pow(PointT<T>::m_X, 2) + pow(PointT<T>::m_Y, 2) );
     }
 };
 

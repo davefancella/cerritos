@@ -28,22 +28,26 @@
 
 using namespace cerritos;
 
-template <typename T>
-Point<T>::Point(T x, T y) : m_X(x), m_Y(y) { }
+PointT<double> aPoint(0.0, 0.0);
+VectorT<double> aVector(0.0, 0.0);
 
 template <typename T>
-double Point<T>::distance(Point<T> other) {
+PointT<T>::PointT(T x, T y) : m_X(x), m_Y(y) { 
+}
+
+template <typename T>
+double PointT<T>::distance(PointT<T> other) {
     return sqrt( pow(other.m_X - m_X, 2) + pow(other.m_Y - m_Y, 2) );
 }
 
 template <typename T>
-Point<T> Point<T>::operator+(const Point<T>& other) {
-    return Point<T>(this->m_X + other.m_X, this->m_Y + other.m_Y);
+PointT<T> PointT<T>::operator+(const PointT<T>& other) {
+    return PointT<T>(this->m_X + other.m_X, this->m_Y + other.m_Y);
 }
 
 template <typename T>
-Point<T> Point<T>::operator-(const Point<T>& other) {
-    return Point<T>(this->m_X - other.m_X, this->m_Y - other.m_Y);
+PointT<T> PointT<T>::operator-(const PointT<T>& other) {
+    return PointT<T>(this->m_X - other.m_X, this->m_Y - other.m_Y);
 }
 
 

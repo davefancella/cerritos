@@ -24,6 +24,7 @@
 
 #include "sprite.h"
 #include "point.h"
+#include "pointtemplate.h"
 
 using namespace cerritos;
 
@@ -149,7 +150,7 @@ Collision* Sprite::GetCollideRect(Sprite* other) {
     bool collided = this->getRect().overlaps(other->getRect());
     Collision* collide;
     if (collided) {
-        collide = new Collision(m_Position, FloatVector(m_Position.x - m_previousPosition.x,
+        collide = new Collision(m_Position, VectorT<double>(m_Position.x - m_previousPosition.x,
                                                         m_Position.y - m_previousPosition.y));
     } else {
         collide = NULL;
@@ -162,7 +163,7 @@ Collision* Sprite::GetCollideCircle(Sprite* other) {
     Collision* collide;
     double dist = this->distance(other);
     if (dist <= m_Radius + other->getRadius()) {
-        collide = new Collision( m_Position, FloatVector( (other->getPosition().x - m_Position.x) / dist,
+        collide = new Collision( m_Position, VectorT<double>( (other->getPosition().x - m_Position.x) / dist,
                                                           (other->getPosition().y - m_Position.y) / dist ) );
     } else {
         collide = NULL;

@@ -55,10 +55,10 @@ public:
             PointInt colpos = collide->getPosition();
             double x = colpos.x;
             double y = colpos.y;
-            FloatVector colvec = collide->getVector();
+            VectorT<double> colvec = collide->getVector();
             
-            cSTDOUT << x << "," << y << ", " << colvec.x << ", " << colvec.y << EOL;
-            
+            cSTDOUT << x << "," << y << ", " << colvec.m_X << ", " << colvec.m_Y << EOL;
+            cSTDOUT << colvec.magnitude() << EOL;
         }
         
     }

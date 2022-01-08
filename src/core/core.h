@@ -30,18 +30,19 @@
 
 // base include files
 #include "application.h"
+#include "collide.h"
 #include "event.h"
 #include "font.h"
 #include "macros.h"
 #include "object.h"
 #include "path.h"
 #include "point.h"
+#include "pointtemplate.h"
 #include "rect.h"
 #include "sprite.h"
 #include "surface.h"
 #include "types.h"
 #include "window.h"
-#include "collide.h"
 
 // event include files
 #include "hardwareevents.h"
