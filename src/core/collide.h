@@ -34,14 +34,14 @@ namespace cerritos {
 
 class Collision {
 public:
-    Collision(PointInt pos, PointInt vec);
+    Collision(PointInt pos, FloatVector vec);
     
     PointInt getPosition();
-    PointInt getVector();
+    FloatVector getVector();
     
 private:
     PointInt m_position;
-    PointInt m_vector;
+    FloatVector m_vector;
 };
 
 }

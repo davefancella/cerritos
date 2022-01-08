@@ -52,4 +52,14 @@ cSizeInt cSizeInt::operator-(const cSizeInt& other) {
     return cSizeInt(this->width - other.width, this->height - other.height);
 }
 
+FloatVector::FloatVector(double x, double y) : x(x), y(y) { }
+
+FloatVector FloatVector::operator+(const FloatVector& other) {
+    return FloatVector(this->x + other.y, this->y + other.y);
+}
+
+FloatVector FloatVector::operator-(const FloatVector& other) {
+    return FloatVector(this->x - other.x, this->y - other.y);
+}
+
 

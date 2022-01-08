@@ -68,10 +68,13 @@ public:
     
     PointInt getPosition() { return m_Position; };
     cSizeInt getSize() { return m_Size; };
+    void setX(int x) { m_Position.x = x; };
+    void setY(int y) { m_Position.y = y; };
     void setPosition(int x, int y) { setPosition(PointInt(x, y) ); };
     void setPosition(PointInt newPosition) { m_Position = newPosition; };
     
-    Collision* GetCollide(Sprite* other);
+    Collision* GetCollideRect(Sprite* other);
+    Collision* GetCollideCircle(Sprite* other);
     double getRadius() { return m_Radius; };
     
     Line getSide(String side);

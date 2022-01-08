@@ -25,6 +25,8 @@
 /// This is an adaptation of the hello.cpp example that shows how to
 /// handle events using the Application object.
 
+#include <cmath>
+
 /// Include the cerritos header file.  This brings in pretty much everything.
 #include "cerritos.h"
 
@@ -48,14 +50,15 @@ public:
         m_sprite->Update(timestep);
         m_sprite_one->Update(timestep);
 
-        Collision* collide = m_sprite->GetCollide(m_sprite_one);
+        Collision* collide = m_sprite->GetCollideCircle(m_sprite_one);
         if (collide != NULL) {
             PointInt colpos = collide->getPosition();
-            PointInt colvec = collide->getVector();
+            double x = colpos.x;
+            double y = colpos.y;
+            FloatVector colvec = collide->getVector();
             
-            cSTDOUT << colpos.x << "," << colpos.y << ", " << colvec.x << ", " << colvec.y << EOL;
+            cSTDOUT << x << "," << y << ", " << colvec.x << ", " << colvec.y << EOL;
             
-            m_sprite->setPosition(colpos.x - colvec.x, colpos.y - colvec.y);
         }
         
     }

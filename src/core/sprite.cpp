@@ -64,7 +64,6 @@ Sprite::Sprite(Window* window, int x, int y, int w, int h, int fps) {
     m_Window = window;
     int m_w = w;
     int m_h = h;
-    double m_Radius = (m_Size.width - m_Origin.x);
     m_xVelocity = 0; m_yVelocity = 0;
     
 }
@@ -89,6 +88,7 @@ void Sprite::addSpriteMode(int mode, List<String> frames) {
         if(surf != NULL) {
             m_Size = surf->size();
             m_Origin = PointInt(m_Size.width/2, m_Size.height/2);
+            m_Radius = m_Origin.distance(PointInt(0, 0));
             tempList.push_back(surf);
         }
     }
@@ -145,18 +145,31 @@ Rect Sprite::getRect() {
     return aRect;
 }
 
-Collision* Sprite::GetCollide(Sprite* other) {
+Collision* Sprite::GetCollideRect(Sprite* other) {
     bool collided = this->getRect().overlaps(other->getRect());
     Collision* collide;
     if (collided) {
-        collide = new Collision(m_Position, PointInt(m_Position.x - m_previousPosition.x,
-                                                     m_Position.y - m_previousPosition.y));
+        collide = new Collision(m_Position, FloatVector(m_Position.x - m_previousPosition.x,
+                                                        m_Position.y - m_previousPosition.y));
     } else {
         collide = NULL;
     }
     
     return collide;
 }
+
+Collision* Sprite::GetCollideCircle(Sprite* other) {
+    Collision* collide;
+    double dist = this->distance(other);
+    if (dist <= m_Radius + other->getRadius()) {
+        collide = new Collision( m_Position, FloatVector( (other->getPosition().x - m_Position.x) / dist,
+                                                          (other->getPosition().y - m_Position.y) / dist ) );
+    } else {
+        collide = NULL;
+    }
+    return collide;
+}
+
 
 Line Sprite::getSide(String side) {
     Line line;

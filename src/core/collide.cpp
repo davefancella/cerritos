@@ -27,7 +27,7 @@
 
 using namespace cerritos;
 
-Collision::Collision(PointInt pos, PointInt vec) {
+Collision::Collision(PointInt pos, FloatVector vec) {
     m_position = pos;
     m_vector   = vec;
 }
@@ -36,6 +36,6 @@ PointInt Collision::getPosition() {
     return m_position;
 }
 
-PointInt Collision::getVector() {
+FloatVector Collision::getVector() {
     return m_vector;
 }

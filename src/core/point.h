@@ -79,6 +79,18 @@ public:
     cSizeInt operator-(const cSizeInt& other);
 };
 
+class FloatVector : public Point {
+public:
+    FloatVector() : x(0.0), y(0.0) { };
+    FloatVector(double x, double y);
+    
+    double x; 
+    double y;
+    
+    FloatVector operator+(const FloatVector& other);
+    FloatVector operator-(const FloatVector& other);
+};
+
 }
 
 #endif // POINT__H
