@@ -22,6 +22,7 @@ add_library(cerritos SHARED
     core/object.cpp
     core/path.cpp
     core/point.cpp
+    core/pointtemplate.cpp
     core/rect.cpp
     core/sprite.cpp
     core/surface.cpp
