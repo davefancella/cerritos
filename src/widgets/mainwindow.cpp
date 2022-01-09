@@ -49,20 +49,20 @@ void cMainWindow::setTitle(String title) {
 void cMainWindow::setPosition(int posx, int posy) {
     m_Position = PointInt(posx, posy);
     
-    this->Move();
+    Move();
 }
 
 void cMainWindow::setSize(int width, int height) {
     m_Size = cSizeInt(width, height);
     
-    this->Move();
+    Move();
 }
 
 void cMainWindow::Move() {
 #ifdef USING_SDL
-    //SDL_SetWindowPosition(this->window, this->posx, this->posy);
-    //SDL_SetWindowSize(this->window, this->width, this->height);
-#endif
+    SDL_SetWindowPosition(m_Window->getSDLWindow(), m_Position.x(), m_Position.y() );
+    SDL_SetWindowSize(m_Window->getSDLWindow(), m_Size.width, m_Size.height);
+#endif // USING_SDL
 }
 
 cMainWindow::cMainWindow(String title, int width, int height, int posx, int posy, CER_WindowFlags winFlags) 
