@@ -136,13 +136,13 @@ void Sprite::setMode(int mode) {
 }
 
 Rect& Sprite::getRect() {
-    Rect aRect;
-    aRect.position.setX(m_Position.x() );
-    aRect.position.setY(m_Position.y() );
-    aRect.size.width = m_Size.width;
-    aRect.size.height = m_Size.height;
+    Rect* aRect = new Rect(
+        m_Position.x(),
+        m_Position.y(),
+        m_Size.width,
+        m_Size.height );
     
-    return aRect;
+    return *aRect;
 }
 
 Collision* Sprite::GetCollideRect(Sprite* other) {
