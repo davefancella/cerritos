@@ -41,6 +41,9 @@ void cMainWindow::setTitle(const char* title) {
 
 void cMainWindow::setTitle(String title) {
     m_Title = title;
+#ifdef USING_SDL
+    SDL_SetWindowTitle(m_Window->getSDLWindow(), Title().data() );
+#endif // USING_SDL
 }
 
 void cMainWindow::setPosition(int posx, int posy) {
@@ -120,7 +123,6 @@ void cMainWindow::renderAll(const Timestep timestep) {
 
 void cMainWindow::beginRender() {
 #ifdef USING_SDL
-    SDL_SetWindowTitle(m_Window->getSDLWindow(), Title().data() );
     SDL_RenderClear(m_Window->getSDLRenderer() );
 #endif
 }
