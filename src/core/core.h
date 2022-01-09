@@ -37,7 +37,6 @@
 #include "object.h"
 #include "path.h"
 #include "point.h"
-#include "pointtemplate.h"
 #include "rect.h"
 #include "sprite.h"
 #include "surface.h"

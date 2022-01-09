@@ -24,11 +24,10 @@
 
 #include "sprite.h"
 #include "point.h"
-#include "pointtemplate.h"
 
 using namespace cerritos;
 
-double CCW(PointInt a, PointInt b, PointInt c) { return (b.x-a.x)*(c.y-a.y) - (b.y-a.y)*(c.x-a.x); };
+double CCW(PointInt a, PointInt b, PointInt c) { return (b.x()-a.x())*(c.y()-a.y()) - (b.y()-a.y())*(c.x()-a.x()); };
 
 int middle(int a, int b, int c) {
   int t;    
@@ -45,18 +44,18 @@ int intersect(Line a, Line b) {
   if ( ( CCW(a.s, a.e, b.s) * CCW(a.s, a.e, b.e) < 0 ) &&
      ( CCW(b.s, b.e, a.s) * CCW(b.s, b.e, a.e) < 0 ) ) return 1;
 
-  if ( CCW(a.s, a.e, b.s) == 0 && middle(a.s.x, a.e.x, b.s.x) && middle(a.s.y, a.e.y, b.s.y) ) return 1;
-  if ( CCW(a.s, a.e, b.e) == 0 && middle(a.s.x, a.e.x, b.e.x) && middle(a.s.y, a.e.y, b.e.y) ) return 1;
-  if ( CCW(b.s, b.e, a.s) == 0 && middle(b.s.x, b.e.x, a.s.x) && middle(b.s.y, b.e.y, a.s.y) ) return 1;
-  if ( CCW(b.s, b.e, a.e) == 0 && middle(b.s.x, b.e.x, a.e.x) && middle(b.s.y, b.e.y, a.e.y) ) return 1;
+  if ( CCW(a.s, a.e, b.s) == 0 && middle(a.s.x(), a.e.x(), b.s.x()) && middle(a.s.y(), a.e.y(), b.s.y()) ) return 1;
+  if ( CCW(a.s, a.e, b.e) == 0 && middle(a.s.x(), a.e.x(), b.e.x()) && middle(a.s.y(), a.e.y(), b.e.y()) ) return 1;
+  if ( CCW(b.s, b.e, a.s) == 0 && middle(b.s.x(), b.e.x(), a.s.x()) && middle(b.s.y(), b.e.y(), a.s.y()) ) return 1;
+  if ( CCW(b.s, b.e, a.e) == 0 && middle(b.s.x(), b.e.x(), a.e.x()) && middle(b.s.y(), b.e.y(), a.e.y()) ) return 1;
 
     return 0;
 }
 
 
 Sprite::Sprite(Window* window, int x, int y, int w, int h, int fps) {
-    m_Position.x = x;
-    m_Position.y = y;
+    m_Position.setX(x);
+    m_Position.setY(y);
     m_Size.width = w;
     m_Size.height = h;
     m_Surface = NULL;
@@ -74,8 +73,8 @@ Sprite::~Sprite() {
 }
 
 void Sprite::Draw() {
-    PointInt* drawPos = new PointInt(m_Position.x - m_Origin.x,
-                                     m_Position.y - m_Origin.y);
+    PointInt* drawPos = new PointInt(m_Position.x() - m_Origin.x(),
+                                     m_Position.y() - m_Origin.y());
     if(m_Surface != NULL) {
         m_Surface->Blit_To(drawPos, 0.0, &m_Origin);
     }
@@ -101,8 +100,8 @@ double Sprite::distance(Sprite* other) {
 }
 
 void Sprite::Update(const Timestep timestep) {
-    m_previousPosition.x = m_Position.x;
-    m_previousPosition.y = m_Position.y;
+    m_previousPosition.setX(m_Position.x() );
+    m_previousPosition.setY(m_Position.y() );
     
     int theMode = 0;
     if(m_Modes.has_key(m_Mode) ) {
@@ -123,8 +122,8 @@ void Sprite::Update(const Timestep timestep) {
     
     m_Surface = m_Frames[m_CurrentFrame];
     
-    m_Position.x += m_xVelocity;
-    m_Position.y += m_yVelocity;
+    m_Position.setX(m_Position.x() + m_xVelocity);
+    m_Position.setY(m_Position.y() + m_yVelocity);
     
 }
 
@@ -136,10 +135,10 @@ void Sprite::setMode(int mode) {
     m_Mode = mode;
 }
 
-Rect Sprite::getRect() {
+Rect& Sprite::getRect() {
     Rect aRect;
-    aRect.position.x = m_Position.x;
-    aRect.position.y = m_Position.y;
+    aRect.position.setX(m_Position.x() );
+    aRect.position.setY(m_Position.y() );
     aRect.size.width = m_Size.width;
     aRect.size.height = m_Size.height;
     
@@ -147,11 +146,11 @@ Rect Sprite::getRect() {
 }
 
 Collision* Sprite::GetCollideRect(Sprite* other) {
-    bool collided = this->getRect().overlaps(other->getRect());
+    bool collided = getRect().overlaps(other->getRect());
     Collision* collide;
     if (collided) {
-        collide = new Collision(m_Position, VectorT<double>(m_Position.x - m_previousPosition.x,
-                                                        m_Position.y - m_previousPosition.y));
+        collide = new Collision(m_Position, Vector<double>(m_Position.x() - m_previousPosition.x(),
+                                                        m_Position.y() - m_previousPosition.y()));
     } else {
         collide = NULL;
     }
@@ -163,8 +162,8 @@ Collision* Sprite::GetCollideCircle(Sprite* other) {
     Collision* collide;
     double dist = this->distance(other);
     if (dist <= m_Radius + other->getRadius()) {
-        collide = new Collision( m_Position, VectorT<double>( (other->getPosition().x - m_Position.x) / dist,
-                                                          (other->getPosition().y - m_Position.y) / dist ) );
+        collide = new Collision( m_Position, Vector<double>( (other->getPosition().x() - m_Position.x()) / dist,
+                                                          (other->getPosition().y() - m_Position.y()) / dist ) );
     } else {
         collide = NULL;
     }
@@ -176,16 +175,16 @@ Line Sprite::getSide(String side) {
     Line line;
     if (side == "top") {
         line.s = m_Position;
-        line.e = PointInt(m_Position.x + m_Size.width, m_Position.y);
+        line.e = PointInt(m_Position.x() + m_Size.width, m_Position.y());
     } else if (side == "bottom") {
-        line.s = PointInt(m_Position.x, m_Position.y + m_Size.height);
-        line.e = PointInt(m_Position.x + m_Size.width, m_Position.y + m_Size.height);
+        line.s = PointInt(m_Position.x(), m_Position.y() + m_Size.height);
+        line.e = PointInt(m_Position.x() + m_Size.width, m_Position.y() + m_Size.height);
     } else if (side == "left") {
         line.s = m_Position;
-        line.e = PointInt(m_Position.x, m_Position.y + m_Size.height);
+        line.e = PointInt(m_Position.x(), m_Position.y() + m_Size.height);
     } else if (side == "right") {
-        line.s = PointInt(m_Position.x + m_Size.width, m_Position.y);
-        line.e = PointInt(m_Position.x + m_Size.width, m_Position.y + m_Size.height);
+        line.s = PointInt(m_Position.x() + m_Size.width, m_Position.y());
+        line.e = PointInt(m_Position.x() + m_Size.width, m_Position.y() + m_Size.height);
     }
     
     return line;
@@ -193,9 +192,9 @@ Line Sprite::getSide(String side) {
 
 Line Sprite::getMove() {
     Line line;
-    PointInt slope = PointInt(m_Position.x - m_previousPosition.x, m_Position.y - m_previousPosition.y);
-    PointInt previous = PointInt(m_previousPosition.x + slope.x, m_previousPosition.y + slope.y);
-    PointInt current = PointInt(m_Position.x - slope.x, m_Position.y - slope.y);
+    PointInt slope = PointInt(m_Position.x() - m_previousPosition.x(), m_Position.y() - m_previousPosition.y());
+    PointInt previous = PointInt(m_previousPosition.x() + slope.x(), m_previousPosition.y() + slope.y());
+    PointInt current = PointInt(m_Position.x() - slope.x(), m_Position.y() - slope.y());
     line.s = previous;
     line.e = current;
     

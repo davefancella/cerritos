@@ -96,7 +96,7 @@ bool Font::RenderText(Window* window, String text, Rect* dest, uint8_t red, uint
                 SDL_FreeSurface(textSurface);
                 return false;
             } else {
-                SDL_Rect aRect = { dest->position.x, dest->position.y, calcW, calcH };
+                SDL_Rect aRect = { dest->position.x(), dest->position.y(), calcW, calcH };
                 SDL_RenderCopy(window->getSDLRenderer(), 
                             texture, 
                             NULL, 

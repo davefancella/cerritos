@@ -49,15 +49,15 @@ Surface::~Surface() {
 #endif
 }
 
-void Surface::Blit_To(PointInt* dest, const double angle, const PointInt *center, CER_RenderFlags flip) {
+void Surface::Blit_To(PointInt* dest, const double angle, PointInt *center, CER_RenderFlags flip) {
 #ifdef USING_SDL
-    SDL_Rect aRect = { dest->x, dest->y, 
+    SDL_Rect aRect = { dest->x(), dest->y(), 
                        m_Size.width, m_Size.height };
     SDL_Point aPoint = {0,0};
     
     if(center != NULL) {
-        aPoint.x = center->x;
-        aPoint.y = center->y;
+        aPoint.x = center->x();
+        aPoint.y = center->y();
     }
                        
     SDL_RenderCopyEx(m_Window->getSDLRenderer(), 
@@ -74,13 +74,13 @@ void Surface::Fill(uint8_t red, uint8_t green, uint8_t blue, uint8_t alpha) {
     this->FillRect(NULL, red, green, blue, alpha); 
 }
 
-void Surface::FillRect(const Rect* rect, uint8_t red, uint8_t green, uint8_t blue, uint8_t alpha) {
+void Surface::FillRect(Rect* rect, uint8_t red, uint8_t green, uint8_t blue, uint8_t alpha) {
 #ifdef USING_SDL
     // cache the current render target so we can restore it later
     SDL_Texture* renderCache = SDL_GetRenderTarget(m_Window->getSDLRenderer() );
     // change the render target so we can fill the rect
     if(SDL_SetRenderTarget(m_Window->getSDLRenderer(), m_Texture) == 0) {
-        SDL_Rect aRect = { rect->position.x, rect->position.y, 
+        SDL_Rect aRect = { rect->position.x(), rect->position.y(), 
                            rect->size.width, rect->size.height };
         SDL_SetRenderDrawColor(m_Window->getSDLRenderer(), red, green, blue, alpha);
         SDL_RenderFillRect(m_Window->getSDLRenderer(), &aRect);

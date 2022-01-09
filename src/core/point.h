@@ -25,40 +25,48 @@
 #ifndef POINT__H
 #define POINT__H
 
+#include <math.h>
+
 namespace cerritos {
 
-/**
- * The base class for points.  Since every type of point is
- * different enough, the base class doesn't do anything. It
- * exists to allow for classes to store pointers to a point
- * without needing to know the details of the point.
- * 
- * So, a class can store a pointer to a point without getting
- * the point.
- */
-class Point {
+template <typename T>
+class Vector {
+public:
+    T m_X;
+    T m_Y;
+
+    Vector() { };
+    Vector(T x, T y) : m_X(x), m_Y(y) { };
+
+    T x() { return m_X; };
+    T y() { return m_Y; };
+    void setX(T newX) { m_X = newX; };
+    void setY(T newY) { m_Y = newY; };
     
+    double distance(Vector<T> other) {
+        return sqrt( pow(other.x() - x(), 2) + pow(other.y() - y(), 2) );
+    };
+    
+    double magnitude() {
+        return sqrt( pow(x(), 2) + pow(y(), 2) );
+    }
+
+    // operators
+    Vector<T> operator+(const Vector<T>& other) {
+        return Vector<T>(x() + other.x(), y() + other.y() );
+    };
+    
+    Vector<T> operator-(const Vector<T>& other) {
+        return Vector<T>(x() - other.x(), y() - other.y() );
+    };
 };
 
-/**
- * An integer point.  It is a two dimensional point, usually
- * referring to a point on the screen.  It is written under
- * the assumption that it usually means screen coordinates.
- */
-class PointInt : public Point {
-public:
-    PointInt() : x(0), y(0) { };
-    PointInt(int x, int y);
-    
-    int x;
-    int y;
-    
-    double distance(PointInt other);
-    
-    // operators
-    PointInt operator+(const PointInt& other);
-    PointInt operator-(const PointInt& other);
-};
+/// A Point is just a position vector
+template<typename T>
+using Point = Vector<T>;
+
+/// A Point is just a position vector
+using PointInt = Vector<int>;
 
 /**
  * A size, given as width x height.  It subclasses Point just
@@ -66,29 +74,21 @@ public:
  * details.  This is usually pointless, as size is pointless,
  * i.e. it's not a Point.
  */
-class cSizeInt : public Point {
+class cSizeInt {
 public:
     cSizeInt() : width(0), height(0) { };
-    cSizeInt(int width, int height);
+    cSizeInt(int width, int height) : width(width), height(height) { };
     
     int width;
     int height;
     
-    cSizeInt operator+(const PointInt& other);
-    cSizeInt operator+(const cSizeInt& other);
-    cSizeInt operator-(const cSizeInt& other);
-};
-
-class FloatVector : public Point {
-public:
-    FloatVector() : x(0.0), y(0.0) { };
-    FloatVector(double x, double y);
+    cSizeInt operator+(const cSizeInt& other) {
+        return cSizeInt(width + other.width, height + other.height );
+    };
     
-    double x; 
-    double y;
-    
-    FloatVector operator+(const FloatVector& other);
-    FloatVector operator-(const FloatVector& other);
+    cSizeInt operator-(const cSizeInt& other) {
+        return cSizeInt(width - other.width, height - other.height );
+    };
 };
 
 }

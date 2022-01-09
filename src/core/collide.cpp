@@ -24,11 +24,10 @@
 
 #include "collide.h"
 #include "point.h"
-#include "pointtemplate.h"
 
 using namespace cerritos;
 
-Collision::Collision(PointInt pos, VectorT<double> vec) {
+Collision::Collision(PointInt pos, Vector<double> vec) {
     m_position = pos;
     m_vector   = vec;
 }
@@ -37,6 +36,6 @@ PointInt Collision::getPosition() {
     return m_position;
 }
 
-VectorT<double> Collision::getVector() {
+Vector<double> Collision::getVector() {
     return m_vector;
 }

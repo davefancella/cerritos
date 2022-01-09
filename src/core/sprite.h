@@ -68,8 +68,8 @@ public:
     
     PointInt getPosition() { return m_Position; };
     cSizeInt getSize() { return m_Size; };
-    void setX(int x) { m_Position.x = x; };
-    void setY(int y) { m_Position.y = y; };
+    void setX(int x) { m_Position.setX(x); };
+    void setY(int y) { m_Position.setY(y); };
     void setPosition(int x, int y) { setPosition(PointInt(x, y) ); };
     void setPosition(PointInt newPosition) { m_Position = newPosition; };
     
@@ -80,7 +80,7 @@ public:
     Line getSide(String side);
     Line getMove();
     
-    Rect getRect();
+    Rect& getRect();
     
     unsigned int m_xVelocity;
     unsigned int m_yVelocity;

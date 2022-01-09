@@ -34,14 +34,14 @@ namespace cerritos {
 class Rect {
 public:
     Rect() {
-        position.x = 0;
-        position.y =0;
+        position.setX(0);
+        position.setY(0);
         size.width = 0;
         size.height =0;
     };
     Rect(PointInt* pos, cSizeInt* siz) {
-        position.x = pos->x;
-        position.y = pos->y;
+        position.setX(pos->x() );
+        position.setY(pos->y() );
         size.width = siz->width;
         size.height = siz->height;
     };
@@ -57,10 +57,10 @@ public:
      * @param other the other rect
      * @returns True if they overlap, false otherwise
      */
-    bool overlaps(Rect other);
+    bool overlaps(Rect& other);
 
-    Rect operator+(const PointInt& other);
-    Rect operator-(const PointInt& other);
+    Rect operator+(PointInt& other);
+    Rect operator-(PointInt& other);
     Rect operator+(const cSizeInt& other);
     Rect operator-(const cSizeInt& other);
 };

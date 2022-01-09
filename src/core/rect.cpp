@@ -27,43 +27,43 @@
 using namespace cerritos;
 
 Rect::Rect(int x, int y, int w, int h) { 
-    this->position.x = x;
-    this->position.y = y;
-    this->size.width = w;
-    this->size.height = h;
+    position.setX(x);
+    position.setY(y);
+    size.width = w;
+    size.height = h;
 }
 
-bool Rect::overlaps(Rect other) {
-    if( this->position.x > (other.position.x + other.size.width) ||
-        this->position.y > (other.position.y + other.size.height) ||
-        (this->position.x + this->size.width) < other.position.x ||
-        (this->position.y + this->size.height) < other.position.y ) {
+bool Rect::overlaps(Rect& other) {
+    if( position.x() > (other.position.x() + other.size.width) ||
+        position.y() > (other.position.y() + other.size.height) ||
+        (position.x() + size.width) < other.position.x() ||
+        (position.y() + size.height) < other.position.y() ) {
         return false;
     }
     
     return true;
 }
 
-Rect Rect::operator+(const PointInt& other) {
-    return Rect(this->position.x + other.x, this->position.y + other.y,
-        this->size.width, this->size.height
+Rect Rect::operator+(PointInt& other) {
+    return Rect(position.x() + other.x(), position.y() + other.y(),
+        size.width, size.height
     );
 }
 
-Rect Rect::operator-(const PointInt& other) {
-    return Rect(this->position.x - other.x, this->position.x - other.x,
-        this->size.width, this->size.height
+Rect Rect::operator-(PointInt& other) {
+    return Rect(position.x() - other.x(), position.y() - other.y(),
+        size.width, size.height
     );
 }
 
 Rect Rect::operator+(const cSizeInt& other) {
-    return Rect(this->position.x, this->position.y,
-        this->size.width + other.width, this->size.height + other.height);
+    return Rect(position.x(), position.y(),
+        size.width + other.width, size.height + other.height);
 }
 
 Rect Rect::operator-(const cSizeInt& other) {
-    return Rect(this->position.x, this->position.y,
-        this->size.width - other.width, this->size.height - other.height);
+    return Rect(position.x(), position.y(),
+        size.width - other.width, size.height - other.height);
 }
 
 

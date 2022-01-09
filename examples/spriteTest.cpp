@@ -53,11 +53,11 @@ public:
         Collision* collide = m_sprite->GetCollideCircle(m_sprite_one);
         if (collide != NULL) {
             PointInt colpos = collide->getPosition();
-            double x = colpos.x;
-            double y = colpos.y;
-            VectorT<double> colvec = collide->getVector();
+            double x = colpos.x();
+            double y = colpos.y();
+            Vector<double> colvec = collide->getVector();
             
-            cSTDOUT << x << "," << y << ", " << colvec.m_X << ", " << colvec.m_Y << EOL;
+            cSTDOUT << x << "," << y << ", " << colvec.x() << ", " << colvec.y() << EOL;
             cSTDOUT << colvec.magnitude() << EOL;
         }
         

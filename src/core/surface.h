@@ -66,14 +66,14 @@ public:
      * @param center The origin of the surface.
      * @param flip Whether or not to flip, horizontally or vertically.
      */
-    void Blit_To(PointInt* dest, const double angle=0.0, const PointInt *center=NULL, CER_RenderFlags flip=CER_None);
+    void Blit_To(PointInt* dest, const double angle=0.0, PointInt *center=NULL, CER_RenderFlags flip=CER_None);
     
     /// Use this to fill the entire surface with one color
     void Fill(uint8_t red, uint8_t green, uint8_t blue, uint8_t alpha=255);
     
     /// Use this to fill the surface or an area of the surface with
     /// a color.
-    void FillRect(const Rect* rect, uint8_t red, uint8_t green, uint8_t blue, uint8_t alpha=255);
+    void FillRect(Rect* rect, uint8_t red, uint8_t green, uint8_t blue, uint8_t alpha=255);
     
     ///Creates a new surface from a stored Bitmap image.
     ///@param filename A string storing the path to the Bitmap

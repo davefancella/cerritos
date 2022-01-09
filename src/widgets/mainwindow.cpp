@@ -69,7 +69,7 @@ cMainWindow::cMainWindow(String title, int width, int height, int posx, int posy
                 m_Position(posx, posy),
                 m_WindowFlags(winFlags) {    
     m_Window = new Window( m_Title, 
-            m_Position.x, m_Position.y,
+            m_Position.x(), m_Position.y(),
             m_Size.width, m_Size.height, m_WindowFlags );
     _IMG.setWindow(m_Window);
 }
