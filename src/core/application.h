@@ -35,9 +35,10 @@ namespace cerritos {
 /**
  * Use this macro to setup all the appropriate methods and constructors.
  */
-#define CONSTRUCTAPP(app) \
+#define CONSTRUCTAPP(appClass) \
 public:\
-    app(int argc, char* argv[]) : Application(argc, argv) { };\
+    appClass(int argc, char* argv[]) : Application(argc, argv) { \
+    };\
 
 
 /** 
@@ -73,7 +74,7 @@ public:
      * the application.  It's where you'll load all your starting data like
      * fonts and images and stuff.
      */
-    virtual void init();
+    virtual void init() { };
     
     /**
      * This function is called automatically internally.  It will call the

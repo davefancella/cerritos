@@ -26,37 +26,18 @@
 // of being the most basic code needed by opting for providing the code that
 // is both correct and basic.  A simpler app is possible, but not suggested.
 
-#include <iostream>
-
 // Include the cerritos header file.  This brings in pretty much everything.
 #include "cerritos.h"
 
 using namespace cerritos;
 
-int main( int argc, char* args[] ) {
-    // This is a handy way to initialize cerritos and get a default
-    // application object.  Typically, more complex games need more than
-    // a default application object.
-    Application* theApp = cInitApp(argc, args, CER_Shown);
-    cMainWindow* theWindow;
-    // There's also a default mainwindow available.
-    theWindow = theApp->getMainWindow();
-    theWindow->setTitle("Hello, World!");
-
-    // This is your game loop.
-    while(theApp->keepRunning) {
-        // In a real game, if you call Application::UpdateAll, you'd only
-        // do it because you created your own app object and implemented
-        // Update.  Here, we do it for convenience because this is the
-        // hello world app.
-        theApp->UpdateAll(theApp->getTimestep());
-        
-        Delay(50);
-    }
+class hello : public Application {
+public:
+    CONSTRUCTAPP(hello);
     
-    // Close up cerritos before quitting.  This makes sure we don't leave
-    // any devices open or whatever.  Most modern operating systems don't
-    // have those problems anymore, but this helps avoid segfaults.
-    cClose();
-}
+    void init() {
+        getMainWindow()->setTitle("Hello, world!");
+    };
+};
 
+CERRITOSMAIN(hello, cMainWindow)

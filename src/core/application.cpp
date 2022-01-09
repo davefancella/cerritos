@@ -56,11 +56,6 @@ Application::Application(int argc, char* argv[]) {
     this->keepRunning = true;
 }
 
-/// Default implementation does nothing.
-void Application::init() {
-    
-}
-
 void Application::_init(cMainWindow* window) {
     if(window != NULL) {
         setMainWindow(window);
