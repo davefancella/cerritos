@@ -55,6 +55,16 @@ int main( int argc, char* args[] ) { \
 }\
 
 
+/**
+ * Use this macro to setup all the appropriate methods and constructors.
+ */
+#define CONSTRUCTAPP(appClass) \
+public:\
+    appClass(int argc, char* argv[]) : Application(argc, argv) { \
+    };\
+
+
+
 // Includes and forward declarations go here
 
 namespace cerritos {

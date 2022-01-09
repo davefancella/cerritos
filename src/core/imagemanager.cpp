@@ -24,6 +24,7 @@
 
 #include "imagemanager.h"
 
+#include "path.h"
 #include "surface.h"
 #include "types.h"
 #include "window.h"
@@ -52,8 +53,15 @@ Surface* ImageManager::loadFromFile(const char* filename) {
     return loadFromFile(String(filename) );
 }
 
+Surface* ImageManager::loadPath(String searchpath, String filename) {
+    return loadFromFile(_PATH.getFilepath(searchpath, filename) );
+}
+
 Surface* ImageManager::loadFromFile(String filename) {
     Surface* theSurface = NULL;
+    
+    if(m_ImageList.has_key(filename) )
+        return m_ImageList[filename];
     
     // Do all the safety checks first
     if(m_Window == NULL) {
@@ -100,6 +108,9 @@ Surface* ImageManager::loadFromFile(String filename) {
         
         SDL_FreeSurface(tempSurface);
     }
+    
+    // cache the file for future loads
+    m_ImageList[filename] = theSurface;
     
     return theSurface;
     

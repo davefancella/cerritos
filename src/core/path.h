@@ -75,7 +75,7 @@ public:
      *                   is not to use system directories, because games are
      *                   expected to ship with everything they need to run.
      */
-    const Dirpath getFilepath(String filename, String searchpath, bool useSysDirs=false);
+    const Dirpath getFilepath(String searchpath, String filename, bool useSysDirs=false);
 
     /// Overloaded member for convenience.
     String getFilepath(const char* searchpath, const char* filename, bool useSysDirs=false) { 

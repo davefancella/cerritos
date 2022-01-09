@@ -50,8 +50,27 @@ public:
     Surface* loadFromFile(const char* filename);
     Surface* loadFromFile(String filename);
     
+    /**
+     * Load a file using the Path object.
+     */
+    Surface* loadPath(String searchpath, String filename);
+    /// Overloaded for convenience
+    Surface* loadPath(const char* searchpath, const char* filename) {
+        return loadPath(String(searchpath), String(filename) );
+    };
+    /// Overloaded for convenience
+    Surface* loadPath(String searchpath, const char* filename) {
+        return loadPath(searchpath, String(filename) );
+    };
+    /// Overloaded for convenience
+    Surface* loadPath(const char* searchpath, String filename) {
+        return loadPath(String(searchpath), filename);
+    };
+    
 private:
     Window* m_Window;
+    
+    Dictionary<Surface*> m_ImageList;
     
     ImageManager();
 };
