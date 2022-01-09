@@ -22,11 +22,6 @@
  * 
  */
 
-// This is an adaptation of the hello.cpp example that shows how to
-// handle events using the Application object.
-
-#include <iostream>
-#include <stdio.h>
 // Include the cerritos header file.  This brings in pretty much everything.
 #include "cerritos.h"
 
@@ -35,56 +30,41 @@ using namespace cerritos;
 class etMainWindow : public cMainWindow {
 public:
     void onMouseMotion(MouseMotionEvent* evt) {
-        this->mousex = evt->posx;
-        this->mousey = evt->posy;
+        char buffer[100];
+        snprintf(buffer, 100, "Mouse Motion: x(%d) y(%d)", evt->posx, evt->posy);
+        mouseText.clear();
+        mouseText = buffer;
     }
     
     void setFont(Font* theFont) {
-        this->mFont = theFont;
+        mFont = theFont;
     }
     
     void Render(const Timestep timestep) {
         Rect aRect = { 0,0,200,200 };
-        char buffer[100];
-        snprintf(buffer, 100, "Mouse Motion: x(%d) y(%d)", mousex, mousey);
         mFont->RenderText(this->getWindow(),
-                          buffer,
+                          mouseText,
                           &aRect,
                           255, 255, 255);
     }
     
     Font* mFont;
     
-    int mousex=0;
-    int mousey=0;
+    String mouseText = "Nothing yet.  Hi there!";
 };
 
-int main( int argc, char* args[] ) {
-    // This is a handy way to initialize cerritos and get a default
-    // application object.  Typically, more complex games need more than
-    // a default application object.
-    Application* theApp;
-    etMainWindow* theWindow;
-    Font* theFont;
-
-    cInit();
+class ftApplication : public Application {
+public:
+    CONSTRUCTAPP(ftApplication);
+    
+    void init() {
+        getMainWindow()->setTitle("Font Test");
         
-    theApp = new Application(argc, args);
+        Font* theFont = Font::loadFromFile("/usr/share/fonts/truetype/freefont/FreeSans.ttf", 30);
+        dynamic_cast<etMainWindow*>(getMainWindow() )->setFont(theFont);
+    };
+};
 
-    theWindow = new etMainWindow();
+CERRITOSMAIN(ftApplication, etMainWindow)
 
-    theApp->setMainWindow(theWindow);
-    theWindow->setTitle("Font Test");
-    
-    theFont = Font::loadFromFile("/usr/share/fonts/truetype/freefont/FreeSans.ttf", 30);
-    theWindow->setFont(theFont);
-    
-    // This is your game loop.
-    theApp->loop();
-    
-    // Close up cerritos before quitting.  This makes sure we don't leave
-    // any devices open or whatever.  Most modern operating systems don't
-    // have those problems anymore, but this helps avoid segfaults.
-    cClose();
-}
 

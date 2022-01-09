@@ -31,7 +31,15 @@
 #include "mainwindow.h"
 
 namespace cerritos {
-    
+
+/**
+ * Use this macro to setup all the appropriate methods and constructors.
+ */
+#define CONSTRUCTAPP(app) \
+public:\
+    app(int argc, char* argv[]) : Application(argc, argv) { };\
+
+
 /** 
  * @class Application
  * 
@@ -58,6 +66,28 @@ class Application : public Object,
                      public cBaseEventReceiver {
 public:
     Application(int argc, char* argv[]);
+    
+    /**
+     * Called to initialize the Application.  The constructor is only used
+     * to construct the object in memory, this method is used to initialize
+     * the application.  It's where you'll load all your starting data like
+     * fonts and images and stuff.
+     */
+    virtual void init();
+    
+    /**
+     * This function is called automatically internally.  It will call the
+     * virtual init() method.
+     */
+    void _init(cMainWindow* window=NULL);
+    
+    /// Call to see if Application already has a cMainWindow.
+    bool hasMainWindow() { 
+        if(m_MainWindow != NULL)
+            return true;
+        
+        return false;
+    };
     
     /// Set the main window for the object.  If it's not set, it won't be
     /// updated.
@@ -167,12 +197,8 @@ public:
     
     bool keepRunning;
     
-    cMainWindow* mainwindow = NULL;
-
 protected:
     void onQuit(QuitEvent* event);
-    
-    
     
     /**
      * Process one event internally.  This is where the events get delegated
@@ -181,6 +207,8 @@ protected:
     void ProcessOneEventI(Event* evt);
     
 private:
+    cMainWindow* m_MainWindow = NULL;
+
     EventManager* eventManager;
     
     Timestep currentTimestep;

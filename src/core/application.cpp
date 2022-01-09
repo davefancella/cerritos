@@ -56,12 +56,25 @@ Application::Application(int argc, char* argv[]) {
     this->keepRunning = true;
 }
 
+/// Default implementation does nothing.
+void Application::init() {
+    
+}
+
+void Application::_init(cMainWindow* window) {
+    if(window != NULL) {
+        setMainWindow(window);
+    }
+    
+    init();
+}
+
 void Application::setMainWindow(cMainWindow* window) {
-    this->mainwindow = window;
+    m_MainWindow = window;
 }
 
 cMainWindow* Application::getMainWindow() {
-    return this->mainwindow;
+    return m_MainWindow;
 }
 
 bool Application::hasEvent() { 
@@ -130,8 +143,8 @@ void Application::Update() {
 }
 
 void Application::UpdateView(const Timestep timestep) {
-    if(this->mainwindow != NULL) {
-        this->mainwindow->Update(timestep);
+    if(m_MainWindow != NULL) {
+        m_MainWindow->Update(timestep);
     }
 }
 
@@ -150,15 +163,15 @@ void Application::loop() {
 }
 
 void Application::EndUpdate() {
-    if(this->mainwindow != NULL) {
-        this->mainwindow->renderAll(this->getTimestep());
+    if(m_MainWindow != NULL) {
+        m_MainWindow->renderAll(this->getTimestep());
     }    
 }
 
 void Application::ProcessOneEventI(Event* evt) {
     // First delegate the event to the gui
-    if(this->mainwindow != NULL) {
-        this->mainwindow->process_event(evt);
+    if(m_MainWindow != NULL) {
+        m_MainWindow->process_event(evt);
     }
     
     // If it's still an active event, handle it here
