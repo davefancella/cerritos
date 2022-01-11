@@ -26,6 +26,9 @@
  * 
  * This file contains numerous types that are useful but don't
  * belong in their own headers.
+ * 
+ * Everything includes this file, so if you change it, all of cerritos will
+ * be rebuilt.
  */
 
 #ifndef TYPES__H
@@ -43,7 +46,26 @@
 /// Use this instead of cout from iostream.
 #define cSTDOUT std::cout
 #define EOL std::endl
-    
+
+#define _USE_MATH_DEFINES
+#include <cmath>
+
+#ifndef M_PI
+#define M_PI (3.14159265358979323846)
+#endif
+
+#ifndef M_PIl
+#define M_PIl (3.14159265358979323846264338327950288)
+#endif
+
+// Just a random bit here that I wrote because I didn't have enough bandwidth
+// to google up the proper standard library constant to use here
+#define cerpi M_PI
+
+/// Converts angles to/from radians/degrees
+#define DEGREES(angle) (angle * 180/cerpi)
+#define RADIANS(angle) (angle * cerpi/180)
+
 namespace cerritos {
 
 /** @class String
