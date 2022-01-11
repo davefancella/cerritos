@@ -48,8 +48,8 @@ void Clock::newTimestep() {
     
     currentTimestep.fromBeginning = newTimestep - firstTimestep;
     currentTimestep.fromLast = newTimestep - lastTimestep;
-    currentTimestep.fromBeginningSeconds = 1000/currentTimestep.fromBeginning;
-    currentTimestep.fromLastSeconds = 1000/currentTimestep.fromLast;
+    currentTimestep.fromBeginningSeconds = currentTimestep.fromBeginning/1000;
+    currentTimestep.fromLastSeconds = currentTimestep.fromLast/1000;
     
     lastTimestep = newTimestep;
 }
