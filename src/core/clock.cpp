@@ -36,6 +36,8 @@ Clock::Clock() {
     
     currentTimestep.fromBeginning = 0;
     currentTimestep.fromLast = 0;
+    currentTimestep.fromBeginningSeconds = 0.0;
+    currentTimestep.fromLastSeconds = 0.0;
 }
 
 void Clock::newTimestep() {
@@ -46,6 +48,8 @@ void Clock::newTimestep() {
     
     currentTimestep.fromBeginning = newTimestep - firstTimestep;
     currentTimestep.fromLast = newTimestep - lastTimestep;
+    currentTimestep.fromBeginningSeconds = 1000/currentTimestep.fromBeginning;
+    currentTimestep.fromLastSeconds = 1000/currentTimestep.fromLast;
     
     lastTimestep = newTimestep;
 }

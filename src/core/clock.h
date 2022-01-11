@@ -37,6 +37,8 @@ class Timestep {
 public:   
     unsigned int fromBeginning;
     unsigned int fromLast;
+    double fromBeginningSeconds;
+    double fromLastSeconds;
 };
 
 
