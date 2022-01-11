@@ -31,10 +31,24 @@
 
 using namespace cerritos;
 
+// All cerritos games must subclass Application.  This is where all of your
+// game code will live.  It's ok to separate your implementation into
+// different files, some of the methods you have to implement are going to
+// get pretty big.
 class hello : public Application {
 public:
+    // This sets up the default constructor that processes commandline
+    // arguments.  It is required in every Application subclass.
+    // You cannot implement your own constructor.
     CONSTRUCTAPP(hello);
     
+    // Since you cannot implement your own constructor, init() is provided.
+    // It is called before any GUI is constructed, so if you don't use a gui,
+    // you don't have to create one.  But since you'll probably use one,
+    // because what's a game without a GUI, this is where you'll construct it.
+    //
+    // Here we just create the MainWindow and set its title, because this is
+    // Hello, World!.
     void init() {
         setMainWindow(new cMainWindow("Hello, world!") );
     };
