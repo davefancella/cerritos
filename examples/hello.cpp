@@ -36,9 +36,7 @@ public:
     CONSTRUCTAPP(hello);
     
     void init() {
-        setMainWindow(new cMainWindow() );
-        
-        getMainWindow()->setTitle("Hello, world!");
+        setMainWindow(new cMainWindow("Hello, world!") );
     };
 };
 
