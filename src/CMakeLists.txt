@@ -14,6 +14,7 @@ add_library(cerritos SHARED
     backend/sdl_poll_hardware_events.cpp
     core/application.cpp
     core/circle.cpp
+    core/clock.cpp
     core/event.cpp
     core/events/eventreceiver.cpp
     core/font.cpp

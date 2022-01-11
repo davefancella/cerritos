@@ -22,58 +22,55 @@
  * 
  */
 
-#ifndef CERRITOSCORE_H
-#define CERRITOSCORE_H
+#ifndef CLOCK__H
+#define CLOCK__H
 
-#include "types.h"
+// Includes and forward declarations go here
+#define _CLOCK Clock::get()
 
 namespace cerritos {
 
-/** The base class for all cerritos objects.  This class 
- *  provides parent/child relationship management and should
- *  be used wherever such relationships are needed.  It's
- *  used extensively in the widget subsystem.
+/** Timesteps are such an integral part of everything that happens in a game
+ *  that the timestep class is included here.
  */
-class Object {
-public:
-    /**
-     * Default constructor.  It does not parent the object,
-     * so should only be used for the top-level object in
-     * a hierarchy.
-     */
-    Object();
-    
-    /**
-     * The constructor the provides parentage for your
-     * object.  It will automatically add itself as
-     * a child to the parent provided.
-     * 
-     * @param parent the parent for this object
-     */
-    Object(Object* parent);
-    
-    /// Adds a child to the object
-    void addChild(Object* newChild);
-    
-    /// Changes the parent of this widget
-    void reparent(Object* newParent);
-    
-    /** 
-     * Called whenever a child is removed from this object.
-     * It allows for any last-minute work the object needs
-     * to do before it loses a child.
-     */
-    void removingObject(Object* theChild) { };
-    
-    /// Call to update an object in a game loop.  Not all objects need this.
-    virtual void Update() { };
-    
-protected:
-    Object* m_Parent;
-    List<Object*> m_Children;
+class Timestep {
+public:   
+    unsigned int fromBeginning;
+    unsigned int fromLast;
 };
 
-}
 
-#endif
+class Clock {
+public:
+    Clock();
+    
+    /**
+     * Gets the singleton Path instance.  Use the _PATH macro instead.
+     */
+    static Clock& get();
+    
+    /**
+     * Called by Application.  It sets up the new timestep.
+     */
+    void newTimestep();
+    
+    Timestep& getTimestep() {
+        return currentTimestep;
+    };
+    
+private:
+    Timestep currentTimestep;
+
+    /// The first timestep ever in the app
+    unsigned int firstTimestep;
+    /// The most recent timestep called
+    unsigned int lastTimestep;
+    
+
+};
+    
+} // namespace cerritos
+
+#endif // CLOCK__H
+
 

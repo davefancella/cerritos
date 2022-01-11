@@ -26,6 +26,7 @@
 #define SPRITE__H
 
 // Includes and forward declarations go here
+#include "clock.h"
 #include "rect.h"
 #include "surface.h"
 #include "window.h"

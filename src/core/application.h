@@ -99,14 +99,6 @@ public:
      */
     Event* PollEvent();
     
-    /* Get the current timestep.  cApplication automatically sets the
-     * timestep at the beginning of every loop iteration and caches
-     * that timestep.  By calling this, you ensure that every object that
-     * uses the timestep uses the same one, thus ensuring accuracy of your
-     * simulation and animations.
-     */
-    const Timestep getTimestep();
-    
     /**
      * Call to run the main loop.  Calling this surrenders control of
      * the main loop to the application object.  If you don't want to
@@ -172,7 +164,7 @@ public:
      * method.
      * 
      */
-    void UpdateView(const Timestep timestep);
+    void UpdateView();
     
     /// Call at the end of the main loop to finish all pending updates.
     void EndUpdate();
@@ -185,7 +177,7 @@ public:
      * 
      * It's probably a case of YouMightNeedThis.
      */
-    void UpdateAll(const Timestep timestep);
+    void UpdateAll();
     
     bool keepRunning;
     
@@ -202,13 +194,6 @@ private:
     cMainWindow* m_MainWindow = NULL;
 
     EventManager* eventManager;
-    
-    Timestep currentTimestep;
-
-    /// The first timestep ever in the app
-    unsigned int firstTimestep;
-    /// The most recent timestep called
-    unsigned int lastTimestep;
     
     // Disable default constructor
     Application();

@@ -22,39 +22,44 @@
  * 
  */
 
-#ifndef CORE__H
-#define CORE__H
-
-/** This file just contains includes for all core files.
- */
-
-// base include files
-#include "application.h"
 #include "clock.h"
-#include "collide.h"
-#include "event.h"
-#include "font.h"
-#include "macros.h"
-#include "object.h"
-#include "path.h"
-#include "point.h"
-#include "rect.h"
-#include "sprite.h"
-#include "surface.h"
-#include "types.h"
-#include "window.h"
 
-// event include files
-#include "hardwareevents.h"
-#include "hardwareeventreceiver.h"
-#include "eventreceiver.h"
+#include "backend.h"
 
-namespace cerritos {
+using namespace cerritos;
 
-// Code goes here
+Clock::Clock() {
+    // Start by setting up the timestep
+    unsigned int newTimestep = GetTicks();
+
+    firstTimestep = newTimestep;
     
-} // namespace cerritos
+    currentTimestep.fromBeginning = 0;
+    currentTimestep.fromLast = 0;
+}
 
-#endif // CORE__H
+void Clock::newTimestep() {
+    unsigned int newTimestep;
+    
+    // update timestep
+    newTimestep = GetTicks();
+    
+    currentTimestep.fromBeginning = newTimestep - firstTimestep;
+    currentTimestep.fromLast = newTimestep - lastTimestep;
+    
+    lastTimestep = newTimestep;
+}
+
+/**
+ * Gets the Path singleton.  You'll usually use the _PATH macro instead
+ * of this
+ */
+Clock& Clock::get() {
+    static Clock* instance = new Clock();
+    
+    return *instance;
+}
+
+
 
 

@@ -27,9 +27,10 @@
 
 #include "backend.h"
 
+#include "clock.h"
+#include "types.h"
 #include "point.h"
 #include "widget.h"
-#include "types.h"
 
 namespace cerritos {
 

@@ -27,6 +27,7 @@
 #include "backend.h"
 
 #include "application.h"
+#include "clock.h"
 #include "event.h"
 #include "path.h"
 
@@ -40,20 +41,14 @@ using namespace cerritos;
 Application::Application(int argc, char* argv[]) {
     _PATH.setProgramName(argv[0]);
     Path::init();
-    
-    // Start by setting up the timestep
-    unsigned int newTimestep = GetTicks();
-
-    this->firstTimestep = newTimestep;
-    
-    this->currentTimestep.fromBeginning = 0;
-    this->currentTimestep.fromLast = 0;
+    // Initialize the clock
+    _CLOCK;
     
     // Create the event manager
-    this->eventManager = new EventManager();
+    eventManager = new EventManager();
     
     // Setup miscellaneous stuff
-    this->keepRunning = true;
+    keepRunning = true;
 }
 
 void Application::_init(cMainWindow* window) {
@@ -73,55 +68,44 @@ cMainWindow* Application::getMainWindow() {
 }
 
 bool Application::hasEvent() { 
-    return this->eventManager->hasEvent();
+    return eventManager->hasEvent();
 }
 
 Event* Application::PollEvent() {
-    if(this->hasEvent())
-        return this->eventManager->popEvent();
+    if(hasEvent())
+        return eventManager->popEvent();
     
     return NULL;
 }
 
-const Timestep Application::getTimestep() {
-    return this->currentTimestep;
-}
-
 void Application::BeginUpdate() {
-    unsigned int newTimestep;
+    // Setup the new timestep
+    _CLOCK.newTimestep();
     
-    // update timestep
-    newTimestep = SDL_GetTicks();
-    
-    this->currentTimestep.fromBeginning = newTimestep - this->firstTimestep;
-    this->currentTimestep.fromLast = newTimestep - this->lastTimestep;
-    
-    this->lastTimestep = newTimestep;
-
     // Get system-specific events from the backend
-    PollHardwareEvents(this->eventManager);
+    PollHardwareEvents(eventManager);
 }
 
 void Application::ProcessEvents() {
     // This is the main event processing loop
-    while(this->hasEvent() ) {
+    while(hasEvent() ) {
         Event* anEvent = NULL;
-        anEvent = this->PollEvent();
+        anEvent = PollEvent();
         
         // Callback for users of the library
         if(anEvent != NULL)
-            this->BeginProcessOneEvent(anEvent);
+            BeginProcessOneEvent(anEvent);
         
         // Actually process the event
         if(anEvent != NULL)
             if(anEvent->isActive() ) {
-                this->ProcessOneEventI(anEvent);
+                ProcessOneEventI(anEvent);
             }
         
         // Callback for users of the library
         if(anEvent != NULL)
             if(anEvent->isActive() ) {
-                this->ProcessOneEvent(anEvent);
+                ProcessOneEvent(anEvent);
             }
 
         // Just some protection in case users delete the event.
@@ -131,35 +115,35 @@ void Application::ProcessEvents() {
 }
 
 void Application::onQuit(QuitEvent* event) {
-    this->keepRunning = false;
+    keepRunning = false;
 }
 
 void Application::Update() {
 }
 
-void Application::UpdateView(const Timestep timestep) {
+void Application::UpdateView() {
     if(m_MainWindow != NULL) {
-        m_MainWindow->Update(timestep);
+        m_MainWindow->Update(_CLOCK.getTimestep() );
     }
 }
 
-void Application::UpdateAll(const Timestep timestep) {
-    this->BeginUpdate();
-    this->ProcessEvents();
-    this->Update();
-    this->UpdateView(timestep);
-    this->EndUpdate();
+void Application::UpdateAll() {
+    BeginUpdate();
+    ProcessEvents();
+    Update();
+    UpdateView();
+    EndUpdate();
 }
 
 void Application::loop() {
     while(keepRunning) {
-        UpdateAll(this->getTimestep());
+        UpdateAll();
     }
 }
 
 void Application::EndUpdate() {
     if(m_MainWindow != NULL) {
-        m_MainWindow->renderAll(this->getTimestep());
+        m_MainWindow->renderAll(_CLOCK.getTimestep());
     }    
 }
 
@@ -171,6 +155,6 @@ void Application::ProcessOneEventI(Event* evt) {
     
     // If it's still an active event, handle it here
     if(evt->isActive() )
-        this->process_event(evt);
+        process_event(evt);
 }
 
