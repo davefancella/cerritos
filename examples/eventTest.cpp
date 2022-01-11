@@ -37,8 +37,14 @@
 
 using namespace cerritos;
 
-class etMainWindow : public cMainWindow {
+class etApplication : public Application {
 public:
+    CONSTRUCTAPP(etApplication);
+    
+    void init() {
+        setMainWindow(new cMainWindow() );
+    }
+    
     void onMouseMotion(MouseMotionEvent* evt) {
         std::cout << "Mouse Motion: "
         << "x(" << evt->posx << ") y(" << evt->posy << ")"
@@ -46,5 +52,5 @@ public:
     }
 };
 
-CERRITOSMAIN(Application, etMainWindow)
+CERRITOSMAIN(etApplication)
 

@@ -58,6 +58,7 @@ public:
     CONSTRUCTAPP(ftApplication);
     
     void init() {
+        setMainWindow(new etMainWindow() );
         getMainWindow()->setTitle("Font Test");
         
         Font* theFont = Font::loadFromFile("/usr/share/fonts/truetype/freefont/FreeSans.ttf", 30);
@@ -65,6 +66,6 @@ public:
     };
 };
 
-CERRITOSMAIN(ftApplication, etMainWindow)
+CERRITOSMAIN(ftApplication)
 
 

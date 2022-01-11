@@ -36,8 +36,10 @@ public:
     CONSTRUCTAPP(hello);
     
     void init() {
+        setMainWindow(new cMainWindow() );
+        
         getMainWindow()->setTitle("Hello, world!");
     };
 };
 
-CERRITOSMAIN(hello, cMainWindow)
+CERRITOSMAIN(hello)

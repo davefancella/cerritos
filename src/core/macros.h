@@ -37,17 +37,15 @@
  *  @arg app : The name of your Application class.
  *  @arg window : The name of your cMainWindow class.
  */
-#define CERRITOSMAIN(app, window) \
+#define CERRITOSMAIN(app) \
 int main( int argc, char* args[] ) { \
     app* theApp; \
-    window* theWindow; \
 \
     cInit(); \
 \
     theApp = new app(argc, args); \
-    theWindow = new window(); \
 \
-    theApp->_init(theWindow); \
+    theApp->_init(); \
 \
     theApp->loop(); \
 \
