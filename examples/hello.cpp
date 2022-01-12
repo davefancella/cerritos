@@ -50,7 +50,7 @@ public:
     // Here we just create the MainWindow and set its title, because this is
     // Hello, World!.
     void init() {
-        setMainWindow(new cMainWindow("Hello, world!") );
+        createMainWindow("Hello, world!");
     };
 };
 
