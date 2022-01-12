@@ -26,6 +26,7 @@
 #define SPRITE__H
 
 // Includes and forward declarations go here
+#include "imagemanager.h"
 #include "clock.h"
 #include "rect.h"
 #include "surface.h"
@@ -49,11 +50,20 @@ namespace cerritos {
     
 class Sprite {
 public:
+    Sprite(Window* window=NULL) { 
+        if(window == NULL) 
+            m_Window = _IMG.getWindow();
+        else
+            m_Window = window;
+    };
+    
     Sprite(Window* window, int x, int y, int w, int h, int fps);
     ~Sprite();
     
     ///Draw method: simply passes m_Rect to surface->Blit_To()
-    void Draw();
+    void Draw() { Render(); };
+    
+    void Render();
     
     ///Update takes the timestep from the app and
     ///updates the animation frame according to
@@ -66,6 +76,9 @@ public:
     void setMode(int mode);
     
     double distance(Sprite* other);
+
+    void setHeading(double newHeading) { m_Heading = newHeading; };
+    double getHeading() { return m_Heading; };
     
     PointInt getPosition() { return m_Position; };
     cSizeInt getSize() { return m_Size; };
@@ -83,10 +96,17 @@ public:
     
     Rect& getRect();
     
+    void normalizeHeading() {
+        while(getHeading() < (0.0) ) setHeading(getHeading() + (2.0*cerpi) );
+        while(getHeading() > (2.0*cerpi) ) setHeading(getHeading() - (2.0*cerpi) );
+    }
+    
     unsigned int m_xVelocity;
     unsigned int m_yVelocity;
 
 private:
+    double m_Heading;
+    
     int m_Fps;
     int m_CurrentFrame;
     

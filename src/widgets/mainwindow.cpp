@@ -24,6 +24,7 @@
 
 #include "backend.h"
 
+#include "application.h"
 #include "imagemanager.h"
 #include "window.h"
 #include "mainwindow.h"
@@ -106,7 +107,7 @@ void cMainWindow::Update(const Timestep timestep) {
  * just a placeholder for now.
  */
 void cMainWindow::Render(const Timestep timestep) {
-    // Do nothing.
+    m_Application->UpdateView();
 }
 
 /**

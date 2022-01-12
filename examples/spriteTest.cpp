@@ -125,7 +125,7 @@ int main( int argc, char* args[] ) {
 
     cInit();
         
-    theApp = new Application(argc, args);
+    theApp = new Application();
 
     theWindow = new spMainWindow();
     

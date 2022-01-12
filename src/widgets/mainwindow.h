@@ -35,6 +35,7 @@
 namespace cerritos {
 
 class cLayout;
+class Application;
 
 /**
  * The main window for the application.  It contains the game
@@ -100,7 +101,11 @@ public:
     void onMouseOver(MouseMotionEvent* evt);
     
     Window* getWindow();
+    void setApplication(Application* app) { m_Application = app; };
 private:
+    /// Application pointer
+    Application* m_Application;
+    
     /// The title of the window
     String m_Title;
     

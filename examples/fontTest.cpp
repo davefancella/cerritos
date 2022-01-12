@@ -27,8 +27,17 @@
 
 using namespace cerritos;
 
-class etMainWindow : public cMainWindow {
+class ftApplication : public Application {
 public:
+    CONSTRUCTAPP(ftApplication);
+    
+    void init() {
+        createMainWindow("Font Test");
+        
+        Font* theFont = Font::loadFromFile("/usr/share/fonts/truetype/freefont/FreeSans.ttf", 30);
+        setFont(theFont);
+    };
+    
     void onMouseMotion(MouseMotionEvent* evt) {
         char buffer[100];
         snprintf(buffer, 100, "Mouse Motion: x(%d) y(%d)", evt->posx, evt->posy);
@@ -40,9 +49,9 @@ public:
         mFont = theFont;
     }
     
-    void Render(const Timestep timestep) {
+    void UpdateView() {
         Rect aRect = { 0,0,200,200 };
-        mFont->RenderText(this->getWindow(),
+        mFont->RenderText(getMainWindow()->getWindow(),
                           mouseText,
                           &aRect,
                           255, 255, 255);
@@ -51,19 +60,6 @@ public:
     Font* mFont;
     
     String mouseText = "Nothing yet.  Hi there!";
-};
-
-class ftApplication : public Application {
-public:
-    CONSTRUCTAPP(ftApplication);
-    
-    void init() {
-        setMainWindow(new etMainWindow() );
-        getMainWindow()->setTitle("Font Test");
-        
-        Font* theFont = Font::loadFromFile("/usr/share/fonts/truetype/freefont/FreeSans.ttf", 30);
-        dynamic_cast<etMainWindow*>(getMainWindow() )->setFont(theFont);
-    };
 };
 
 CERRITOSMAIN(ftApplication)

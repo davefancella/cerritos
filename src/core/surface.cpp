@@ -27,6 +27,7 @@
 #include "window.h"
 #include "rect.h"
 #include "point.h"
+#include "types.h"
 
 #ifdef USING_SDL
 #include "sdl_backend.h"
@@ -64,7 +65,7 @@ void Surface::Blit_To(PointInt* dest, const double angle, PointInt *center, CER_
                    m_Texture, 
                    NULL, 
                    &aRect,
-                   angle,
+                   DEGREES(angle),
                    &aPoint,
                    static_cast<SDL_RendererFlip>(flip) );
 #endif

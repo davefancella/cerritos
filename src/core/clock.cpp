@@ -48,16 +48,14 @@ void Clock::newTimestep() {
     
     currentTimestep.fromBeginning = newTimestep - firstTimestep;
     currentTimestep.fromLast = newTimestep - lastTimestep;
-    currentTimestep.fromBeginningSeconds = currentTimestep.fromBeginning/1000;
-    currentTimestep.fromLastSeconds = currentTimestep.fromLast/1000;
+    currentTimestep.fromBeginningSeconds = static_cast<double>(
+        newTimestep - firstTimestep)/1000;
+    currentTimestep.fromLastSeconds = static_cast<double>(
+        newTimestep - lastTimestep)/1000;
     
     lastTimestep = newTimestep;
 }
 
-/**
- * Gets the Path singleton.  You'll usually use the _PATH macro instead
- * of this
- */
 Clock& Clock::get() {
     static Clock* instance = new Clock();
     

@@ -72,12 +72,13 @@ Sprite::~Sprite() {
     m_Surface->~Surface();
 }
 
-void Sprite::Draw() {
+void Sprite::Render() {
     PointInt* drawPos = new PointInt(m_Position.x() - m_Origin.x(),
                                      m_Position.y() - m_Origin.y());
     if(m_Surface != NULL) {
-        m_Surface->Blit_To(drawPos, 0.0, &m_Origin);
+        m_Surface->Blit_To(drawPos, m_Heading, &m_Origin);
     }
+    
 }
 
 void Sprite::addSpriteMode(int mode, List<String> frames) {
@@ -122,8 +123,8 @@ void Sprite::Update(const Timestep timestep) {
     
     m_Surface = m_Frames[m_CurrentFrame];
     
-    m_Position.setX(m_Position.x() + m_xVelocity);
-    m_Position.setY(m_Position.y() + m_yVelocity);
+    //m_Position.setX(m_Position.x() + m_xVelocity);
+    //m_Position.setY(m_Position.y() + m_yVelocity);
     
 }
 

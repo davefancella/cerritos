@@ -22,10 +22,6 @@
  * 
  */
 
-#include <iostream>
-
-#include "backend.h"
-
 #include "application.h"
 #include "clock.h"
 #include "event.h"
@@ -38,29 +34,32 @@
 using namespace cerritos;
 
 /// Constructor.
-Application::Application(int argc, char* argv[]) {
-    _PATH.setProgramName(argv[0]);
-    Path::init();
-    // Initialize the clock
-    _CLOCK;
-    
-    // Create the event manager
-    eventManager = new EventManager();
-    
-    // Setup miscellaneous stuff
-    keepRunning = true;
-}
-
-void Application::_init(cMainWindow* window) {
-    if(window != NULL) {
-        setMainWindow(window);
-    }
-    
-    init();
+Application::Application() {
 }
 
 void Application::setMainWindow(cMainWindow* window) {
     m_MainWindow = window;
+    m_MainWindow->setApplication(this);
+}
+
+void Application::createMainWindow(CER_WindowFlags winFlags) {
+    createMainWindow("Cerritos Window", 800, 600, CER_WindowPos_Centered, CER_WindowPos_Centered, winFlags);
+}
+void Application::createMainWindow(String title, CER_WindowFlags winFlags) {
+    createMainWindow(title, 800, 600, CER_WindowPos_Centered, CER_WindowPos_Centered, winFlags);
+}
+void Application::createMainWindow(String title, int width, int height, CER_WindowFlags winFlags) {
+    createMainWindow(title, width, height, CER_WindowPos_Centered, CER_WindowPos_Centered, winFlags);
+}
+/// Creates a cMainWindow for the Application.  Arguments are the same as
+/// for cMainWindow constructors.
+void Application::createMainWindow(String title, int width, int height, int posx, int posy, CER_WindowFlags winFlags) {
+    setMainWindow(new cMainWindow(
+                        title,
+                        width, height, posx, posy,
+                        winFlags
+                      )
+    );
 }
 
 cMainWindow* Application::getMainWindow() {
@@ -131,7 +130,6 @@ void Application::UpdateAll() {
     BeginUpdate();
     ProcessEvents();
     Update();
-    UpdateView();
     EndUpdate();
 }
 
@@ -156,5 +154,24 @@ void Application::ProcessOneEventI(Event* evt) {
     // If it's still an active event, handle it here
     if(evt->isActive() )
         process_event(evt);
+}
+
+int Application::main(int argc, char* argv[]) {
+    _PATH.setProgramName(argv[0]);
+    Path::init();
+    // Initialize the clock
+    _CLOCK;
+    
+    // Create the event manager
+    eventManager = new EventManager();
+    
+    // Setup miscellaneous stuff
+    keepRunning = true;
+    
+    init();
+    
+    loop();
+    
+    return 0;
 }
 

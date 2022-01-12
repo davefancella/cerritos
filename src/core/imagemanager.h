@@ -67,6 +67,7 @@ public:
         return loadPath(String(searchpath), filename);
     };
     
+    Window* getWindow() { return m_Window; };
 private:
     Window* m_Window;
     

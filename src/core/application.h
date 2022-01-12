@@ -30,6 +30,24 @@
 #include "eventreceiver.h"
 #include "mainwindow.h"
 
+/**
+ * Application subclasses **must** use this macro to ensure the Application
+ * object is constructed correctly.
+ * 
+ *      class MyApp : public Application {
+ *      CONSTRUCTAPP(MyApp);
+ *
+ *      // The rest of your class declaration follows
+ *      };
+ *
+ * Use this macro to setup all the appropriate methods and constructors.
+ */
+#define CONSTRUCTAPP(appClass) \
+public:\
+    appClass() : Application() { \
+    };\
+
+
 namespace cerritos {
 
 /** 
@@ -57,8 +75,26 @@ namespace cerritos {
 class Application : public Object,
                      public cBaseEventReceiver {
 public:
-    Application(int argc, char* argv[]);
+    /**
+     * Constructor
+     * Application subclasses **must** use the CONSTRUCTAPP macro to ensure 
+     * the Application object is constructed correctly.
+     * 
+     *     class MyApp : public Application {
+     *     CONSTRUCTAPP(MyApp);
+     * 
+     *     // The rest of your class declaration follows
+     *     };
+     *
+     */
+    Application();
     
+    /** @name Setup
+     * 
+     * These methods are all used to set up the Application before the main
+     * loop gets started.  No event processing or input is handled here.
+     */
+    ///@{
     /**
      * Called to initialize the Application.  The constructor is only used
      * to construct the object in memory, this method is used to initialize
@@ -66,14 +102,33 @@ public:
      * fonts and images and stuff.
      */
     virtual void init() { };
+        
+    /// Set the main window for the object.  If it's not set, it won't be
+    /// updated.
+    void setMainWindow(cMainWindow* window);
+    
+    /// Creates a mainWindow.  Pass it a created MainWindow and it'll be
+    /// used instead.
+    void createMainWindow(CER_WindowFlags winFlags=CER_Shown);
+    void createMainWindow(String title, CER_WindowFlags winFlags=CER_Shown);
+    void createMainWindow(String title, int width, int height, CER_WindowFlags winFlags=CER_Shown);
+    void createMainWindow(String title, int width, int height, int posx, int posy, CER_WindowFlags winFlags=CER_Shown);
+
+    ///@}
+    
+    /** @name Informational Methods
+     * 
+     * These methods provide information only.  Each one only provides
+     * useful information after it has been initialized by one of the
+     * Setup methods.
+     */
+    ///@{
     
     /**
-     * This function is called automatically internally.  It will call the
-     * virtual init() method.
+     * Call to see if Application already has a cMainWindow.
+     * 
+     * @returns true if there is one, false if not.
      */
-    void _init(cMainWindow* window=NULL);
-    
-    /// Call to see if Application already has a cMainWindow.
     bool hasMainWindow() { 
         if(m_MainWindow != NULL)
             return true;
@@ -81,10 +136,21 @@ public:
         return false;
     };
     
-    /// Set the main window for the object.  If it's not set, it won't be
-    /// updated.
-    void setMainWindow(cMainWindow* window);
+    /**
+     * Gets the pointer to the MainWindow.  Returns NULL if there isn't
+     * a MainWindow yet.  You should check with hasMainWindow() first.
+     */
     cMainWindow* getMainWindow();
+
+    ///@}
+    
+    /** @name Event Processing
+     * 
+     * Each of these methods is used for event processing during the main
+     * loop.  Since that's the only place event processing happens, these
+     * methods are only valid inside the main loop.
+     */
+    ///@{
     
     bool hasEvent();
     
@@ -98,23 +164,6 @@ public:
      * memory leak in your game.
      */
     Event* PollEvent();
-    
-    /**
-     * Call to run the main loop.  Calling this surrenders control of
-     * the main loop to the application object.  If you don't want to
-     * let cerritos handle your main loop, then obviously you won't use
-     * this method.  Also, you'll only ever call this directly in the
-     * case where you handle all the initialization yourself, in which
-     * case you'll need to call loop() to enter the main loop.
-     * 
-     * If you use any of the CERRITOSMAIN macros, this will be called
-     * automatically.
-     */
-    void loop();
-    
-    /// Call this at the beginning of your main loop.  This updates the
-    /// timestep and collects all new events in the event queue.
-    void BeginUpdate();
     
     /// Call this to process events.  It will delete the events as it goes.
     void ProcessEvents();
@@ -145,6 +194,43 @@ public:
      * Default implementation does nothing.
      */
     virtual void ProcessOneEvent(Event* evt) { };
+protected:
+    /**
+     * Process one event internally.  This is where the events get delegated
+     * for processing.
+     */
+    void ProcessOneEventI(Event* evt);
+    
+    ///@}
+    
+public:    
+    /** @name Main Loop
+     * 
+     * These methods collectively constitute the main loop.  They are
+     * designed to be easily overridden, and some have no default
+     * implementation because they're only useful if overridden.
+     * 
+     * Event processing, while handled in the main loop, gets its own
+     * subgroup.
+     */
+    ///@{
+    
+    /**
+     * Call to run the main loop.  Calling this surrenders control of
+     * the main loop to the application object.  If you don't want to
+     * let cerritos handle your main loop, then obviously you won't use
+     * this method.  Also, you'll only ever call this directly in the
+     * case where you handle all the initialization yourself, in which
+     * case you'll need to call loop() to enter the main loop.
+     * 
+     * If you use any of the CERRITOSMAIN macros, this will be called
+     * automatically.
+     */
+    void loop();
+    
+    /// Call this at the beginning of your main loop.  This updates the
+    /// timestep and collects all new events in the event queue.
+    void BeginUpdate();
     
     /**
      * This is the driving part of the main loop.  This is where you'll
@@ -164,7 +250,7 @@ public:
      * method.
      * 
      */
-    void UpdateView();
+    virtual void UpdateView();
     
     /// Call at the end of the main loop to finish all pending updates.
     void EndUpdate();
@@ -179,24 +265,27 @@ public:
      */
     void UpdateAll();
     
+    ///@}
+    
     bool keepRunning;
+    
+    /**
+     * This is the main function of the Application.  If you need to
+     * overload it, you assume responsibility for all of the Application.
+     * 
+     * This method handles all of the initialization, gui switching,
+     * everything.
+     */
+    virtual int main(int argc, char* argv[]);
     
 protected:
     void onQuit(QuitEvent* event);
-    
-    /**
-     * Process one event internally.  This is where the events get delegated
-     * for processing.
-     */
-    void ProcessOneEventI(Event* evt);
     
 private:
     cMainWindow* m_MainWindow = NULL;
 
     EventManager* eventManager;
     
-    // Disable default constructor
-    Application();
 };
 
 } // namespace cerritos

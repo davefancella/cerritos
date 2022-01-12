@@ -38,28 +38,19 @@
  *  @arg window : The name of your cMainWindow class.
  */
 #define CERRITOSMAIN(app) \
-int main( int argc, char* args[] ) { \
+int main( int argc, char* argv[] ) { \
     app* theApp; \
 \
     cInit(); \
 \
-    theApp = new app(argc, args); \
+    theApp = new app(); \
 \
-    theApp->_init(); \
-\
-    theApp->loop(); \
+    int retValue = theApp->main(argc, argv); \
 \
     cClose(); \
+    return retValue;\
 }\
 
-
-/**
- * Use this macro to setup all the appropriate methods and constructors.
- */
-#define CONSTRUCTAPP(appClass) \
-public:\
-    appClass(int argc, char* argv[]) : Application(argc, argv) { \
-    };\
 
 
 
