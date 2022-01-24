@@ -58,7 +58,7 @@ public:
     };
     
     Sprite(Window* window, int x, int y, int w, int h, int fps);
-    ~Sprite();
+    virtual ~Sprite();
     
     ///Draw method: simply passes m_Rect to surface->Blit_To()
     void Draw() { Render(); };
@@ -69,6 +69,7 @@ public:
     ///updates the animation frame according to
     ///the programmer set Frames Per Second.
     void Update(const Timestep timestep);
+    virtual void Update() {};
     
     void addSpriteMode(int mode, List<String> frames);
     
@@ -87,6 +88,9 @@ public:
     void setPosition(int x, int y) { setPosition(PointInt(x, y) ); };
     void setPosition(PointInt newPosition) { m_Position = newPosition; };
     
+    int getX() { return m_Position.x(); };
+    int getY() { return m_Position.y(); };
+    
     Collision* GetCollideRect(Sprite* other);
     Collision* GetCollideCircle(Sprite* other);
     double getRadius() { return m_Radius; };
@@ -99,10 +103,7 @@ public:
     void normalizeHeading() {
         while(getHeading() < (0.0) ) setHeading(getHeading() + (2.0*cerpi) );
         while(getHeading() > (2.0*cerpi) ) setHeading(getHeading() - (2.0*cerpi) );
-    }
-    
-    unsigned int m_xVelocity;
-    unsigned int m_yVelocity;
+    };
 
 private:
     double m_Heading;
