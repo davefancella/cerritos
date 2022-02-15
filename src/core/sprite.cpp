@@ -74,6 +74,16 @@ double Sprite::distance(Sprite* other) {
     return m_Position.distance(other->getPosition() );
 }
 
+void Sprite::Animate(const Timestep timestep) {
+    int dt = (timestep.fromBeginning / (1000 / m_Fps));
+    m_CurrentFrame = dt % m_Frames.size();
+    if (m_CurrentFrame >= m_Frames.size()) {
+        m_CurrentFrame = 0;
+    }
+    
+    m_Surface = m_Frames[m_CurrentFrame];
+}
+
 void Sprite::Update(const Timestep timestep) {
     m_previousPosition.setX(m_Position.x() );
     m_previousPosition.setY(m_Position.y() );
@@ -89,14 +99,7 @@ void Sprite::Update(const Timestep timestep) {
     
     m_Frames = m_Modes[theMode];
     
-    int dt = (timestep.fromBeginning / (1000 / m_Fps));
-    m_CurrentFrame = dt % m_Frames.size();
-    if (m_CurrentFrame >= m_Frames.size()) {
-        m_CurrentFrame = 0;
-    }
-    
-    m_Surface = m_Frames[m_CurrentFrame];
-    
+    this->Animate(timestep);
 }
 
 void Sprite::setDefaultMode(int mode) {
@@ -105,6 +108,18 @@ void Sprite::setDefaultMode(int mode) {
 
 void Sprite::setMode(int mode) {
     m_Mode = mode;
+}
+
+void Sprite::setBackground(String image) {
+    Surface* tempSurface = Surface::loadFromFile(image);
+    
+    if(tempSurface != NULL) {
+        m_Size = tempSurface->size();
+        m_Origin = PointInt(m_Size.width/2, m_Size.height/2);
+        m_Radius = m_Origin.distance(PointInt(0, 0));
+    }
+    
+    m_Surface = tempSurface;
 }
 
 Rect& Sprite::getRect() {

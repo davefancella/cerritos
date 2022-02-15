@@ -71,6 +71,8 @@ public:
     void Update(const Timestep timestep);
     virtual void Update() {};
     
+    void Animate(const Timestep timestep);
+    
     void addSpriteMode(int mode, List<String> frames);
     
     void setDefaultMode(int mode);
@@ -80,6 +82,8 @@ public:
 
     void setHeading(double newHeading) { m_Heading = newHeading; };
     double getHeading() { return m_Heading; };
+    
+    void setBackground(String image);
     
     PointInt getPosition() { return m_Position; };
     cSizeInt getSize() { return m_Size; };
