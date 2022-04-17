@@ -60,7 +60,7 @@ public:
     Sprite(Window* window, int x, int y, int w, int h, int fps);
     virtual ~Sprite();
     
-    ///Draw method: simply passes m_Rect to surface->Blit_To()
+    ///Draw method: Calls render function to draw sprite on screen
     void Draw() { Render(); };
     
     void Render();

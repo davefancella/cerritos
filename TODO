@@ -1,0 +1,14 @@
+-Create sound engine, get more information on openal
+
+-Factor Animation code from Sprite to implement elsewhere
+
+-Create game objects
+
+-Create game controllers
+    -gives abstract input
+
+-Event processing in the GUI
+
+-Credits Widget
+
+-Start looking into 3d programming with OpenGLES 3.0 and Vulkan
