@@ -20,7 +20,7 @@ public:
     Sound(int numSources);
     ~Sound();
     
-    ///Loads a file to play into the given indix of the buffers list
+    ///Loads a file to play into the given index of the buffers list
     ///and sources list.
     void LoadSoundFromFile(const char *filename, int index);
     
