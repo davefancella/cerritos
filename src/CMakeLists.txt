@@ -23,6 +23,7 @@ add_library(cerritos SHARED
     core/object.cpp
     core/path.cpp
     core/rect.cpp
+    core/sound.cpp
     core/sprite.cpp
     core/surface.cpp
     core/window.cpp
@@ -57,6 +58,7 @@ install(FILES
     core/path.h
     core/point.h
     core/rect.h
+    core/sound.h
     core/sprite.h
     core/surface.h
     core/window.h
@@ -71,6 +73,7 @@ target_include_directories(cerritos PUBLIC
     ${SDL2_LIBRARIES}
     ${SDL2IMAGE_INCLUDE_DIRS}
     ${SDL2TTF_INCLUDE_DIRS}
+    ${OPENAL_INCLUDE_DIRS}
     .
     backend
     core
@@ -85,6 +88,8 @@ target_link_libraries(cerritos
     ${SDL2_LIBRARIES}
     ${SDL2IMAGE_LIBRARIES}
     ${SDL2TTF_LIBRARIES}
+    ${OPENAL_LIBRARIES}
+    alut
     stdc++fs
     stdc++
 )
