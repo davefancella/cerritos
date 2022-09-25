@@ -80,35 +80,11 @@ public:
             case K_a:
                 m_sprite->setMode(999);
                 break;
-            case K_LEFT:
-                m_sprite->m_xVelocity = -5;
-                break;
-            case K_RIGHT:
-                m_sprite->m_xVelocity = 5;
-                break;
-            case K_UP:
-                m_sprite->m_yVelocity = -5;
-                break;
-            case K_DOWN:
-                m_sprite->m_yVelocity = 5;
-                break;
         }
     }
     
     void onKeyup(KeyupEvent* evt) {
         switch (evt->mKey) {
-            case K_LEFT:
-                m_sprite->m_xVelocity = 0;
-                break;
-            case K_RIGHT:
-                m_sprite->m_xVelocity = 0;
-                break;
-            case K_UP:
-                m_sprite->m_yVelocity = 0;
-                break;
-            case K_DOWN:
-                m_sprite->m_yVelocity = 0;
-                break;
         }
     }
         

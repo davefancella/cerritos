@@ -27,6 +27,30 @@
 
 using namespace cerritos;
 
+class Bullet : public Sprite {
+public:
+    void Update(const Timestep timestep) {
+        if (this->getPosition().x() < -10) {
+            this->~Sprite();
+        } else if (this->getPosition().x() > 810) {
+            this->~Sprite();
+        } else if (this->getPosition().y() < -10) {
+            this->~Sprite();
+        } else if (this->getPosition().y() > 610) {
+            this->~Sprite();
+        }
+    }
+    
+    void setSpeed(double speed) { m_Speed = speed; };
+    double getSpeed() { return m_Speed; };
+    void setRender(bool x) { m_Render = x; };
+    bool getRender() { return m_Render; };
+    
+private:
+    bool m_Render;
+    double m_Speed;
+};
+
 class Ship : public Sprite {
 public:
     Ship(Window* window, int x, int y, int w, int h, int fps) : Sprite(
@@ -50,10 +74,31 @@ public:
     
     double getSpeed() { return m_Speed; };
     
+    void Update(const Timestep dt) {
+        
+    }
+    
+    Bullet* m_Bullet = NULL;
+    
+    void Fire() {
+        m_Fired = true;
+        m_Bullet = new Bullet();
+        m_Bullet->setBackground(_PATH.getFilepath("share", "bullet.bmp"));
+        m_Bullet->setPosition(this->getPosition());
+        m_Bullet->setHeading(this->getHeading());
+        m_Bullet->setSpeed(2.0);
+        m_Bullet->setRender(true);
+    }
+    
+    bool getFired() { return m_Fired; };
+    
 private:
     int m_RotateDirection;
     
     double m_Speed;
+    
+    bool m_Fired = false;
+
 };
 
 class ftApplication : public Application {
@@ -67,13 +112,7 @@ public:
 
         m_Ship = new Ship(getMainWindow()->getWindow(), 200,200, 40, 40, 1 );
         
-        List<String> ship = {
-            _PATH.getFilepath("share", "dadship.png") 
-        };
-        
-        m_Ship->addSpriteMode(0, ship);
-        m_Ship->setDefaultMode(0);
-        m_Ship->setMode(0);
+        m_Ship->setBackground(_PATH.getFilepath("share", "dadship.png"));
         
         m_Ship->setPosition(200,200);
         
@@ -131,10 +170,50 @@ public:
                                          static_cast<int>(dy) );
             cSTDOUT << dx << ", " << dy << EOL;
         }
+        
+        if (m_Ship->getFired() == true && m_Ship->m_Bullet != NULL) {
+            m_Ship->m_Bullet->Update(dt);
+            if(m_Ship->m_Bullet->getRender() == true) {
+                PointInt pos = m_Ship->m_Bullet->getPosition();
+                double dcos = cos(m_Ship->m_Bullet->getHeading() );
+                double dsin = sin(m_Ship->m_Bullet->getHeading() );
+                int xm=0, ym=0;
+                
+                // QI
+                if(dcos > 0.0 && dsin > 0.0) {
+                    xm = 1; ym = 1;
+                }
+                // QII
+                if(dcos < 0.0 && dsin > 0.0) {
+                    xm = -1; ym = 1;
+                } 
+                // QIII
+                if(dcos < 0.0 && dsin < 0.0) {
+                    xm = -1; ym = -1;
+                }
+                // QIV
+                if(dcos > 0.0 && dsin < 0.0) {
+                    xm = 1; ym = -1;
+                }
+                
+                double dx = static_cast<double>(pos.x() ) + 
+                    (static_cast<double>(xm) * (m_Ship->m_Bullet->getSpeed() * abs(dcos) * dt.fromLast) );
+                double dy = static_cast<double>(pos.y() ) + 
+                    static_cast<double>(ym) * ( (m_Ship->m_Bullet->getSpeed() * abs(dsin) * dt.fromLast) );
+                
+                m_Ship->m_Bullet->setPosition(static_cast<int>(dx), 
+                                            static_cast<int>(dy) );
+                cSTDOUT << dx << ", " << dy << EOL;
+            }
+        }
     };
     
     void UpdateView() {
         m_Ship->Render();
+        
+        if (m_Ship->getFired() == true) {
+            m_Ship->m_Bullet->Render();
+        }
     }
     
     virtual void onKeydown(KeydownEvent* event) {
@@ -149,6 +228,9 @@ public:
                 m_Ship->setMoving();
                 break;
             case K_DOWN:
+                break;
+            case K_a:
+                m_Ship->Fire();
                 break;
         }
     };
@@ -166,6 +248,8 @@ public:
                 break;
             case K_DOWN:
                 
+                break;
+            case K_a:
                 break;
         }
     };

@@ -22,40 +22,7 @@
  * 
  */
 
-#ifndef CORE__H
-#define CORE__H
+#include "animate.h"
 
-/** This file just contains includes for all core files.
- */
-
-// base include files
-#include "application.h"
-#include "clock.h"
-#include "collide.h"
-#include "event.h"
-#include "font.h"
-#include "macros.h"
-#include "object.h"
-#include "path.h"
-#include "point.h"
-#include "rect.h"
-#include "sound.h"
-#include "sprite.h"
-#include "surface.h"
-#include "types.h"
-#include "window.h"
-
-// event include files
-#include "hardwareevents.h"
-#include "hardwareeventreceiver.h"
-#include "eventreceiver.h"
-
-namespace cerritos {
-
-// Code goes here
+void Animate(List listOfFrames, const Timestep timestep) {
     
-} // namespace cerritos
-
-#endif // CORE__H
-
-
