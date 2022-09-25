@@ -29,6 +29,7 @@
 #include "event.h"
 #include "eventreceiver.h"
 #include "mainwindow.h"
+#include "types.h"
 
 /**
  * Application subclasses **must** use this macro to ensure the Application
@@ -215,6 +216,11 @@ public:
      */
     ///@{
     
+    void setGuiMode(GUIMode newMode) {
+        getMainWindow()->setGuiMode(newMode);
+        m_guiMode = newMode;
+    };
+    
     /**
      * Call to run the main loop.  Calling this surrenders control of
      * the main loop to the application object.  If you don't want to
@@ -286,6 +292,7 @@ private:
 
     EventManager* eventManager;
     
+    GUIMode m_guiMode;
 };
 
 } // namespace cerritos

@@ -29,6 +29,7 @@
 #include "window.h"
 #include "mainwindow.h"
 #include "surface.h"
+#include "types.h"
 
 using namespace cerritos;
 
@@ -74,6 +75,8 @@ cMainWindow::cMainWindow(String title, int width, int height, int posx, int posy
             m_Position.x(), m_Position.y(),
             m_Size.width, m_Size.height, m_WindowFlags );
     _IMG.setWindow(m_Window);
+    
+    m_guiMode = appGUI;
 }
 
 cMainWindow::~cMainWindow() {
@@ -99,7 +102,25 @@ CER_WindowFlags cMainWindow::windowFlags() {
     return m_WindowFlags;
 }
 
-void cMainWindow::Update(const Timestep timestep) {
+void cMainWindow::Update() {
+    if(m_allGUIs.has_key(m_guiMode) )
+        m_allGUIs[m_guiMode]->setSize(m_Window->getRenderArea() );
+}
+
+GUIMode cMainWindow::getGuiMode() {
+    return m_guiMode;
+}
+
+void cMainWindow::setGuiMode(GUIMode newMode) {
+    m_guiMode = newMode;
+}
+
+void cMainWindow::setGui(GUIMode newMode, cWidget* topWidget) {
+    if(m_allGUIs.has_key(newMode) ) {
+        // delete the existing gui and just toss it away
+    }
+    
+    m_allGUIs[newMode] = topWidget;
 }
 
 /**
@@ -129,9 +150,8 @@ void cMainWindow::beginRender() {
 }
 
 void cMainWindow::guiRender() {
-    for (auto i = m_Children.begin(); i != m_Children.end(); ++i) {
-        static_cast<cWidget*>(*i)->Render_To(m_Window);
-    }
+    if(m_allGUIs.has_key(m_guiMode) )
+        m_allGUIs[m_guiMode]->Render_To(m_Window);
 }
 
 void cMainWindow::finishRender() {

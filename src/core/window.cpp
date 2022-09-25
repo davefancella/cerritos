@@ -77,6 +77,15 @@ void Window::saveScreenshot() {
 #endif
 }
 
+cSizeInt Window::getRenderArea() {
+#ifdef USING_SDL
+    int width, height;
+    SDL_GetRendererOutputSize(getSDLRenderer(), &width, &height);
+    
+    return cSizeInt(width, height);
+#endif // USING_SDL
+}
+
 #ifdef USING_SDL
     SDL_Window* Window::getSDLWindow() { 
         return m_Window; 

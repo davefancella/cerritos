@@ -57,6 +57,8 @@ public:
     
     /// Changes the parent of this widget
     void reparent(Object* newParent);
+    /// Returns this object's parent
+    Object* parent() { return m_Parent; };
     
     /** 
      * Called whenever a child is removed from this object.

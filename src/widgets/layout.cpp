@@ -28,6 +28,50 @@
 
 using namespace cerritos;
 
+/******************************************
+ * LayoutSlot
+ *****************************************/
+
+cLayoutSlot* cLayoutSlot::newWidgetSlot(cLayout* parent, cWidget* theWidget) {
+    cLayoutSlot* newLayoutSlot = new cLayoutSlot(parent, WidgetSlot);
+    
+    newLayoutSlot->setWidget(theWidget);
+    theWidget->reparent(parent->parent() );
+    
+    return newLayoutSlot;
+}
+
+cLayoutSlot* cLayoutSlot::newLayoutSlot(cLayout* parent, cLayout* theLayout) {
+    cLayoutSlot* newLayoutSlot = new cLayoutSlot(parent, LayoutSlot);
+    
+    newLayoutSlot->setLayout(theLayout);
+    theLayout->reparent(parent);
+    
+    return newLayoutSlot;
+}
+
+cLayoutSlot* cLayoutSlot::newStretchSlot(cLayout* parent) {
+    cLayoutSlot* newLayoutSlot = new cLayoutSlot(parent, StretchSlot);
+
+    return newLayoutSlot;
+}
+
+void cLayoutSlot::setWidget(cWidget* theWidget) {
+    m_Widget = theWidget;
+    m_Type = WidgetSlot;
+}
+
+void cLayoutSlot::setLayout(cLayout* theLayout) {
+    m_Layout = theLayout;
+    m_Type = LayoutSlot;
+}
+
+
+
+/******************************************
+ * cLayout
+ *****************************************/
+
 cLayout::cLayout(Object* parent) : Object(parent) { }
 
 void cLayout::addWidget(cWidget* widget) {

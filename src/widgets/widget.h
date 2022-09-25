@@ -31,11 +31,28 @@
 
 #include "eventreceiver.h"
 #include "hardwareeventreceiver.h"
+#include "point.h"
 
 namespace cerritos {
 
 class Window;
 class cLayout;
+
+/**
+ * Contains relevant information for how big a widget needs to be, wants to
+ * be, and can go if there's space available.
+ */
+class SizePolicy {
+    SizePolicy() { };
+    SizePolicy(cSizeInt minimum, cSizeInt preferred, unsigned int xpol, unsigned int ypol) :
+        minimumSize(minimum), preferredSize(preferred), horizontalPolicy(xpol), verticalPolicy(ypol) 
+        { };
+    
+    cSizeInt minimumSize;
+    cSizeInt preferredSize;
+    unsigned int horizontalPolicy;
+    unsigned int verticalPolicy;
+};
 
 /** 
  * The base class for all widgets in Cerritos.
@@ -59,6 +76,13 @@ public:
     /// to this widget.
     void setLayout(cLayout* theLayout);
     
+    void setSize(unsigned int width, unsigned int height) {
+        setSize(cSizeInt(width, height) );
+    }
+    void setSize(cSizeInt newSize) {
+        m_Size = newSize;
+    };
+    
     /// Processes an event.  Generally no need to reimplement it, but
     /// if you do, make sure you call the base implementation.
     virtual void process_event(Event* event);
@@ -71,6 +95,10 @@ public:
 protected:
     /// The top level layout for this widget.
     cLayout* m_Layout;
+    
+private:
+    cSizeInt m_Size;
+    
 // Following are event handlers for widgets.
 public:
     // virtual void onNameofeventCamelCase(cNameofeventCamelCaseEvent* event);

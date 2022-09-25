@@ -76,6 +76,8 @@ public:
         m_Ship->setMode(0);
         
         m_Ship->setPosition(200,200);
+        
+        setGuiMode(gameGUI);
     };
     
     void Update() {
@@ -119,6 +121,12 @@ public:
             double dy = static_cast<double>(pos.y() ) + 
                 static_cast<double>(ym) * ( (m_Ship->getSpeed() * abs(dsin) * dt.fromLast) );
             
+            cSizeInt area = getMainWindow()->getWindow()->getRenderArea();
+            if(dx < -20) dx += area.width + 20;
+            if(dx > area.width + 20) dx -= area.width + 20;
+            if(dy < -20) dy += area.height + 20;
+            if(dy > area.height + 20) dy -= area.height + 20;
+                
             m_Ship->setPosition(static_cast<int>(dx), 
                                          static_cast<int>(dy) );
             cSTDOUT << dx << ", " << dy << EOL;

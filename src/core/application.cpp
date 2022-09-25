@@ -35,6 +35,7 @@ using namespace cerritos;
 
 /// Constructor.
 Application::Application() {
+    m_guiMode = appGUI;
 }
 
 void Application::setMainWindow(cMainWindow* window) {
@@ -121,9 +122,9 @@ void Application::Update() {
 }
 
 void Application::UpdateView() {
-    if(m_MainWindow != NULL) {
-        m_MainWindow->Update(_CLOCK.getTimestep() );
-    }
+    //if(m_MainWindow != NULL) {
+    //    m_MainWindow->Update();
+    //}
 }
 
 void Application::UpdateAll() {

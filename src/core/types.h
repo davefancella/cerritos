@@ -68,6 +68,26 @@
 
 namespace cerritos {
 
+/** 
+ * This enum represents the three basic GUI modes.
+ * 
+ * - AppGUI: The Application GUI, which is typically the GUI that contains
+ *           configuration, user settings, and the start game option.
+ * - gameGUI: The Game GUI, which is the GUI that is shown overlaid on top
+ *            of the game screen as you're playing.  It's often just a
+ *            simple HUD.
+ * - inGameGUI: The In-game GUI, which is the GUI that you bring up in-game
+ *              to do whatever, including quitting the game and returning
+ *              to the AppGUI.
+ * 
+ */
+typedef enum {
+    appGUI,
+    gameGUI,
+    inGameGUI
+} GUIMode;
+    
+
 /** @class String
  * 
  * A simple string implementation, sorta.  Right now, it's just some

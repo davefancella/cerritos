@@ -57,6 +57,11 @@ public:
     /// Window flags
     CER_WindowFlags windowFlags();
     
+    GUIMode getGuiMode();
+
+    void setGuiMode(GUIMode newMode);
+    void setGui(GUIMode newMode, cWidget* topWidget);
+    
     // Constructors
     //cMainWindow();
     cMainWindow(CER_WindowFlags winFlags=CER_Shown) :
@@ -77,7 +82,7 @@ public:
     
     /// Call to update the window.  This is where all new sizes are
     /// calculated, but no rendering is done.
-    virtual void Update(const Timestep timestep);
+    virtual void Update();
     
     /// Call to render the window.  No new calculations should be needed,
     /// but anything not involving drawing the window does not happen
@@ -91,8 +96,12 @@ public:
     /// etc.
     void finishRender();
     
-    /// Called to render the gui.  It's called before finishRender(),
-    /// but after the game screen has been rendered.
+    /**
+     * Called to render the gui.  It's called before finishRender(),
+     * but after the game screen has been rendered.  Notably, it does **not**
+     * call any child widgets to render.  It only renders the current GUI,
+     * based on the value of m_guiMode.
+     */
     void guiRender();
     
     /// Called internally to render the window.
@@ -117,6 +126,9 @@ private:
     
     /// Window flags
     CER_WindowFlags m_WindowFlags;
+    
+    GUIMode m_guiMode;
+    cMap<GUIMode, cWidget*> m_allGUIs;
     
     /// The window we'll be rendering to
     Window* m_Window = NULL;

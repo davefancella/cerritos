@@ -69,15 +69,16 @@ using Point = Vector<T>;
 using PointInt = Vector<int>;
 
 /**
- * A size, given as width x height.  It subclasses Point just
- * to allow pointers to be held to it without knowing the
- * details.  This is usually pointless, as size is pointless,
- * i.e. it's not a Point.
+ * A size, given as width x height.
  */
 class cSizeInt {
 public:
     cSizeInt() : width(0), height(0) { };
     cSizeInt(int width, int height) : width(width), height(height) { };
+    cSizeInt(cSizeInt& other) {
+        width = other.width;
+        height = other.height;
+    };
     
     int width;
     int height;

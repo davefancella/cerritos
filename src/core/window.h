@@ -27,6 +27,7 @@
 
 #include "types.h"
 #include "backend.h"
+#include "point.h"
 
 #ifdef USING_SDL
 struct SDL_Window;
@@ -58,6 +59,8 @@ public:
     bool isValid() { return m_IsValid; };
     
     void saveScreenshot();
+    
+    cSizeInt getRenderArea();
     
 #ifdef USING_SDL
     SDL_Window* getSDLWindow();

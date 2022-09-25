@@ -27,11 +27,47 @@
 
 #include "point.h"
 #include "object.h"
+#include "types.h"
 
 namespace cerritos {
     
 class cWidget;
 class Object;
+class cLayout;
+
+/// The different types of layout slots.
+typedef enum {
+    WidgetSlot, LayoutSlot, StretchSlot
+} LayoutSlotType;
+
+/**
+ * A slot in the layout that holds the actual widget.
+ * 
+ * @ingroup widgetgroup
+ */
+class cLayoutSlot : public Object {
+public:
+    cLayoutSlot(cLayout* parent, LayoutSlotType lType) { };
+    
+    cWidget* widget() { return m_Widget; };
+    void setWidget(cWidget* theWidget);
+    
+    cLayout* layout() { return m_Layout; };
+    void setLayout(cLayout* theLayout);
+    
+    /// Returns a new LayoutSlot of the requested type.
+    static cLayoutSlot* newWidgetSlot(cLayout* parent, cWidget* theWidget);
+    /// Returns a new LayoutSlot of the requested type.
+    static cLayoutSlot* newLayoutSlot(cLayout* parent, cLayout* theLayout);
+    /// Returns a new LayoutSlot of the requested type.
+    static cLayoutSlot* newStretchSlot(cLayout* parent);
+
+private:
+    cWidget* m_Widget;
+    cLayout* m_Layout;
+    
+    LayoutSlotType m_Type;
+};
 
 /** 
  * The base class for all layouts.
@@ -51,6 +87,8 @@ public:
     cSizeInt minSize;
     /// The current size for this layout
     cSizeInt size;
+private:
+    List<cLayoutSlot*> m_Slots;
 };
 
 } // namespace cerritos

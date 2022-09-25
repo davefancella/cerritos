@@ -78,6 +78,7 @@ target_include_directories(cerritos PUBLIC
     core/events/hardware
     thirdparty/boost
     thirdparty/binreloc
+    thirdparty/tclap
     widgets
 )
 
