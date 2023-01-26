@@ -1,0 +1,16 @@
+[requires]
+sdl/2.26.1
+sdl_ttf/2.0.18
+sdl_image/2.0.5
+doxygen/1.9.4
+
+# conflict resolution
+libpng/1.6.39
+zlib/1.2.13
+
+# graphviz is not in Conan. Figures, it is a perl program. 
+# Hope it is optional or can be manually installed if needed.
+
+[generators]
+CMakeDeps
+CMakeToolchain
