@@ -1,3 +1,8 @@
+# standard conan instructions?
+# make a new directory next to the source, change into it
+# install dependencies with
+# conan install ../cerritos --build=missing
+
 [requires]
 sdl/2.26.1
 sdl_ttf/2.0.18
