@@ -13,7 +13,7 @@ doxygen/1.9.4
 libpng/1.6.39
 zlib/1.2.13
 
-# graphviz is not in Conan. Figures, it is a perl program. 
+# graphviz is not in Conan. Figures, it is a perl program.
 # Hope it is optional or can be manually installed if needed.
 
 [generators]
