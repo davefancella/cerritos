@@ -70,10 +70,6 @@ install(FILES
 )
 
 target_include_directories(cerritos PUBLIC
-    ${SDL2_LIBRARIES}
-    ${SDL2IMAGE_INCLUDE_DIRS}
-    ${SDL2TTF_INCLUDE_DIRS}
-    ${OPENAL_INCLUDE_DIRS}
     .
     backend
     core
@@ -83,6 +79,13 @@ target_include_directories(cerritos PUBLIC
     thirdparty/binreloc
     thirdparty/tclap
     widgets
+)
+
+target_include_directories(cerritos SYSTEM PUBLIC
+    ${SDL2_LIBRARIES}
+    ${SDL2IMAGE_INCLUDE_DIRS}
+    ${SDL2TTF_INCLUDE_DIRS}
+    ${OPENAL_INCLUDE_DIRS}
 )
 
 target_link_libraries(cerritos 
