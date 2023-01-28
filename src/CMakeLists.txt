@@ -82,7 +82,7 @@ target_include_directories(cerritos PUBLIC
 )
 
 target_include_directories(cerritos SYSTEM PUBLIC
-    ${SDL2_LIBRARIES}
+    ${SDL2_INCLUDE_DIRS}
     ${SDL2IMAGE_INCLUDE_DIRS}
     ${SDL2TTF_INCLUDE_DIRS}
     ${OPENAL_INCLUDE_DIR}
