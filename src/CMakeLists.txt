@@ -94,8 +94,7 @@ target_link_libraries(cerritos
     ${SDL2TTF_LIBRARIES}
     ${OPENAL_LIBRARIES}
     alut
-    stdc++fs
-    stdc++
+    $<$<AND:$<CXX_COMPILER_ID:GNU>,$<VERSION_LESS:$<CXX_COMPILER_VERSION>,9.1>>:stdc++fs>
 )
 
 install(TARGETS cerritos
