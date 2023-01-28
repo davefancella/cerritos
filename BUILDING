@@ -1,7 +1,10 @@
 How to build cerritos
 
 1.  Install dependencies
-cmake libsdl2 doxygen graphviz libsdl2-image-dev libsdl2-ttf-dev
+Linux (package names may vary):
+{your packager} libsdl2 doxygen graphviz libsdl2-image-dev libsdl2-ttf-dev freealut-dev
+macOS:
+brew install sdl2 doxygen graphviz sdl2_image sdl2_ttf freealut
 
 2.  Create build directory
 mkdir build

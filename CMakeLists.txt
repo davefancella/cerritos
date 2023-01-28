@@ -16,6 +16,7 @@ conan_basic_setup()
 
 include(sdl)
 INCLUDE(FindPkgConfig)
+find_package(OpenAL REQUIRED)
 #find_package(SDL_ttf REQUIRED)
 #PKG_SEARCH_MODULE(SDL2 REQUIRED sdl2)
 PKG_SEARCH_MODULE(SDL2IMAGE REQUIRED SDL2_image)
