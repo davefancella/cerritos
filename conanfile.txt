@@ -26,3 +26,8 @@ sdl_image:shared=True
 cmake
 CMakeDeps
 CMakeToolchain
+
+[imports]
+# copy macOS and Windows dynamic libraries to where they can be found
+bin, *.dll -> ./bin
+lib, *.dylib* -> ./bin
