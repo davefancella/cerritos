@@ -69,7 +69,7 @@ install(FILES
     DESTINATION include
 )
 
-target_include_directories(cerritos PUBLIC
+target_include_directories(cerritos BEFORE PUBLIC
     .
     backend
     core
