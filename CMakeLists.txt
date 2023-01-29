@@ -11,8 +11,11 @@ project(cerritos VERSION 0.1.0)
 
 set(CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake" ${CMAKE_MODULE_PATH})
 
-include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
-conan_basic_setup()
+option(USE_CONAN "Use Conan" OFF)
+if(USE_CONAN)
+    include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
+    conan_basic_setup()
+endif(USE_CONAN)
 
 include(sdl)
 INCLUDE(FindPkgConfig)
