@@ -14,6 +14,11 @@ libpng/[^1.6] # odd that this is enough, but no complaining
 [tool_requires]
 doxygen/[^1.9,>=1.8]
 
+[options]
+sdl:shared=True
+sdl_ttf:shared=True
+sdl_image:shared=True
+
 # graphviz is not in Conan. Figures, it is a perl program.
 # Hope it is optional or can be manually installed if needed.
 
