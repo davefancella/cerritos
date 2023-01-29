@@ -10,6 +10,7 @@ sdl_image/[^2.0,>=2.0.5]
 
 # conflict resolution
 libpng/[^1.6] # odd that this is enough, but no complaining
+zlib/1.2.12 # this one is probably going to break at some point, forcing us to specify narrower versions
 
 [tool_requires]
 doxygen/[^1.9,>=1.8]
