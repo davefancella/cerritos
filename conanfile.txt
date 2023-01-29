@@ -4,16 +4,15 @@
 # conan install <path to source> --build=missing
 
 [requires]
-sdl/2.26.1
-sdl_ttf/2.0.18
-sdl_image/2.0.5
-# openal/1.22.2
-doxygen/1.9.4
+sdl/[^2.0,>=2.0.14]
+sdl_ttf/[^2.0,>=2.0.15]
+sdl_image/[^2.0,>=2.0.5]
 
 # conflict resolution
-libpng/1.6.39
-zlib/1.2.13
-# libalsa/1.2.7.2
+libpng/[^1.6] # odd that this is enough, but no complaining
+
+[tool_requires]
+doxygen/[^1.9,>=1.8]
 
 # graphviz is not in Conan. Figures, it is a perl program.
 # Hope it is optional or can be manually installed if needed.
