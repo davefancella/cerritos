@@ -88,11 +88,11 @@ target_include_directories(cerritos SYSTEM PUBLIC
     ${OPENAL_INCLUDE_DIR}
 )
 
-target_link_libraries(cerritos 
-    ${SDL2_LIBRARIES}
-    ${SDL2IMAGE_LIBRARIES}
-    ${SDL2TTF_LIBRARIES}
-    ${OPENAL_LIBRARY}
+target_link_libraries(cerritos PUBLIC
+    SDL2::SDL2main
+    SDL2_image::SDL2_image
+    SDL2_ttf::SDL2_ttf
+    OpenAL::OpenAL
     alut
     $<$<AND:$<CXX_COMPILER_ID:GNU>,$<VERSION_LESS:$<CXX_COMPILER_VERSION>,9.1>>:stdc++fs>
 )
