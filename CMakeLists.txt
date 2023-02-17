@@ -23,6 +23,20 @@ find_package(SDL2_image REQUIRED)
 find_package(SDL2_ttf REQUIRED)
 find_package(OpenAL)
 
+if(OPENAL_FOUND)
+  find_library(ALUT_LIBRARY
+    NAMES
+    alut
+    HINTS
+    lib
+    lib64
+    PATHS
+    /usr
+    /usr/local
+    /opt/local
+    /sw)
+endif(OPENAL_FOUND)
+
 # The actual cerritos sources
 add_subdirectory(src)
 # support libraries in thirdparty
@@ -36,20 +50,6 @@ if(USE_SDL)
 endif(USE_SDL)
 
 target_compile_definitions(cerritos PUBLIC BOOST_NO_CXX11_SCOPED_ENUMS)
-
-if(OPENAL_FOUND)
-find_library(ALUT_LIBRARY
-	NAMES
-	alut
-	HINTS
-	lib
-	lib64
-	PATHS
-  /usr
-	/usr/local
-	/opt/local
-	/sw)
-endif(OPENAL_FOUND)
 
 # check if Doxygen is installed
 find_package(Doxygen)
