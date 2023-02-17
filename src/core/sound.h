@@ -1,4 +1,12 @@
+#ifdef USING_OPENAL
 #include <AL/alut.h>
+#else
+// rudimentary type replacements
+using ALvoid = void;
+using ALuint = unsigned int;
+// this probably needs competely different abstractions... good enough for just having sound disabled.
+#endif
+
 #include "types.h"
 
 namespace cerritos {
