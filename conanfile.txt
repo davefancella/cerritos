@@ -11,7 +11,9 @@ sdl_image/[^2.0,>=2.0.5]
 # conflict resolution
 libpng/[^1.6] # odd that this is enough, but no complaining
 [tool_requires]
-doxygen/[^1.9,<=1.9.2]
+
+# the conan version of doxygen does not work the way we exect, so don't use it (for now)
+#doxygen/[^1.9,<=1.9.2]
 # 1.9.4 locks zlib to a higher version than one of its dependencies, causing irresolvable conflicts here
 
 [options]
@@ -23,7 +25,8 @@ sdl_image:shared=True
 # Hope it is optional or can be manually installed if needed.
 
 [generators]
-cmake
+cmake_find_package
+cmake_paths
 CMakeDeps
 CMakeToolchain
 

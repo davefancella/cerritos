@@ -11,11 +11,11 @@ project(cerritos VERSION 0.1.0)
 
 set(CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake" ${CMAKE_MODULE_PATH})
 
-option(USE_CONAN "Use Conan" OFF)
-if(USE_CONAN)
-    include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
-    conan_basic_setup()
-endif(USE_CONAN)
+# optionally include conan generated file
+set(CONAN_FILE_TO_INCLUDE ${CMAKE_BINARY_DIR}/conan_paths.cmake)
+if(EXISTS ${CONAN_FILE_TO_INCLUDE})
+    include(${CONAN_FILE_TO_INCLUDE})
+endif()
 
 #include(sdl)
 find_package(SDL2 REQUIRED)
@@ -24,17 +24,12 @@ find_package(SDL2_ttf REQUIRED)
 find_package(OpenAL)
 
 if(OPENAL_FOUND)
+  find_path(ALUT_INCLUDE_DIR
+    NAMES AL/alut.h)
   find_library(ALUT_LIBRARY
-    NAMES
-    alut
-    HINTS
-    lib
-    lib64
-    PATHS
-    /usr
-    /usr/local
-    /opt/local
-    /sw)
+    NAMES alut
+    HINTS lib lib64
+    PATH /usr /usr/local /opt/local /sw)
 endif(OPENAL_FOUND)
 
 # The actual cerritos sources

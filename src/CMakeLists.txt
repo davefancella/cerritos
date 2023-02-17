@@ -86,6 +86,7 @@ target_include_directories(cerritos SYSTEM PUBLIC
     ${SDL2IMAGE_INCLUDE_DIRS}
     ${SDL2TTF_INCLUDE_DIRS}
     ${OPENAL_INCLUDE_DIR}
+    ${ALUT_INCLUDE_DIR}
 )
 
 target_link_libraries(cerritos PUBLIC
