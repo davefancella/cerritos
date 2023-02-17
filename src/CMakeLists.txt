@@ -85,8 +85,6 @@ target_include_directories(cerritos SYSTEM PUBLIC
     ${SDL2_INCLUDE_DIRS}
     ${SDL2IMAGE_INCLUDE_DIRS}
     ${SDL2TTF_INCLUDE_DIRS}
-    ${OPENAL_INCLUDE_DIR}
-    ${ALUT_INCLUDE_DIR}
 )
 
 target_link_libraries(cerritos PUBLIC
@@ -94,10 +92,20 @@ target_link_libraries(cerritos PUBLIC
     SDL2::SDL2main
     SDL2_image::SDL2_image
     SDL2_ttf::SDL2_ttf
-    ${OPENAL_LIBRARY}
-    ${ALUT_LIBRARY}
     $<$<AND:$<CXX_COMPILER_ID:GNU>,$<VERSION_LESS:$<CXX_COMPILER_VERSION>,9.1>>:stdc++fs>
 )
+
+if(OPENAL_FOUND)
+    target_include_directories(cerritos SYSTEM PUBLIC
+        ${OPENAL_INCLUDE_DIR}
+        ${ALUT_INCLUDE_DIR}
+    )
+
+    target_link_libraries(cerritos PUBLIC
+        ${OPENAL_LIBRARY}
+        ${ALUT_LIBRARY}
+    )
+endif(OPENAL_FOUND)
 
 install(TARGETS cerritos
         EXPORT cerritos
