@@ -16,7 +16,7 @@ doxygen/[^1.9,<=1.9.2]
 
 [options]
 sdl:shared=True
-sdl_ttf:shared=True
+#sdl_ttf:shared=True
 sdl_image:shared=True
 
 # graphviz is not in Conan. Figures, it is a perl program.
