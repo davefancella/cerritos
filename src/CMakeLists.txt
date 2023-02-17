@@ -96,6 +96,10 @@ target_link_libraries(cerritos PUBLIC
 )
 
 if(OPENAL_FOUND)
+    # having this PUBLIC is probably bad style, but the ALUT definitions
+    # are required in a header right now...
+    target_compile_definitions(cerritos PUBLIC USING_OPENAL)
+
     target_include_directories(cerritos SYSTEM PUBLIC
         ${OPENAL_INCLUDE_DIR}
         ${ALUT_INCLUDE_DIR}
