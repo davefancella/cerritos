@@ -16,11 +16,6 @@ libpng/[^1.6] # odd that this is enough, but no complaining
 #doxygen/[^1.9,<=1.9.2]
 # 1.9.4 locks zlib to a higher version than one of its dependencies, causing irresolvable conflicts here
 
-[options]
-sdl:shared=True
-#sdl_ttf:shared=True
-sdl_image:shared=True
-
 # graphviz is not in Conan. Figures, it is a perl program.
 # Hope it is optional or can be manually installed if needed.
 
