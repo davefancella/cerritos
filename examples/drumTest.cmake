@@ -12,6 +12,8 @@ target_link_libraries(drumTest
 )
 
 # copy dll on windows into binary directory
-add_custom_command(TARGET drumTest POST_BUILD
-  COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_RUNTIME_DLLS:drumTest> $<TARGET_FILE_DIR:drumTest>
-)
+if(WIN32)
+    add_custom_command(TARGET drumTest POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:drumTest> $<TARGET_RUNTIME_DLLS:drumTest> $<TARGET_FILE_DIR:drumTest>
+    )
+endif(WIN32)

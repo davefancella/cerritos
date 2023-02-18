@@ -12,6 +12,8 @@ target_link_libraries(fontTest
 )
 
 # copy dll on windows into binary directory
-add_custom_command(TARGET fontTest POST_BUILD
-  COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_RUNTIME_DLLS:fontTest> $<TARGET_FILE_DIR:fontTest>
-)
+if(WIN32)
+    add_custom_command(TARGET fontTest POST_BUILD
+         COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:fontTest> $<TARGET_RUNTIME_DLLS:fontTest> $<TARGET_FILE_DIR:fontTest>
+    )
+endif(WIN32)
