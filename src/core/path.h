@@ -78,17 +78,17 @@ public:
     const Dirpath getFilepath(String searchpath, String filename, bool useSysDirs=false);
 
     /// Overloaded member for convenience.
-    String getFilepath(const char* searchpath, const char* filename, bool useSysDirs=false) { 
+    Dirpath getFilepath(const char* searchpath, const char* filename, bool useSysDirs=false) {
         return getFilepath(String(searchpath), String(filename), useSysDirs); 
     };
     
     /// Overloaded member for convenience.
-    String getFilepath(String searchpath, const char* filename, bool useSysDirs=false) { 
+    Dirpath getFilepath(String searchpath, const char* filename, bool useSysDirs=false) {
         return getFilepath(searchpath, String(filename), useSysDirs); 
     };
     
     /// Overloaded member for convenience.
-    String getFilepath(const char* searchpath, String filename, bool useSysDirs=false) {
+    Dirpath getFilepath(const char* searchpath, String filename, bool useSysDirs=false) {
         return getFilepath(String(searchpath), filename, useSysDirs ); 
     };
     
@@ -108,7 +108,7 @@ public:
     
     String getAssetDir() { return m_AssetDir; };
     
-    String getAppPath() { return m_AppPath; };
+    String getAppPath() { return m_AppPath.u8string(); };
     
     void setPrefix(const char* prefix) {
         setPrefix(String(prefix) );

@@ -54,7 +54,7 @@ Surface* ImageManager::loadFromFile(const char* filename) {
 }
 
 Surface* ImageManager::loadPath(String searchpath, String filename) {
-    return loadFromFile(_PATH.getFilepath(searchpath, filename) );
+    return loadFromFile(_PATH.getFilepath(searchpath, filename).u8string() );
 }
 
 Surface* ImageManager::loadFromFile(String filename) {

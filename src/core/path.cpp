@@ -68,7 +68,7 @@ void Path::m_initialize(const char* programName, bool overwrite) {
         return;
     
     if(programName != NULL) {
-        p_name = Dirpath(programName).filename();
+        p_name = Dirpath(programName).filename().u8string();
     } else {
         p_name = getProgramNameFile();
     }
@@ -184,7 +184,7 @@ void Path::setAssetDir(String newAssetdir) {
 }
 
 String Path::getProgramNameFile() {
-    return String(m_ProgramName.filename() );
+    return m_ProgramName.filename().u8string();
 }
 
 void Path::setProgramName(String programName) {
@@ -204,7 +204,7 @@ void Path::showPaths() {
 const Dirpath Path::getFilepath(String searchpath, String filename, bool useSysDirs) {
     if (m_AllPaths.has_key(searchpath)) {
         // Found the path
-        return String( (m_AllPaths[searchpath] / filename).c_str() );
+        return (m_AllPaths[searchpath] / filename).u8string();
     }
     
     return String("");
