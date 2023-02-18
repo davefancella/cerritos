@@ -6,6 +6,9 @@ cmake_minimum_required(VERSION 3.10)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+# create .lib file on Windows (alternative: export specifically all desired symbols with dllexport, make that a NOP on Unix platforms)
+set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
+
 # set the project name
 project(cerritos VERSION 0.1.0)
 
