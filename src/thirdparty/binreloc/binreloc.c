@@ -19,6 +19,8 @@
  *  0. You just DO WHAT THE FUCK YOU WANT TO.
  */
 
+#ifndef _WIN32
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <limits.h>
@@ -756,3 +758,4 @@ br_dirname (const char *path)
 		return result;
 }
 
+#endif
