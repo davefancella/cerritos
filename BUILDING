@@ -27,6 +27,9 @@ In Git Bash (installed with git), install pip (https://pip.pypa.io/en/stable/ins
 then install conan over pip (https://docs.conan.io/en/2.0/installation.html):
 > pip install conan --upgrade
 
+Cross Compilation:
+Look at the scripts and documentation in the crosscompile directory
+
 2.  Create build directory
 > mkdir build
 > cd build
