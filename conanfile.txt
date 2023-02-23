@@ -27,6 +27,7 @@ cmake_find_package
 cmake_paths
 CMakeDeps
 CMakeToolchain
+VirtualBuildEnv
 
 [imports]
 # copy macOS and Windows dynamic libraries to where they can be found
