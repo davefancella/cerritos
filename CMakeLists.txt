@@ -16,8 +16,10 @@ set(CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake" ${CMAKE_MODULE_PATH})
 
 # optionally include conan generated file
 set(CONAN_FILE_TO_INCLUDE ${CMAKE_BINARY_DIR}/conan_paths.cmake)
+set(USE_CONAN OFF)
 if(EXISTS ${CONAN_FILE_TO_INCLUDE})
     include(${CONAN_FILE_TO_INCLUDE})
+    set(USE_CONAN ON)
 endif()
 
 # Build documentation
