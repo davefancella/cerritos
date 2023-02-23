@@ -20,11 +20,18 @@ if(EXISTS ${CONAN_FILE_TO_INCLUDE})
     include(${CONAN_FILE_TO_INCLUDE})
 endif()
 
+# Build documentation
+option(BUILD_DOC "Build documentation" ON)
+option(USE_SDL "Use SDL" ON)
+option(USE_OPENAL "Use OpenAL" ON)
+
 #include(sdl)
 find_package(SDL2 REQUIRED)
 find_package(SDL2_image REQUIRED)
 find_package(SDL2_ttf REQUIRED)
-find_package(OpenAL)
+if(USE_OPENAL)
+  find_package(OpenAL)
+endif(USE_OPENAL)
 
 if(OPENAL_FOUND)
   find_path(ALUT_INCLUDE_DIR
@@ -38,10 +45,6 @@ endif(OPENAL_FOUND)
 # The actual cerritos sources
 add_subdirectory(src)
 # support libraries in thirdparty
-
-# Build documentation
-option(BUILD_DOC "Build documentation" ON)
-option(USE_SDL "Use SDL" ON)
 
 if(USE_SDL)
     target_compile_definitions(cerritos PUBLIC USING_SDL)
