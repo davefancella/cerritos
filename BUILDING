@@ -25,7 +25,7 @@ DO NOT install Microsoft store version of python, its path settings seem broken
 In Git Bash (installed with git), install pip (https://pip.pypa.io/en/stable/installation/)
 > py -m ensurepip --upgrade
 then install conan over pip (https://docs.conan.io/en/2.0/installation.html):
-> pip install conan --upgrade
+> pip install 'conan<2.0' --upgrade
 
 Cross Compilation:
 Look at the scripts and documentation in the crosscompile directory
