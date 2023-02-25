@@ -16,7 +16,6 @@ xz_utils/[^5]
 [options]
 # we don't need that, it is huge and breaks compilation on Wine
 sdl:iconv=False
-# sdl_image:with_libjpeg=False
 
 [tool_requires]
 
