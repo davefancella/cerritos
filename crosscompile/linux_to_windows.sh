@@ -19,7 +19,6 @@
 set -x 
 
 SOURCE_PATH=$(dirname $(dirname $0))
-shift
 
 # see if we need to update the conan configuration
 if test "${SOURCE_PATH}"/conanfile.txt -nt conan_paths.cmake || test "$0" -nt conan_paths.cmake; then
