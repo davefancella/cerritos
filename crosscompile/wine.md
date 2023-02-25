@@ -1,7 +1,5 @@
 # How to compile for Windows under Wine
 
-Note: This is work in progress and does not yet work to the end. It maybe never will.
-
 ## Why? I mean, why? Why not just use cross compilation?
 
 You want the deployed build to be as similar as possible to a build you can actually debug. So,
