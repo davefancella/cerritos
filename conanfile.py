@@ -29,7 +29,8 @@ class CerritosConan(ConanFile):
     # Hope it is optional or can be manually installed if needed.
 
     def configure(self):
-        self.options["sdl"].iconv = False
+        if self.settings.os != "Macos":
+            self.options["sdl"].iconv = False
 
     def imports(self):
         self.copy("*.dll", dst="bin", src="bin")
