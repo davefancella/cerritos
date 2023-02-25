@@ -13,6 +13,11 @@ sdl_image/[^2.0 >=2.0.5]
 libpng/[^1]
 xz_utils/[^5]
 
+[options]
+# we don't need that, it is huge and breaks compilation on Wine
+sdl:iconv=False
+# sdl_image:with_libjpeg=False
+
 [tool_requires]
 
 # the conan version of doxygen does not work the way we exect, so don't use it (for now)
