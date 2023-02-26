@@ -3,7 +3,7 @@
 # install dependencies with
 # conan install <path to source> --build=missing
 
-from conans import ConanFile, CMake
+from conan import ConanFile
 
 class CerritosConan(ConanFile):
     settings = "os", "compiler", "build_type", "arch"
@@ -16,12 +16,11 @@ class CerritosConan(ConanFile):
 
     requires = \
         "sdl/[^2.0 >=2.26.1]", \
-        "sdl_ttf/[^2.0 >=2.0.15]", \
+        "sdl_ttf/[^2.0 >=2.0.19]", \
         "sdl_image/[^2.0 >=2.0.5]", \
-        "libpng/[^1]", \
-        "xz_utils/[^5]"
+        "libpng/[^1]"
 
-    # libpng and xy_utils are for conflict resolution; apparently it is enough to just state the conflicting transitive
+    # libpng and is conflict resolution; apparently it is enough to just state the conflicting transitive
     # dependencies with a broad version specification.
 
 
@@ -31,6 +30,13 @@ class CerritosConan(ConanFile):
     def configure(self):
         if self.settings.os != "Macos":
             self.options["sdl"].iconv = False
+        
+        # this would pull in xz_utils, which does not compile in native w64devkit
+        self.options["sdl_image"].with_libtiff = False
+        # should we want libtiff in general, just minimally avoid xz_utils:
+        self.options["libtiff"].lzma = False
+        # add if required:
+        # if self.settings.os == "Windows":
 
     def imports(self):
         self.copy("*.dll", dst="bin", src="bin")
