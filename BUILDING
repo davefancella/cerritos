@@ -4,12 +4,22 @@ How to build cerritos
 Linux (package names may vary), in Terminal:
 > {your packager} libsdl2 doxygen graphviz libsdl2-image-dev libsdl2-ttf-dev freealut-dev
 
+For the optional Conan path, install pip (https://pip.pypa.io/en/stable/installation/)
+> python -m ensurepip --upgrade
+then install conan over pip (https://docs.conan.io/en/2.0/installation.html):
+> pip install 'conan<2.0' --upgrade
+
 macOS:
 Get XCode: https://developer.apple.com/support/xcode/
 Get Homebrew via https://brew.sh/; then, in Terminal:
 > brew install sdl2 doxygen graphviz sdl2_image sdl2_ttf freealut
 
-Windows:
+For the optional Conan path, install pip (https://pip.pypa.io/en/stable/installation/)
+> python -m ensurepip --upgrade
+then install conan over pip (https://docs.conan.io/en/2.0/installation.html):
+> pip install 'conan<2.0' --upgrade
+
+Windows via Visual Studio and Conan (will not have OpenAL support):
 Install Visual Studio, for example the 2022 Community Edition: https://visualstudio.microsoft.com/de/vs/community/
 Only the C++ Desktop Development package should be required.
 In cmd (all a bit more involved as Windows is lacking some basic tools):
@@ -27,6 +37,15 @@ In Git Bash (installed with git), install pip (https://pip.pypa.io/en/stable/ins
 then install conan over pip (https://docs.conan.io/en/2.0/installation.html):
 > pip install 'conan<2.0' --upgrade
 
+Windows via MSYS2, a more Unix-like environment (not yet fully functional):
+Install MSYS2 (https://www.msys2.org/)
+Start a shell in the MINGW32 environment (or, should you want 64 bit binaries, MINGW64)
+Install pactoys for easier typing:
+> pacman -S pactoys
+Install dependencies:
+> pacboy -S cmake:p gcc:p SDL2:p SDL2_ttf:p SDL2_image:p openal:p freealut:p doxygen:p graphviz:p
+Optionally also make:p for makefile based compilation if you prefer that; the system defaults to ninja.
+
 Cross Compilation:
 Look at the scripts and documentation in the crosscompile directory
 
@@ -34,7 +53,7 @@ Look at the scripts and documentation in the crosscompile directory
 > mkdir build
 > cd build
 
-3: Get Dependencies via Conan (Optional on Linux and macOS if nothing went wrong in step 1, required on Windows):
+3. Get Dependencies via Conan (Optional on Linux, macOS and MSYS2 if nothing went wrong in step 1, required for Visual Studio):
 > conan install .. --build=missing
 
 4.  Run cmake
