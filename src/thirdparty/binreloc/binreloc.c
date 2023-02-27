@@ -19,7 +19,7 @@
  *  0. You just DO WHAT THE FUCK YOU WANT TO.
  */
 
-#ifndef _WIN32
+#if !defined(_WIN32) && !defined(__MINGW32__) && !defined(__CYGWIN__)
 
 #include <stdio.h>
 #include <stdlib.h>
