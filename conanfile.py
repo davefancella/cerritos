@@ -29,7 +29,7 @@ class CerritosConan(ConanFile):
     # Hope it is optional or can be manually installed if needed.
 
     def configure(self):
-        if self.settings.os != "Macos":
+        if self.settings.os != "Macos" and self.settings.compiler != "Visual Studio":
             self.options["sdl"].iconv = False
 
     def imports(self):
