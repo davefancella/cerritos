@@ -6,25 +6,47 @@ cmake_minimum_required(VERSION 3.10)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+# create .lib file on Windows (alternative: export specifically all desired symbols with dllexport, make that a NOP on Unix platforms)
+set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
+
 # set the project name
 project(cerritos VERSION 0.1.0)
 
 set(CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake" ${CMAKE_MODULE_PATH})
 
-include(sdl)
-INCLUDE(FindPkgConfig)
-#find_package(SDL_ttf REQUIRED)
-#PKG_SEARCH_MODULE(SDL2 REQUIRED sdl2)
-PKG_SEARCH_MODULE(SDL2IMAGE REQUIRED SDL2_image)
-PKG_SEARCH_MODULE(SDL2TTF REQUIRED SDL2_ttf)
-
-# The actual cerritos sources
-add_subdirectory(src)
-# support libraries in thirdparty
+# optionally include conan generated file
+set(CONAN_FILE_TO_INCLUDE ${CMAKE_BINARY_DIR}/conan_paths.cmake)
+set(USE_CONAN OFF)
+if(EXISTS ${CONAN_FILE_TO_INCLUDE})
+    include(${CONAN_FILE_TO_INCLUDE})
+    set(USE_CONAN ON)
+endif()
 
 # Build documentation
 option(BUILD_DOC "Build documentation" ON)
 option(USE_SDL "Use SDL" ON)
+option(USE_OPENAL "Use OpenAL" ON)
+
+#include(sdl)
+find_package(SDL2 REQUIRED)
+find_package(SDL2_image REQUIRED)
+find_package(SDL2_ttf REQUIRED)
+if(USE_OPENAL)
+  find_package(OpenAL)
+endif(USE_OPENAL)
+
+if(OPENAL_FOUND)
+  find_path(ALUT_INCLUDE_DIR
+    NAMES AL/alut.h)
+  find_library(ALUT_LIBRARY
+    NAMES alut
+    HINTS lib lib64
+    PATH /usr /usr/local /opt/local /sw)
+endif(OPENAL_FOUND)
+
+# The actual cerritos sources
+add_subdirectory(src)
+# support libraries in thirdparty
 
 if(USE_SDL)
     target_compile_definitions(cerritos PUBLIC USING_SDL)

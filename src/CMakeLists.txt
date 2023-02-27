@@ -69,11 +69,7 @@ install(FILES
     DESTINATION include
 )
 
-target_include_directories(cerritos PUBLIC
-    ${SDL2_LIBRARIES}
-    ${SDL2IMAGE_INCLUDE_DIRS}
-    ${SDL2TTF_INCLUDE_DIRS}
-    ${OPENAL_INCLUDE_DIRS}
+target_include_directories(cerritos BEFORE PUBLIC
     .
     backend
     core
@@ -85,15 +81,34 @@ target_include_directories(cerritos PUBLIC
     widgets
 )
 
-target_link_libraries(cerritos 
-    ${SDL2_LIBRARIES}
-    ${SDL2IMAGE_LIBRARIES}
-    ${SDL2TTF_LIBRARIES}
-    ${OPENAL_LIBRARIES}
-    alut
-    stdc++fs
-    stdc++
+target_include_directories(cerritos SYSTEM PUBLIC
+    ${SDL2_INCLUDE_DIRS}
+    ${SDL2IMAGE_INCLUDE_DIRS}
+    ${SDL2TTF_INCLUDE_DIRS}
 )
+
+target_link_libraries(cerritos PUBLIC
+    SDL2::SDL2
+    SDL2_image::SDL2_image
+    SDL2_ttf::SDL2_ttf
+    $<$<AND:$<CXX_COMPILER_ID:GNU>,$<VERSION_LESS:$<CXX_COMPILER_VERSION>,9.1>>:stdc++fs>
+)
+
+if(OPENAL_FOUND)
+    # having this PUBLIC is probably bad style, but the ALUT definitions
+    # are required in a header right now...
+    target_compile_definitions(cerritos PUBLIC USING_OPENAL)
+
+    target_include_directories(cerritos SYSTEM PUBLIC
+        ${OPENAL_INCLUDE_DIR}
+        ${ALUT_INCLUDE_DIR}
+    )
+
+    target_link_libraries(cerritos PUBLIC
+        ${OPENAL_LIBRARY}
+        ${ALUT_LIBRARY}
+    )
+endif(OPENAL_FOUND)
 
 install(TARGETS cerritos
         EXPORT cerritos

@@ -1,17 +1,70 @@
 How to build cerritos
 
 1.  Install dependencies
-cmake libsdl2 doxygen graphviz libsdl2-image-dev libsdl2-ttf-dev
+Linux (package names may vary), in Terminal:
+> {your packager} libsdl2 doxygen graphviz libsdl2-image-dev libsdl2-ttf-dev freealut-dev
+For example, on Arch:
+> sudo pacman -S cmake make gcc sdl2 sdl2_ttf sdl2_image openal freealut doxygen graphviz
+On Ubuntu:
+> sudo apt install cmake make gcc libsdl2-dev libsdl2-image-dev libsdl2-ttf-dev libopenal-dev doxygen graphviz
+
+For the optional Conan path, install python, then pip (https://pip.pypa.io/en/stable/installation/)
+> python -m ensurepip --upgrade
+then install conan over pip (https://docs.conan.io/en/2.0/installation.html):
+> pip install 'conan<2.0' --upgrade
+
+macOS:
+Get XCode: https://developer.apple.com/support/xcode/
+Get Homebrew via https://brew.sh/; then, in Terminal:
+> brew install cmake make sdl2 sdl2_image sdl2_ttf freealut doxygen graphviz
+
+For the optional Conan path, install python, pip (https://pip.pypa.io/en/stable/installation/)
+> python -m ensurepip --upgrade
+then install conan over pip (https://docs.conan.io/en/2.0/installation.html):
+> pip install 'conan<2.0' --upgrade
+
+Windows via Visual Studio and Conan (will not have OpenAL support):
+Install Visual Studio, for example the 2022 Community Edition: https://visualstudio.microsoft.com/de/vs/community/
+Only the C++ Desktop Development package should be required.
+In cmd (all a bit more involved as Windows is lacking some basic tools):
+> winget install Git.Git
+> winget install cmake
+> winget install python
+optional: Visual Studio Code editor, not required for building:
+> winget install code
+
+disable python alias via Settings -> Manage App Execution Aliases (use search)
+DO NOT install Microsoft store version of python, its path settings seem broken
+
+In Git Bash (installed with git), install pip (https://pip.pypa.io/en/stable/installation/)
+> py -m ensurepip --upgrade
+then install conan over pip (https://docs.conan.io/en/2.0/installation.html):
+> pip install 'conan<2.0' --upgrade
+
+Windows via MSYS2, a more Unix-like environment (not yet fully functional):
+Install MSYS2 (https://www.msys2.org/)
+Start a shell in the MINGW32 environment (or, should you want 64 bit binaries, MINGW64)
+Install pactoys for easier typing:
+> pacman -S pactoys
+Install dependencies:
+> pacboy -S cmake:p gcc:p SDL2:p SDL2_ttf:p SDL2_image:p openal:p freealut:p doxygen:p graphviz:p
+Optionally also make:p for makefile based compilation if you prefer that; the system defaults to ninja.
+
+Cross Compilation:
+Look at the scripts and documentation in the crosscompile directory
 
 2.  Create build directory
-mkdir build
-cd build
+> mkdir build
+> cd build
 
-3.  Run cmake
-cmake ../
+3. Get Dependencies via Conan (Optional on Linux, macOS and MSYS2 if nothing went wrong in step 1, required for Visual Studio):
+> conan install .. --build=missing
 
-4.  Build!
-make
+4.  Run cmake
+> cmake ..
+
+5.  Build!
+> cmake --build .
 
 TODO: Make this document a lot more detailed.
 

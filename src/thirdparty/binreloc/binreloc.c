@@ -28,7 +28,11 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <unistd.h>
+#ifdef __APPLE__
+#include <sys/syslimits.h>
+#else
 #include <linux/limits.h>
+#endif
 
 #include "binreloc.h"
 
