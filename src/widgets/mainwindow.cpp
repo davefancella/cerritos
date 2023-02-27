@@ -67,6 +67,13 @@ void cMainWindow::Move() {
 #endif // USING_SDL
 }
 
+cMainWindow::cMainWindow(CER_WindowFlags winFlags) :
+    cMainWindow("Cerritos Window", 800, 600, CER_WindowPos_Centered, CER_WindowPos_Centered, winFlags) { };
+cMainWindow::cMainWindow(String title, CER_WindowFlags winFlags) :
+    cMainWindow(title, 800, 600, CER_WindowPos_Centered, CER_WindowPos_Centered, winFlags) { };
+cMainWindow::cMainWindow(String title, int width, int height, CER_WindowFlags winFlags) :
+    cMainWindow(title, 800, 600, CER_WindowPos_Centered, CER_WindowPos_Centered, winFlags) { };
+
 cMainWindow::cMainWindow(String title, int width, int height, int posx, int posy, CER_WindowFlags winFlags) 
             : cWidget(NULL), m_Title(title), m_Size(width, height), 
                 m_Position(posx, posy),

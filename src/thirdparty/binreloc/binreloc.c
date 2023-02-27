@@ -19,6 +19,8 @@
  *  0. You just DO WHAT THE FUCK YOU WANT TO.
  */
 
+#if !defined(_WIN32) && !defined(__MINGW32__) && !defined(__CYGWIN__)
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <limits.h>
@@ -28,7 +30,11 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <unistd.h>
+#ifdef __APPLE__
+#include <sys/syslimits.h>
+#else
 #include <linux/limits.h>
+#endif
 
 #include "binreloc.h"
 
@@ -752,3 +758,4 @@ br_dirname (const char *path)
 		return result;
 }
 
+#endif

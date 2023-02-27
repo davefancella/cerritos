@@ -94,11 +94,7 @@ typedef enum {
  * typedefs and defines that hopefully provide reasonable cross-platform
  * strings from the C++ standard library
  */
-#ifdef _WIN32
-typedef std::wstring String;
-#else
 typedef std::string String;
-#endif
 
 typedef std::filesystem::path Dirpath;
 

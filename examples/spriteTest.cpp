@@ -108,19 +108,19 @@ int main( int argc, char* args[] ) {
     theSprite = new Sprite(theWindow->getWindow(), 0, 0, 64, 64, 10);
     theOtherSprite = new Sprite(theWindow->getWindow(), 250, 250, 64, 64, 1);
     
-    List<String> dancing = {_PATH.getFilepath("share", "boimlerdance00.bmp"),
-                            _PATH.getFilepath("share", "boimlerdance01.bmp"),
-                            _PATH.getFilepath("share", "boimlerdance02.bmp"),
-                            _PATH.getFilepath("share", "boimlerdance01.bmp") };
+    List<String> dancing = {_PATH.getFilepath("share", "boimlerdance00.bmp").u8string(),
+                            _PATH.getFilepath("share", "boimlerdance01.bmp").u8string(),
+                            _PATH.getFilepath("share", "boimlerdance02.bmp").u8string(),
+                            _PATH.getFilepath("share", "boimlerdance01.bmp").u8string() };
                                   
-    List<String> walking = {_PATH.getFilepath("share", "boimlerdance10.bmp"),
-                            _PATH.getFilepath("share", "boimlerdance11.bmp"),
-                            _PATH.getFilepath("share", "boimlerdance12.bmp"),
-                            _PATH.getFilepath("share", "boimlerdance13.bmp"),
-                            _PATH.getFilepath("share", "boimlerdance14.bmp"),
-                            _PATH.getFilepath("share", "boimlerdance12.bmp") };
+    List<String> walking = {_PATH.getFilepath("share", "boimlerdance10.bmp").u8string(),
+                            _PATH.getFilepath("share", "boimlerdance11.bmp").u8string(),
+                            _PATH.getFilepath("share", "boimlerdance12.bmp").u8string(),
+                            _PATH.getFilepath("share", "boimlerdance13.bmp").u8string(),
+                            _PATH.getFilepath("share", "boimlerdance14.bmp").u8string(),
+                            _PATH.getFilepath("share", "boimlerdance12.bmp").u8string() };
                                    
-    List<String> ship = {_PATH.getFilepath("share", "spaceship.bmp")};
+    List<String> ship = {_PATH.getFilepath("share", "spaceship.bmp").u8string()};
     
     theSprite->addSpriteMode(0, dancing);
     theSprite->setDefaultMode(1);

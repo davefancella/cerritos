@@ -64,12 +64,9 @@ public:
     
     // Constructors
     //cMainWindow();
-    cMainWindow(CER_WindowFlags winFlags=CER_Shown) :
-            cMainWindow("Cerritos Window", 800, 600, CER_WindowPos_Centered, CER_WindowPos_Centered, winFlags) { };
-    cMainWindow(String title, CER_WindowFlags winFlags=CER_Shown) :
-            cMainWindow(title, 800, 600, CER_WindowPos_Centered, CER_WindowPos_Centered, winFlags) { };
-    cMainWindow(String title, int width, int height, CER_WindowFlags winFlags=CER_Shown) :
-            cMainWindow(title, 800, 600, CER_WindowPos_Centered, CER_WindowPos_Centered, winFlags) { };
+    cMainWindow(CER_WindowFlags winFlags=CER_Shown);
+    cMainWindow(String title, CER_WindowFlags winFlags=CER_Shown);
+    cMainWindow(String title, int width, int height, CER_WindowFlags winFlags=CER_Shown);
     cMainWindow(String title, int width, int height, int posx, int posy, CER_WindowFlags winFlags=CER_Shown);
     virtual ~cMainWindow();
     

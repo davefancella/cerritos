@@ -83,7 +83,7 @@ public:
     void Fire() {
         m_Fired = true;
         m_Bullet = new Bullet();
-        m_Bullet->setBackground(_PATH.getFilepath("share", "bullet.bmp"));
+        m_Bullet->setBackground(_PATH.getFilepath("share", "bullet.bmp").u8string());
         m_Bullet->setPosition(this->getPosition());
         m_Bullet->setHeading(this->getHeading());
         m_Bullet->setSpeed(2.0);
@@ -112,7 +112,7 @@ public:
 
         m_Ship = new Ship(getMainWindow()->getWindow(), 200,200, 40, 40, 1 );
         
-        m_Ship->setBackground(_PATH.getFilepath("share", "dadship.png"));
+        m_Ship->setBackground(_PATH.getFilepath("share", "dadship.png").u8string());
         
         m_Ship->setPosition(200,200);
         
