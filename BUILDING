@@ -3,8 +3,12 @@ How to build cerritos
 1.  Install dependencies
 Linux (package names may vary), in Terminal:
 > {your packager} libsdl2 doxygen graphviz libsdl2-image-dev libsdl2-ttf-dev freealut-dev
+For example, on Arch:
+> sudo pacman -S cmake make gcc sdl2 sdl2_ttf sdl2_image openal freealut doxygen graphviz
+On Ubuntu:
+> sudo apt install cmake make gcc libsdl2-dev libsdl2-image-dev libsdl2-ttf-dev libopenal-dev doxygen graphviz
 
-For the optional Conan path, install pip (https://pip.pypa.io/en/stable/installation/)
+For the optional Conan path, install python, then pip (https://pip.pypa.io/en/stable/installation/)
 > python -m ensurepip --upgrade
 then install conan over pip (https://docs.conan.io/en/2.0/installation.html):
 > pip install 'conan<2.0' --upgrade
@@ -12,9 +16,9 @@ then install conan over pip (https://docs.conan.io/en/2.0/installation.html):
 macOS:
 Get XCode: https://developer.apple.com/support/xcode/
 Get Homebrew via https://brew.sh/; then, in Terminal:
-> brew install sdl2 doxygen graphviz sdl2_image sdl2_ttf freealut
+> brew install cmake make sdl2 sdl2_image sdl2_ttf freealut doxygen graphviz
 
-For the optional Conan path, install pip (https://pip.pypa.io/en/stable/installation/)
+For the optional Conan path, install python, pip (https://pip.pypa.io/en/stable/installation/)
 > python -m ensurepip --upgrade
 then install conan over pip (https://docs.conan.io/en/2.0/installation.html):
 > pip install 'conan<2.0' --upgrade
