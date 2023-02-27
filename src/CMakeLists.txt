@@ -89,7 +89,6 @@ target_include_directories(cerritos SYSTEM PUBLIC
 
 target_link_libraries(cerritos PUBLIC
     SDL2::SDL2
-    SDL2::SDL2main
     SDL2_image::SDL2_image
     SDL2_ttf::SDL2_ttf
     $<$<AND:$<CXX_COMPILER_ID:GNU>,$<VERSION_LESS:$<CXX_COMPILER_VERSION>,9.1>>:stdc++fs>
